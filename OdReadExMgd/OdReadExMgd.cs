@@ -20,6 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.IO;
 using Teigha.DatabaseServices;
@@ -27,12 +28,14 @@ using Teigha.Geometry;
 using Teigha.GraphicsInterface;
 using Teigha.Colors;
 using Teigha;
+using Trace = Teigha.DatabaseServices.Trace;
+
 // note that GetObject doesn't work in Acad 2009, so we use "obsolete" Open instead
 #pragma warning disable 618
 
 namespace OdReadExMgd
 {
-  class DbDumper
+  public class DbDumper
   {
     public DbDumper() { }
 
@@ -128,18 +131,18 @@ namespace OdReadExMgd
       /**********************************************************************/
       if (rightString == null || ((rightString is string) && ((string)rightString) == ""))
       {
-        Console.WriteLine(newleftString);
+        Debug.WriteLine(newleftString);
       }
       else
       {
         int leaders = colWidth - newleftString.Length;
         if (leaders > 0)
         {
-          Console.WriteLine(newleftString + leader.Substring(newleftString.Length, leaders) + rightString.ToString());
+          Debug.WriteLine(newleftString + leader.Substring(newleftString.Length, leaders) + rightString.ToString());
         }
         else
         {
-          Console.WriteLine(newleftString + ' ' + rightString.ToString());
+          Debug.WriteLine(newleftString + ' ' + rightString.ToString());
         }
       }
     }

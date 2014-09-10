@@ -52,19 +52,7 @@ namespace OdViewExMgd
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.zoomToExtentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.zoomWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.expotToDWFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToSVGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.publish3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.importDwfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-      this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.setActiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.setAvtiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,21 +79,16 @@ namespace OdViewExMgd
       this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
             this.zoomToExtentsToolStripMenuItem,
-            this.zoomWindowToolStripMenuItem,
-            this.exportToolStripMenuItem,
             this.toolStripSeparator1,
-            this.pageSetupToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.printToolStripMenuItem,
             this.saveAsToolStripMenuItem});
       this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-      this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
       this.fileToolStripMenuItem.Text = "File";
       // 
       // openToolStripMenuItem
       // 
       this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-      this.openToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+      this.openToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
       this.openToolStripMenuItem.Text = "Open";
       this.openToolStripMenuItem.Click += new System.EventHandler(this.file_open_handler);
       // 
@@ -113,115 +96,19 @@ namespace OdViewExMgd
       // 
       this.zoomToExtentsToolStripMenuItem.Enabled = false;
       this.zoomToExtentsToolStripMenuItem.Name = "zoomToExtentsToolStripMenuItem";
-      this.zoomToExtentsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+      this.zoomToExtentsToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
       this.zoomToExtentsToolStripMenuItem.Text = "Zoom to extents";
       this.zoomToExtentsToolStripMenuItem.Click += new System.EventHandler(this.zoom_extents_handler);
-      // 
-      // zoomWindowToolStripMenuItem
-      // 
-      this.zoomWindowToolStripMenuItem.Enabled = false;
-      this.zoomWindowToolStripMenuItem.Name = "zoomWindowToolStripMenuItem";
-      this.zoomWindowToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-      this.zoomWindowToolStripMenuItem.Text = "Zoom window";
-      this.zoomWindowToolStripMenuItem.Click += new System.EventHandler(this.zoomWindowToolStripMenuItem_Click);
-      // 
-      // exportToolStripMenuItem
-      // 
-      this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToPDFToolStripMenuItem,
-            this.expotToDWFToolStripMenuItem,
-            this.exportToSVGToolStripMenuItem,
-            this.saveBitmapToolStripMenuItem,
-            this.publishToolStripMenuItem,
-            this.publish3dToolStripMenuItem,
-            this.importDwfToolStripMenuItem});
-      this.exportToolStripMenuItem.Enabled = false;
-      this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-      this.exportToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-      this.exportToolStripMenuItem.Text = "Export";
-      // 
-      // exportToPDFToolStripMenuItem
-      // 
-      this.exportToPDFToolStripMenuItem.Name = "exportToPDFToolStripMenuItem";
-      this.exportToPDFToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.exportToPDFToolStripMenuItem.Text = "Export to PDF...";
-      this.exportToPDFToolStripMenuItem.Click += new System.EventHandler(this.exportToPDFToolStripMenuItem_Click);
-      // 
-      // expotToDWFToolStripMenuItem
-      // 
-      this.expotToDWFToolStripMenuItem.Name = "expotToDWFToolStripMenuItem";
-      this.expotToDWFToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.expotToDWFToolStripMenuItem.Text = "Export to DWF...";
-      this.expotToDWFToolStripMenuItem.Click += new System.EventHandler(this.exportToDWFToolStripMenuItem_Click);
-      // 
-      // exportToSVGToolStripMenuItem
-      // 
-      this.exportToSVGToolStripMenuItem.Name = "exportToSVGToolStripMenuItem";
-      this.exportToSVGToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.exportToSVGToolStripMenuItem.Text = "Export to SVG...";
-      this.exportToSVGToolStripMenuItem.Click += new System.EventHandler(this.exportToSVGToolStripMenuItem_Click);
-      // 
-      // saveBitmapToolStripMenuItem
-      // 
-      this.saveBitmapToolStripMenuItem.Name = "saveBitmapToolStripMenuItem";
-      this.saveBitmapToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.saveBitmapToolStripMenuItem.Text = "Save Bitmap...";
-      this.saveBitmapToolStripMenuItem.Click += new System.EventHandler(this.saveBitmapToolStripMenuItem_Click);
-      // 
-      // publishToolStripMenuItem
-      // 
-      this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-      this.publishToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.publishToolStripMenuItem.Text = "Publish...";
-      this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
-      // 
-      // publish3dToolStripMenuItem
-      // 
-      this.publish3dToolStripMenuItem.Name = "publish3dToolStripMenuItem";
-      this.publish3dToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.publish3dToolStripMenuItem.Text = "3dPublish...";
-      this.publish3dToolStripMenuItem.Click += new System.EventHandler(this.publish3dToolStripMenuItem_Click);
-      // 
-      // importDwfToolStripMenuItem
-      // 
-      this.importDwfToolStripMenuItem.Name = "importDwfToolStripMenuItem";
-      this.importDwfToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-      this.importDwfToolStripMenuItem.Text = "ImportDwf";
-      this.importDwfToolStripMenuItem.Click += new System.EventHandler(this.importDwfToolStripMenuItem_Click);
       // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
-      // 
-      // pageSetupToolStripMenuItem
-      // 
-      this.pageSetupToolStripMenuItem.Enabled = false;
-      this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-      this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-      this.pageSetupToolStripMenuItem.Text = "PageSetup";
-      this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
-      // 
-      // printPreviewToolStripMenuItem
-      // 
-      this.printPreviewToolStripMenuItem.Enabled = false;
-      this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-      this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-      this.printPreviewToolStripMenuItem.Text = "Print Preview";
-      this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
-      // 
-      // printToolStripMenuItem
-      // 
-      this.printToolStripMenuItem.Enabled = false;
-      this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-      this.printToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-      this.printToolStripMenuItem.Text = "Print";
-      this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
+      this.toolStripSeparator1.Size = new System.Drawing.Size(157, 6);
       // 
       // saveAsToolStripMenuItem
       // 
       this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-      this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+      this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
       this.saveAsToolStripMenuItem.Text = "SaveAs";
       this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
       // 
@@ -231,14 +118,14 @@ namespace OdViewExMgd
             this.setAvtiveLayoutToolStripMenuItem,
             this.fileDependencyToolStripMenuItem});
       this.setActiveLayoutToolStripMenuItem.Name = "setActiveLayoutToolStripMenuItem";
-      this.setActiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+      this.setActiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
       this.setActiveLayoutToolStripMenuItem.Text = "View";
       // 
       // setAvtiveLayoutToolStripMenuItem
       // 
       this.setAvtiveLayoutToolStripMenuItem.Enabled = false;
       this.setAvtiveLayoutToolStripMenuItem.Name = "setAvtiveLayoutToolStripMenuItem";
-      this.setAvtiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+      this.setAvtiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
       this.setAvtiveLayoutToolStripMenuItem.Text = "Set Avtive Layout";
       this.setAvtiveLayoutToolStripMenuItem.Click += new System.EventHandler(this.setActiveLayoutToolStripMenuItem_Click);
       // 
@@ -246,7 +133,7 @@ namespace OdViewExMgd
       // 
       this.fileDependencyToolStripMenuItem.Enabled = false;
       this.fileDependencyToolStripMenuItem.Name = "fileDependencyToolStripMenuItem";
-      this.fileDependencyToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+      this.fileDependencyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
       this.fileDependencyToolStripMenuItem.Text = "File Dependency";
       this.fileDependencyToolStripMenuItem.Click += new System.EventHandler(this.fileDependencyToolStripMenuItem_Click);
       // 
@@ -258,11 +145,11 @@ namespace OdViewExMgd
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(852, 509);
       this.panel1.TabIndex = 1;
-      this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-      this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
+      this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
       this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+      this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
       // 
       // openFileDialog
       // 
@@ -284,8 +171,8 @@ namespace OdViewExMgd
       this.MainMenuStrip = this.menuStrip;
       this.Name = "Form1";
       this.Text = "OdViewExMgd";
-      this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+      this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
       this.menuStrip.ResumeLayout(false);
       this.menuStrip.PerformLayout();
@@ -304,22 +191,10 @@ namespace OdViewExMgd
     private System.Windows.Forms.ToolStripMenuItem zoomToExtentsToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem setActiveLayoutToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem setAvtiveLayoutToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem zoomWindowToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToPDFToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem saveBitmapToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem expotToDWFToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem publish3dToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToSVGToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem importDwfToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem fileDependencyToolStripMenuItem;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-    private System.Windows.Forms.ToolStripMenuItem pageSetupToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
-    private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
   }
 }
 

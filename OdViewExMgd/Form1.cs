@@ -22,7 +22,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using Teigha;
@@ -45,7 +47,6 @@ namespace OdViewExMgd
     }
 
     private bool _IsMoving;
-
     Teigha.Runtime.Services dd;
     Graphics graphics;
     Teigha.GraphicsSystem.LayoutHelperDevice helperDevice;
@@ -93,6 +94,14 @@ namespace OdViewExMgd
     }
     void Form1_MouseWheel(object sender, MouseEventArgs e)
     {
+      var leftTop = PointToScreen(panel1.Location);
+      var leftBottom = PointToScreen(new Point(panel1.Left, panel1.Bottom));
+      var rightTop = PointToScreen(new Point(panel1.Right, panel1.Top));
+      var rightBottom = PointToScreen(new Point(panel1.Right, panel1.Bottom));
+      if(e.X<panel1.Left || e.Y<panel1.Top || e.X>panel1.Right|| e.Y >panel1.Bottom)
+        return;
+
+      //Debug.WriteLine(string.Format("mouse location in panel coordinates x:{0}, y{1}",p.X,p.Y));
       using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
       {
         // camera position in world coordinates
@@ -158,15 +167,10 @@ namespace OdViewExMgd
           String str = HostApplicationServices.Current.FontMapFileName;
 
           //menuStrip.
-          exportToolStripMenuItem.Enabled          = true;
           zoomToExtentsToolStripMenuItem.Enabled   = true;
-          zoomWindowToolStripMenuItem.Enabled      = true;
           setAvtiveLayoutToolStripMenuItem.Enabled = true;
           fileDependencyToolStripMenuItem.Enabled  = true;
           panel1.Enabled                           = true;
-          pageSetupToolStripMenuItem.Enabled       = true;
-          printPreviewToolStripMenuItem.Enabled    = true;
-          printToolStripMenuItem.Enabled           = true;
           this.Text = String.Format("OdViewExMgd - [{0}]", openFileDialog.SafeFileName);
 
           initializeGraphics();
@@ -383,20 +387,25 @@ namespace OdViewExMgd
           }
           mouseMode = Mode.Quiescent;
 
-          foreach (ObjectId id in selected)
-          {
-            gripManager.removeEntityGrips(id, true);
-          }
-          selected.Clear();
-          if (helperDevice != null)
-            helperDevice.Invalidate();
-          Invalidate();
+          ClearSelection();
           break;
         case Keys.Oemplus:
           break;
         case Keys.OemMinus:
           break;
       }
+    }
+
+    private void ClearSelection()
+    {
+      foreach (ObjectId id in selected)
+      {
+        gripManager.removeEntityGrips(id, true);
+      }
+      selected.Clear();
+      if (helperDevice != null)
+        helperDevice.Invalidate();
+      Invalidate();
     }
 
     private void reinitGraphDevice(object sender, Teigha.DatabaseServices.LayoutEventArgs e)
@@ -431,19 +440,16 @@ namespace OdViewExMgd
       {
         using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
         {
-//          var vx = startSelPoint.X;
-//          var vy = startSelPoint.Y;
-//          vx = e.X - vx;
-//          vy = e.Y - vy;
-//          // we move point of view to the mouse location, to create an illusion of scrolling in/out there
-//          var pos = new Vector3d(vx, vy, 0);
-//          pos = pos.TransformBy(pView.WorldToDeviceMatrix.Inverse());
-//          pView.Dolly(pos);
-//          //
-//          Invalidate();
+          int vx = e.X;
+          int vy = e.Y;
+          vx = (int)startSelPoint.X- vx;
+          vy = (int)startSelPoint.Y - vy;
+          // we move point of view to the mouse location, to create an illusion of scrolling in/out there
+          dolly(pView, -vx, -vy);
+          startSelPoint = new Point2d(e.X,e.Y);
+          Invalidate();
         }
       }
-
     }
 
     private int _SelectRegion = 20;
@@ -453,6 +459,7 @@ namespace OdViewExMgd
       {
         using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
         {
+          ClearSelection();
           selRect = new RectFram(toEyeToWorld(e.X, e.Y));
           pView.Add(selRect);
           startSelPoint = new Point2d(e.X, e.Y);
@@ -470,35 +477,14 @@ namespace OdViewExMgd
       }
       else if(e.Button == MouseButtons.Right)
       {
-        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
-        {
-          // camera position in world coordinates
-          Point3d pos = pView.Position;
-          // TransformBy() returns a transformed copy
-          pos = pos.TransformBy(pView.WorldToDeviceMatrix);
-          int vx = (int)pos.X;
-          int vy = (int)pos.Y;
-          vx = e.X - vx;
-          vy = e.Y - vy;
-          // we move point of view to the mouse location, to create an illusion of scrolling in/out there
-          dolly(pView, -vx, -vy);
-
-          Invalidate();
-        }
-      }
-      else if(e.Button == MouseButtons.Middle)
-      {
-//        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
-//        {
-//          startSelPoint = new Point2d(e.X, e.Y);
-//          _IsMoving = true;
-//        }
+        _IsMoving = true;
+        startSelPoint = new Point2d(e.X, e.Y);
       }
     }
 
     private void Form1_MouseUp(object sender, MouseEventArgs e)
     {
-      if (e.Button == MouseButtons.Middle)
+      if (e.Button == MouseButtons.Right)
       {
         _IsMoving = false;
       }
@@ -546,11 +532,6 @@ namespace OdViewExMgd
       }
     }
 
-    private void zoomWindowToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      bZoomWindow = 0;
-    }
-
     private void panel1_MouseClick(object sender, MouseEventArgs e)
     {
       if (bZoomWindow > -1 && bZoomWindow < 2)
@@ -568,89 +549,6 @@ namespace OdViewExMgd
       }
     }
 
-    private void exportToPDFToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      PDFExport PDFExportForm = new PDFExport(database);
-      PDFExportForm.Show();
-    }
-
-    private void saveBitmapToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      BMPExport bmpExport = new BMPExport(database);
-      bmpExport.Show();
-    }
-
-    private void exportToDWFToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ImExport.DWF_export(database, helperDevice);
-    }
-
-    private void publish3dToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ImExport.Publish3d(database, helperDevice);
-    }
-
-    private void exportToSVGToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ImExport.SVG_export(database);
-    }
-
-    private void publishToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ImExport.Publish(database, helperDevice);
-    }
-
-    private void importDwfToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      ImExport.Dwf_import(database);
-    }
-    bool newRegApp(Database db, string regAppName)
-    {
-      using (RegAppTable pRegAppTable = (RegAppTable)db.RegAppTableId.GetObject(OpenMode.ForWrite))
-      {
-        if (!pRegAppTable.Has(regAppName))
-        {
-          using (RegAppTableRecord pRegApp = new RegAppTableRecord())
-          {
-            pRegApp.Name = regAppName;
-            pRegAppTable.Add(pRegApp);
-          }
-          return true;
-        }
-      }
-      return false;
-    }
-
-    private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
-      {
-        AbstractViewportData pAVD = new AbstractViewportData(pVpObj);
-        pAVD.SetView(helperDevice.ActiveView);
-      }
-
-      TransactionManager tm = database.TransactionManager;
-      using (Transaction ta = tm.StartTransaction())
-      {
-        using (BlockTableRecord blTableRecord = (BlockTableRecord)database.CurrentSpaceId.GetObject(OpenMode.ForRead))
-        {
-          using (Layout pLayObj = (Layout)blTableRecord.LayoutId.GetObject(OpenMode.ForWrite))
-          {
-            PlotSettings ps = (PlotSettings)pLayObj;
-            Print.PageSetup pageSetupDlg = new Print.PageSetup(ps);
-            if (pageSetupDlg.ShowDialog() == DialogResult.OK)
-            {
-              ta.Commit();
-            }
-            else
-            {
-              ta.Abort();
-            }
-          }
-        }
-      }
-    }
-
     private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
     {
       if (database != null)
@@ -660,18 +558,6 @@ namespace OdViewExMgd
           database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
         }
       }
-    }
-
-    private void printToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Print.Printing pr = new Print.Printing();
-      pr.Print(database, helperDevice.ActiveView, false);
-    }
-
-    private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Print.Printing pr = new Print.Printing();
-      pr.Print(database, helperDevice.ActiveView, true);
     }
   }
 }

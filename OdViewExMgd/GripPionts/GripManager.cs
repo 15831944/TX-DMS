@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using OdReadExMgd;
 using Teigha;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
@@ -441,6 +442,8 @@ namespace OdViewExMgd
         if(!m_gripDataDict.ContainsKey(id))
         {
           updateEntityGrips(id);
+          DbDumper dbDumper = new DbDumper();
+          dbDumper.dumpEntity(id, 3);
         }
       }
 
