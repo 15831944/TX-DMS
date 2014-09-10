@@ -135,7 +135,7 @@ namespace OdViewExMgd
         // to avoid e.g. selection of individual lines in a dimension 
         while (((DrawableDesc)pDesc.Parent).Parent != null)
           pDesc = (DrawableDesc)pDesc.Parent;
-        if (pDesc.PersistId != IntPtr.Zero && ((DrawableDesc)pDesc.Parent).PersistId == spaceId.OldIdPtr)
+        if (pDesc.PersistId != IntPtr.Zero && ((DrawableDesc)pDesc.Parent).PersistId == spaceId.OldIdPtr && selected.Count!=1)
         {
           pDesc.MarkedToSkip = true; // regen abort for selected drawable, to avoid duplicates
           selected.Add(new ObjectId(pDesc.PersistId));
