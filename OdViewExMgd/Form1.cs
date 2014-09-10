@@ -44,6 +44,8 @@ namespace OdViewExMgd
       DragDrop
     }
 
+    private bool _IsMoving;
+
     Teigha.Runtime.Services dd;
     Graphics graphics;
     Teigha.GraphicsSystem.LayoutHelperDevice helperDevice;
@@ -425,88 +427,81 @@ namespace OdViewExMgd
 
     private void panel1_MouseMove(object sender, MouseEventArgs e)
     {
-      switch (mouseMode)
+      if (_IsMoving)
       {
-        case Mode.Quiescent:
-          {
-            if (gripManager.onMouseMove(e.X, e.Y))
-              Invalidate();
-            break;
-          }
-        case Mode.DragDrop:
-          {
-            gripManager.setValue(toEyeToWorld(e.X, e.Y));
-            Invalidate();
-            break;
-          }
-        case Mode.Selection:
-          {
-            selRect.setValue(toEyeToWorld(e.X, e.Y));
-            Invalidate();
-            break;
-          }
-        default:
-            break;
+        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
+        {
+//          var vx = startSelPoint.X;
+//          var vy = startSelPoint.Y;
+//          vx = e.X - vx;
+//          vy = e.Y - vy;
+//          // we move point of view to the mouse location, to create an illusion of scrolling in/out there
+//          var pos = new Vector3d(vx, vy, 0);
+//          pos = pos.TransformBy(pView.WorldToDeviceMatrix.Inverse());
+//          pView.Dolly(pos);
+//          //
+//          Invalidate();
+        }
       }
+
     }
 
+    private int _SelectRegion = 20;
     private void Form1_MouseDown(object sender, MouseEventArgs e)
     {
-      switch (mouseMode)
+      if (e.Button == MouseButtons.Left)
       {
-        case Mode.Quiescent:
-          {
-            if (gripManager.OnMouseDown(e.X, e.Y))
-            {
-              mouseMode = Mode.DragDrop;
-            }
-            else
-            {
-              using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
-              {
-                selRect = new RectFram(toEyeToWorld(e.X, e.Y));
-                pView.Add(selRect);
-                startSelPoint = new Point2d(e.X, e.Y);
-                Invalidate();
-                mouseMode = Mode.Selection;
-              }
-            }
-            break;
-          }
-        case Mode.Selection:
-          {
-            using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
-            {
-              pView.Select(new Point2dCollection(new Point2d[] { startSelPoint, new Point2d(e.X, e.Y) }),
-                new SR(selected, database.CurrentSpaceId), startSelPoint.X < e.X ? Teigha.GraphicsSystem.SelectionMode.Window : Teigha.GraphicsSystem.SelectionMode.Crossing);
-              pView.Erase(selRect);
-              selRect = null;
+        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
+        {
+          selRect = new RectFram(toEyeToWorld(e.X, e.Y));
+          pView.Add(selRect);
+          startSelPoint = new Point2d(e.X, e.Y);
+          Invalidate();
+          selRect.setValue(toEyeToWorld(e.X + _SelectRegion, e.Y + _SelectRegion));
+          pView.Select(new Point2dCollection(new Point2d[] {startSelPoint, new Point2d(e.X + _SelectRegion, e.Y + _SelectRegion)}),
+                       new SR(selected, database.CurrentSpaceId), startSelPoint.X < e.X ? Teigha.GraphicsSystem.SelectionMode.Window : Teigha.GraphicsSystem.SelectionMode.Crossing);
+          pView.Erase(selRect);
+          selRect = null;
 
-              gripManager.updateSelection(selected);
-              helperDevice.Invalidate();
-              Invalidate();
-            }
-            mouseMode = Mode.Quiescent;
-            break;
-          }
-        case Mode.DragDrop:
-          {
-            using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
-            {
-              gripManager.DragFinal(toEyeToWorld(e.X, e.Y), true);
-              helperDevice.Model.Invalidate(InvalidationHint.kInvalidateAll);
-              Invalidate();
-            }
-            mouseMode = Mode.Quiescent;
-            break;
-          }
-        default:
-          break;
+          gripManager.updateSelection(selected);
+          helperDevice.Invalidate();
+          Invalidate();
+        }
+      }
+      else if(e.Button == MouseButtons.Right)
+      {
+        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
+        {
+          // camera position in world coordinates
+          Point3d pos = pView.Position;
+          // TransformBy() returns a transformed copy
+          pos = pos.TransformBy(pView.WorldToDeviceMatrix);
+          int vx = (int)pos.X;
+          int vy = (int)pos.Y;
+          vx = e.X - vx;
+          vy = e.Y - vy;
+          // we move point of view to the mouse location, to create an illusion of scrolling in/out there
+          dolly(pView, -vx, -vy);
+
+          Invalidate();
+        }
+      }
+      else if(e.Button == MouseButtons.Middle)
+      {
+//        using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
+//        {
+//          startSelPoint = new Point2d(e.X, e.Y);
+//          _IsMoving = true;
+//        }
       }
     }
 
     private void Form1_MouseUp(object sender, MouseEventArgs e)
     {
+      if (e.Button == MouseButtons.Middle)
+      {
+        _IsMoving = false;
+      }
       if (helperDevice != null && bZoomWindow == -1)
       {
         ;
