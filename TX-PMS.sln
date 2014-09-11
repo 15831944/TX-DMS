@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dwglib", "Dwglib\Dwglib.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediator.csproj", "{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TX-PMS", "OdViewExMgd\TX-PMS.csproj", "{F9826829-79B4-46B3-8B45-85BF2E9E4293}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TX-PMS", "TX_PMS\TX-PMS.csproj", "{F9826829-79B4-46B3-8B45-85BF2E9E4293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
