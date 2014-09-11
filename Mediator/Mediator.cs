@@ -306,14 +306,18 @@ namespace Mediator
                 _Logger.Trace("Mediator.UnRegisterObject(HashCode={0}) callback.Target={1})", i_Obj.GetHashCode(), callback.Target.GetHashCode());
 #endif
               // Check to see if this is a child object
+              bool isChild = false;
               foreach (var realitionship in _ParentChildRelationships)
               {
-                if ((realitionship.Child == i_Obj) == false)
+                if ((realitionship.Child == i_Obj) )
                 {
-                  listToBeRemoved.AddValue(keyPair.Key, callback);
+                  isChild = true;
                   break;
                 }
               }
+
+              if(!isChild)
+                listToBeRemoved.AddValue(keyPair.Key, callback);
 
               // If this is the last registration of this key and we have an item in the holding pen, remove it as well
               if (_HoldingPen.ContainsKey(keyPair.Key) && _InternalList[keyPair.Key].Count == 1)

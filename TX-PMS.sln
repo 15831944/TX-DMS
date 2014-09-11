@@ -7,7 +7,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TX-PMS", "TX_PMS\TX-PMS.csproj", "{F9826829-79B4-46B3-8B45-85BF2E9E4293}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorTest", "MediatorTest\MediatorTest.csproj", "{56435838-87A5-4356-BE81-BA8FE9323C7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDA19AD3-94AB-4E56-9A28-9F8675F9A73E}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		TX-PMS.vsmdi = TX-PMS.vsmdi
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TX-PMS.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -47,6 +59,16 @@ Global
 		{F9826829-79B4-46B3-8B45-85BF2E9E4293}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F9826829-79B4-46B3-8B45-85BF2E9E4293}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F9826829-79B4-46B3-8B45-85BF2E9E4293}.Release|x86.ActiveCfg = Release|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{56435838-87A5-4356-BE81-BA8FE9323C7C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
