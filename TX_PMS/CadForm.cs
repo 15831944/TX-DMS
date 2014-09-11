@@ -50,9 +50,9 @@ namespace TxPms
 
     private ResizeListener _ResizeListener;
     private bool _IsMoving;
-    Teigha.Runtime.Services dd;
+    Services dd;
     Graphics graphics;
-    Teigha.GraphicsSystem.LayoutHelperDevice helperDevice;
+    LayoutHelperDevice helperDevice;
     Database database = null;
     ObjectIdCollection selected = new ObjectIdCollection();
     Point2d startSelPoint;
@@ -76,7 +76,7 @@ namespace TxPms
     {
       
       _ResizeListener = i_ResizeListener;
-      dd = new Teigha.Runtime.Services();
+      dd = new Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();

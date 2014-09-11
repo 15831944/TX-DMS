@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Threading;
 
@@ -136,7 +135,7 @@ namespace Mediator
 #if AUDIT_NotifyColleagues_WarnWhenNoOneListening
               _Logger.Warn("Mediator.NotifyCollegues() Message({0}) sent but no one was registered to recieve it", key);
 #endif
-          if (DoBreakOnWarnings) throw new InstanceNotFoundException(string.Format("Message({0}) sent but no one was registered to recieve it", key));
+          if (DoBreakOnWarnings) throw new Exception(string.Format("Message({0}) sent but no one was registered to recieve it", key));
         }
       }
 
@@ -193,7 +192,7 @@ namespace Mediator
 #if AUDIT_NotifyColleagues_WarnWhenNoOneListening
               _Logger.Warn("Mediator.NotifyCollegues() Message({0}) sent but no one was registered to recieve it", key);
 #endif
-          if (DoBreakOnWarnings) throw new InstanceNotFoundException(string.Format("Message({0}) sent but no one was registered to recieve it", key));
+          if (DoBreakOnWarnings) throw new Exception(string.Format("Message({0}) sent but no one was registered to recieve it", key));
         }
       }
 
@@ -293,16 +292,27 @@ namespace Mediator
           foreach (var keyPair in _InternalList)
           {
             var thisMethod = method;
-            foreach (var callback in keyPair.Value.Where(i_Callback => (i_Callback.Method == thisMethod && i_Callback.Target == i_Obj)))
+
+            var calbacks = new List<Action<object>>();
+            foreach (var action in keyPair.Value)
+            {
+              if(action.Method==thisMethod && action.Target == i_Obj)
+                calbacks.Add(action);
+            }
+
+            foreach (var callback in calbacks)
             {
 #if AUDIT_Register
                 _Logger.Trace("Mediator.UnRegisterObject(HashCode={0}) callback.Target={1})", i_Obj.GetHashCode(), callback.Target.GetHashCode());
 #endif
               // Check to see if this is a child object
-              if (_ParentChildRelationships.Any(i_X => i_X.Child == i_Obj) == false)
+              foreach (var realitionship in _ParentChildRelationships)
               {
-                // Add it to the list to be removed
-                listToBeRemoved.AddValue(keyPair.Key, callback);
+                if ((realitionship.Child == i_Obj) == false)
+                {
+                  listToBeRemoved.AddValue(keyPair.Key, callback);
+                  break;
+                }
               }
 
               // If this is the last registration of this key and we have an item in the holding pen, remove it as well
@@ -339,10 +349,26 @@ namespace Mediator
       lock (_LockObject)
       {
         object key = null;
-        foreach (var variable in _InternalList.Where(i_Variable => i_Variable.Value.Any(i_Action => i_Action == i_Callback)))
+
+        foreach (var variable in _InternalList)
         {
-          key = variable.Key;
+          bool isFound = false;
+          foreach (var v in variable.Value)
+          {
+            if (v == i_Callback)
+            {
+              isFound = true;
+              break;
+            }
+          }
+          if (isFound)
+            key = variable.Key;
         }
+
+//        foreach (var variable in _InternalList.Where(i_Variable => i_Variable.Value.Any(i_Action => i_Action == i_Callback)))
+//        {
+//          key = variable.Key;
+//        }
 
         //UXP-169 (UXP-181) Alberto 13-June-2012
         // To avoid exception in case the key is null.
@@ -365,13 +391,29 @@ namespace Mediator
     public bool IsRegistered(object i_Obj)
     {
       // Check to see if any of this objects methods are reeferenced in our registrations list
-      return (i_Obj.GetType()
-                   .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static)
-                   .Any(
-                     i_Method =>
-                     _InternalList.SelectMany(
-                       i_KeyPair =>
-                       i_KeyPair.Value.Where(i_Callback => (i_Callback.Method == i_Method && i_Callback.Target == i_Obj))).Any()));
+//      return (i_Obj.GetType()
+//                   .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static)
+//                   .Any(
+//                     i_Method =>
+//                     _InternalList.SelectMany(
+//                       i_KeyPair =>
+//                       i_KeyPair.Value.Where(i_Callback => (i_Callback.Method == i_Method && i_Callback.Target == i_Obj))).Any()));
+      var methods = i_Obj.GetType()
+                         .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic |
+                                     BindingFlags.Static);
+
+      foreach (var methodInfo in methods)
+      {
+        foreach (var list in _InternalList)
+        {
+          foreach (var callback in list.Value)
+          {
+            if (callback.Method == methodInfo && callback.Target == i_Obj)
+              return true;
+          }
+        }
+      }
+      return false;
     }
 
     public bool IsKeyRegistered(object i_Message)
@@ -402,11 +444,27 @@ namespace Mediator
 
     private readonly List<MediatorRelationship> _ParentChildRelationships = new List<MediatorRelationship>();
 
-    public void CreateChildRelationship(object i_ParentObject, object i_Vm, Action i_AddAction)
+    public void CreateChildRelationship(object i_ParentObject, object i_Vm, Action<object> i_AddAction)
     {
       _ParentChildRelationships.Add(new MediatorRelationship { Parent = i_ParentObject, Child = i_Vm });
 
       //i_AddAction();
+    }
+
+    public void DestroyChildRelationship(object i_Parent, object i_Child, Action<object> i_RemoveAction)
+    {
+      MediatorRelationship relationship = null;
+      foreach (var parentChildRelationship in _ParentChildRelationships)
+      {
+        if (parentChildRelationship.Parent == i_Parent && parentChildRelationship.Child == i_Child)
+          relationship = parentChildRelationship;
+      }
+      if (relationship != null)
+      {
+        _ParentChildRelationships.Remove(relationship);
+      }
+
+      //i_RemoveAction();
     }
   }
 
@@ -431,11 +489,11 @@ namespace Mediator
       {
         if (i_Key is string)
         {
-          foreach (string val in this.Where(set => set.Key is string).Select(set => set.Key as string).Where(val => string.Compare(val, i_Key as string, StringComparison.CurrentCultureIgnoreCase) == 0))
-          {
-            // warn
-            //mLogger.Warn("Warning - Registered same string different case {0},{1}", i_Key, val);
-          }
+//          foreach (string val in this.Where(set => set.Key is string).Select(set => set.Key as string).Where(val => string.Compare(val, i_Key as string, StringComparison.CurrentCultureIgnoreCase) == 0))
+//          {
+//            // warn
+//            //mLogger.Warn("Warning - Registered same string different case {0},{1}", i_Key, val);
+//          }
         }
 
         this[i_Key] = new List<TK>(1);

@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TxPms</RootNamespace>
-    <AssemblyName>OdViewExMgd</AssemblyName>
+    <AssemblyName>TxPms</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -216,6 +216,10 @@
     <ProjectReference Include="..\Dwglib\Dwglib.csproj">
       <Project>{A61FD131-9A3A-4FDD-953B-815CA26AC763}</Project>
       <Name>Dwglib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mediator\Mediator.csproj">
+      <Project>{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}</Project>
+      <Name>Mediator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
