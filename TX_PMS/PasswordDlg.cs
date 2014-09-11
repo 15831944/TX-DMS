@@ -26,7 +26,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public partial class PasswordDlg : Form
   {

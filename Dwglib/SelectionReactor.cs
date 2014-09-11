@@ -28,7 +28,7 @@ using Teigha.Runtime;
 using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public class DrawableImp : Drawable
   {

@@ -30,7 +30,7 @@ using Teigha.DatabaseServices;
 using Teigha.Export_Import;
 
 
-namespace OdViewExMgd
+namespace TxPms
 {
   class ImExport
   {

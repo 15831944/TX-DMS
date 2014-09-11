@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Instrumentation;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 
 namespace Mediator
@@ -409,17 +407,6 @@ namespace Mediator
       _ParentChildRelationships.Add(new MediatorRelationship { Parent = i_ParentObject, Child = i_Vm });
 
       //i_AddAction();
-    }
-
-    public void DestroyChildRelationship(object i_Parent, object i_Child, Action i_RemoveAction)
-    {
-      var relationship = _ParentChildRelationships.FirstOrDefault(i_X => i_X.Parent == i_Parent && i_X.Child == i_Child);
-      if (relationship != null)
-      {
-        _ParentChildRelationships.Remove(relationship);
-      }
-
-      //i_RemoveAction();
     }
   }
 

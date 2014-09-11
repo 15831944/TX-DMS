@@ -33,7 +33,7 @@ using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 using Teigha.Export_Import;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public partial class BMPExport : Form
   {

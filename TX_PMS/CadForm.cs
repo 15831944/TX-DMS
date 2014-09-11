@@ -37,7 +37,7 @@ using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 using System.Runtime.InteropServices;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public partial class CadForm : Form
   {
@@ -48,6 +48,7 @@ namespace OdViewExMgd
       DragDrop
     }
 
+    private ResizeListener _ResizeListener;
     private bool _IsMoving;
     Teigha.Runtime.Services dd;
     Graphics graphics;
@@ -71,12 +72,15 @@ namespace OdViewExMgd
       Win32DwmEnableComposition((uint)0);
     }
 
-    public CadForm()
+    public CadForm(ResizeListener i_ResizeListener, string i_Name)
     {
+      
+      _ResizeListener = i_ResizeListener;
       dd = new Teigha.Runtime.Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
+      Name = i_Name;
       ControlBox = false;
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
 
@@ -274,6 +278,9 @@ namespace OdViewExMgd
     private void panel1_Resize(object sender, EventArgs e)
     {
       resize();
+      ResizeArgs args = new ResizeArgs() { Botton = Bottom, Left = Left, Right = Right, Top = Top, FormName = Name };
+      _ResizeListener.OnResize(args);
+      Debug.WriteLine(string.Format("CadWindow: Left:{0}, Top:{1}, Right{2}, Bottom{3}",Left,Top,Right,Bottom));
     }
     bool get_layout_extents(Database db, Teigha.GraphicsSystem.View pView, ref BoundBlock3d bbox)
     {

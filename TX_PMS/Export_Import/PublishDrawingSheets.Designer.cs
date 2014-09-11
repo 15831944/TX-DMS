@@ -18,7 +18,7 @@
 // *DWG is the native and proprietary file format for AutoCAD® and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
-namespace OdViewExMgd
+namespace TxPms
 {
   partial class PublishDrawingSheets
   {

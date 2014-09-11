@@ -8,7 +8,7 @@
     <ProjectGuid>{F9826829-79B4-46B3-8B45-85BF2E9E4293}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OdViewExMgd</RootNamespace>
+    <RootNamespace>TxPms</RootNamespace>
     <AssemblyName>OdViewExMgd</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -124,6 +124,7 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResizeListener.cs" />
     <Compile Include="SelectLayouts.cs">
       <SubType>Form</SubType>
     </Compile>

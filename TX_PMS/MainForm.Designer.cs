@@ -1,4 +1,4 @@
-﻿namespace OdViewExMgd
+﻿namespace TxPms
 {
   partial class MainForm
   {
@@ -33,7 +33,6 @@
       this.cadWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.zoomFitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-      this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
@@ -75,24 +74,16 @@
       // viewToolStripMenuItem1
       // 
       this.viewToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.horizontalToolStripMenuItem,
             this.verticalToolStripMenuItem});
       this.viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
       this.viewToolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
       this.viewToolStripMenuItem1.Text = "Layout";
       // 
-      // horizontalToolStripMenuItem
-      // 
-      this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-      this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.horizontalToolStripMenuItem.Text = "Horizontal";
-      this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.horizontalToolStripMenuItem_Click);
-      // 
       // verticalToolStripMenuItem
       // 
       this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
       this.verticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.verticalToolStripMenuItem.Text = "Vertical";
+      this.verticalToolStripMenuItem.Text = "vertical";
       this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
       // 
       // MainForm
@@ -119,7 +110,6 @@
     private System.Windows.Forms.ToolStripMenuItem cadWindowToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem zoomFitToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem1;
-    private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
   }
 }

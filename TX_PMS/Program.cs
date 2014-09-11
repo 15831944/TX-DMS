@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   static class Program
   {
@@ -34,6 +34,7 @@ namespace OdViewExMgd
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
+      
       Application.Run(new MainForm());
     }
   }

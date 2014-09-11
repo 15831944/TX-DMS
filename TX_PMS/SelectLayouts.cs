@@ -28,7 +28,7 @@ using System.Windows.Forms;
 using Teigha;
 using Teigha.DatabaseServices;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public partial class SelectLayouts : Form
   {

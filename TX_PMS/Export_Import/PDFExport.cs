@@ -32,7 +32,7 @@ using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Export_Import;
 
-namespace OdViewExMgd
+namespace TxPms
 {
   public partial class PDFExport : Form
   {

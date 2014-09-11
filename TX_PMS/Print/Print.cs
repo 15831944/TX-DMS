@@ -37,7 +37,7 @@ using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 
 
-namespace OdViewExMgd.Print
+namespace TxPms.Print
 {
   class Printing
   {
