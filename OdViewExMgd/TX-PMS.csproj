@@ -56,22 +56,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TD_Mgd_3.03_9">
+    <Reference Include="TD_Mgd_3.03_9, Version=3.0.0.8111, Culture=neutral, PublicKeyToken=460a0bef3ba73253, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\TD_Mgd_3.03_9.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuxCls.cs" />
-    <Compile Include="GripPionts\ExGripData.cs" />
-    <Compile Include="GripPionts\ExGripDrag.cs" />
     <Compile Include="File_Dependency.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="File_Dependency.Designer.cs">
       <DependentUpon>File_Dependency.cs</DependentUpon>
     </Compile>
-    <Compile Include="GripPionts\GripManager.cs" />
-    <Compile Include="HostAppServ.cs" />
     <Compile Include="Export_Import\BMPExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,7 +112,6 @@
       <DependentUpon>PageSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Print\Print.cs" />
-    <Compile Include="SelectionReactor.cs" />
     <Compile Include="SelectLayouts.cs">
       <SubType>Form</SubType>
     </Compile>

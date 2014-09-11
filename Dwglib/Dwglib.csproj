@@ -44,8 +44,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxCls.cs" />
     <Compile Include="DbDumper.cs" />
+    <Compile Include="GripPoints\ExGripData.cs" />
+    <Compile Include="GripPoints\ExGripDrag.cs" />
+    <Compile Include="GripPoints\GripManager.cs" />
+    <Compile Include="HostAppServ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionReactor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

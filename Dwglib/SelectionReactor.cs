@@ -73,7 +73,7 @@ namespace OdViewExMgd
   }
 
 
-  class RectFram : DrawableImp
+  public class RectFram : DrawableImp
   {
     Point3dCollection m_pts;
     public RectFram()
@@ -117,7 +117,7 @@ namespace OdViewExMgd
     }
   }
 
-  class SR : SelectionReactor
+  public class SR : SelectionReactor
   {
     ObjectIdCollection selected;
     ObjectId spaceId;

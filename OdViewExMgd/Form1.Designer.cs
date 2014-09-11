@@ -56,7 +56,6 @@ namespace OdViewExMgd
       this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.setActiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.setAvtiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.fileDependencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.panel1 = new System.Windows.Forms.Panel();
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -115,8 +114,7 @@ namespace OdViewExMgd
       // setActiveLayoutToolStripMenuItem
       // 
       this.setActiveLayoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setAvtiveLayoutToolStripMenuItem,
-            this.fileDependencyToolStripMenuItem});
+            this.setAvtiveLayoutToolStripMenuItem});
       this.setActiveLayoutToolStripMenuItem.Name = "setActiveLayoutToolStripMenuItem";
       this.setActiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
       this.setActiveLayoutToolStripMenuItem.Text = "View";
@@ -128,14 +126,6 @@ namespace OdViewExMgd
       this.setAvtiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
       this.setAvtiveLayoutToolStripMenuItem.Text = "Set Avtive Layout";
       this.setAvtiveLayoutToolStripMenuItem.Click += new System.EventHandler(this.setActiveLayoutToolStripMenuItem_Click);
-      // 
-      // fileDependencyToolStripMenuItem
-      // 
-      this.fileDependencyToolStripMenuItem.Enabled = false;
-      this.fileDependencyToolStripMenuItem.Name = "fileDependencyToolStripMenuItem";
-      this.fileDependencyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-      this.fileDependencyToolStripMenuItem.Text = "File Dependency";
-      this.fileDependencyToolStripMenuItem.Click += new System.EventHandler(this.fileDependencyToolStripMenuItem_Click);
       // 
       // panel1
       // 
@@ -170,7 +160,7 @@ namespace OdViewExMgd
       this.Controls.Add(this.menuStrip);
       this.MainMenuStrip = this.menuStrip;
       this.Name = "Form1";
-      this.Text = "OdViewExMgd";
+      this.Text = "Part Measurement System";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -191,7 +181,6 @@ namespace OdViewExMgd
     private System.Windows.Forms.ToolStripMenuItem zoomToExtentsToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem setActiveLayoutToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem setAvtiveLayoutToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem fileDependencyToolStripMenuItem;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;

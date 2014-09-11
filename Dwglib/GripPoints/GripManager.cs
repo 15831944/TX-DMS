@@ -18,17 +18,16 @@
 // *DWG is the native and proprietary file format for AutoCAD® and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Dwglib;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Geometry;
 using Teigha.Colors;
 
-
-namespace OdViewExMgd
+namespace Dwglib.GripPoints
 {
   public class ExGripDataSubent
   {

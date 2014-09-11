@@ -27,6 +27,8 @@ using System.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
+using Dwglib;
+using Dwglib.GripPoints;
 using Teigha;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
@@ -94,10 +96,6 @@ namespace OdViewExMgd
     }
     void Form1_MouseWheel(object sender, MouseEventArgs e)
     {
-      var leftTop = PointToScreen(panel1.Location);
-      var leftBottom = PointToScreen(new Point(panel1.Left, panel1.Bottom));
-      var rightTop = PointToScreen(new Point(panel1.Right, panel1.Top));
-      var rightBottom = PointToScreen(new Point(panel1.Right, panel1.Bottom));
       if(e.X<panel1.Left || e.Y<panel1.Top || e.X>panel1.Right|| e.Y >panel1.Bottom)
         return;
 
@@ -169,9 +167,8 @@ namespace OdViewExMgd
           //menuStrip.
           zoomToExtentsToolStripMenuItem.Enabled   = true;
           setAvtiveLayoutToolStripMenuItem.Enabled = true;
-          fileDependencyToolStripMenuItem.Enabled  = true;
           panel1.Enabled                           = true;
-          this.Text = String.Format("OdViewExMgd - [{0}]", openFileDialog.SafeFileName);
+          this.Text = String.Format("Part Measurement System - [{0}]", openFileDialog.SafeFileName);
 
           initializeGraphics();
           Invalidate();

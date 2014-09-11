@@ -18,16 +18,14 @@
 // *DWG is the native and proprietary file format for AutoCAD® and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
+
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Teigha;
 using Teigha.DatabaseServices;
 using Microsoft.Win32;
 
-namespace OdViewExMgd
+namespace Dwglib
 {
-  class HostAppServ : HostApplicationServices
+  public class HostAppServ : HostApplicationServices
   {
     Teigha.Runtime.Services dd;
     public HostAppServ(Teigha.Runtime.Services serv)
@@ -151,15 +149,8 @@ namespace OdViewExMgd
 
     public override bool GetPassword(String dwgName, PasswordOptions options, out String pass)
     {
-      PasswordDlg pwdDlg = new PasswordDlg();
-      pwdDlg.TextFileName.Text = dwgName;
-      if (pwdDlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-      {
-        pass = pwdDlg.password.Text;
-        return true;
-      }
-      pass = String.Format("");
-      return false;
+      pass = "pass";
+      return true;
     }
 
     public override String FontMapFileName

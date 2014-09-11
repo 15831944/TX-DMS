@@ -19,20 +19,15 @@
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using Teigha;
-using Teigha.GraphicsSystem;
+using Dwglib;
 using Teigha.Runtime;
 using Teigha.GraphicsInterface;
 using Teigha.DatabaseServices;
-using Teigha.Export_Import;
 
 
 namespace OdViewExMgd
 {
-  class Aux
+  public class Aux
   {
     public static ObjectId active_viewport_id(Database database)
     {
