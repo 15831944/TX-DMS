@@ -28,7 +28,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Printing;
-
+using Dwglib;
 using Teigha;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;

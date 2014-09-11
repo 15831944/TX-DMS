@@ -39,7 +39,7 @@ using System.Runtime.InteropServices;
 
 namespace OdViewExMgd
 {
-  public partial class Form1 : Form
+  public partial class CadForm : Form
   {
     enum Mode
     {
@@ -71,12 +71,13 @@ namespace OdViewExMgd
       Win32DwmEnableComposition((uint)0);
     }
 
-    public Form1()
+    public CadForm()
     {
       dd = new Teigha.Runtime.Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
+      ControlBox = false;
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
 
       HostApplicationServices.Current = new HostAppServ(dd);
@@ -84,6 +85,7 @@ namespace OdViewExMgd
 
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
+      
       //DisableAero();
     }
 
@@ -96,6 +98,9 @@ namespace OdViewExMgd
     }
     void Form1_MouseWheel(object sender, MouseEventArgs e)
     {
+      if (helperDevice == null)
+        return;
+
       if(e.X<panel1.Left || e.Y<panel1.Top || e.X>panel1.Right|| e.Y >panel1.Bottom)
         return;
 
@@ -119,7 +124,7 @@ namespace OdViewExMgd
         Invalidate();
       }
     }
-    private void file_open_handler(object sender, EventArgs e)
+    public void file_open_handler(object sender, EventArgs e)
     {
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {
@@ -165,13 +170,14 @@ namespace OdViewExMgd
           String str = HostApplicationServices.Current.FontMapFileName;
 
           //menuStrip.
-          zoomToExtentsToolStripMenuItem.Enabled   = true;
-          setAvtiveLayoutToolStripMenuItem.Enabled = true;
+          //zoomToExtentsToolStripMenuItem.Enabled   = true;
+          //setAvtiveLayoutToolStripMenuItem.Enabled = true;
           panel1.Enabled                           = true;
-          this.Text = String.Format("Part Measurement System - [{0}]", openFileDialog.SafeFileName);
+          this.Text = String.Format("CAD - [{0}]", openFileDialog.SafeFileName);
 
           initializeGraphics();
           Invalidate();
+          zoom_extents_handler();
         }
       }
     }
@@ -337,7 +343,7 @@ namespace OdViewExMgd
     }
     // the same as Editor.ActiveViewportId if ApplicationServices are available
 
-    private void zoom_extents_handler(object sender, EventArgs e)
+    public void zoom_extents_handler()
     {
       using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
       {
