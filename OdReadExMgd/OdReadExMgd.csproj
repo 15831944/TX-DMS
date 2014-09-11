@@ -77,6 +77,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dwglib\Dwglib.csproj">
+      <Project>{A61FD131-9A3A-4FDD-953B-815CA26AC763}</Project>
+      <Name>Dwglib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y  "$(SolutionDir)References\" "$(TargetDir)"</PostBuildEvent>
