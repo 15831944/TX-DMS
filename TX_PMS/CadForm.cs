@@ -1,5 +1,5 @@
-///////////////////////////////////////////////////////////////////////////////
-// Copyright � 2009-2010, Open Design Alliance (the "Alliance") 
+﻿///////////////////////////////////////////////////////////////////////////////
+// Copyright © 2009-2010, Open Design Alliance (the "Alliance") 
 // 
 // This software is owned by the Alliance, and may only be incorporated into 
 // application programs owned by members of the Alliance subject to a signed 
@@ -10,12 +10,12 @@
 // programs incorporating this software must include the following statement 
 // with their copyright notices:
 //
-// Teigha�.NET for .dwg files 2009-2010 by Open Design Alliance. All rights reserved.
+// Teigha™.NET for .dwg files 2009-2010 by Open Design Alliance. All rights reserved.
 //
 // By use of this software, you acknowledge and accept these terms.
 //
 //
-// *DWG is the native and proprietary file format for AutoCAD� and a trademark 
+// *DWG is the native and proprietary file format for AutoCAD® and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 using System;
@@ -47,8 +47,6 @@ namespace TxPms
       Selection,
       DragDrop
     }
-
-    private ResizeListener _ResizeListener;
     private bool _IsMoving;
     Services dd;
     Graphics graphics;
@@ -72,16 +70,12 @@ namespace TxPms
       Win32DwmEnableComposition((uint)0);
     }
 
-    public CadForm(ResizeListener i_ResizeListener, string i_Name)
+    public CadForm()
     {
-      
-      _ResizeListener = i_ResizeListener;
       dd = new Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
-      Name = i_Name;
-      ControlBox = false;
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
 
       HostApplicationServices.Current = new HostAppServ(dd);
@@ -89,7 +83,6 @@ namespace TxPms
 
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
-      
       //DisableAero();
     }
 
@@ -104,8 +97,9 @@ namespace TxPms
     {
       if (helperDevice == null)
         return;
-
-      if(e.X<panel1.Left || e.Y<panel1.Top || e.X>panel1.Right|| e.Y >panel1.Bottom)
+      int mouseX = e.X-splitContainer1.Panel1.Width;
+      int mouseY = e.Y;
+      if (mouseX < panel1.Left || mouseY < panel1.Top || mouseX > panel1.Right || mouseY > panel1.Bottom)
         return;
 
       //Debug.WriteLine(string.Format("mouse location in panel coordinates x:{0}, y{1}",p.X,p.Y));
@@ -117,8 +111,8 @@ namespace TxPms
         pos = pos.TransformBy(pView.WorldToDeviceMatrix);
         int vx = (int)pos.X;
         int vy = (int)pos.Y;
-        vx = e.X - vx;
-        vy = e.Y - vy;
+        vx = mouseX - vx;
+        vy = mouseY - vy;
         // we move point of view to the mouse location, to create an illusion of scrolling in/out there
         dolly(pView, -vx, -vy);
         // note that we essentially ignore delta value (sign is enough for illustrative purposes)
@@ -128,6 +122,7 @@ namespace TxPms
         Invalidate();
       }
     }
+
     public void file_open_handler(object sender, EventArgs e)
     {
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
@@ -176,14 +171,32 @@ namespace TxPms
           //menuStrip.
           //zoomToExtentsToolStripMenuItem.Enabled   = true;
           //setAvtiveLayoutToolStripMenuItem.Enabled = true;
-          panel1.Enabled                           = true;
-          this.Text = String.Format("CAD - [{0}]", openFileDialog.SafeFileName);
+          panel1.Enabled = true;
+          this.Text = String.Format("工件测量系统 - [{0}]", openFileDialog.SafeFileName);
 
           initializeGraphics();
           Invalidate();
-          zoom_extents_handler();
+          zoom_extents_handler(null, null);
+          using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
+          {
+            foreach (DBDictionaryEntry dicEntry in layoutDict)
+            {
+              var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
+              CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+                {
+                  layout1
+                });
+              layout1.Click += new EventHandler(layout1_Click);
+            }
+          }
         }
       }
+    }
+
+    void layout1_Click(object sender, EventArgs e)
+    {
+      LayoutManager LayMan = LayoutManager.Current;
+      LayMan.CurrentLayout = ((ToolStripMenuItem) sender).Text;
     }
 
     void initializeGraphics()
@@ -250,6 +263,11 @@ namespace TxPms
     }
     private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
+      DisposeResource();
+    }
+
+    private void DisposeResource()
+    {
       if (selRect != null)
         helperDevice.ActiveView.Erase(selRect);
       selRect = null;
@@ -278,9 +296,6 @@ namespace TxPms
     private void panel1_Resize(object sender, EventArgs e)
     {
       resize();
-      ResizeArgs args = new ResizeArgs() { Botton = Bottom, Left = Left, Right = Right, Top = Top, FormName = Name };
-      _ResizeListener.OnResize(args);
-      Debug.WriteLine(string.Format("CadWindow: Left:{0}, Top:{1}, Right{2}, Bottom{3}",Left,Top,Right,Bottom));
     }
     bool get_layout_extents(Database db, Teigha.GraphicsSystem.View pView, ref BoundBlock3d bbox)
     {
@@ -350,8 +365,10 @@ namespace TxPms
     }
     // the same as Editor.ActiveViewportId if ApplicationServices are available
 
-    public void zoom_extents_handler()
+    public void zoom_extents_handler(object sender, EventArgs e)
     {
+      if (database == null)
+        return;
       using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
       {
         // using protocol extensions we handle PS and MS viewports in the same manner
