@@ -62,12 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="File_Dependency.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="File_Dependency.Designer.cs">
-      <DependentUpon>File_Dependency.cs</DependentUpon>
-    </Compile>
     <Compile Include="Export_Import\BMPExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +93,6 @@
     <Compile Include="Export_Import\publishSetting.Designer.cs">
       <DependentUpon>publishSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="PasswordDlg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PasswordDlg.Designer.cs">
-      <DependentUpon>PasswordDlg.cs</DependentUpon>
-    </Compile>
     <Compile Include="Print\PageSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,21 +100,11 @@
       <DependentUpon>PageSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Print\Print.cs" />
-    <Compile Include="SelectLayouts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SelectLayouts.Designer.cs">
-      <DependentUpon>SelectLayouts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Export_Import\BMPExport.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BMPExport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="File_Dependency.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>File_Dependency.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadForm.resx">
       <SubType>Designer</SubType>
@@ -135,10 +113,6 @@
     <EmbeddedResource Include="Export_Import\PDFExport.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PDFExport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PasswordDlg.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>PasswordDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Print\PageSetup.resx">
       <SubType>Designer</SubType>
@@ -156,10 +130,6 @@
     <EmbeddedResource Include="Export_Import\publishSetting.resx">
       <SubType>Designer</SubType>
       <DependentUpon>publishSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SelectLayouts.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SelectLayouts.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
