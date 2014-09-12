@@ -19,17 +19,10 @@
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
-using System.Text;
 using System.Windows.Forms;
 using Dwglib;
 using Dwglib.GripPoints;
-using Teigha;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
@@ -76,8 +69,9 @@ namespace TxPms
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
-      this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
-
+      splitContainer1.MouseWheel += Form1_MouseWheel;
+      FitToWindowToolStripMenuItem.Enabled = false;
+      CadLayoutModeToolStripMenuItem.Enabled = false;
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
 
@@ -129,7 +123,7 @@ namespace TxPms
       {
         if (lm != null)
         {
-          lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+          lm.LayoutSwitched -= reinitGraphDevice;
           HostApplicationServices.WorkingDatabase = null;
           lm = null;
         }
@@ -165,18 +159,21 @@ namespace TxPms
         {
           HostApplicationServices.WorkingDatabase = database;
           lm = LayoutManager.Current;
-          lm.LayoutSwitched += new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+          lm.LayoutSwitched += reinitGraphDevice;
           String str = HostApplicationServices.Current.FontMapFileName;
 
           //menuStrip.
-          //zoomToExtentsToolStripMenuItem.Enabled   = true;
-          //setAvtiveLayoutToolStripMenuItem.Enabled = true;
+          FitToWindowToolStripMenuItem.Enabled = true;
+          CadLayoutModeToolStripMenuItem.Enabled = true;
           panel1.Enabled = true;
-          this.Text = String.Format("工件测量系统 - [{0}]", openFileDialog.SafeFileName);
+          Text = String.Format("外协件检验系统 - [{0}]", openFileDialog.SafeFileName);
 
           initializeGraphics();
           Invalidate();
           zoom_extents_handler(null, null);
+
+
+          CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
           using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
           {
             foreach (DBDictionaryEntry dicEntry in layoutDict)
@@ -186,7 +183,7 @@ namespace TxPms
                 {
                   layout1
                 });
-              layout1.Click += new EventHandler(layout1_Click);
+              layout1.Click += layout1_Click;
             }
           }
         }
@@ -208,7 +205,7 @@ namespace TxPms
         using (GsModule gsModule = (GsModule)SystemObjects.DynamicLinker.LoadModule("WinGDI.txv", false, true))
         {
           // create graphics device
-          using (Teigha.GraphicsSystem.Device graphichsDevice = gsModule.CreateDevice())
+          using (Device graphichsDevice = gsModule.CreateDevice())
           {
             // setup device properties
             using (Dictionary props = graphichsDevice.Properties)
@@ -440,24 +437,6 @@ namespace TxPms
       helperDevice.Dispose();
       graphics.Dispose();
       initializeGraphics();
-    }
-
-    private void setActiveLayoutToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (helperDevice != null)
-      {
-        SelectLayouts selLayoutForm = new SelectLayouts(database);
-        selLayoutForm.Show();
-      }
-    }
-
-    private void fileDependencyToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (helperDevice != null)
-      {
-        File_Dependency fileDependencyForm = new File_Dependency(database);
-        fileDependencyForm.Show();
-      }
     }
 
 

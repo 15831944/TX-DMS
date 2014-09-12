@@ -18,6 +18,9 @@
 // *DWG is the native and proprietary file format for AutoCAD® and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
+
+using ControlReport;
+
 namespace TxPms
 {
   partial class CadForm
@@ -55,9 +58,14 @@ namespace TxPms
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.executeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this._UserControlReport = new ControlReport.UserControlReport();
+      this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
@@ -65,11 +73,12 @@ namespace TxPms
       // 
       // panel1
       // 
+      this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panel1.Enabled = false;
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(572, 513);
+      this.panel1.Size = new System.Drawing.Size(868, 591);
       this.panel1.TabIndex = 1;
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -90,24 +99,30 @@ namespace TxPms
       // splitContainer1
       // 
       this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.splitContainer1.IsSplitterFixed = true;
       this.splitContainer1.Location = new System.Drawing.Point(0, 24);
       this.splitContainer1.Name = "splitContainer1";
+      // 
+      // splitContainer1.Panel1
+      // 
+      this.splitContainer1.Panel1.Controls.Add(this._UserControlReport);
       // 
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.Controls.Add(this.panel1);
-      this.splitContainer1.Size = new System.Drawing.Size(864, 513);
-      this.splitContainer1.SplitterDistance = 288;
+      this.splitContainer1.Size = new System.Drawing.Size(1290, 591);
+      this.splitContainer1.SplitterDistance = 418;
       this.splitContainer1.TabIndex = 2;
       // 
       // menuStrip1
       // 
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
-            this.EditToolStripMenuItem});
+            this.ReportToolStripMenuItem,
+            this.CadToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(864, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(1290, 24);
       this.menuStrip1.TabIndex = 3;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -122,45 +137,78 @@ namespace TxPms
       // OpenToolStripMenuItem
       // 
       this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-      this.OpenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
       this.OpenToolStripMenuItem.Text = "打开";
       this.OpenToolStripMenuItem.Click += new System.EventHandler(this.file_open_handler);
       // 
-      // EditToolStripMenuItem
+      // CadToolStripMenuItem
       // 
-      this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.CadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FitToWindowToolStripMenuItem,
             this.CadLayoutModeToolStripMenuItem});
-      this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-      this.EditToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-      this.EditToolStripMenuItem.Text = "编辑";
+      this.CadToolStripMenuItem.Name = "CadToolStripMenuItem";
+      this.CadToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+      this.CadToolStripMenuItem.Text = "CAD窗口";
       // 
       // FitToWindowToolStripMenuItem
       // 
       this.FitToWindowToolStripMenuItem.Name = "FitToWindowToolStripMenuItem";
-      this.FitToWindowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.FitToWindowToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
       this.FitToWindowToolStripMenuItem.Text = "适应窗口";
       this.FitToWindowToolStripMenuItem.Click += new System.EventHandler(this.zoom_extents_handler);
       // 
       // CadLayoutModeToolStripMenuItem
       // 
       this.CadLayoutModeToolStripMenuItem.Name = "CadLayoutModeToolStripMenuItem";
-      this.CadLayoutModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.CadLayoutModeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
       this.CadLayoutModeToolStripMenuItem.Text = "显示模式";
+      // 
+      // ReportToolStripMenuItem
+      // 
+      this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editReportToolStripMenuItem,
+            this.executeReportToolStripMenuItem});
+      this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
+      this.ReportToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+      this.ReportToolStripMenuItem.Text = "报告";
+      // 
+      // editReportToolStripMenuItem
+      // 
+      this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
+      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+      this.editReportToolStripMenuItem.Text = "编辑";
+      // 
+      // executeReportToolStripMenuItem
+      // 
+      this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
+      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+      this.executeReportToolStripMenuItem.Text = "执行";
+      // 
+      // _UserControlReport
+      // 
+      this._UserControlReport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this._UserControlReport.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._UserControlReport.Location = new System.Drawing.Point(0, 0);
+      this._UserControlReport.Name = "_UserControlReport";
+      this._UserControlReport.Size = new System.Drawing.Size(418, 591);
+      this._UserControlReport.TabIndex = 0;
       // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(864, 537);
+      this.ClientSize = new System.Drawing.Size(1290, 615);
       this.Controls.Add(this.splitContainer1);
       this.Controls.Add(this.menuStrip1);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "CadForm";
-      this.Text = "工件测量系统";
+      this.Text = "外协件检验系统";
+      this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+      this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       this.splitContainer1.ResumeLayout(false);
       this.menuStrip1.ResumeLayout(false);
@@ -179,9 +227,13 @@ namespace TxPms
     private System.Windows.Forms.MenuStrip menuStrip1;
     private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem CadToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem FitToWindowToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem CadLayoutModeToolStripMenuItem;
+    private ControlReport.UserControlReport _UserControlReport;
+    private System.Windows.Forms.ToolStripMenuItem ReportToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem editReportToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem executeReportToolStripMenuItem;
   }
 }
 

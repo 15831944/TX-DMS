@@ -99,12 +99,6 @@
     <Compile Include="Export_Import\publishSetting.Designer.cs">
       <DependentUpon>publishSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PasswordDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,13 +112,6 @@
       <DependentUpon>PageSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Print\Print.cs" />
-    <Compile Include="ReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ResizeListener.cs" />
     <Compile Include="SelectLayouts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,9 +136,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>PDFExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PasswordDlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PasswordDlg.cs</DependentUpon>
@@ -172,9 +156,6 @@
     <EmbeddedResource Include="Export_Import\publishSetting.resx">
       <SubType>Designer</SubType>
       <DependentUpon>publishSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectLayouts.resx">
       <SubType>Designer</SubType>
@@ -213,6 +194,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ControlReport\ControlReport.csproj">
+      <Project>{DD5B2830-8386-4B0E-A17D-C9497BB12243}</Project>
+      <Name>ControlReport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dwglib\Dwglib.csproj">
       <Project>{A61FD131-9A3A-4FDD-953B-815CA26AC763}</Project>
       <Name>Dwglib</Name>
