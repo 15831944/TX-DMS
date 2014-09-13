@@ -7,8 +7,8 @@ namespace ControlReport
 {
   class EditPartTemplateViewModel
   {
-    private readonly PartTemplate _PartTemplate;
-    public EditPartTemplateViewModel(PartTemplate i_PartTemplate)
+    private readonly Part _PartTemplate;
+    public EditPartTemplateViewModel(Part i_PartTemplate)
     {
       _PartTemplate = i_PartTemplate;
     }

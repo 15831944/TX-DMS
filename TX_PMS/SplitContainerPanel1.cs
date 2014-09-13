@@ -20,6 +20,7 @@ namespace TxPms
           ShowExecuteControl(null);
         });
       Mediator.Mediator.Instance.Register(InterfaceCommand.CreatePartTemplate, ShowEditControl);
+      Mediator.Mediator.Instance.Register(InterfaceCommand.OpenCadFile, file_open_handler);
     }
 
     void ShowEditControl(object i_O)

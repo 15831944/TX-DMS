@@ -120,7 +120,7 @@ namespace TxPms
       }
     }
 
-    public void file_open_handler(object sender, EventArgs e)
+    public void file_open_handler(object i_O)
     {
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {

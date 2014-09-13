@@ -23,11 +23,11 @@ namespace ControlReport
 
 
 
-    private PartTemplate _CurrentTemplate;
+    private Part _CurrentTemplate;
    
     private void OnSelect(object i_O)
     {
-      var template = i_O as PartTemplate;
+      var template = i_O as Part;
       if (template == null)
         return;
 

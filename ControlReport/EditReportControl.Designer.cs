@@ -41,6 +41,7 @@
       this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
       this.label7 = new System.Windows.Forms.Label();
       this.txtPartNumber = new System.Windows.Forms.TextBox();
+      this.btnAddCadFile = new System.Windows.Forms.Button();
       this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
       this.label6 = new System.Windows.Forms.Label();
       this.txtSampleNumber = new System.Windows.Forms.TextBox();
@@ -52,14 +53,13 @@
       this.txtTotolNumber = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.btnSave = new System.Windows.Forms.Button();
-      this.btnAddCadFile = new System.Windows.Forms.Button();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.PlusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.MinusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.btnSave = new System.Windows.Forms.Button();
       this.tableLayoutPanel1.SuspendLayout();
       this.flowLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
@@ -169,6 +169,16 @@
       this.txtPartNumber.Name = "txtPartNumber";
       this.txtPartNumber.Size = new System.Drawing.Size(161, 20);
       this.txtPartNumber.TabIndex = 1;
+      // 
+      // btnAddCadFile
+      // 
+      this.btnAddCadFile.Location = new System.Drawing.Point(237, 3);
+      this.btnAddCadFile.Name = "btnAddCadFile";
+      this.btnAddCadFile.Size = new System.Drawing.Size(44, 23);
+      this.btnAddCadFile.TabIndex = 2;
+      this.btnAddCadFile.Text = "+";
+      this.btnAddCadFile.UseVisualStyleBackColor = true;
+      this.btnAddCadFile.Click += new System.EventHandler(this.btnAddCadFile_Click);
       // 
       // flowLayoutPanel5
       // 
@@ -298,33 +308,6 @@
       this.dataGridView1.Size = new System.Drawing.Size(572, 425);
       this.dataGridView1.TabIndex = 5;
       // 
-      // panel1
-      // 
-      this.panel1.Controls.Add(this.btnSave);
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Location = new System.Drawing.Point(3, 437);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(568, 54);
-      this.panel1.TabIndex = 6;
-      // 
-      // btnSave
-      // 
-      this.btnSave.Location = new System.Drawing.Point(231, 13);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(75, 23);
-      this.btnSave.TabIndex = 1;
-      this.btnSave.Text = "保存";
-      this.btnSave.UseVisualStyleBackColor = true;
-      // 
-      // btnAddCadFile
-      // 
-      this.btnAddCadFile.Location = new System.Drawing.Point(237, 3);
-      this.btnAddCadFile.Name = "btnAddCadFile";
-      this.btnAddCadFile.Size = new System.Drawing.Size(44, 23);
-      this.btnAddCadFile.TabIndex = 2;
-      this.btnAddCadFile.Text = "+";
-      this.btnAddCadFile.UseVisualStyleBackColor = true;
-      // 
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "Index";
@@ -377,6 +360,24 @@
       this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle5;
       this.MinusTolColumn.HeaderText = "下公差";
       this.MinusTolColumn.Name = "MinusTolColumn";
+      // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.btnSave);
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel1.Location = new System.Drawing.Point(3, 437);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(568, 54);
+      this.panel1.TabIndex = 6;
+      // 
+      // btnSave
+      // 
+      this.btnSave.Location = new System.Drawing.Point(231, 13);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(75, 23);
+      this.btnSave.TabIndex = 1;
+      this.btnSave.Text = "保存";
+      this.btnSave.UseVisualStyleBackColor = true;
       // 
       // EditReportControl
       // 

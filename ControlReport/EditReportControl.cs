@@ -30,7 +30,7 @@ namespace ControlReport
     }
     private void OnSelect(object i_O)
     {
-      var template = i_O as PartTemplate;
+      var template = i_O as Part;
       if (template == null)
         return;
 
@@ -48,6 +48,11 @@ namespace ControlReport
       txtTotolNumber.Text = template.TotalCount.ToString(CultureInfo.InvariantCulture);
       txtSampleNumber.Text = template.SampleCount.ToString(CultureInfo.InvariantCulture);
       btnAddCadFile.Visible = false;
+    }
+
+    private void btnAddCadFile_Click(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.OpenCadFile,null);
     }
   }
 }

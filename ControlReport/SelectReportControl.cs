@@ -39,21 +39,21 @@ namespace ControlReport
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-      PmsService.Instance.CurrentTemplate = (PartTemplate) comboPartCadNumber.SelectedValue;
+      PmsService.Instance.CurrentTemplate = (Part) comboPartCadNumber.SelectedValue;
       Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.SelectPartTemplate, PmsService.Instance.CurrentTemplate);
       Close();
     }
 
     class PartTemplateViewModel
     {
-      private PartTemplate _PartTemplate;
-      public PartTemplateViewModel(PartTemplate i_PartTemplate)
+      private Part _PartTemplate;
+      public PartTemplateViewModel(Part i_PartTemplate)
       {
         _PartTemplate = i_PartTemplate;
       }
 
       public string PartCadNumber { get { return _PartTemplate.PartCadNumber; } }
-      public PartTemplate PartTemplate { get { return _PartTemplate; } }
+      public Part PartTemplate { get { return _PartTemplate; } }
     }
   }
 }

@@ -14,28 +14,22 @@ namespace Core.Service
       get { return _pmsService ?? (_pmsService = new PmsService()); }
     }
 
-    public List<PartTemplate> GetPartTemplates()
+    public List<Part> GetPartTemplates()
     {
       return _partTemplates;
     }
 
-    public PartTemplate CurrentTemplate { get; set; }
-
-    public List<DimensionResult> GetDimensionResults()
-    {
-      return _dimensionResults;
-    }  
-    private static List<PartTemplate> _partTemplates;
+    public Part CurrentTemplate { get; set; }
+  
+    private static List<Part> _partTemplates;
     private static List<DimensionEntity> _dimensionEntities;
-    private static List<DimensionResult> _dimensionResults; 
     static PmsService ()
     {
       _dimensionEntities = new List<DimensionEntity>();
-      _partTemplates = new List<PartTemplate>();
-      _dimensionResults = new List<DimensionResult>();
+      _partTemplates = new List<Part>();
       for(int i=0; i<10;i++)
       {
-        var dimensionTemplate = new PartTemplate()
+        var dimensionTemplate = new Part()
         {
           Supplier = string.Format("Manufacture {0}", i + 1),
           Operator = string.Format("Operator {0}", i + 1),
@@ -60,11 +54,7 @@ namespace Core.Service
           dimensionTemplate.DimensionEntitys = _dimensionEntities;
         }
 
-        for (int k = 0; k < 30;k++ )
-        {
-          var result = new DimensionResult() { DimensionEntitys = _dimensionEntities, DimensionTemplate = dimensionTemplate, Time = DateTime.Now };
-          _dimensionResults.Add(result);
-        }
+
        // var dimensionResult = new DimensionResult() { DimensionEntity = dimensionEntity, DimensionTemplate = dimensionTemplate, Measured = i + 5, Time = DateTime.Now, };
         //results.Add(dimensionResult);
       }

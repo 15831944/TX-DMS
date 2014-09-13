@@ -57,9 +57,8 @@ namespace TxPms
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.NewPartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.executeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +67,6 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportControl1 = new ControlReport.EditReportControl();
       this.executeReportControl1 = new ControlReport.ExecuteReportControl();
-      this.NewPartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
@@ -117,7 +115,6 @@ namespace TxPms
       // menuStrip1
       // 
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem,
             this.ReportToolStripMenuItem,
             this.CadToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -125,21 +122,6 @@ namespace TxPms
       this.menuStrip1.Size = new System.Drawing.Size(1290, 24);
       this.menuStrip1.TabIndex = 3;
       this.menuStrip1.Text = "menuStrip1";
-      // 
-      // FileToolStripMenuItem
-      // 
-      this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenToolStripMenuItem});
-      this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-      this.FileToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-      this.FileToolStripMenuItem.Text = "文件";
-      // 
-      // OpenToolStripMenuItem
-      // 
-      this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-      this.OpenToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-      this.OpenToolStripMenuItem.Text = "打开";
-      this.OpenToolStripMenuItem.Click += new System.EventHandler(this.file_open_handler);
       // 
       // ReportToolStripMenuItem
       // 
@@ -151,6 +133,13 @@ namespace TxPms
       this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
       this.ReportToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
       this.ReportToolStripMenuItem.Text = "报告";
+      // 
+      // NewPartStripMenuItem
+      // 
+      this.NewPartStripMenuItem.Name = "NewPartStripMenuItem";
+      this.NewPartStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.NewPartStripMenuItem.Text = "新建";
+      this.NewPartStripMenuItem.Click += new System.EventHandler(this.NewPartStripMenuItem_Click);
       // 
       // toolStripMenuItem1
       // 
@@ -236,6 +225,7 @@ namespace TxPms
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+      this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       this.splitContainer1.ResumeLayout(false);
       this.menuStrip1.ResumeLayout(false);
@@ -252,8 +242,6 @@ namespace TxPms
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
     private System.Windows.Forms.SplitContainer splitContainer1;
     private System.Windows.Forms.MenuStrip menuStrip1;
-    private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem CadToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem FitToWindowToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem CadLayoutModeToolStripMenuItem;
