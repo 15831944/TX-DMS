@@ -50,10 +50,11 @@
       this.label5 = new System.Windows.Forms.Label();
       this.textBox4 = new System.Windows.Forms.TextBox();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.TestItem = new System.Windows.Forms.DataGridViewComboBoxColumn();
-      this.Thero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.Measured = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+      this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.MeasuredColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.StatusColumn = new System.Windows.Forms.DataGridViewImageColumn();
       this.flowLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
@@ -274,10 +275,11 @@
       this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
       this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Index,
-            this.TestItem,
-            this.Thero,
-            this.Measured});
+            this.IndexColumn,
+            this.DimensionTypeEditColumn,
+            this.NominalColumn,
+            this.MeasuredColumn,
+            this.StatusColumn});
       this.dataGridView1.Location = new System.Drawing.Point(1, 128);
       this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 8, 1, 1);
       this.dataGridView1.MultiSelect = false;
@@ -285,41 +287,50 @@
       this.dataGridView1.Size = new System.Drawing.Size(578, 495);
       this.dataGridView1.TabIndex = 4;
       // 
-      // Index
+      // IndexColumn
       // 
+      this.IndexColumn.DataPropertyName = "DimensionEntity.Index";
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.Index.DefaultCellStyle = dataGridViewCellStyle1;
-      this.Index.HeaderText = "序号";
-      this.Index.MinimumWidth = 40;
-      this.Index.Name = "Index";
-      this.Index.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-      this.Index.Width = 60;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      this.IndexColumn.Frozen = true;
+      this.IndexColumn.HeaderText = "序号";
+      this.IndexColumn.MinimumWidth = 40;
+      this.IndexColumn.Name = "IndexColumn";
+      this.IndexColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.IndexColumn.Width = 40;
       // 
-      // TestItem
+      // DimensionTypeEditColumn
       // 
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.TestItem.DefaultCellStyle = dataGridViewCellStyle2;
-      this.TestItem.HeaderText = "检验项目";
-      this.TestItem.Name = "TestItem";
-      this.TestItem.Width = 80;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      this.DimensionTypeEditColumn.Frozen = true;
+      this.DimensionTypeEditColumn.HeaderText = "检验项目";
+      this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
+      this.DimensionTypeEditColumn.Width = 80;
       // 
-      // Thero
+      // NominalColumn
       // 
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.Thero.DefaultCellStyle = dataGridViewCellStyle3;
-      this.Thero.HeaderText = "标准要求";
-      this.Thero.Name = "Thero";
-      this.Thero.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.Thero.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.Thero.Width = 150;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      this.NominalColumn.HeaderText = "标准要求";
+      this.NominalColumn.Name = "NominalColumn";
+      this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      this.NominalColumn.Width = 150;
       // 
-      // Measured
+      // MeasuredColumn
       // 
-      this.Measured.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.Measured.HeaderText = "实测数据";
-      this.Measured.Name = "Measured";
-      this.Measured.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.Measured.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      this.MeasuredColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.MeasuredColumn.HeaderText = "实测数据";
+      this.MeasuredColumn.Name = "MeasuredColumn";
+      this.MeasuredColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.MeasuredColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      // 
+      // StatusColumn
+      // 
+      this.StatusColumn.HeaderText = "状态";
+      this.StatusColumn.Name = "StatusColumn";
+      this.StatusColumn.Width = 40;
       // 
       // UserControlReport
       // 
@@ -368,10 +379,11 @@
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.TextBox textBox5;
     private System.Windows.Forms.DataGridView dataGridView1;
-    private System.Windows.Forms.DataGridViewTextBoxColumn Index;
-    private System.Windows.Forms.DataGridViewComboBoxColumn TestItem;
-    private System.Windows.Forms.DataGridViewTextBoxColumn Thero;
-    private System.Windows.Forms.DataGridViewTextBoxColumn Measured;
+    private System.Windows.Forms.DataGridViewTextBoxColumn IndexColumn;
+    private System.Windows.Forms.DataGridViewComboBoxColumn DimensionTypeEditColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
+    private System.Windows.Forms.DataGridViewTextBoxColumn MeasuredColumn;
+    private System.Windows.Forms.DataGridViewImageColumn StatusColumn;
 
   }
 }
