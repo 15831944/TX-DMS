@@ -21,6 +21,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using ControlReport;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
@@ -541,6 +542,7 @@ namespace TxPms
 
     private void panel1_MouseClick(object sender, MouseEventArgs e)
     {
+      panel1.Focus();
       if (bZoomWindow > -1 && bZoomWindow < 2)
       {
         if (bZoomWindow == 1)
@@ -575,6 +577,12 @@ namespace TxPms
     private void executeReportToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.ExecuteReport, null);
+    }
+
+    private void toolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+      SelectReportControl selectReportControl = new SelectReportControl();
+      selectReportControl.ShowDialog(this);
     }
   }
 }

@@ -38,26 +38,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditPartTemplateViewModel.cs" />
+    <Compile Include="ExecuteReportViewModel.cs" />
+    <Compile Include="EditReportControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditReportControl.Designer.cs">
+      <DependentUpon>EditReportControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControlReport.cs">
+    <Compile Include="ExecuteReportControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlReport.Designer.cs">
-      <DependentUpon>UserControlReport.cs</DependentUpon>
+    <Compile Include="ExecuteReportControl.Designer.cs">
+      <DependentUpon>ExecuteReportControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectReportControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectReportControl.Designer.cs">
+      <DependentUpon>SelectReportControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditReportControl.resx">
+      <DependentUpon>EditReportControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlReport.resx">
-      <DependentUpon>UserControlReport.cs</DependentUpon>
+    <EmbeddedResource Include="ExecuteReportControl.resx">
+      <DependentUpon>ExecuteReportControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectReportControl.resx">
+      <DependentUpon>SelectReportControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +92,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\PROCESS_PROCESSING.bmp" />
     <Content Include="Resources\PROCESS_PROCESSING.gif" />
     <Content Include="Resources\PROCESS_READY.gif" />
     <Content Include="Resources\PROCESS_RIGHT.gif" />

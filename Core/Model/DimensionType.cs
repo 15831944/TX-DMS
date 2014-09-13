@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Core.Module
+namespace Core.Model
 {
   public class DimensionType
   {

@@ -59,16 +59,24 @@ namespace TxPms
       this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.executeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this._UserControlReport = new ControlReport.UserControlReport();
+      this._ExecuteReportControl = new ControlReport.ExecuteReportControl();
+      this._EditReportControl = new EditReportControl();
+      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabPageExecute = new System.Windows.Forms.TabPage();
+      this.tabPageEdit = new System.Windows.Forms.TabPage();
+
       this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
+      this.tabControl1.SuspendLayout();
+      this.tabPageExecute.SuspendLayout();
       this.SuspendLayout();
       // 
       // panel1
@@ -105,7 +113,7 @@ namespace TxPms
       // 
       // splitContainer1.Panel1
       // 
-      this.splitContainer1.Panel1.Controls.Add(this._UserControlReport);
+      this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
       // 
       // splitContainer1.Panel2
       // 
@@ -145,11 +153,19 @@ namespace TxPms
       // ReportToolStripMenuItem
       // 
       this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
             this.editReportToolStripMenuItem,
             this.executeReportToolStripMenuItem});
       this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
       this.ReportToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
       this.ReportToolStripMenuItem.Text = "报告";
+      // 
+      // toolStripMenuItem1
+      // 
+      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+      this.toolStripMenuItem1.Text = "选择";
+      this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
       // 
       // editReportToolStripMenuItem
       // 
@@ -187,14 +203,56 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
       this.CadLayoutModeToolStripMenuItem.Text = "显示模式";
       // 
+      // tabControl1
+      // 
+      this.tabControl1.Controls.Add(this.tabPageExecute);
+      this.tabControl1.Controls.Add(this.tabPageEdit);
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Location = new System.Drawing.Point(0, 0);
+      this.tabControl1.Name = "tabControl1";
+      this.tabControl1.SelectedIndex = 0;
+      this.tabControl1.Size = new System.Drawing.Size(418, 591);
+      this.tabControl1.TabIndex = 0;
+      // 
+      // tabPageExecute
+      // 
+      this.tabPageExecute.Controls.Add(this._ExecuteReportControl);
+      this.tabPageExecute.Location = new System.Drawing.Point(4, 22);
+      this.tabPageExecute.Name = "tabPageExecute";
+      this.tabPageExecute.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageExecute.Size = new System.Drawing.Size(410, 565);
+      this.tabPageExecute.TabIndex = 1;
+      this.tabPageExecute.Text = "执行";
+      this.tabPageExecute.UseVisualStyleBackColor = true;
+      // 
+      // tabPageEdit
+      // 
+      this.tabPageEdit.Controls.Add(_EditReportControl);
+      this.tabPageEdit.Location = new System.Drawing.Point(4, 22);
+      this.tabPageEdit.Name = "tabPageEdit";
+      this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageEdit.Size = new System.Drawing.Size(410, 565);
+      this.tabPageEdit.TabIndex = 2;
+      this.tabPageEdit.Text = "编辑";
+      this.tabPageEdit.UseVisualStyleBackColor = true;
+      // 
       // _UserControlReport
       // 
-      this._UserControlReport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this._UserControlReport.Dock = System.Windows.Forms.DockStyle.Fill;
-      this._UserControlReport.Location = new System.Drawing.Point(0, 0);
-      this._UserControlReport.Name = "_UserControlReport";
-      this._UserControlReport.Size = new System.Drawing.Size(418, 591);
-      this._UserControlReport.TabIndex = 0;
+      this._ExecuteReportControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this._ExecuteReportControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._ExecuteReportControl.Location = new System.Drawing.Point(3, 3);
+      this._ExecuteReportControl.Name = "_UserControlReport";
+      this._ExecuteReportControl.Size = new System.Drawing.Size(404, 559);
+      this._ExecuteReportControl.TabIndex = 2;
+      // 
+      // _UserControlReport
+      // 
+      this._EditReportControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this._EditReportControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this._EditReportControl.Location = new System.Drawing.Point(3, 3);
+      this._ExecuteReportControl.Name = "_ExecuteReportControl";
+      this._ExecuteReportControl.Size = new System.Drawing.Size(404, 559);
+      this._ExecuteReportControl.TabIndex = 3;
       // 
       // CadForm
       // 
@@ -216,6 +274,8 @@ namespace TxPms
       this.splitContainer1.ResumeLayout(false);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
+      this.tabControl1.ResumeLayout(false);
+      this.tabPageExecute.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -233,10 +293,15 @@ namespace TxPms
     private System.Windows.Forms.ToolStripMenuItem CadToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem FitToWindowToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem CadLayoutModeToolStripMenuItem;
-    private ControlReport.UserControlReport _UserControlReport;
     private System.Windows.Forms.ToolStripMenuItem ReportToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem editReportToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem executeReportToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+    private System.Windows.Forms.TabControl tabControl1;
+    private System.Windows.Forms.TabPage tabPageExecute;
+    private System.Windows.Forms.TabPage tabPageEdit;
+    private ExecuteReportControl _ExecuteReportControl;
+    private EditReportControl _EditReportControl;
   }
 }
 

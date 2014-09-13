@@ -8,11 +8,17 @@ namespace Mediator
   {
     EditReport,
     ExecuteReport,
+    SelectPartTemplate
   }
 
   public enum CadEvent
   {
     OnDimensionSelected,
-    OnTextSelected
+    OnTextSelected,
+  }
+
+  public enum ModelEvent
+  {
+    DimensionReportChanged
   }
 }
