@@ -80,6 +80,7 @@ namespace TxPms
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
       //DisableAero();
+      Initialize();
     }
 
     // helper function transforming parameters from screen to world coordinates
@@ -583,6 +584,12 @@ namespace TxPms
     {
       SelectReportControl selectReportControl = new SelectReportControl();
       selectReportControl.ShowDialog(this);
+    }
+
+    private void NewPartStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.CreatePartTemplate, null);
     }
   }
 }

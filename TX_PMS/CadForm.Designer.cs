@@ -19,6 +19,7 @@
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 
+using System.Windows.Forms;
 using ControlReport;
 
 namespace TxPms
@@ -55,10 +56,6 @@ namespace TxPms
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.tabPageExecute = new System.Windows.Forms.TabPage();
-      this._ExecuteReportControl = new ControlReport.ExecuteReportControl();
-      this.tabPageEdit = new System.Windows.Forms.TabPage();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,11 +66,11 @@ namespace TxPms
       this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.splitContainer1.Panel1.SuspendLayout();
+      this.editReportControl1 = new ControlReport.EditReportControl();
+      this.executeReportControl1 = new ControlReport.ExecuteReportControl();
+      this.NewPartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
-      this.tabControl1.SuspendLayout();
-      this.tabPageExecute.SuspendLayout();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -109,10 +106,6 @@ namespace TxPms
       this.splitContainer1.Location = new System.Drawing.Point(0, 24);
       this.splitContainer1.Name = "splitContainer1";
       // 
-      // splitContainer1.Panel1
-      // 
-      this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
-      // 
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.Controls.Add(this.panel1);
@@ -120,47 +113,6 @@ namespace TxPms
       this.splitContainer1.SplitterDistance = 418;
       this.splitContainer1.SplitterWidth = 1;
       this.splitContainer1.TabIndex = 2;
-      // 
-      // tabControl1
-      // 
-      this.tabControl1.Controls.Add(this.tabPageExecute);
-      this.tabControl1.Controls.Add(this.tabPageEdit);
-      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Location = new System.Drawing.Point(0, 0);
-      this.tabControl1.Name = "tabControl1";
-      this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(418, 591);
-      this.tabControl1.TabIndex = 0;
-      // 
-      // tabPageExecute
-      // 
-      this.tabPageExecute.Controls.Add(this._ExecuteReportControl);
-      this.tabPageExecute.Location = new System.Drawing.Point(4, 22);
-      this.tabPageExecute.Name = "tabPageExecute";
-      this.tabPageExecute.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPageExecute.Size = new System.Drawing.Size(410, 565);
-      this.tabPageExecute.TabIndex = 1;
-      this.tabPageExecute.Text = "执行";
-      this.tabPageExecute.UseVisualStyleBackColor = true;
-      // 
-      // _ExecuteReportControl
-      // 
-      this._ExecuteReportControl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this._ExecuteReportControl.Dock = System.Windows.Forms.DockStyle.Fill;
-      this._ExecuteReportControl.Location = new System.Drawing.Point(3, 3);
-      this._ExecuteReportControl.Name = "_ExecuteReportControl";
-      this._ExecuteReportControl.Size = new System.Drawing.Size(404, 559);
-      this._ExecuteReportControl.TabIndex = 3;
-      // 
-      // tabPageEdit
-      // 
-      this.tabPageEdit.Location = new System.Drawing.Point(4, 22);
-      this.tabPageEdit.Name = "tabPageEdit";
-      this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
-      this.tabPageEdit.Size = new System.Drawing.Size(410, 565);
-      this.tabPageEdit.TabIndex = 2;
-      this.tabPageEdit.Text = "新建";
-      this.tabPageEdit.UseVisualStyleBackColor = true;
       // 
       // menuStrip1
       // 
@@ -192,6 +144,7 @@ namespace TxPms
       // ReportToolStripMenuItem
       // 
       this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NewPartStripMenuItem,
             this.toolStripMenuItem1,
             this.editReportToolStripMenuItem,
             this.executeReportToolStripMenuItem});
@@ -202,21 +155,21 @@ namespace TxPms
       // toolStripMenuItem1
       // 
       this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
       this.toolStripMenuItem1.Text = "选择";
       this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
       // 
       // editReportToolStripMenuItem
       // 
       this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
-      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.editReportToolStripMenuItem.Text = "编辑";
       this.editReportToolStripMenuItem.Click += new System.EventHandler(this.editReportToolStripMenuItem_Click);
       // 
       // executeReportToolStripMenuItem
       // 
       this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
-      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.executeReportToolStripMenuItem.Text = "执行";
       this.executeReportToolStripMenuItem.Click += new System.EventHandler(this.executeReportToolStripMenuItem_Click);
       // 
@@ -242,6 +195,32 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
       this.CadLayoutModeToolStripMenuItem.Text = "显示模式";
       // 
+      // editReportControl1
+      // 
+      this.editReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.editReportControl1.Location = new System.Drawing.Point(1, 0);
+      this.editReportControl1.Margin = new System.Windows.Forms.Padding(1, 8, 1, 1);
+      this.editReportControl1.Name = "editReportControl1";
+      this.editReportControl1.Size = new System.Drawing.Size(414, 610);
+      this.editReportControl1.TabIndex = 0;
+      // 
+      // executeReportControl1
+      // 
+      this.executeReportControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.executeReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.executeReportControl1.Location = new System.Drawing.Point(3, 5);
+      this.executeReportControl1.Margin = new System.Windows.Forms.Padding(1);
+      this.executeReportControl1.Name = "executeReportControl1";
+      this.executeReportControl1.Size = new System.Drawing.Size(412, 600);
+      this.executeReportControl1.TabIndex = 0;
+      // 
+      // NewPartStripMenuItem
+      // 
+      this.NewPartStripMenuItem.Name = "NewPartStripMenuItem";
+      this.NewPartStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.NewPartStripMenuItem.Text = "新建";
+      this.NewPartStripMenuItem.Click += new System.EventHandler(this.NewPartStripMenuItem_Click);
+      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,11 +236,8 @@ namespace TxPms
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-      this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       this.splitContainer1.ResumeLayout(false);
-      this.tabControl1.ResumeLayout(false);
-      this.tabPageExecute.ResumeLayout(false);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.ResumeLayout(false);
@@ -285,11 +261,9 @@ namespace TxPms
     private System.Windows.Forms.ToolStripMenuItem editReportToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem executeReportToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-    private System.Windows.Forms.TabControl tabControl1;
-    private System.Windows.Forms.TabPage tabPageExecute;
-    private System.Windows.Forms.TabPage tabPageEdit;
-    private ExecuteReportControl _ExecuteReportControl;
-    private EditReportControl _EditReportControl;
+    private EditReportControl editReportControl1;
+    private ExecuteReportControl executeReportControl1;
+    private ToolStripMenuItem NewPartStripMenuItem;
   }
 }
 

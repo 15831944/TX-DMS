@@ -8,7 +8,8 @@ namespace Mediator
   {
     EditReport,
     ExecuteReport,
-    SelectPartTemplate
+    SelectPartTemplate,
+    CreatePartTemplate
   }
 
   public enum CadEvent

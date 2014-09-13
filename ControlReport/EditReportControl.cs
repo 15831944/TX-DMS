@@ -16,13 +16,18 @@ namespace ControlReport
     public EditReportControl()
     {
       InitializeComponent();
-      foreach (var item in DimensionType.DimensionTypes)
-      {
-        DimensionTypeEditColumn.Items.Add(item.Text);
-      }
+//      foreach (var item in DimensionType.DimensionTypes)
+//      {
+//        DimensionTypeEditColumn.Items.Add(item.Text);
+//      }
       Mediator.Mediator.Instance.Register(InterfaceCommand.SelectPartTemplate, OnSelect);
+      Mediator.Mediator.Instance.Register(InterfaceCommand.CreatePartTemplate, OnCreate);
     }
 
+    private void OnCreate(object i_O)
+    {
+      btnAddCadFile.Visible = true;
+    }
     private void OnSelect(object i_O)
     {
       var template = i_O as PartTemplate;
@@ -42,6 +47,7 @@ namespace ControlReport
       txtPartNumber.Text = template.PartCadNumber;
       txtTotolNumber.Text = template.TotalCount.ToString(CultureInfo.InvariantCulture);
       txtSampleNumber.Text = template.SampleCount.ToString(CultureInfo.InvariantCulture);
+      btnAddCadFile.Visible = false;
     }
   }
 }

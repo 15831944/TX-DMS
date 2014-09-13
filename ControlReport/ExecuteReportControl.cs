@@ -16,44 +16,12 @@ namespace ControlReport
     public ExecuteReportControl()
     {
       InitializeComponent();
-//      if (Process.GetCurrentProcess().ProcessName.StartsWith("devenv", StringComparison.Ordinal))
-//        return;
       Mediator.Mediator.Instance.Register(InterfaceCommand.SelectPartTemplate, OnSelect);
 
-      //Mediator.Mediator.Instance.Register(ModelEvent.DimensionReportChanged, i_O => this.BeginInvoke(new InvokeDelegate(UpdateWindow)));
 
-
-
-//
-//      var dimensionViewModels = new List<DimensionViewModel>();
-//      foreach (var dimensionResult in results)
-//      {
-//        dimensionViewModels.Add(new DimensionViewModel(dimensionResult));
-//      }
-
-//      dataGridView1.DataSource = dimensionViewModels;
-//      txtManufacturer.DataBindings.Add("Text", dimensionViewModels[0], "Manufacturer");
-//      txtPartName.DataBindings.Add("Text", dimensionViewModels[0], "PartName");
-//      txtPartNumber.DataBindings.Add("Text", dimensionViewModels[0], "PartNumber");
-//      txtSampleNumber.DataBindings.Add("Text", dimensionViewModels[0], "SampleCount");
-//      txtTotolNumber.DataBindings.Add("Text", dimensionViewModels[0], "TotalCount");
     }
 
-//    void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-//    {
-//      ComboBox combo = e.Control as ComboBox;
-//      if (combo != null)
-//      {
-//        // Remove an existing event-handler, if present, to avoid 
-//        // adding multiple handlers when the editing control is reused.
-//        combo.SelectedIndexChanged -=
-//            new EventHandler(ComboBox_SelectedIndexChanged);
-//
-//        // Add the event handler. 
-//        combo.SelectedIndexChanged +=
-//            new EventHandler(ComboBox_SelectedIndexChanged);
-//      }
-//    }
+
 
     private PartTemplate _CurrentTemplate;
    
