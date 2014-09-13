@@ -58,12 +58,12 @@ namespace TxPms
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.executeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this._UserControlReport = new ControlReport.UserControlReport();
       this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
@@ -78,7 +78,7 @@ namespace TxPms
       this.panel1.Enabled = false;
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(868, 591);
+      this.panel1.Size = new System.Drawing.Size(871, 591);
       this.panel1.TabIndex = 1;
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -112,6 +112,7 @@ namespace TxPms
       this.splitContainer1.Panel2.Controls.Add(this.panel1);
       this.splitContainer1.Size = new System.Drawing.Size(1290, 591);
       this.splitContainer1.SplitterDistance = 418;
+      this.splitContainer1.SplitterWidth = 1;
       this.splitContainer1.TabIndex = 2;
       // 
       // menuStrip1
@@ -141,6 +142,29 @@ namespace TxPms
       this.OpenToolStripMenuItem.Text = "打开";
       this.OpenToolStripMenuItem.Click += new System.EventHandler(this.file_open_handler);
       // 
+      // ReportToolStripMenuItem
+      // 
+      this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editReportToolStripMenuItem,
+            this.executeReportToolStripMenuItem});
+      this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
+      this.ReportToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+      this.ReportToolStripMenuItem.Text = "报告";
+      // 
+      // editReportToolStripMenuItem
+      // 
+      this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
+      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.editReportToolStripMenuItem.Text = "编辑";
+      this.editReportToolStripMenuItem.Click += new System.EventHandler(this.editReportToolStripMenuItem_Click);
+      // 
+      // executeReportToolStripMenuItem
+      // 
+      this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
+      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.executeReportToolStripMenuItem.Text = "执行";
+      this.executeReportToolStripMenuItem.Click += new System.EventHandler(this.executeReportToolStripMenuItem_Click);
+      // 
       // CadToolStripMenuItem
       // 
       this.CadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -162,27 +186,6 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem.Name = "CadLayoutModeToolStripMenuItem";
       this.CadLayoutModeToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
       this.CadLayoutModeToolStripMenuItem.Text = "显示模式";
-      // 
-      // ReportToolStripMenuItem
-      // 
-      this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editReportToolStripMenuItem,
-            this.executeReportToolStripMenuItem});
-      this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
-      this.ReportToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-      this.ReportToolStripMenuItem.Text = "报告";
-      // 
-      // editReportToolStripMenuItem
-      // 
-      this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
-      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-      this.editReportToolStripMenuItem.Text = "编辑";
-      // 
-      // executeReportToolStripMenuItem
-      // 
-      this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
-      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-      this.executeReportToolStripMenuItem.Text = "执行";
       // 
       // _UserControlReport
       // 

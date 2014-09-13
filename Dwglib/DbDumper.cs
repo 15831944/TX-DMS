@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Mediator;
 using Teigha.Colors;
 using Teigha.DatabaseServices;
 using Teigha.Geometry;
@@ -133,40 +134,6 @@ namespace Dwglib
     }
     static void dumpEntityData(Entity pEnt, int indent)
     {
-      //      try
-      //      {
-      //        Extents3d ext = pEnt.GeometricExtents;
-      //        writeLine(indent, "Min Extents", ext.MinPoint);
-      //        writeLine(indent, "Max Extents", ext.MaxPoint);
-      //      }
-      //      catch (System.Exception)
-      //      {
-      //      }
-      //      writeLine(indent, "Layer", pEnt.Layer);
-      //      writeLine(indent, "Color Index", pEnt.ColorIndex);
-      //      writeLine(indent, "Color", pEnt.Color);
-      //      writeLine(indent, "Linetype", pEnt.Linetype);
-      //      writeLine(indent, "LTscale", pEnt.LinetypeScale);
-      //      writeLine(indent, "Lineweight", pEnt.LineWeight);
-      //      writeLine(indent, "Plot Style", pEnt.PlotStyleName);
-      //      writeLine(indent, "Transparency Method", pEnt.Transparency);
-      //      writeLine(indent, "Visibility", pEnt.Visible);
-      //      writeLine(indent, "Planar", pEnt.IsPlanar);
-
-      //      if (pEnt.IsPlanar)
-      //      {
-      //        try
-      //        {
-      //          CoordinateSystem3d cs = (CoordinateSystem3d)pEnt.GetPlane().GetCoordinateSystem();
-      //          writeLine(indent + 1, "Origin", cs.Origin);
-      //          writeLine(indent + 1, "u-Axis", cs.Xaxis);
-      //          writeLine(indent + 1, "v-Axis", cs.Yaxis);
-      //        }
-      //        catch (System.Exception ex)
-      //        {
-      //          writeLine(indent + 1, "pEnt.GetPlane().GetCoordinateSystem() failed", ex.Message);
-      //        }
-      //      }
     }
     /************************************************************************/
     /* Dump Text data                                                       */
@@ -271,6 +238,7 @@ namespace Dwglib
     {
       writeLine(indent, "Measurement", pDim.Measurement);
       writeLine(indent, "Dimension Text", pDim.DimensionText);
+      Mediator.Mediator.Instance.NotifyColleagues(CadEvent.OnDimensionSelected, pDim);
     }
     /************************************************************************/
     /* 2 Line Angular Dimension Dumper                                      */
@@ -900,27 +868,7 @@ namespace Dwglib
     {
       writeLine(indent++, pMText.GetRXClass().Name, pMText.Handle);
       writeLine(indent, "Contents", pMText.Contents);
-      //      writeLine(indent, "Location", pMText.Location);
-      //      writeLine(indent, "Height", pMText.TextHeight);
-      //      writeLine(indent, "Rotation", toDegreeString(pMText.Rotation));
-      //      writeLine(indent, "Text Style Id", pMText.TextStyleId);
-      //      writeLine(indent, "Attachment", pMText.Attachment);
-      //      writeLine(indent, "Background Fill On", pMText.BackgroundFill);
-      //      writeLine(indent, "Background Fill Color", pMText.BackgroundFillColor);
-      //      writeLine(indent, "Background Scale Factor", pMText.BackgroundScaleFactor);
-      //      writeLine(indent, "Background Transparency Method", pMText.BackgroundTransparency);
-      //      writeLine(indent, "X-Direction", pMText.Direction);
-      //      writeLine(indent, "Flow Direction", pMText.FlowDirection);
-      //      writeLine(indent, "Width", pMText.Width);
-      //      writeLine(indent, "Actual Height", pMText.ActualHeight);
-      //      writeLine(indent, "Actual Width", pMText.ActualWidth);
-      //
-      //      Point3dCollection points = pMText.GetBoundingPoints();
-      //      writeLine(indent, "TL Bounding Point", points[0]);
-      //      writeLine(indent, "TR Bounding Point", points[1]);
-      //      writeLine(indent, "BL Bounding Point", points[2]);
-      //      writeLine(indent, "BR Bounding Point", points[3]);
-      //      writeLine(indent, "Normal", pMText.Normal);
+      Mediator.Mediator.Instance.NotifyColleagues(CadEvent.OnTextSelected, pMText);
 
       dumpEntityData(pMText, indent);
     }

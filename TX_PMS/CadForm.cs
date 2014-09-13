@@ -23,6 +23,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Dwglib;
 using Dwglib.GripPoints;
+using Mediator;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
@@ -564,6 +565,16 @@ namespace TxPms
           database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
         }
       }
+    }
+
+    private void editReportToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.EditReport, null);
+    }
+
+    private void executeReportToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.ExecuteReport, null);
     }
   }
 }
