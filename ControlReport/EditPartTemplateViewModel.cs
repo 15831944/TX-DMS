@@ -53,7 +53,18 @@ namespace ControlReport
 
     public string Dimensiontype
     {
-      get { return _DimensionEntity.Dimensiontype.Text; }
+      get { return _DimensionEntity.Dimensiontype.Text;  }
+      set
+      {
+        foreach (var type in Core.Model.DimensionType.DimensionTypes)
+        {
+          if (type.Text == value)
+          {
+            _DimensionEntity.Dimensiontype = type;
+            break;
+          }
+        }        
+      }
     }
 
     /// <summary>
@@ -65,8 +76,6 @@ namespace ControlReport
       get { return _DimensionEntity.Nominal; }
       set { _DimensionEntity.Nominal = value; }
     }
-
-    public double Measured { get { return _DimensionEntity.Measured; } set { _DimensionEntity.Measured = value; } }
 
     public double PlusTol { get { return _DimensionEntity.PlusTol; } set { _DimensionEntity.PlusTol = value; } }
     public double MinusTol { get { return _DimensionEntity.MinusTol; } set { _DimensionEntity.MinusTol = value; } }

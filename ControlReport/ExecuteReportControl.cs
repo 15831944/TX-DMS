@@ -64,12 +64,7 @@ namespace ControlReport
         return;
 
       _CurrentTemplate = template;
-      UpdateWindow();
-    }
-
-    private void UpdateWindow()
-    {
-      if(_CurrentTemplate == null)
+      if (_CurrentTemplate == null)
         return;
       var viewModels = new List<ExecuteDimensionEntityViewModel>();
       foreach (var en in _CurrentTemplate.DimensionEntitys)
@@ -84,6 +79,7 @@ namespace ControlReport
       txtTotolNumber.Text = _CurrentTemplate.TotalCount.ToString(CultureInfo.InvariantCulture);
       txtSampleNumber.Text = _CurrentTemplate.SampleCount.ToString(CultureInfo.InvariantCulture);
     }
+
 
     private void btnReMeasureing_Click(object sender, EventArgs e)
     {
