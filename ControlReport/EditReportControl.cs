@@ -26,7 +26,7 @@ namespace ControlReport
 
     private void OnCreate(object i_O)
     {
-      btnAddCadFile.Visible = true;
+      //btnAddCadFile.Visible = true;
     }
     private void OnSelect(object i_O)
     {
@@ -42,12 +42,9 @@ namespace ControlReport
       }
 
       dataGridView1.DataSource = viewModels;
-      txtManufacturer.Text = template.Supplier;
       txtPartName.Text = template.PartName;
       txtPartNumber.Text = template.PartCadNumber;
-      txtTotolNumber.Text = template.TotalCount.ToString(CultureInfo.InvariantCulture);
-      txtSampleNumber.Text = template.SampleCount.ToString(CultureInfo.InvariantCulture);
-      btnAddCadFile.Visible = false;
+      //btnAddCadFile.Visible = false;
     }
 
     private void btnAddCadFile_Click(object sender, EventArgs e)

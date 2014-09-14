@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
       this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
       this.label3 = new System.Windows.Forms.Label();
       this.txtManufacturer = new System.Windows.Forms.TextBox();
@@ -51,14 +51,14 @@
       this.txtTotolNumber = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.btnReMeasureing = new System.Windows.Forms.Button();
-      this.btnCreateReport = new System.Windows.Forms.Button();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.MeasuredColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.StatusColumn = new System.Windows.Forms.DataGridViewImageColumn();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.btnCreateReport = new System.Windows.Forms.Button();
+      this.btnReMeasureing = new System.Windows.Forms.Button();
       this.flowLayoutPanel2.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
@@ -308,40 +308,11 @@
       this.dataGridView1.TabIndex = 5;
       this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
       // 
-      // panel1
-      // 
-      this.panel1.Controls.Add(this.btnCreateReport);
-      this.panel1.Controls.Add(this.btnReMeasureing);
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Location = new System.Drawing.Point(3, 417);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(568, 54);
-      this.panel1.TabIndex = 6;
-      // 
-      // btnReMeasureing
-      // 
-      this.btnReMeasureing.Location = new System.Drawing.Point(133, 15);
-      this.btnReMeasureing.Name = "btnReMeasureing";
-      this.btnReMeasureing.Size = new System.Drawing.Size(75, 23);
-      this.btnReMeasureing.TabIndex = 0;
-      this.btnReMeasureing.Text = "重新检测";
-      this.btnReMeasureing.UseVisualStyleBackColor = true;
-      this.btnReMeasureing.Click += new System.EventHandler(this.btnReMeasureing_Click);
-      // 
-      // btnCreateReport
-      // 
-      this.btnCreateReport.Location = new System.Drawing.Point(297, 15);
-      this.btnCreateReport.Name = "btnCreateReport";
-      this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
-      this.btnCreateReport.TabIndex = 2;
-      this.btnCreateReport.Text = "生成报告";
-      this.btnCreateReport.UseVisualStyleBackColor = true;
-      // 
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "Index";
-      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle7;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle4;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -352,8 +323,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle8;
+      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle5;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -364,8 +335,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle9;
+      dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle6;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -387,6 +358,35 @@
       this.StatusColumn.HeaderText = "状态";
       this.StatusColumn.Name = "StatusColumn";
       this.StatusColumn.Width = 40;
+      // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.btnCreateReport);
+      this.panel1.Controls.Add(this.btnReMeasureing);
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel1.Location = new System.Drawing.Point(3, 417);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(568, 54);
+      this.panel1.TabIndex = 6;
+      // 
+      // btnCreateReport
+      // 
+      this.btnCreateReport.Location = new System.Drawing.Point(297, 15);
+      this.btnCreateReport.Name = "btnCreateReport";
+      this.btnCreateReport.Size = new System.Drawing.Size(75, 23);
+      this.btnCreateReport.TabIndex = 2;
+      this.btnCreateReport.Text = "生成报告";
+      this.btnCreateReport.UseVisualStyleBackColor = true;
+      // 
+      // btnReMeasureing
+      // 
+      this.btnReMeasureing.Location = new System.Drawing.Point(178, 15);
+      this.btnReMeasureing.Name = "btnReMeasureing";
+      this.btnReMeasureing.Size = new System.Drawing.Size(75, 23);
+      this.btnReMeasureing.TabIndex = 0;
+      this.btnReMeasureing.Text = "重新检测";
+      this.btnReMeasureing.UseVisualStyleBackColor = true;
+      this.btnReMeasureing.Click += new System.EventHandler(this.btnReMeasureing_Click);
       // 
       // ExecuteReportControl
       // 
