@@ -56,6 +56,8 @@ namespace TxPms
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.LeftStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.NewPartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,8 +69,10 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportControl1 = new ControlReport.EditReportControl();
       this.executeReportControl1 = new ControlReport.ExecuteReportControl();
+      this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
+      this.statusStrip1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -104,6 +108,10 @@ namespace TxPms
       this.splitContainer1.Location = new System.Drawing.Point(0, 24);
       this.splitContainer1.Name = "splitContainer1";
       // 
+      // splitContainer1.Panel1
+      // 
+      //this.splitContainer1.Panel1.Controls.Add(this.statusStrip1);
+      // 
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.Controls.Add(this.panel1);
@@ -111,6 +119,21 @@ namespace TxPms
       this.splitContainer1.SplitterDistance = 418;
       this.splitContainer1.SplitterWidth = 1;
       this.splitContainer1.TabIndex = 2;
+      // 
+      // statusStrip1
+      // 
+      this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LeftStripStatusLabel});
+      this.statusStrip1.Location = new System.Drawing.Point(0, 569);
+      this.statusStrip1.Name = "statusStrip1";
+      this.statusStrip1.Size = new System.Drawing.Size(418, 22);
+      this.statusStrip1.TabIndex = 0;
+      this.statusStrip1.Text = "statusStrip1";
+      // 
+      // LeftStripStatusLabel
+      // 
+      this.LeftStripStatusLabel.Name = "LeftStripStatusLabel";
+      this.LeftStripStatusLabel.Size = new System.Drawing.Size(0, 17);
       // 
       // menuStrip1
       // 
@@ -137,28 +160,28 @@ namespace TxPms
       // NewPartStripMenuItem
       // 
       this.NewPartStripMenuItem.Name = "NewPartStripMenuItem";
-      this.NewPartStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.NewPartStripMenuItem.Size = new System.Drawing.Size(98, 22);
       this.NewPartStripMenuItem.Text = "新建";
       this.NewPartStripMenuItem.Click += new System.EventHandler(this.NewPartStripMenuItem_Click);
       // 
       // toolStripMenuItem1
       // 
       this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
       this.toolStripMenuItem1.Text = "选择";
       this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
       // 
       // editReportToolStripMenuItem
       // 
       this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
-      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
       this.editReportToolStripMenuItem.Text = "编辑";
       this.editReportToolStripMenuItem.Click += new System.EventHandler(this.editReportToolStripMenuItem_Click);
       // 
       // executeReportToolStripMenuItem
       // 
       this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
-      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
       this.executeReportToolStripMenuItem.Text = "执行";
       this.executeReportToolStripMenuItem.Click += new System.EventHandler(this.executeReportToolStripMenuItem_Click);
       // 
@@ -203,13 +226,6 @@ namespace TxPms
       this.executeReportControl1.Size = new System.Drawing.Size(412, 600);
       this.executeReportControl1.TabIndex = 0;
       // 
-      // NewPartStripMenuItem
-      // 
-      this.NewPartStripMenuItem.Name = "NewPartStripMenuItem";
-      this.NewPartStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.NewPartStripMenuItem.Text = "新建";
-      this.NewPartStripMenuItem.Click += new System.EventHandler(this.NewPartStripMenuItem_Click);
-      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,6 +233,7 @@ namespace TxPms
       this.ClientSize = new System.Drawing.Size(1290, 615);
       this.Controls.Add(this.splitContainer1);
       this.Controls.Add(this.menuStrip1);
+      this.Controls.Add(this.statusStrip1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "CadForm";
@@ -226,8 +243,11 @@ namespace TxPms
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
       this.splitContainer1.Panel1.ResumeLayout(false);
+      this.splitContainer1.Panel1.PerformLayout();
       this.splitContainer1.Panel2.ResumeLayout(false);
       this.splitContainer1.ResumeLayout(false);
+      this.statusStrip1.ResumeLayout(false);
+      this.statusStrip1.PerformLayout();
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.ResumeLayout(false);
@@ -252,6 +272,8 @@ namespace TxPms
     private EditReportControl editReportControl1;
     private ExecuteReportControl executeReportControl1;
     private ToolStripMenuItem NewPartStripMenuItem;
+    private StatusStrip statusStrip1;
+    private ToolStripStatusLabel LeftStripStatusLabel;
   }
 }
 
