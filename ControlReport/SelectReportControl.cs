@@ -52,7 +52,7 @@ namespace ControlReport
         _PartTemplate = i_PartTemplate;
       }
 
-      public string PartCadNumber { get { return _PartTemplate.PartCadNumber; } }
+      public string PartCadNumber { get { return _PartTemplate.CadNumber; } }
       public Part PartTemplate { get { return _PartTemplate; } }
     }
   }

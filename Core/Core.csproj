@@ -42,6 +42,7 @@
     <Compile Include="Model\DimensionEntity.cs" />
     <Compile Include="Model\DimensionType.cs" />
     <Compile Include="Model\Part.cs" />
+    <Compile Include="Model\PartReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\PmsService.cs" />
   </ItemGroup>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Core.Model;
+﻿using Core.Model;
 
 namespace ControlReport
 {
@@ -12,23 +9,15 @@ namespace ControlReport
     {
       _PartTemplate = i_PartTemplate;
     }
-
-    //public string Operator { get{_PartTemplate.}; set; }
-    public string Supplier
-    {
-      get { return _PartTemplate.Supplier; }
-      set { _PartTemplate.Supplier = value; }
-    }
-
     public string PartName
     {
-      get { return _PartTemplate.PartName; }
-      set { _PartTemplate.PartName = value; }
+      get { return _PartTemplate.Name; }
+      set { _PartTemplate.Name = value; }
     }
     public string PartCadNumber
     {
-      get { return _PartTemplate.PartCadNumber; }
-      set { _PartTemplate.PartCadNumber = value; }
+      get { return _PartTemplate.CadNumber; }
+      set { _PartTemplate.CadNumber = value; }
     }
     public int TotalCount
     {
@@ -56,7 +45,7 @@ namespace ControlReport
       get { return _DimensionEntity.Dimensiontype.Text;  }
       set
       {
-        foreach (var type in Core.Model.DimensionType.DimensionTypes)
+        foreach (var type in DimensionType.DimensionTypes)
         {
           if (type.Text == value)
           {
@@ -70,16 +59,14 @@ namespace ControlReport
     /// <summary>
     /// 直径符号
     /// </summary>
-    
-    public double Nominal
+
+    public float Nominal
     {
       get { return _DimensionEntity.Nominal; }
       set { _DimensionEntity.Nominal = value; }
     }
 
-    public double PlusTol { get { return _DimensionEntity.PlusTol; } set { _DimensionEntity.PlusTol = value; } }
-    public double MinusTol { get { return _DimensionEntity.MinusTol; } set { _DimensionEntity.MinusTol = value; } }
-
-
+    public float PlusTol { get { return _DimensionEntity.PlusTol; } set { _DimensionEntity.PlusTol = value; } }
+    public float MinusTol { get { return _DimensionEntity.MinusTol; } set { _DimensionEntity.MinusTol = value; } }
   }
 }

@@ -31,7 +31,7 @@ namespace ControlReport
       get { return _DimensionEntity.ToString(); }
     }
 
-    public double Measured
+    public float Measured
     {
       get { return _DimensionEntity.Measured; }
       set { _DimensionEntity.Measured = value;

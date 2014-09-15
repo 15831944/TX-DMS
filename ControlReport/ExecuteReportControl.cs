@@ -12,6 +12,7 @@ namespace ControlReport
 {
   public partial class ExecuteReportControl : UserControl
   {
+    private PartReport _PartReport;
     public delegate void InvokeDelegate();
     public ExecuteReportControl()
     {
@@ -30,7 +31,7 @@ namespace ControlReport
       var template = i_O as Part;
       if (template == null)
         return;
-
+      _PartReport = new PartReport() { Part = template };
       _CurrentTemplate = template;
       if (_CurrentTemplate == null)
         return;
@@ -41,9 +42,9 @@ namespace ControlReport
       }
 
       dataGridView1.DataSource = viewModels;
-      txtManufacturer.Text = _CurrentTemplate.Supplier;
-      txtPartName.Text = _CurrentTemplate.PartName;
-      txtPartNumber.Text = _CurrentTemplate.PartCadNumber;
+      txtManufacturer.Text = _PartReport.Supplier;
+      txtPartName.Text = _CurrentTemplate.Name;
+      txtPartNumber.Text = _CurrentTemplate.CadNumber;
       txtTotolNumber.Text = _CurrentTemplate.TotalCount.ToString(CultureInfo.InvariantCulture);
       txtSampleNumber.Text = _CurrentTemplate.SampleCount.ToString(CultureInfo.InvariantCulture);
     }

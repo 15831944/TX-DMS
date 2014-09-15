@@ -12,13 +12,13 @@
     /// 直径符号
     /// </summary>
     public char Symbol { get; set; }
-    public double Nominal { get; set; }
-    public double PlusTol { get; set; }
-    public double MinusTol { get; set; }
-    public double Measured { get; set; }
+    public float Nominal { get; set; }
+    public float PlusTol { get; set; }
+    public float MinusTol { get; set; }
+    public float Measured { get; set; }
     public DimensionEntity()
     {
-      Measured = double.NaN;
+      Measured = float.NaN;
     }
     public override string ToString()
     {
