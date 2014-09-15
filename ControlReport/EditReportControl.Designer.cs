@@ -193,7 +193,7 @@
       // 
       // IndexColumn
       // 
-      this.IndexColumn.DataPropertyName = "Index";
+      this.IndexColumn.DataPropertyName = "SerialNumber";
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
       this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;

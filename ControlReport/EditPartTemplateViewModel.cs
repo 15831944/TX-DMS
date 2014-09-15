@@ -33,27 +33,20 @@ namespace ControlReport
 
   class EditDimensionEntityViewModel
   {
-    private readonly DimensionEntity _DimensionEntity;
-    public EditDimensionEntityViewModel(DimensionEntity i_DimensionEntity)
+    private readonly Dimension _Dimension;
+    public EditDimensionEntityViewModel(Dimension i_Dimension)
     {
-      _DimensionEntity = i_DimensionEntity;
+      _Dimension = i_Dimension;
     }
-    public int Index { get; set; }
+    public int SerialNumber {
+      get { return _Dimension.SerialNumber; }
+      set { _Dimension.SerialNumber = value; }
+    }
 
     public string Dimensiontype
     {
-      get { return _DimensionEntity.Dimensiontype.Text;  }
-      set
-      {
-        foreach (var type in DimensionType.DimensionTypes)
-        {
-          if (type.Text == value)
-          {
-            _DimensionEntity.Dimensiontype = type;
-            break;
-          }
-        }        
-      }
+      get { return _Dimension.Dimensiontype;  }
+      set { _Dimension.Dimensiontype = value; }
     }
 
     /// <summary>
@@ -62,11 +55,11 @@ namespace ControlReport
 
     public float Nominal
     {
-      get { return _DimensionEntity.Nominal; }
-      set { _DimensionEntity.Nominal = value; }
+      get { return _Dimension.Nominal; }
+      set { _Dimension.Nominal = value; }
     }
 
-    public float PlusTol { get { return _DimensionEntity.PlusTol; } set { _DimensionEntity.PlusTol = value; } }
-    public float MinusTol { get { return _DimensionEntity.MinusTol; } set { _DimensionEntity.MinusTol = value; } }
+    public float PlusTol { get { return _Dimension.PlusTol; } set { _Dimension.PlusTol = value; } }
+    public float MinusTol { get { return _Dimension.MinusTol; } set { _Dimension.MinusTol = value; } }
   }
 }

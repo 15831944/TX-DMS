@@ -26,7 +26,19 @@ namespace Core.Model
       DimensionTypes.Add(new DimensionType(8, "圆角"));
       DimensionTypes.Add(new DimensionType(9, "倒角"));
     }
-
+    public static DimensionType GetDimension(string  i_Text)
+    {
+      DimensionType result = new DimensionType(0, "无效");
+      foreach (var dimensionType in DimensionTypes)
+      {
+        if (dimensionType.Text == i_Text.Trim())
+        {
+          result = dimensionType;
+          break;
+        }
+      }
+      return result;
+    }
     public static DimensionType GetDimension(int i_Id)
     {
       return DimensionTypes[i_Id];

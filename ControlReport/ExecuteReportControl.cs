@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 using Core.Model;
@@ -35,8 +33,13 @@ namespace ControlReport
       _CurrentTemplate = template;
       if (_CurrentTemplate == null)
         return;
+      
+      
       var viewModels = new List<ExecuteDimensionEntityViewModel>();
-      foreach (var en in _CurrentTemplate.DimensionEntitys)
+
+      PmsService.Instance.GetDimensionsByPart(_CurrentTemplate);
+
+      foreach (var en in _CurrentTemplate.Dimensions)
       {
         viewModels.Add(new ExecuteDimensionEntityViewModel(en));
       }

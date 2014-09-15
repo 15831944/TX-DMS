@@ -23,12 +23,13 @@ namespace ControlReport
     private void PopulateData()
     {
       var viewModels = new List<PartTemplateViewModel>();
-      foreach (var partTemplate in PmsService.Instance.GetPartTemplates())
+      var parts = PmsService.Instance.GetParts();
+      foreach (var partTemplate in parts)
       {
         viewModels.Add(new PartTemplateViewModel(partTemplate));
       }
       comboPartCadNumber.DataSource = viewModels;
-      comboPartCadNumber.ValueMember = "PartTemplate";
+      comboPartCadNumber.ValueMember = "Part";
       comboPartCadNumber.DisplayMember = "PartCadNumber";
     }
 
@@ -53,7 +54,7 @@ namespace ControlReport
       }
 
       public string PartCadNumber { get { return _PartTemplate.CadNumber; } }
-      public Part PartTemplate { get { return _PartTemplate; } }
+      public Part Part { get { return _PartTemplate; } } 
     }
   }
 }

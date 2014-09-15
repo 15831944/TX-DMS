@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using Core.Model;
+using Core.Service;
 using Mediator;
 
 namespace ControlReport
@@ -32,8 +33,11 @@ namespace ControlReport
         return;
 
       _Part = template;
+
+
       var viewModels = new List<EditDimensionEntityViewModel>();
-      foreach (var en in template.DimensionEntitys)
+      PmsService.Instance.GetDimensionsByPart(template);
+      foreach (var en in template.Dimensions)
       {
         viewModels.Add(new EditDimensionEntityViewModel(en));
       }

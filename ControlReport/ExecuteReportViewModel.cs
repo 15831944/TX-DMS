@@ -10,16 +10,19 @@ namespace ControlReport
 {
   public class ExecuteDimensionEntityViewModel 
   {
-    private readonly DimensionEntity _DimensionEntity;
-    public ExecuteDimensionEntityViewModel(DimensionEntity i_DimensionEntity)
+    private readonly Dimension _Dimension;
+    public ExecuteDimensionEntityViewModel(Dimension i_Dimension)
     {
-      _DimensionEntity = i_DimensionEntity;
+      _Dimension = i_Dimension;
     }
-    public int Index { get; set; }
+    public int SerialNumber{
+      get { return _Dimension.SerialNumber; }
+      set { _Dimension.SerialNumber = value; }
+    }
 
     public string Dimensiontype
     {
-      get { return _DimensionEntity.Dimensiontype.Text; }
+      get { return _Dimension.Dimensiontype; }
     }
 
     /// <summary>
@@ -28,14 +31,13 @@ namespace ControlReport
 
     public string Nominal
     {
-      get { return _DimensionEntity.ToString(); }
+      get { return _Dimension.ToString(); }
     }
 
     public float Measured
     {
-      get { return _DimensionEntity.Measured; }
-      set { _DimensionEntity.Measured = value;
-        Mediator.Mediator.Instance.NotifyColleagues(ModelEvent.DimensionReportChanged, this);
+      get { return float.IsNaN(_Dimension.Measured) ? 0 : _Dimension.Measured; }
+      set { _Dimension.Measured = value;
       }
     }
 
@@ -43,13 +45,13 @@ namespace ControlReport
     {
       get
       {
-        if (double.IsNaN(_DimensionEntity.Measured))
+        if (float.IsNaN(_Dimension.Measured))
         {
           return Resource.PROCESS_READY;
         }
         else
         {
-          if (_DimensionEntity.Measured >= _DimensionEntity.Nominal - _DimensionEntity.MinusTol && _DimensionEntity.Measured <= _DimensionEntity.Nominal + _DimensionEntity.PlusTol)
+          if (_Dimension.Measured >= _Dimension.Nominal - _Dimension.MinusTol && _Dimension.Measured <= _Dimension.Nominal + _Dimension.PlusTol)
           {
             return Resource.PROCESS_RIGHT;
           }

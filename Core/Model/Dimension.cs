@@ -1,9 +1,10 @@
 ﻿namespace Core.Model
 {
-  public class DimensionEntity
+  public class Dimension
   {
-    public int Index { get; set; }
-    public DimensionType Dimensiontype { get; set; }
+    public int Id { get; set; }
+    public int SerialNumber { get; set; }
+    public string Dimensiontype { get; set; }
     /// <summary>
     /// 符号之前的字符串
     /// </summary>
@@ -16,13 +17,13 @@
     public float PlusTol { get; set; }
     public float MinusTol { get; set; }
     public float Measured { get; set; }
-    public DimensionEntity()
+    public Dimension()
     {
-      Measured = float.NaN;
     }
     public override string ToString()
     {
       return string.Format("{0}{1}{2} {3}-{4}", PreFix, Symbol, Nominal, PlusTol, MinusTol);
     }
   }
+
 }

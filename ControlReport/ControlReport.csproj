@@ -109,6 +109,10 @@
       <Project>{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}</Project>
       <Name>Mediator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{966EB737-C1DD-4D4F-8063-2F6C92A4E212}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

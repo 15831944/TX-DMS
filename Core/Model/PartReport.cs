@@ -6,6 +6,7 @@ namespace Core.Model
 {
   public class PartReport
   {
+    public int Id { get; set; }
     public string Operator { get; set; }
     public string Supplier { get; set; }
 
