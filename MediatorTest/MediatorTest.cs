@@ -1,4 +1,5 @@
-﻿using Mediator;
+﻿using System.Diagnostics;
+using Mediator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -331,6 +332,7 @@ namespace MediatorTest
       Assert.AreEqual(true, target.IsRegistered(m));
       target.UnRegisterObject(m);
       Assert.AreEqual(false,target.IsRegistered(m));
+      Debug.WriteLine((char)1060);
     }
 
     /// <summary>

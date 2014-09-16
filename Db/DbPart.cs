@@ -29,7 +29,7 @@ namespace Db
             var reader = db.ExecuteReader(selCmd);
             while (reader.Read())
             {
-              result.Add(new Part() { Name = reader.GetString(1), CadNumber = reader.GetString(2) });
+              result.Add(new Part() { Name = reader.GetString(1), CadNumber = reader.GetString(2), SecondNumber = reader.GetString(3)});
             }
             selCmd.Connection.Close();
             return result;

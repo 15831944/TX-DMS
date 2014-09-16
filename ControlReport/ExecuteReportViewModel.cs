@@ -37,8 +37,7 @@ namespace ControlReport
     public float Measured
     {
       get { return float.IsNaN(_Dimension.Measured) ? 0 : _Dimension.Measured; }
-      set { _Dimension.Measured = value;
-      }
+      set { _Dimension.Measured = value.ToString("0") == "0" ? float.NaN : value; }
     }
 
     public Bitmap StatusBitmap

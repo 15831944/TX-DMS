@@ -215,6 +215,10 @@
       <Project>{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}</Project>
       <Name>Mediator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MockMeasureToolControl\MockMeasureToolControl.csproj">
+      <Project>{7D85BEB0-887E-4BFE-BF21-F8205A6B8018}</Project>
+      <Name>MockMeasureToolControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pms.mdf">

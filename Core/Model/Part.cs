@@ -7,6 +7,7 @@ namespace Core.Model
     public int Id { get; set; }
     public string Name { get; set; }
     public string CadNumber { get; set; }
+    public string SecondNumber { get; set; }
     public int TotalCount { get; set; }
     public int SampleCount { get; set; }
     public string CadFile { get; set; }

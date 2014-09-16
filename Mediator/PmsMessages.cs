@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Mediator
 {
-  public enum InterfaceCommand
+// ReSharper disable InconsistentNaming
+  public enum UI
+// ReSharper restore InconsistentNaming
   {
     EditReport,
     ExecuteReport,
@@ -13,14 +15,13 @@ namespace Mediator
     OpenCadFile
   }
 
-  public enum CadEvent
+  public enum Cad
   {
     OnDimensionSelected,
     OnTextSelected,
   }
-
-  public enum ModelEvent
+  public enum MeasurementTool
   {
-    DimensionReportChanged
+    OnDataArrived
   }
 }

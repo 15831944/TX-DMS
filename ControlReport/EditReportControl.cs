@@ -18,8 +18,8 @@ namespace ControlReport
     public EditReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(InterfaceCommand.SelectPartTemplate, OnSelect);
-      Mediator.Mediator.Instance.Register(InterfaceCommand.CreatePartTemplate, OnCreate);
+      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, OnSelect);
+      Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
     }
 
     private void OnCreate(object i_O)
@@ -45,12 +45,12 @@ namespace ControlReport
       dataGridView1.DataSource = viewModels;
       txtPartName.Text = template.Name;
       txtPartNumber.Text = template.CadNumber;
-      //btnAddCadFile.Visible = false;
+      txtSecondNumber.Text = template.SecondNumber;
     }
 
     private void btnAddCadFile_Click(object sender, EventArgs e)
     {
-      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.OpenCadFile,null);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.OpenCadFile,null);
     }
 
     private void btnSave_Click(object sender, EventArgs e)

@@ -238,7 +238,7 @@ namespace Dwglib
     {
       writeLine(indent, "Measurement", pDim.Measurement);
       writeLine(indent, "Dimension Text", pDim.DimensionText);
-      Mediator.Mediator.Instance.NotifyColleagues(CadEvent.OnDimensionSelected, pDim);
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnDimensionSelected, pDim);
     }
     /************************************************************************/
     /* 2 Line Angular Dimension Dumper                                      */
@@ -868,7 +868,7 @@ namespace Dwglib
     {
       writeLine(indent++, pMText.GetRXClass().Name, pMText.Handle);
       writeLine(indent, "Contents", pMText.Contents);
-      Mediator.Mediator.Instance.NotifyColleagues(CadEvent.OnTextSelected, pMText);
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnTextSelected, pMText);
 
       dumpEntityData(pMText, indent);
     }

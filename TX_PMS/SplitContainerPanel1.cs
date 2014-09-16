@@ -12,15 +12,15 @@ namespace TxPms
     {
       this.Load += CadForm_Load;
       editReportToolStripMenuItem.Enabled = false;
-      Mediator.Mediator.Instance.Register(InterfaceCommand.EditReport, OnEdit);
-      Mediator.Mediator.Instance.Register(InterfaceCommand.ExecuteReport, ShowExecuteControl);
-      Mediator.Mediator.Instance.Register(InterfaceCommand.SelectPartTemplate, i_O =>
+      Mediator.Mediator.Instance.Register(UI.EditReport, OnEdit);
+      Mediator.Mediator.Instance.Register(UI.ExecuteReport, ShowExecuteControl);
+      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, i_O =>
         {
           editReportToolStripMenuItem.Enabled = true;
           ShowExecuteControl(null);
         });
-      Mediator.Mediator.Instance.Register(InterfaceCommand.CreatePartTemplate, OnCreate);
-      Mediator.Mediator.Instance.Register(InterfaceCommand.OpenCadFile, file_open_handler);
+      Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
+      Mediator.Mediator.Instance.Register(UI.OpenCadFile, file_open_handler);
     }
 
     private void OnEdit(object i_Obj)

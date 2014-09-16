@@ -25,6 +25,7 @@ using ControlReport;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
+using MockMeasureToolControl;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
@@ -572,12 +573,12 @@ namespace TxPms
 
     private void editReportToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.EditReport, null);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.EditReport, null);
     }
 
     private void executeReportToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.ExecuteReport, null);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
     }
 
     private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -589,7 +590,13 @@ namespace TxPms
     private void NewPartStripMenuItem_Click(object sender, EventArgs e)
     {
 
-      Mediator.Mediator.Instance.NotifyColleagues(InterfaceCommand.CreatePartTemplate, null);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePartTemplate, null);
+    }
+
+    private void measureToolToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      MockMeasureToolForm frm = new MockMeasureToolForm();
+      frm.Show(this);
     }
   }
 }

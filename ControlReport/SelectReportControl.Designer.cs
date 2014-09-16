@@ -36,14 +36,14 @@
       // 
       // label7
       // 
-      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
       this.label7.AutoSize = true;
       this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.Location = new System.Drawing.Point(76, 28);
+      this.label7.Location = new System.Drawing.Point(78, 34);
       this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(63, 15);
+      this.label7.Size = new System.Drawing.Size(69, 15);
       this.label7.TabIndex = 6;
       this.label7.Text = "零件图号：";
       this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -51,7 +51,7 @@
       // comboPartCadNumber
       // 
       this.comboPartCadNumber.FormattingEnabled = true;
-      this.comboPartCadNumber.Location = new System.Drawing.Point(155, 26);
+      this.comboPartCadNumber.Location = new System.Drawing.Point(157, 32);
       this.comboPartCadNumber.Name = "comboPartCadNumber";
       this.comboPartCadNumber.Size = new System.Drawing.Size(163, 21);
       this.comboPartCadNumber.TabIndex = 7;
@@ -59,7 +59,7 @@
       // 
       // btnCancel
       // 
-      this.btnCancel.Location = new System.Drawing.Point(183, 94);
+      this.btnCancel.Location = new System.Drawing.Point(206, 83);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(96, 30);
       this.btnCancel.TabIndex = 5;
@@ -69,7 +69,7 @@
       // 
       // btnOK
       // 
-      this.btnOK.Location = new System.Drawing.Point(66, 94);
+      this.btnOK.Location = new System.Drawing.Point(89, 83);
       this.btnOK.Name = "btnOK";
       this.btnOK.Size = new System.Drawing.Size(87, 30);
       this.btnOK.TabIndex = 4;
@@ -81,7 +81,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(363, 147);
+      this.ClientSize = new System.Drawing.Size(382, 141);
       this.Controls.Add(this.label7);
       this.Controls.Add(this.comboPartCadNumber);
       this.Controls.Add(this.btnCancel);
