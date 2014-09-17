@@ -49,6 +49,12 @@ namespace Core.Service
       i_Part.Dimensions.Sort((i_Dimension, i_Dimension1) => i_Dimension.SerialNumber - i_Dimension1.SerialNumber);
     }
 
+    public void SaveDimesinos(List<Dimension> i_Dimensions)
+    {
+      DbDimension dbDimension = new DbDimension();
+      dbDimension.CommitDimensions(i_Dimensions);
+    }
+
     public string CurrentCadHandle { get; set; }
 
   }

@@ -28,11 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,13 +49,13 @@
       this.panel1 = new System.Windows.Forms.Panel();
       this.btnAddCadFile = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
+      this.btnMachCadHandle = new System.Windows.Forms.Button();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.PlusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.MinusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.IsCanHandleMatched = new System.Windows.Forms.DataGridViewImageColumn();
-      this.btnMachCadHandle = new System.Windows.Forms.Button();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.flowLayoutPanel1.SuspendLayout();
@@ -262,11 +262,21 @@
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
+      // btnMachCadHandle
+      // 
+      this.btnMachCadHandle.Location = new System.Drawing.Point(220, 11);
+      this.btnMachCadHandle.Name = "btnMachCadHandle";
+      this.btnMachCadHandle.Size = new System.Drawing.Size(75, 23);
+      this.btnMachCadHandle.TabIndex = 3;
+      this.btnMachCadHandle.Text = "指定标注";
+      this.btnMachCadHandle.UseVisualStyleBackColor = true;
+      this.btnMachCadHandle.Click += new System.EventHandler(this.btnMachCadHandle_Click);
+      // 
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle36;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -277,8 +287,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle37;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -290,8 +300,8 @@
       // 
       this.NominalColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle38;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
       this.NominalColumn.HeaderText = "理论值";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -301,8 +311,8 @@
       // 
       this.PlusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.PlusTolColumn.DataPropertyName = "PlusTol";
-      dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle39;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle4;
       this.PlusTolColumn.HeaderText = "上公差";
       this.PlusTolColumn.Name = "PlusTolColumn";
       // 
@@ -310,27 +320,18 @@
       // 
       this.MinusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.MinusTolColumn.DataPropertyName = "MinusTol";
-      dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle40;
+      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle5;
       this.MinusTolColumn.HeaderText = "下公差";
       this.MinusTolColumn.Name = "MinusTolColumn";
       // 
       // IsCanHandleMatched
       // 
       this.IsCanHandleMatched.DataPropertyName = "CanHandleStatus";
-      this.IsCanHandleMatched.HeaderText = "Cad模型";
+      this.IsCanHandleMatched.HeaderText = "关联标注";
       this.IsCanHandleMatched.Name = "IsCanHandleMatched";
       this.IsCanHandleMatched.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      // 
-      // btnMachCadHandle
-      // 
-      this.btnMachCadHandle.Location = new System.Drawing.Point(220, 11);
-      this.btnMachCadHandle.Name = "btnMachCadHandle";
-      this.btnMachCadHandle.Size = new System.Drawing.Size(75, 23);
-      this.btnMachCadHandle.TabIndex = 3;
-      this.btnMachCadHandle.Text = "指定标注";
-      this.btnMachCadHandle.UseVisualStyleBackColor = true;
-      this.btnMachCadHandle.Click += new System.EventHandler(this.btnMachCadHandle_Click);
+      this.IsCanHandleMatched.Width = 60;
       // 
       // EditReportControl
       // 
@@ -373,12 +374,12 @@
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.TextBox txtSecondNumber;
+    private System.Windows.Forms.Button btnMachCadHandle;
     private System.Windows.Forms.DataGridViewTextBoxColumn IndexColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn DimensionTypeEditColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn PlusTolColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn MinusTolColumn;
     private System.Windows.Forms.DataGridViewImageColumn IsCanHandleMatched;
-    private System.Windows.Forms.Button btnMachCadHandle;
   }
 }

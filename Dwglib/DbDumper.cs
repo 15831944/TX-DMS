@@ -868,7 +868,7 @@ namespace Dwglib
     {
       writeLine(indent++, pMText.GetRXClass().Name, pMText.Handle);
       writeLine(indent, "Contents", pMText.Contents);
-      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnTextSelected, pMText);
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnDimensionSelected, pMText);
 
       dumpEntityData(pMText, indent);
     }

@@ -56,7 +56,7 @@ namespace ControlReport
     }
     public Bitmap CanHandleStatus
     {
-      get { return string.IsNullOrEmpty(_Dimension.CadHandle) ? Resource.PROCESS_READY : Resource.PROCESS_RIGHT; }
+      get { return string.IsNullOrEmpty(_Dimension.CadHandle) ? Resource.PROCESS_PROCESSING : Resource.PROCESS_RIGHT; }
     }
     /// <summary>
     /// 直径符号

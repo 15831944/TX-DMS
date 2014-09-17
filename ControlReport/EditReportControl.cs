@@ -24,7 +24,7 @@ namespace ControlReport
     public EditReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, OnSelect);
+      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, OnPartSpecified);
       Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
 
       Mediator.Mediator.Instance.Register(Cad.OnDimensionSelected, OnCadElementSelected);
@@ -32,27 +32,25 @@ namespace ControlReport
 
     private void OnCadElementSelected(object i_Obj)
     {
-      var dim = i_Obj as Teigha.DatabaseServices.Dimension;
-      var text = i_Obj as MText;
-      if (dim ==null && text==null)
+      var dim = i_Obj as DBObject;
+      if (dim ==null)
         return;
+      PmsService.Instance.CurrentCadHandle = dim.Handle.ToString().Trim();
+      TryToHightLightRow(PmsService.Instance.CurrentCadHandle);
+    }
 
-      if(dim!=null)
-        PmsService.Instance.CurrentCadHandle = dim.Handle.ToString().Trim();
-      if(text!=null)
-        PmsService.Instance.CurrentCadHandle = text.Handle.ToString().Trim();
-
-
+    private void TryToHightLightRow(string i_Handle)
+    {
       dataGridView1.ClearSelection();
       //Highlight row accordingly
-      if (_DataSource == null) 
+      if (_DataSource == null)
         return;
       int rowNumber = -1;
       bool matched = false;
       foreach (var editDimensionEntityViewModel in _DataSource)
       {
         rowNumber++;
-        if (editDimensionEntityViewModel.GetDimension().CadHandle == dim.Handle.ToString().Trim())
+        if (editDimensionEntityViewModel.GetDimension().CadHandle == i_Handle.Trim())
         {
           matched = true;
           break;
@@ -66,14 +64,13 @@ namespace ControlReport
     {
       _Part = new Part();
     }
-    private void OnSelect(object i_O)
+    private void OnPartSpecified(object i_O)
     {
       var template = i_O as Part;
       if (template == null)
         return;
 
       _Part = template;
-
 
       _DataSource = new List<EditDimensionEntityViewModel>();
       PmsService.Instance.GetDimensionsByPart(template);
@@ -95,7 +92,18 @@ namespace ControlReport
 
     private void btnSave_Click(object sender, EventArgs e)
     {
+      PmsService.Instance.SaveDimesinos(ConstructDimensions());
+    }
 
+    private List<Core.Model.Dimension> ConstructDimensions()
+    {
+      var result = new List<Core.Model.Dimension>();
+      if (_DataSource == null) return result;
+      foreach (var editDimensionEntityViewModel in _DataSource)
+      {
+        result.Add(editDimensionEntityViewModel.GetDimension());
+      }
+      return result;
     }
 
     private void btnMachCadHandle_Click(object sender, EventArgs e)
@@ -112,7 +120,6 @@ namespace ControlReport
     {
       _SeletedDimension = _Part.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
-
     }
   }
 }
