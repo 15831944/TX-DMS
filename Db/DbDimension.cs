@@ -76,6 +76,18 @@ namespace Db
       }
     }
 
+    public void CommitDimension(Dimension i_Dimension)
+    {
+      DbHelper db = new DbHelper();
+        var updateCmd = db.GetSqlStringCommond(
+          string.Format(
+            "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}' where Id = {1}",
+            TableName, i_Dimension.Id, i_Dimension.SerialNumber, i_Dimension.PreFix, (int)i_Dimension.Symbol, i_Dimension.Nominal,
+            i_Dimension.MinusTol, i_Dimension.PlusTol, float.IsNaN(i_Dimension.Measured) ? "null" : i_Dimension.Measured.ToString("0.00"),
+            i_Dimension.Dimensiontype, i_Dimension.CadHandle));
+        db.ExecuteNonQuery(updateCmd);
+    }
+
     private Dimension PopulateADimension(DbDataReader i_Reader)
     {
 

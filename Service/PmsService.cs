@@ -57,5 +57,10 @@ namespace Core.Service
 
     public string CurrentCadHandle { get; set; }
 
+    public void SaveDimesino(Dimension i_GetDimension)
+    {
+          DbDimension dbDimension = new DbDimension();
+          dbDimension.CommitDimension(i_GetDimension);
+    }
   }
 }

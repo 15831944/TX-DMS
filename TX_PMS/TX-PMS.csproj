@@ -222,10 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pms.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Pms_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Pms.mdf</DependentUpon>
     </Content>
   </ItemGroup>
