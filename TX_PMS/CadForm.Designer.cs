@@ -95,12 +95,12 @@ namespace TxPms
       // openFileDialog
       // 
       this.openFileDialog.DefaultExt = "DWG";
-      this.openFileDialog.Filter = "DWG files|*.dwg|DXF files|*.dxf";
+      this.openFileDialog.Filter = "DWG files|*.dwg";
       // 
       // saveAsFileDialog
       // 
       this.saveAsFileDialog.DefaultExt = "DWG";
-      this.saveAsFileDialog.Filter = "\"DWG files|*.dwg|DXF files|*.dxf\"";
+      this.saveAsFileDialog.Filter = "\"DWG files|*.dwg\"";
       // 
       // splitContainer1
       // 

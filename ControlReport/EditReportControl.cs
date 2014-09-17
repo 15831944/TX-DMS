@@ -92,7 +92,9 @@ namespace ControlReport
 
     private void btnSave_Click(object sender, EventArgs e)
     {
+      Mediator.Mediator.Instance.NotifyColleagues(UI.SavePartTemplate,_Part);
       PmsService.Instance.SaveDimesinos(ConstructDimensions());
+
     }
 
     private List<Core.Model.Dimension> ConstructDimensions()

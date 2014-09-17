@@ -219,6 +219,10 @@
       <Project>{7D85BEB0-887E-4BFE-BF21-F8205A6B8018}</Project>
       <Name>MockMeasureToolControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{966EB737-C1DD-4D4F-8063-2F6C92A4E212}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pms.mdf">

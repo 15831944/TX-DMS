@@ -62,5 +62,11 @@ namespace Core.Service
           DbDimension dbDimension = new DbDimension();
           dbDimension.CommitDimension(i_GetDimension);
     }
+
+    public void SavePart(Part i_Part)
+    {
+      DbPart dbPart = new DbPart();
+      dbPart.CommitPart(i_Part);
+    }
   }
 }

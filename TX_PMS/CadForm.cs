@@ -125,70 +125,61 @@ namespace TxPms
     {
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {
-        if (lm != null)
+        OpenDwgFile(openFileDialog.FileName);
+      }
+    }
+
+    private void OpenDwgFile(string i_Path)
+    {
+      if (lm != null)
+      {
+        lm.LayoutSwitched -= reinitGraphDevice;
+        HostApplicationServices.WorkingDatabase = null;
+        lm = null;
+      }
+
+      bool bLoaded = true;
+      database = new Database(false, false);
+      try
+      {
+        database.ReadDwgFile(i_Path, FileOpenMode.OpenForReadAndAllShare, false, "");
+      }
+      catch (System.Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+        bLoaded = false;
+      }
+
+
+      if (bLoaded)
+      {
+        HostApplicationServices.WorkingDatabase = database;
+        lm = LayoutManager.Current;
+        lm.LayoutSwitched += reinitGraphDevice;
+        String str = HostApplicationServices.Current.FontMapFileName;
+
+        //menuStrip.
+        FitToWindowToolStripMenuItem.Enabled = true;
+        CadLayoutModeToolStripMenuItem.Enabled = true;
+        panel1.Enabled = true;
+        Text = String.Format("外协件检验系统 - [{0}]", openFileDialog.SafeFileName);
+
+        initializeGraphics();
+        Invalidate();
+        zoom_extents_handler(null, null);
+
+
+        CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
+        using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
         {
-          lm.LayoutSwitched -= reinitGraphDevice;
-          HostApplicationServices.WorkingDatabase = null;
-          lm = null;
-        }
-
-        bool bLoaded = true;
-        database = new Database(false, false);
-        if (openFileDialog.FilterIndex == 1)
-        {
-          try
+          foreach (DBDictionaryEntry dicEntry in layoutDict)
           {
-            database.ReadDwgFile(openFileDialog.FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
-          }
-          catch (System.Exception ex)
-          {
-            MessageBox.Show(ex.Message);
-            bLoaded = false;
-          }
-        }
-        else if (openFileDialog.FilterIndex == 2)
-        {
-          try
-          {
-            database.DxfIn(openFileDialog.FileName, "");
-          }
-          catch (System.Exception ex)
-          {
-            MessageBox.Show(ex.Message);
-            bLoaded = false;
-          }
-        }
-
-        if (bLoaded)
-        {
-          HostApplicationServices.WorkingDatabase = database;
-          lm = LayoutManager.Current;
-          lm.LayoutSwitched += reinitGraphDevice;
-          String str = HostApplicationServices.Current.FontMapFileName;
-
-          //menuStrip.
-          FitToWindowToolStripMenuItem.Enabled = true;
-          CadLayoutModeToolStripMenuItem.Enabled = true;
-          panel1.Enabled = true;
-          Text = String.Format("外协件检验系统 - [{0}]", openFileDialog.SafeFileName);
-
-          initializeGraphics();
-          Invalidate();
-          zoom_extents_handler(null, null);
-
-
-          CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
-          using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
-          {
-            foreach (DBDictionaryEntry dicEntry in layoutDict)
-            {
-              var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
-              CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-                {
-                  layout1
-                });
-              layout1.Click += layout1_Click;
-            }
+            var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
+            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+              {
+                layout1
+              });
+            layout1.Click += layout1_Click;
           }
         }
       }

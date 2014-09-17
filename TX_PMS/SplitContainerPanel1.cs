@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 using ControlReport;
+using Core.Model;
+using Core.Service;
 using Mediator;
+using Teigha.DatabaseServices;
 
 namespace TxPms
 {
@@ -18,9 +23,35 @@ namespace TxPms
         {
           editReportToolStripMenuItem.Enabled = true;
           ShowExecuteControl(null);
+          var part = i_O as Part;
+          if (part == null)
+            return;
+          if (string.IsNullOrEmpty(part.CadFile)) return;
+
+          var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath,part.CadFile);
+          if (!File.Exists(filePath)) return;
+          OpenDwgFile(filePath);
         });
       Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
       Mediator.Mediator.Instance.Register(UI.OpenCadFile, file_open_handler);
+      Mediator.Mediator.Instance.Register(UI.SavePartTemplate, OnSavePart);
+    }
+
+    private void OnSavePart(object i_Obj)
+    {
+      var part = i_Obj as Part;
+      if (part == null)
+        return;
+      var destinyDir = string.Format(@"{0}\CADResources", Application.StartupPath);
+      if (!Directory.Exists(destinyDir))
+        Directory.CreateDirectory(destinyDir);
+      if (database != null)
+      {
+        var path = string.Format(@"{0}\{1}.dwg", destinyDir, part.CadNumber);
+        database.SaveAs(path, DwgVersion.Current);
+        part.CadFile = part.CadNumber+".dwg";
+        PmsService.Instance.SavePart(part);
+      }
     }
 
     private void OnEdit(object i_Obj)

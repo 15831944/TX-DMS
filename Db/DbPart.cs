@@ -6,33 +6,60 @@ using Db.db;
 
 namespace Db
 {
-    public class DbPart
+  public class DbPart
+  {
+    private const string Columns = "Id, Name, CadNumber, CadK3Number, CAdFilePath";
+    private const string TableName = "Part";
+    public List<Part> GetParts()
     {
-        public List<Part> GetParts()
-        {
-            var result = new List<Part>();
-            DbHelper db = new DbHelper();
-            var selCmd = db.GetSqlStringCommond("Select * from Part");
-            var reader = db.ExecuteReader(selCmd);
-            while (reader.Read())
-            {
-              result.Add(new Part() { Id = reader.GetInt32(0), Name = reader.GetString(1), CadNumber = reader.GetString(2) });
-            }
-            selCmd.Connection.Close();
-            return result;
-        }
-        public List<Part> GetPartsByCadNumber(string i_CadNumber)
-        {
-            var result = new List<Part>();
-            DbHelper db = new DbHelper();
-            var selCmd = db.GetSqlStringCommond(string.Format("Select * from Part where CadNumber={0}", i_CadNumber));
-            var reader = db.ExecuteReader(selCmd);
-            while (reader.Read())
-            {
-              result.Add(new Part() { Name = reader.GetString(1), CadNumber = reader.GetString(2), SecondNumber = reader.GetString(3)});
-            }
-            selCmd.Connection.Close();
-            return result;
-        }
+      var result = new List<Part>();
+      DbHelper db = new DbHelper();
+      var selCmd = db.GetSqlStringCommond(string.Format("Select {0} from Part", Columns));
+      var reader = db.ExecuteReader(selCmd);
+      while (reader.Read())
+      {
+        result.Add(new Part()
+          {
+            Id = reader.GetInt32(0),
+            Name = reader.IsDBNull(1) ? "" : reader.GetString(1),
+            CadNumber = reader.IsDBNull(2) ? "" : reader.GetString(2),
+            SecondNumber = reader.IsDBNull(3) ? "" : reader.GetString(3),
+            CadFile = reader.IsDBNull(4) ? "" : reader.GetString(4),
+          });
+      }
+      selCmd.Connection.Close();
+      return result;
     }
+
+    public List<Part> GetPartsByCadNumber(string i_CadNumber)
+    {
+      var result = new List<Part>();
+      DbHelper db = new DbHelper();
+      var selCmd =
+        db.GetSqlStringCommond(string.Format("Select {1} from Part where CadNumber={0}", i_CadNumber, Columns));
+      var reader = db.ExecuteReader(selCmd);
+      while (reader.Read())
+      {
+        result.Add(new Part()
+          {
+            Name = reader.IsDBNull(1)?"": reader.GetString(1),
+            CadNumber = reader.IsDBNull(2) ? "" : reader.GetString(2),
+            SecondNumber = reader.IsDBNull(3) ? "" : reader.GetString(3),
+            CadFile = reader.IsDBNull(4) ? "" : reader.GetString(4),
+          });
+      }
+      selCmd.Connection.Close();
+      return result;
+    }
+
+    public void CommitPart(Part i_Part)
+    {
+      DbHelper db = new DbHelper();
+      var updateCmd =
+        db.GetSqlStringCommond(
+          string.Format("update {0} set Name='{1}', CadNumber='{2}', CadK3Number='{3}', CAdFilePath='{4}'",
+                        TableName, i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFile));
+      db.ExecuteNonQuery(updateCmd);
+    }
+  }
 }
