@@ -56,6 +56,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TD_Mgd_3.03_9">
+      <HintPath>..\References\TD_Mgd_3.03_9.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EditPartTemplateViewModel.cs" />

@@ -23,33 +23,6 @@ namespace Core.Service
     public Part CurrentTemplate { get; set; }
 
     private static List<Part> _partTemplates;
-    private static List<Dimension> _dimensionEntities;
-
-    static PmsService()
-    {
-      // CreateMockData();
-    }
-
-    private static void CreateMockData()
-    {
-      _dimensionEntities = new List<Dimension>();
-      _partTemplates = new List<Part>();
-
-      var partCadNumber = "NML1/2B.02.01-1";
-      var name = "前外壳";
-      var part = new Part();
-      part.CadNumber = partCadNumber;
-      part.Name = name;
-
-      var index = 1;
-      var dimensionType = DimensionType.GetDimension(0);
-
-
-
-    }
-
-
-
 
 
     public void CreatePart(Part i_Part)
@@ -76,6 +49,7 @@ namespace Core.Service
       i_Part.Dimensions.Sort((i_Dimension, i_Dimension1) => i_Dimension.SerialNumber - i_Dimension1.SerialNumber);
     }
 
+    public string CurrentCadHandle { get; set; }
 
   }
 }

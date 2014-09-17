@@ -1,4 +1,6 @@
-﻿using Core.Model;
+﻿using System.Drawing;
+using Core.Model;
+using Core.Service;
 
 namespace ControlReport
 {
@@ -34,6 +36,10 @@ namespace ControlReport
   class EditDimensionEntityViewModel
   {
     private readonly Dimension _Dimension;
+    public Dimension GetDimension()
+    {
+      return _Dimension;
+    }
     public EditDimensionEntityViewModel(Dimension i_Dimension)
     {
       _Dimension = i_Dimension;
@@ -48,7 +54,10 @@ namespace ControlReport
       get { return _Dimension.Dimensiontype;  }
       set { _Dimension.Dimensiontype = value; }
     }
-
+    public Bitmap CanHandleStatus
+    {
+      get { return string.IsNullOrEmpty(_Dimension.CadHandle) ? Resource.PROCESS_READY : Resource.PROCESS_RIGHT; }
+    }
     /// <summary>
     /// 直径符号
     /// </summary>
