@@ -26,9 +26,9 @@ namespace TxPms
           var part = i_O as Part;
           if (part == null)
             return;
-          if (string.IsNullOrEmpty(part.CadFile)) return;
+          if (string.IsNullOrEmpty(part.CadFilename)) return;
 
-          var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath,part.CadFile);
+          var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath,part.CadFilename);
           if (!File.Exists(filePath)) return;
           OpenDwgFile(filePath);
         });
@@ -49,7 +49,7 @@ namespace TxPms
       {
         var path = string.Format(@"{0}\{1}.dwg", destinyDir, part.CadNumber);
         database.SaveAs(path, DwgVersion.Current);
-        part.CadFile = part.CadNumber+".dwg";
+        part.CadFilename = part.CadNumber+".dwg";
         PmsService.Instance.SavePart(part);
       }
     }

@@ -8,7 +8,7 @@ namespace Db
 {
   public class DbPart
   {
-    private const string Columns = "Id, Name, CadNumber, CadK3Number, CAdFilePath";
+    private const string Columns = "Id, Name, CadNumber, CadK3Number, CAdFileName";
     private const string TableName = "Part";
     public List<Part> GetParts()
     {
@@ -24,7 +24,7 @@ namespace Db
             Name = reader.IsDBNull(1) ? "" : reader.GetString(1),
             CadNumber = reader.IsDBNull(2) ? "" : reader.GetString(2),
             SecondNumber = reader.IsDBNull(3) ? "" : reader.GetString(3),
-            CadFile = reader.IsDBNull(4) ? "" : reader.GetString(4),
+            CadFilename = reader.IsDBNull(4) ? "" : reader.GetString(4),
           });
       }
       selCmd.Connection.Close();
@@ -45,7 +45,7 @@ namespace Db
             Name = reader.IsDBNull(1)?"": reader.GetString(1),
             CadNumber = reader.IsDBNull(2) ? "" : reader.GetString(2),
             SecondNumber = reader.IsDBNull(3) ? "" : reader.GetString(3),
-            CadFile = reader.IsDBNull(4) ? "" : reader.GetString(4),
+            CadFilename = reader.IsDBNull(4) ? "" : reader.GetString(4),
           });
       }
       selCmd.Connection.Close();
@@ -57,8 +57,8 @@ namespace Db
       DbHelper db = new DbHelper();
       var updateCmd =
         db.GetSqlStringCommond(
-          string.Format("update {0} set Name='{1}', CadNumber='{2}', CadK3Number='{3}', CAdFilePath='{4}'",
-                        TableName, i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFile));
+          string.Format("update {0} set Name='{1}', CadNumber='{2}', CadK3Number='{3}', CAdFileName='{4}' where ID ={5}",
+                        TableName, i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFilename, i_Part.Id));
       db.ExecuteNonQuery(updateCmd);
     }
   }

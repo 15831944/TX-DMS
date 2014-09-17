@@ -10,7 +10,7 @@ namespace Core.Model
     public string SecondNumber { get; set; }
     public int TotalCount { get; set; }
     public int SampleCount { get; set; }
-    public string CadFile { get; set; }
+    public string CadFilename { get; set; }
     public List<Dimension> Dimensions { get; set; }
   }
 }
