@@ -17,12 +17,11 @@
     public float PlusTol { get; set; }
     public float MinusTol { get; set; }
     public float Measured { get; set; }
-    public Dimension()
-    {
-    }
+    public string CadHandle { get; set; }
+
     public override string ToString()
     {
-      return string.Format("{0}{1}{2} {3}-{4}", PreFix, Symbol, Nominal, PlusTol, MinusTol);
+      return string.Format("{0}{1}{2} {3}-{4}", PreFix, Symbol, Nominal, MinusTol, PlusTol);
     }
   }
 

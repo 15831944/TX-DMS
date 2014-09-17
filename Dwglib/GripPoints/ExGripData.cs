@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// Copyright © 2009-2010, Open Design Alliance (the "Alliance") 
+// Copyright ?2009-2010, Open Design Alliance (the "Alliance") 
 // 
 // This software is owned by the Alliance, and may only be incorporated into 
 // application programs owned by members of the Alliance subject to a signed 
@@ -10,12 +10,12 @@
 // programs incorporating this software must include the following statement 
 // with their copyright notices:
 //
-// Teigha™.NET for .dwg files 2009-2010 by Open Design Alliance. All rights reserved.
+// Teigha?NET for .dwg files 2009-2010 by Open Design Alliance. All rights reserved.
 //
 // By use of this software, you acknowledge and accept these terms.
 //
 //
-// *DWG is the native and proprietary file format for AutoCAD® and a trademark 
+// *DWG is the native and proprietary file format for AutoCAD?and a trademark 
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -36,7 +36,7 @@ namespace Dwglib.GripPoints
     GripData m_pData;
     FullSubentityPath m_entPath;
     ExGripManager m_pOwner;
-    
+
     public ExGripData()
     {
       m_status = GripData.DrawType.WarmGrip;
@@ -45,10 +45,9 @@ namespace Dwglib.GripPoints
       m_point = Point3d.Origin;
       m_entPath = new FullSubentityPath();
       m_pOwner = null;
-      m_pData = null;
     }
 
-        
+
     public ExGripData(ObjectId id, GripData pData, Point3d pt, ExGripManager pOwner)
     {
       m_status = GripData.DrawType.WarmGrip;
@@ -97,7 +96,7 @@ namespace Dwglib.GripPoints
       return entPath();
     }
 
-    bool computeDragPoint( ref Point3d ptOverride )
+    bool computeDragPoint(ref Point3d ptOverride)
     {
       ptOverride = new Point3d(Point.X, Point.Y, Point.Z);
       if (null != Data)
@@ -180,7 +179,7 @@ namespace Dwglib.GripPoints
     }
 
     public GripData.DrawType Status
-    { 
+    {
       get { return m_status; }
       set { m_status = value; }
     }
@@ -204,8 +203,11 @@ namespace Dwglib.GripPoints
     }
     public ObjectId entityId
     {
-      get { ObjectId[] idArr = m_entPath.GetObjectIds();
-            return idArr[idArr.Length - 1];    }
+      get
+      {
+        ObjectId[] idArr = m_entPath.GetObjectIds();
+        return idArr[idArr.Length - 1];
+      }
     }
 
     public FullSubentityPath SubentPath

@@ -28,24 +28,30 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-      this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-      this.label7 = new System.Windows.Forms.Label();
-      this.txtPartNumber = new System.Windows.Forms.TextBox();
-      this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-      this.label6 = new System.Windows.Forms.Label();
-      this.txtSampleNumber = new System.Windows.Forms.TextBox();
+      this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label2 = new System.Windows.Forms.Label();
+      this.txtSecondNumber = new System.Windows.Forms.TextBox();
       this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
       this.label4 = new System.Windows.Forms.Label();
       this.txtPartName = new System.Windows.Forms.TextBox();
       this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
       this.label5 = new System.Windows.Forms.Label();
       this.txtTotolNumber = new System.Windows.Forms.TextBox();
+      this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label7 = new System.Windows.Forms.Label();
+      this.txtPartNumber = new System.Windows.Forms.TextBox();
+      this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label6 = new System.Windows.Forms.Label();
+      this.txtSampleNumber = new System.Windows.Forms.TextBox();
+      this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+      this.label3 = new System.Windows.Forms.Label();
+      this.txtManufacturer = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,23 +62,17 @@
       this.panel1 = new System.Windows.Forms.Panel();
       this.btnCreateReport = new System.Windows.Forms.Button();
       this.btnReMeasureing = new System.Windows.Forms.Button();
-      this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-      this.label3 = new System.Windows.Forms.Label();
-      this.txtManufacturer = new System.Windows.Forms.TextBox();
-      this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-      this.label2 = new System.Windows.Forms.Label();
-      this.txtSecondNumber = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
-      this.flowLayoutPanel6.SuspendLayout();
-      this.flowLayoutPanel5.SuspendLayout();
+      this.flowLayoutPanel2.SuspendLayout();
       this.flowLayoutPanel3.SuspendLayout();
       this.flowLayoutPanel4.SuspendLayout();
+      this.flowLayoutPanel6.SuspendLayout();
+      this.flowLayoutPanel5.SuspendLayout();
+      this.flowLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.panel1.SuspendLayout();
-      this.flowLayoutPanel1.SuspendLayout();
-      this.flowLayoutPanel2.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -126,75 +126,46 @@
       this.tableLayoutPanel2.Size = new System.Drawing.Size(580, 90);
       this.tableLayoutPanel2.TabIndex = 3;
       // 
-      // flowLayoutPanel6
+      // flowLayoutPanel2
       // 
-      this.flowLayoutPanel6.Controls.Add(this.label7);
-      this.flowLayoutPanel6.Controls.Add(this.txtPartNumber);
-      this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-      this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-      this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-      this.flowLayoutPanel6.Size = new System.Drawing.Size(290, 29);
-      this.flowLayoutPanel6.TabIndex = 7;
+      this.flowLayoutPanel2.Controls.Add(this.label2);
+      this.flowLayoutPanel2.Controls.Add(this.txtSecondNumber);
+      this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel2.Location = new System.Drawing.Point(290, 0);
+      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+      this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+      this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel2.TabIndex = 10;
       // 
-      // label7
+      // label2
       // 
-      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                   | System.Windows.Forms.AnchorStyles.Left)));
-      this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(3, 0);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(65, 27);
-      this.label7.TabIndex = 0;
-      this.label7.Text = "零件图号：";
-      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(3, 0);
+      this.label2.Margin = new System.Windows.Forms.Padding(3, 0, 36, 0);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(65, 12);
+      this.label2.TabIndex = 0;
+      this.label2.Text = "零件版本：";
+      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // txtPartNumber
+      // txtSecondNumber
       // 
-      this.txtPartNumber.Location = new System.Drawing.Point(74, 3);
-      this.txtPartNumber.Name = "txtPartNumber";
-      this.txtPartNumber.Size = new System.Drawing.Size(189, 21);
-      this.txtPartNumber.TabIndex = 1;
-      // 
-      // flowLayoutPanel5
-      // 
-      this.flowLayoutPanel5.Controls.Add(this.label6);
-      this.flowLayoutPanel5.Controls.Add(this.txtSampleNumber);
-      this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel5.Location = new System.Drawing.Point(290, 58);
-      this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-      this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-      this.flowLayoutPanel5.Size = new System.Drawing.Size(290, 32);
-      this.flowLayoutPanel5.TabIndex = 6;
-      // 
-      // label6
-      // 
-      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(3, 0);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(101, 12);
-      this.label6.TabIndex = 0;
-      this.label6.Text = "抽样数量（只）：";
-      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // txtSampleNumber
-      // 
-      this.txtSampleNumber.Location = new System.Drawing.Point(3, 15);
-      this.txtSampleNumber.Name = "txtSampleNumber";
-      this.txtSampleNumber.Size = new System.Drawing.Size(189, 21);
-      this.txtSampleNumber.TabIndex = 1;
+      this.txtSecondNumber.Location = new System.Drawing.Point(3, 15);
+      this.txtSecondNumber.Name = "txtSecondNumber";
+      this.txtSecondNumber.Size = new System.Drawing.Size(189, 21);
+      this.txtSecondNumber.TabIndex = 1;
       // 
       // flowLayoutPanel3
       // 
       this.flowLayoutPanel3.Controls.Add(this.label4);
       this.flowLayoutPanel3.Controls.Add(this.txtPartName);
       this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 29);
+      this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 30);
       this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-      this.flowLayoutPanel3.Size = new System.Drawing.Size(290, 29);
+      this.flowLayoutPanel3.Size = new System.Drawing.Size(290, 30);
       this.flowLayoutPanel3.TabIndex = 4;
       // 
       // label4
@@ -221,10 +192,10 @@
       this.flowLayoutPanel4.Controls.Add(this.label5);
       this.flowLayoutPanel4.Controls.Add(this.txtTotolNumber);
       this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel4.Location = new System.Drawing.Point(290, 29);
+      this.flowLayoutPanel4.Location = new System.Drawing.Point(290, 30);
       this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-      this.flowLayoutPanel4.Size = new System.Drawing.Size(290, 29);
+      this.flowLayoutPanel4.Size = new System.Drawing.Size(290, 30);
       this.flowLayoutPanel4.TabIndex = 5;
       // 
       // label5
@@ -245,6 +216,96 @@
       this.txtTotolNumber.Name = "txtTotolNumber";
       this.txtTotolNumber.Size = new System.Drawing.Size(189, 21);
       this.txtTotolNumber.TabIndex = 1;
+      // 
+      // flowLayoutPanel6
+      // 
+      this.flowLayoutPanel6.Controls.Add(this.label7);
+      this.flowLayoutPanel6.Controls.Add(this.txtPartNumber);
+      this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+      this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+      this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+      this.flowLayoutPanel6.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel6.TabIndex = 7;
+      // 
+      // label7
+      // 
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label7.AutoSize = true;
+      this.label7.Location = new System.Drawing.Point(3, 0);
+      this.label7.Name = "label7";
+      this.label7.Size = new System.Drawing.Size(65, 27);
+      this.label7.TabIndex = 0;
+      this.label7.Text = "零件图号：";
+      this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtPartNumber
+      // 
+      this.txtPartNumber.Location = new System.Drawing.Point(74, 3);
+      this.txtPartNumber.Name = "txtPartNumber";
+      this.txtPartNumber.Size = new System.Drawing.Size(189, 21);
+      this.txtPartNumber.TabIndex = 1;
+      // 
+      // flowLayoutPanel5
+      // 
+      this.flowLayoutPanel5.Controls.Add(this.label6);
+      this.flowLayoutPanel5.Controls.Add(this.txtSampleNumber);
+      this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel5.Location = new System.Drawing.Point(290, 60);
+      this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+      this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+      this.flowLayoutPanel5.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel5.TabIndex = 6;
+      // 
+      // label6
+      // 
+      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label6.AutoSize = true;
+      this.label6.Location = new System.Drawing.Point(3, 0);
+      this.label6.Name = "label6";
+      this.label6.Size = new System.Drawing.Size(101, 12);
+      this.label6.TabIndex = 0;
+      this.label6.Text = "抽样数量（只）：";
+      this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtSampleNumber
+      // 
+      this.txtSampleNumber.Location = new System.Drawing.Point(3, 15);
+      this.txtSampleNumber.Name = "txtSampleNumber";
+      this.txtSampleNumber.Size = new System.Drawing.Size(189, 21);
+      this.txtSampleNumber.TabIndex = 1;
+      // 
+      // flowLayoutPanel1
+      // 
+      this.flowLayoutPanel1.Controls.Add(this.label3);
+      this.flowLayoutPanel1.Controls.Add(this.txtManufacturer);
+      this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 60);
+      this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+      this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel1.TabIndex = 9;
+      // 
+      // label3
+      // 
+      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(3, 0);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(65, 27);
+      this.label3.TabIndex = 2;
+      this.label3.Text = "外协单位：";
+      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtManufacturer
+      // 
+      this.txtManufacturer.Location = new System.Drawing.Point(74, 3);
+      this.txtManufacturer.Name = "txtManufacturer";
+      this.txtManufacturer.Size = new System.Drawing.Size(189, 21);
+      this.txtManufacturer.TabIndex = 3;
       // 
       // tableLayoutPanel3
       // 
@@ -288,8 +349,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle13;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -300,8 +361,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle14;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -312,8 +373,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle15;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -364,66 +425,6 @@
       this.btnReMeasureing.UseVisualStyleBackColor = true;
       this.btnReMeasureing.Click += new System.EventHandler(this.btnReMeasureing_Click);
       // 
-      // flowLayoutPanel1
-      // 
-      this.flowLayoutPanel1.Controls.Add(this.label3);
-      this.flowLayoutPanel1.Controls.Add(this.txtManufacturer);
-      this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 58);
-      this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-      this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-      this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 32);
-      this.flowLayoutPanel1.TabIndex = 9;
-      // 
-      // label3
-      // 
-      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(3, 0);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(65, 27);
-      this.label3.TabIndex = 2;
-      this.label3.Text = "外协单位：";
-      this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // txtManufacturer
-      // 
-      this.txtManufacturer.Location = new System.Drawing.Point(74, 3);
-      this.txtManufacturer.Name = "txtManufacturer";
-      this.txtManufacturer.Size = new System.Drawing.Size(189, 21);
-      this.txtManufacturer.TabIndex = 3;
-      // 
-      // flowLayoutPanel2
-      // 
-      this.flowLayoutPanel2.Controls.Add(this.label2);
-      this.flowLayoutPanel2.Controls.Add(this.txtSecondNumber);
-      this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel2.Location = new System.Drawing.Point(290, 0);
-      this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-      this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-      this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 29);
-      this.flowLayoutPanel2.TabIndex = 10;
-      // 
-      // label2
-      // 
-      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(3, 0);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(65, 27);
-      this.label2.TabIndex = 0;
-      this.label2.Text = "零件版本：";
-      this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // txtSecondNumber
-      // 
-      this.txtSecondNumber.Location = new System.Drawing.Point(74, 3);
-      this.txtSecondNumber.Name = "txtSecondNumber";
-      this.txtSecondNumber.Size = new System.Drawing.Size(189, 21);
-      this.txtSecondNumber.TabIndex = 1;
-      // 
       // ExecuteReportControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -435,21 +436,21 @@
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);
-      this.flowLayoutPanel6.ResumeLayout(false);
-      this.flowLayoutPanel6.PerformLayout();
-      this.flowLayoutPanel5.ResumeLayout(false);
-      this.flowLayoutPanel5.PerformLayout();
+      this.flowLayoutPanel2.ResumeLayout(false);
+      this.flowLayoutPanel2.PerformLayout();
       this.flowLayoutPanel3.ResumeLayout(false);
       this.flowLayoutPanel3.PerformLayout();
       this.flowLayoutPanel4.ResumeLayout(false);
       this.flowLayoutPanel4.PerformLayout();
+      this.flowLayoutPanel6.ResumeLayout(false);
+      this.flowLayoutPanel6.PerformLayout();
+      this.flowLayoutPanel5.ResumeLayout(false);
+      this.flowLayoutPanel5.PerformLayout();
+      this.flowLayoutPanel1.ResumeLayout(false);
+      this.flowLayoutPanel1.PerformLayout();
       this.tableLayoutPanel3.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.panel1.ResumeLayout(false);
-      this.flowLayoutPanel1.ResumeLayout(false);
-      this.flowLayoutPanel1.PerformLayout();
-      this.flowLayoutPanel2.ResumeLayout(false);
-      this.flowLayoutPanel2.PerformLayout();
       this.ResumeLayout(false);
 
     }

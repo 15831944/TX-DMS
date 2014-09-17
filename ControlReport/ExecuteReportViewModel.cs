@@ -50,7 +50,7 @@ namespace ControlReport
         }
         else
         {
-          if (_Dimension.Measured >= _Dimension.Nominal - _Dimension.MinusTol && _Dimension.Measured <= _Dimension.Nominal + _Dimension.PlusTol)
+          if (_Dimension.Measured >= _Dimension.Nominal + _Dimension.MinusTol && _Dimension.Measured <= _Dimension.Nominal + _Dimension.PlusTol)
           {
             return Resource.PROCESS_RIGHT;
           }
