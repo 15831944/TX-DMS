@@ -13,7 +13,7 @@ namespace Db
 
     private const string SelectColums =
       "Id, SerialNumber, Prefix, Symbol, Norminal, MinusTol, PlusTol, Measured, Type, PartID, MeasurementReportID, CadHandle";
-
+    private const string InsertColumns = "SerialNumber, Prefix, Symbol, Norminal, MinusTol, PlusTol, Measured, Type, PartID, MeasurementReportID, CadHandle";
     private const string TableName = "Dimenstion";
     public List<Dimension> GetDimensions()
     {
@@ -76,16 +76,43 @@ namespace Db
       }
     }
 
-    public void CommitDimension(Dimension i_Dimension)
+    public int DeleteDimension(Dimension i_Dimension)
     {
       DbHelper db = new DbHelper();
-        var updateCmd = db.GetSqlStringCommond(
-          string.Format(
-            "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}' where Id = {1}",
-            TableName, i_Dimension.Id, i_Dimension.SerialNumber, i_Dimension.PreFix, (int)i_Dimension.Symbol, i_Dimension.Nominal,
-            i_Dimension.MinusTol, i_Dimension.PlusTol, float.IsNaN(i_Dimension.Measured) ? "null" : i_Dimension.Measured.ToString("0.00"),
-            i_Dimension.Dimensiontype, i_Dimension.CadHandle));
-        db.ExecuteNonQuery(updateCmd);
+      var updateCmd = db.GetSqlStringCommond(
+        string.Format("delete from {0}  where Id = {1}", TableName, i_Dimension.Id));
+      return db.ExecuteNonQuery(updateCmd);
+    }
+
+    public int UpdateDimension(Dimension i_Dimension)
+    {
+      DbHelper db = new DbHelper();
+      var updateCmd = db.GetSqlStringCommond(
+        string.Format(
+          "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}' where Id = {1}",
+          TableName, i_Dimension.Id, i_Dimension.SerialNumber, i_Dimension.PreFix, (int)i_Dimension.Symbol, i_Dimension.Nominal,
+          i_Dimension.MinusTol, i_Dimension.PlusTol, float.IsNaN(i_Dimension.Measured) ? "null" : i_Dimension.Measured.ToString("0.00"),
+          i_Dimension.Dimensiontype, i_Dimension.CadHandle));
+       return db.ExecuteNonQuery(updateCmd);
+    }
+    public void InsertDimension(Dimension i_Dimension)
+    {
+      DbHelper db = new DbHelper();
+      var updateCmd = db.GetSqlStringCommond(
+        string.Format(
+          "insert into {0} ({1}) values({2},'{3}',{4},{5},{6},{7},{8},'{9}',{10},{11},'{12}')",
+          TableName, InsertColumns, i_Dimension.SerialNumber, i_Dimension.PreFix, (int)i_Dimension.Symbol, i_Dimension.Nominal,
+          i_Dimension.MinusTol, i_Dimension.PlusTol, float.IsNaN(i_Dimension.Measured) ? "null" : i_Dimension.Measured.ToString("0.00"),
+          i_Dimension.Dimensiontype, i_Dimension.Part.Id, i_Dimension.PartReport.Id, i_Dimension.CadHandle));
+      db.ExecuteNonQuery(updateCmd);
+      var selectCmd = db.GetSqlStringCommond(string.Format("select MAX(ID) from {0}", TableName));
+      selectCmd.Connection.Open();
+      var reader = selectCmd.ExecuteReader();
+      if (reader.Read())
+      {
+        i_Dimension.Id = reader.GetInt32(0);
+      }
+      selectCmd.Connection.Close();
     }
 
     private Dimension PopulateADimension(DbDataReader i_Reader)
@@ -100,6 +127,8 @@ namespace Db
       var plusTol = i_Reader.GetDouble(6);
       var measured = i_Reader.IsDBNull(7) ? float.NaN : i_Reader.GetDouble(7);
       var dimensiontype = i_Reader.IsDBNull(8) ? "" : i_Reader.GetString(8).Trim();
+      var partID = i_Reader.IsDBNull(9) ? -1 : (char)i_Reader.GetInt32(9);
+      var reportID = i_Reader.IsDBNull(10) ? -1 : (char)i_Reader.GetInt32(10);
       var cadHandle = i_Reader.IsDBNull(11) ? "" : i_Reader.GetString(11).Trim();
       return new Dimension()
         {
@@ -112,7 +141,9 @@ namespace Db
           PlusTol = (float) plusTol,
           Measured = (float) measured,
           Dimensiontype = dimensiontype,
-          CadHandle = cadHandle
+          CadHandle = cadHandle,
+          PartReport = new PartReport(){Id = reportID},
+          Part = new Part(){Id = partID}
         };
     }
   }

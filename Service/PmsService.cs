@@ -51,22 +51,41 @@ namespace Core.Service
 
     public void SaveDimesinos(List<Dimension> i_Dimensions)
     {
-      DbDimension dbDimension = new DbDimension();
-      dbDimension.CommitDimensions(i_Dimensions);
+//      DbDimension dbDimension = new DbDimension();
+//      dbDimension.CommitDimensions(i_Dimensions);
+      foreach (var dimension in i_Dimensions)
+      {
+        SaveDimesino(dimension);
+      }
     }
 
     public string CurrentCadHandle { get; set; }
 
     public void SaveDimesino(Dimension i_GetDimension)
     {
-          DbDimension dbDimension = new DbDimension();
-          dbDimension.CommitDimension(i_GetDimension);
+      DbDimension dbDimension = new DbDimension();
+      int ret = dbDimension.UpdateDimension(i_GetDimension);
+      if (ret == 0)
+        dbDimension.InsertDimension(i_GetDimension);
     }
-
+    public void DeleteDimension(Dimension i_Dimension)
+    {
+      DbDimension dbDimension = new DbDimension();
+      if (i_Dimension.Id > 0)
+        dbDimension.DeleteDimension(i_Dimension);
+    }
     public void SavePart(Part i_Part)
     {
       DbPart dbPart = new DbPart();
-      dbPart.CommitPart(i_Part);
+      int ret = dbPart.UpdatePart(i_Part);
+      if (ret == 0)
+        dbPart.InsertPart(i_Part);
+    }
+
+    public void InsertDimension(Dimension i_Dimension)
+    {
+      DbDimension dbDimension = new DbDimension();
+      dbDimension.InsertDimension(i_Dimension);
     }
   }
 }

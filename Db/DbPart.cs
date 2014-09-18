@@ -9,6 +9,7 @@ namespace Db
   public class DbPart
   {
     private const string Columns = "Id, Name, CadNumber, CadK3Number, CAdFileName";
+    private const string InsertColumns ="Name, CadNumber, CadK3Number, CAdFileName";
     private const string TableName = "Part";
     public List<Part> GetParts()
     {
@@ -52,14 +53,32 @@ namespace Db
       return result;
     }
 
-    public void CommitPart(Part i_Part)
+    public int UpdatePart(Part i_Part)
     {
       DbHelper db = new DbHelper();
       var updateCmd =
         db.GetSqlStringCommond(
           string.Format("update {0} set Name='{1}', CadNumber='{2}', CadK3Number='{3}', CAdFileName='{4}' where ID ={5}",
                         TableName, i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFilename, i_Part.Id));
+     return db.ExecuteNonQuery(updateCmd);
+    }
+
+    public void InsertPart(Part i_Part)
+    {
+      DbHelper db = new DbHelper();
+      var updateCmd =
+        db.GetSqlStringCommond(
+          string.Format("insert into {0} ({1}) values('{2}','{3}', '{4}', '{5}')",
+                        TableName, InsertColumns,i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFilename));
       db.ExecuteNonQuery(updateCmd);
+      db = new DbHelper();
+      var selectCmd = db.GetSqlStringCommond(string.Format("select MAX(ID) from {0}", TableName));
+      var reader = selectCmd.ExecuteReader();
+      if (reader.Read())
+      {
+        i_Part.Id = reader.GetInt32(0);
+      }
+      selectCmd.Connection.Close();
     }
   }
 }

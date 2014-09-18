@@ -46,16 +46,18 @@
       this.txtPartNumber = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.btnAddCadFile = new System.Windows.Forms.Button();
-      this.btnSave = new System.Windows.Forms.Button();
-      this.btnMachCadHandle = new System.Windows.Forms.Button();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.PlusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.MinusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.IsCanHandleMatched = new System.Windows.Forms.DataGridViewImageColumn();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.btnDelete = new System.Windows.Forms.Button();
+      this.btnNew = new System.Windows.Forms.Button();
+      this.btnMachCadHandle = new System.Windows.Forms.Button();
+      this.btnAddCadFile = new System.Windows.Forms.Button();
+      this.btnSave = new System.Windows.Forms.Button();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.flowLayoutPanel1.SuspendLayout();
@@ -231,47 +233,6 @@
       this.dataGridView1.TabIndex = 5;
       this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
       // 
-      // panel1
-      // 
-      this.panel1.Controls.Add(this.btnMachCadHandle);
-      this.panel1.Controls.Add(this.btnAddCadFile);
-      this.panel1.Controls.Add(this.btnSave);
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Location = new System.Drawing.Point(3, 470);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(568, 49);
-      this.panel1.TabIndex = 6;
-      // 
-      // btnAddCadFile
-      // 
-      this.btnAddCadFile.Location = new System.Drawing.Point(98, 12);
-      this.btnAddCadFile.Name = "btnAddCadFile";
-      this.btnAddCadFile.Size = new System.Drawing.Size(67, 21);
-      this.btnAddCadFile.TabIndex = 2;
-      this.btnAddCadFile.Text = "制定Cad文件";
-      this.btnAddCadFile.UseVisualStyleBackColor = true;
-      this.btnAddCadFile.Click += new System.EventHandler(this.btnAddCadFile_Click);
-      // 
-      // btnSave
-      // 
-      this.btnSave.Location = new System.Drawing.Point(358, 12);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(75, 21);
-      this.btnSave.TabIndex = 1;
-      this.btnSave.Text = "保存";
-      this.btnSave.UseVisualStyleBackColor = true;
-      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-      // 
-      // btnMachCadHandle
-      // 
-      this.btnMachCadHandle.Location = new System.Drawing.Point(220, 11);
-      this.btnMachCadHandle.Name = "btnMachCadHandle";
-      this.btnMachCadHandle.Size = new System.Drawing.Size(75, 23);
-      this.btnMachCadHandle.TabIndex = 3;
-      this.btnMachCadHandle.Text = "指定标注";
-      this.btnMachCadHandle.UseVisualStyleBackColor = true;
-      this.btnMachCadHandle.Click += new System.EventHandler(this.btnMachCadHandle_Click);
-      // 
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
@@ -333,6 +294,69 @@
       this.IsCanHandleMatched.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.IsCanHandleMatched.Width = 60;
       // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.btnDelete);
+      this.panel1.Controls.Add(this.btnNew);
+      this.panel1.Controls.Add(this.btnMachCadHandle);
+      this.panel1.Controls.Add(this.btnAddCadFile);
+      this.panel1.Controls.Add(this.btnSave);
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel1.Location = new System.Drawing.Point(3, 470);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(568, 49);
+      this.panel1.TabIndex = 6;
+      // 
+      // btnDelete
+      // 
+      this.btnDelete.Location = new System.Drawing.Point(329, 12);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(89, 21);
+      this.btnDelete.TabIndex = 5;
+      this.btnDelete.Text = "删除";
+      this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+      // 
+      // btnNew
+      // 
+      this.btnNew.Location = new System.Drawing.Point(217, 12);
+      this.btnNew.Name = "btnNew";
+      this.btnNew.Size = new System.Drawing.Size(89, 21);
+      this.btnNew.TabIndex = 4;
+      this.btnNew.Text = "增加";
+      this.btnNew.UseVisualStyleBackColor = true;
+      this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+      // 
+      // btnMachCadHandle
+      // 
+      this.btnMachCadHandle.Location = new System.Drawing.Point(110, 11);
+      this.btnMachCadHandle.Name = "btnMachCadHandle";
+      this.btnMachCadHandle.Size = new System.Drawing.Size(75, 23);
+      this.btnMachCadHandle.TabIndex = 3;
+      this.btnMachCadHandle.Text = "指定标注";
+      this.btnMachCadHandle.UseVisualStyleBackColor = true;
+      this.btnMachCadHandle.Click += new System.EventHandler(this.btnMachCadHandle_Click);
+      // 
+      // btnAddCadFile
+      // 
+      this.btnAddCadFile.Location = new System.Drawing.Point(21, 12);
+      this.btnAddCadFile.Name = "btnAddCadFile";
+      this.btnAddCadFile.Size = new System.Drawing.Size(67, 21);
+      this.btnAddCadFile.TabIndex = 2;
+      this.btnAddCadFile.Text = "制定Cad文件";
+      this.btnAddCadFile.UseVisualStyleBackColor = true;
+      this.btnAddCadFile.Click += new System.EventHandler(this.btnAddCadFile_Click);
+      // 
+      // btnSave
+      // 
+      this.btnSave.Location = new System.Drawing.Point(446, 12);
+      this.btnSave.Name = "btnSave";
+      this.btnSave.Size = new System.Drawing.Size(75, 21);
+      this.btnSave.TabIndex = 1;
+      this.btnSave.Text = "保存";
+      this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      // 
       // EditReportControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -381,5 +405,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn PlusTolColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn MinusTolColumn;
     private System.Windows.Forms.DataGridViewImageColumn IsCanHandleMatched;
+    private System.Windows.Forms.Button btnDelete;
+    private System.Windows.Forms.Button btnNew;
   }
 }

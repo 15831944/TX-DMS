@@ -35,6 +35,11 @@ namespace ControlReport
 
   class EditDimensionEntityViewModel
   {
+    public override int GetHashCode()
+    {
+      return (_Dimension != null ? _Dimension.GetHashCode() : 0);
+    }
+
     private readonly Dimension _Dimension;
     public Dimension GetDimension()
     {
@@ -66,6 +71,15 @@ namespace ControlReport
     {
       get { return _Dimension.Nominal; }
       set { _Dimension.Nominal = value; }
+    }
+
+    public override bool Equals(object i_Obj)
+    {
+      var mv = i_Obj as EditDimensionEntityViewModel;
+      if (mv == null) return false;
+      if (_Dimension == null || mv._Dimension == null)
+        return false;
+      return mv._Dimension.SerialNumber == _Dimension.SerialNumber;
     }
 
     public float PlusTol { get { return _Dimension.PlusTol; } set { _Dimension.PlusTol = value; } }

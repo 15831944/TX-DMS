@@ -126,6 +126,8 @@ namespace TxPms
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {
         OpenDwgFile(openFileDialog.FileName);
+        if (!panelGraphicContainer.Controls.Contains(panel1))
+          panelGraphicContainer.Controls.Add(panel1);
       }
     }
 
@@ -143,8 +145,8 @@ namespace TxPms
       try
       {
         database.ReadDwgFile(i_Path, FileOpenMode.OpenForReadAndAllShare, false, "");
-        if(!splitContainer1.Panel2.Controls.Contains(panel1))
-          splitContainer1.Panel2.Controls.Add(panel1);
+        if (!panelGraphicContainer.Controls.Contains(panel1)) //panelGraphicContainer
+          panelGraphicContainer.Controls.Add(panel1);
       }
       catch (System.Exception ex)
       {

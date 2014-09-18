@@ -20,14 +20,14 @@ namespace ControlReport
     private PartReport _PartReport;
     private Dimension _SeletedDimension;
     private int _SelectedRow;
-    private List<EditDimensionEntityViewModel> _DataSource =null;
+    private BindingList<EditDimensionEntityViewModel> _DataSource = new BindingList<EditDimensionEntityViewModel>();
     public EditReportControl()
     {
       InitializeComponent();
       Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, OnPartSpecified);
       Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
-
       Mediator.Mediator.Instance.Register(Cad.OnDimensionSelected, OnCadElementSelected);
+     
     }
 
     private void OnCadElementSelected(object i_Obj)
@@ -63,6 +63,8 @@ namespace ControlReport
     private void OnCreate(object i_O)
     {
       _Part = new Part();
+      _DataSource.Clear();
+      //PmsService.Instance.InsertPart(_Part);
     }
     private void OnPartSpecified(object i_O)
     {
@@ -72,7 +74,7 @@ namespace ControlReport
 
       _Part = template;
 
-      _DataSource = new List<EditDimensionEntityViewModel>();
+      _DataSource.Clear();
       PmsService.Instance.GetDimensionsByPart(template);
       foreach (var en in template.Dimensions)
       {
@@ -93,8 +95,8 @@ namespace ControlReport
     private void btnSave_Click(object sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.SavePartTemplate,_Part);
+      PmsService.Instance.SavePart(_Part);
       PmsService.Instance.SaveDimesinos(ConstructDimensions());
-
     }
 
     private List<Core.Model.Dimension> ConstructDimensions()
@@ -123,6 +125,26 @@ namespace ControlReport
       if(_Part!=null && _Part.Dimensions.Count>0)
       _SeletedDimension = _Part.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
+    }
+
+    private void btnNew_Click(object sender, EventArgs e)
+    {
+      _SeletedDimension = new Dimension() {SerialNumber = _DataSource.Count + 1, Part = _Part};
+      //_Part.Dimensions.Add(_SeletedDimension);
+      var newOne = new EditDimensionEntityViewModel(_SeletedDimension);
+      _DataSource.Add(newOne);
+      dataGridView1.DataSource = _DataSource;
+      dataGridView1.Refresh();
+    }
+
+    private void btnDelete_Click(object sender, EventArgs e)
+    {
+      if (_DataSource != null && _DataSource.Count > 1)
+      {
+        var lastDimension = _DataSource[_DataSource.Count - 1].GetDimension();
+        PmsService.Instance.DeleteDimension(lastDimension);
+        _DataSource.RemoveAt(_DataSource.Count - 1);
+      }
     }
   }
 }

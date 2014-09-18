@@ -11,7 +11,14 @@ namespace Core.Model
     public int TotalCount { get; set; }
     public int SampleCount { get; set; }
     public string CadFilename { get; set; }
-    private List<Dimension> _Dimensions = new List<Dimension>();
-    public List<Dimension> Dimensions { get { return _Dimensions; } set { _Dimensions = value; } }
+    public List<Dimension> Dimensions { get; set; }
+    public Part()
+    {
+      Dimensions = new List<Dimension>();
+      Name = "";
+      SecondNumber = "";
+      CadFilename = "";
+      CadFilename = "";
+    }
   }
 }
