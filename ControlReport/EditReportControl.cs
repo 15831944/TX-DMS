@@ -120,6 +120,7 @@ namespace ControlReport
 
     private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
     {
+      if(_Part!=null && _Part.Dimensions.Count>0)
       _SeletedDimension = _Part.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
     }

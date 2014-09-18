@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,7 +80,7 @@
       this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(241, 0);
+      this.label1.Location = new System.Drawing.Point(243, 0);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(98, 28);
       this.label1.TabIndex = 0;
@@ -101,7 +101,7 @@
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
       this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(580, 554);
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(584, 558);
       this.tableLayoutPanel1.TabIndex = 0;
       // 
       // tableLayoutPanel2
@@ -123,7 +123,7 @@
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(580, 90);
+      this.tableLayoutPanel2.Size = new System.Drawing.Size(584, 90);
       this.tableLayoutPanel2.TabIndex = 3;
       // 
       // flowLayoutPanel2
@@ -131,10 +131,10 @@
       this.flowLayoutPanel2.Controls.Add(this.label2);
       this.flowLayoutPanel2.Controls.Add(this.txtSecondNumber);
       this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel2.Location = new System.Drawing.Point(290, 0);
+      this.flowLayoutPanel2.Location = new System.Drawing.Point(292, 0);
       this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-      this.flowLayoutPanel2.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel2.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel2.TabIndex = 10;
       // 
       // label2
@@ -165,7 +165,7 @@
       this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 30);
       this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-      this.flowLayoutPanel3.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel3.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel3.TabIndex = 4;
       // 
       // label4
@@ -192,10 +192,10 @@
       this.flowLayoutPanel4.Controls.Add(this.label5);
       this.flowLayoutPanel4.Controls.Add(this.txtTotolNumber);
       this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel4.Location = new System.Drawing.Point(290, 30);
+      this.flowLayoutPanel4.Location = new System.Drawing.Point(292, 30);
       this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-      this.flowLayoutPanel4.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel4.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel4.TabIndex = 5;
       // 
       // label5
@@ -225,7 +225,7 @@
       this.flowLayoutPanel6.Location = new System.Drawing.Point(0, 0);
       this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-      this.flowLayoutPanel6.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel6.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel6.TabIndex = 7;
       // 
       // label7
@@ -252,10 +252,10 @@
       this.flowLayoutPanel5.Controls.Add(this.label6);
       this.flowLayoutPanel5.Controls.Add(this.txtSampleNumber);
       this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel5.Location = new System.Drawing.Point(290, 60);
+      this.flowLayoutPanel5.Location = new System.Drawing.Point(292, 60);
       this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-      this.flowLayoutPanel5.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel5.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel5.TabIndex = 6;
       // 
       // label6
@@ -285,7 +285,7 @@
       this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 60);
       this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
       this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-      this.flowLayoutPanel1.Size = new System.Drawing.Size(290, 30);
+      this.flowLayoutPanel1.Size = new System.Drawing.Size(292, 30);
       this.flowLayoutPanel1.TabIndex = 9;
       // 
       // label3
@@ -319,7 +319,7 @@
       this.tableLayoutPanel3.RowCount = 2;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(574, 438);
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(578, 438);
       this.tableLayoutPanel3.TabIndex = 4;
       // 
       // dataGridView1
@@ -341,7 +341,7 @@
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.RowTemplate.Height = 23;
       this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dataGridView1.Size = new System.Drawing.Size(572, 375);
+      this.dataGridView1.Size = new System.Drawing.Size(576, 375);
       this.dataGridView1.TabIndex = 5;
       this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
       this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
@@ -349,8 +349,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle7;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -361,8 +361,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle8;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -373,8 +373,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle9;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -403,7 +403,7 @@
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panel1.Location = new System.Drawing.Point(3, 386);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(568, 49);
+      this.panel1.Size = new System.Drawing.Size(572, 49);
       this.panel1.TabIndex = 6;
       // 
       // btnCreateReport
@@ -429,10 +429,9 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.Controls.Add(this.tableLayoutPanel1);
       this.Name = "ExecuteReportControl";
-      this.Size = new System.Drawing.Size(580, 554);
+      this.Size = new System.Drawing.Size(584, 558);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
       this.tableLayoutPanel2.ResumeLayout(false);

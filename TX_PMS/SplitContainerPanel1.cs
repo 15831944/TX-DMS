@@ -25,16 +25,34 @@ namespace TxPms
           ShowExecuteControl(null);
           var part = i_O as Part;
           if (part == null)
+          {
+            CloseDwgFile();
             return;
-          if (string.IsNullOrEmpty(part.CadFilename)) return;
+          }
+          if (string.IsNullOrEmpty(part.CadFilename))
+          {
+            CloseDwgFile();
+            return;
+          }
 
           var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath,part.CadFilename);
-          if (!File.Exists(filePath)) return;
+          if (!File.Exists(filePath))
+          {
+            CloseDwgFile();
+            return;
+          }
           OpenDwgFile(filePath);
+          if(!panelGraphicContainer.Controls.Contains(panel1))
+            panelGraphicContainer.Controls.Add(panel1);
         });
       Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
       Mediator.Mediator.Instance.Register(UI.OpenCadFile, file_open_handler);
       Mediator.Mediator.Instance.Register(UI.SavePartTemplate, OnSavePart);
+    }
+
+    private void CloseDwgFile()
+    {
+      panelGraphicContainer.Controls.Clear();
     }
 
     private void OnSavePart(object i_Obj)
@@ -64,27 +82,28 @@ namespace TxPms
     {
       LeftStripStatusLabel.Text = @"正在创建外协件";
       ShowEditControl(i_O);
+      CloseDwgFile();
     }
     void ShowEditControl(object i_O)
     {
-      if (splitContainer1.Panel1.Controls.Contains(editReportControl1))
+      if (panelReportContainer.Controls.Contains(editReportControl1))
         return;
-      splitContainer1.Panel1.Controls.Clear();
-      splitContainer1.Panel1.Controls.Add(editReportControl1);
+      panelReportContainer.Controls.Clear();
+      panelReportContainer.Controls.Add(editReportControl1);
     }
 
     void ShowExecuteControl(object i_O)
     {
-      if (splitContainer1.Panel1.Controls.Contains(executeReportControl1))
+      if (panelReportContainer.Controls.Contains(executeReportControl1))
         return;
-      splitContainer1.Panel1.Controls.Clear();
-      splitContainer1.Panel1.Controls.Add(executeReportControl1);
+      panelReportContainer.Controls.Clear(); //panelReportContainer  splitContainer1.Panel1.Controls
+      panelReportContainer.Controls.Add(executeReportControl1);
       LeftStripStatusLabel.Text = @"正在执行外协件";
     }
 
     void CadForm_Load(object sender, EventArgs e)
     {
-      splitContainer1.Panel1.Controls.Clear();
+      panelReportContainer.Controls.Clear();
       LeftStripStatusLabel.Text = @"请选择或新建外协件";
      
     }
