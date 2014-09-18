@@ -13,12 +13,12 @@ namespace Core.Model
     public string Supplier { get; set; }
     public DateTime MeasurementDatetime { get; set; }
     public string OperatorComment { get; set; }
-    public string Approver1{ get; set; }
-    public DateTime Approve1Datetime{ get; set; }
-    public string Approve1Comment{ get; set; }
-    public string Approver2{ get; set; }
-    public DateTime Approve2Datetime{ get; set; }
-    public string Approve2Comment { get; set; }
+    public string Auditor{ get; set; }
+    public DateTime AuditDatetime{ get; set; }
+    public string AuditComment{ get; set; }
+    public string Approver{ get; set; }
+    public DateTime ApproveDatetime{ get; set; }
+    public string ApproveComment { get; set; }
     public Part Part { get; set; }
     public PartReport()
     {
