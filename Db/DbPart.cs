@@ -71,8 +71,8 @@ namespace Db
           string.Format("insert into {0} ({1}) values('{2}','{3}', '{4}', '{5}')",
                         TableName, InsertColumns,i_Part.Name, i_Part.CadNumber, i_Part.SecondNumber, i_Part.CadFilename));
       db.ExecuteNonQuery(updateCmd);
-      db = new DbHelper();
       var selectCmd = db.GetSqlStringCommond(string.Format("select MAX(ID) from {0}", TableName));
+      selectCmd.Connection.Open();
       var reader = selectCmd.ExecuteReader();
       if (reader.Read())
       {

@@ -64,8 +64,9 @@ namespace ControlReport
     {
       _Part = new Part();
       _DataSource.Clear();
-      //PmsService.Instance.InsertPart(_Part);
+      BindingPart(_Part);
     }
+
     private void OnPartSpecified(object i_O)
     {
       var template = i_O as Part;
@@ -73,20 +74,27 @@ namespace ControlReport
         return;
 
       _Part = template;
+      BindingPart(_Part);
+    }
+    private void BindingPart(Part i_Part)
+    {
 
       _DataSource.Clear();
-      PmsService.Instance.GetDimensionsByPart(template);
-      foreach (var en in template.Dimensions)
+      PmsService.Instance.GetDimensionsByPart(i_Part);
+      foreach (var en in i_Part.Dimensions)
       {
         _DataSource.Add(new EditDimensionEntityViewModel(en));
       }
 
       dataGridView1.DataSource = _DataSource;
-      txtPartName.Text = template.Name;
-      txtPartNumber.Text = template.CadNumber;
-      txtSecondNumber.Text = template.SecondNumber;
+      txtPartName.DataBindings.Clear();
+      txtPartName.DataBindings.Add("Text", i_Part, "Name");
+      //txtPartName.Bindi = template.Name;
+      txtPartNumber.DataBindings.Clear();
+      txtPartNumber.DataBindings.Add("Text", i_Part, "CadNumber");
+      txtSecondNumber.DataBindings.Clear();
+      txtSecondNumber.DataBindings.Add("Text", i_Part, "SecondNumber");
     }
-
     private void btnAddCadFile_Click(object sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.OpenCadFile,null);
