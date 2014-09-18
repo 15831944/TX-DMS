@@ -59,6 +59,7 @@
     <Compile Include="DbDimension.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="DbPart.cs" />
+    <Compile Include="DbPartReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

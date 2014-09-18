@@ -55,6 +55,7 @@ namespace TxPms
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+      this.panelReportContainer = new System.Windows.Forms.Panel();
       this.panelGraphicContainer = new System.Windows.Forms.Panel();
       this.panel1 = new System.Windows.Forms.Panel();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -70,7 +71,6 @@ namespace TxPms
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.panelReportContainer = new System.Windows.Forms.Panel();
       this.editReportControl1 = new ControlReport.EditReportControl();
       this.executeReportControl1 = new ControlReport.ExecuteReportControl();
       this.splitContainer1.Panel1.SuspendLayout();
@@ -109,6 +109,15 @@ namespace TxPms
       this.splitContainer1.SplitterDistance = 418;
       this.splitContainer1.SplitterWidth = 1;
       this.splitContainer1.TabIndex = 2;
+      // 
+      // panelReportContainer
+      // 
+      this.panelReportContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.panelReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panelReportContainer.Location = new System.Drawing.Point(0, 0);
+      this.panelReportContainer.Name = "panelReportContainer";
+      this.panelReportContainer.Size = new System.Drawing.Size(418, 522);
+      this.panelReportContainer.TabIndex = 0;
       // 
       // panelGraphicContainer
       // 
@@ -237,15 +246,6 @@ namespace TxPms
       this.measureToolToolStripMenuItem.Text = "量具";
       this.measureToolToolStripMenuItem.Click += new System.EventHandler(this.measureToolToolStripMenuItem_Click);
       // 
-      // panelReportContainer
-      // 
-      this.panelReportContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.panelReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panelReportContainer.Location = new System.Drawing.Point(0, 0);
-      this.panelReportContainer.Name = "panelReportContainer";
-      this.panelReportContainer.Size = new System.Drawing.Size(418, 522);
-      this.panelReportContainer.TabIndex = 0;
-      // 
       // editReportControl1
       // 
       this.editReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -257,6 +257,7 @@ namespace TxPms
       // 
       // executeReportControl1
       // 
+      this.executeReportControl1.AutoScroll = true;
       this.executeReportControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.executeReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.executeReportControl1.Location = new System.Drawing.Point(3, 5);
@@ -273,7 +274,6 @@ namespace TxPms
       this.Controls.Add(this.splitContainer1);
       this.Controls.Add(this.menuStrip1);
       this.Controls.Add(this.statusStrip1);
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "CadForm";
       this.Text = "外协件检验系统";

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Globalization;
-using System.Text;
 using System.Windows.Forms;
 using Core.Model;
 using Core.Service;
@@ -17,7 +13,6 @@ namespace ControlReport
   public partial class EditReportControl : UserControl
   {
     private Part _Part;
-    private PartReport _PartReport;
     private Dimension _SeletedDimension;
     private int _SelectedRow;
     private BindingList<EditDimensionEntityViewModel> _DataSource = new BindingList<EditDimensionEntityViewModel>();
@@ -89,27 +84,26 @@ namespace ControlReport
       dataGridView1.DataSource = _DataSource;
       txtPartName.DataBindings.Clear();
       txtPartName.DataBindings.Add("Text", i_Part, "Name");
-      //txtPartName.Bindi = template.Name;
       txtPartNumber.DataBindings.Clear();
       txtPartNumber.DataBindings.Add("Text", i_Part, "CadNumber");
       txtSecondNumber.DataBindings.Clear();
       txtSecondNumber.DataBindings.Add("Text", i_Part, "SecondNumber");
     }
-    private void btnAddCadFile_Click(object sender, EventArgs e)
+    private void btnAddCadFile_Click(object i_Sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.OpenCadFile,null);
     }
 
-    private void btnSave_Click(object sender, EventArgs e)
+    private void btnSave_Click(object i_Sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.SavePartTemplate,_Part);
       PmsService.Instance.SavePart(_Part);
       PmsService.Instance.SaveDimesinos(ConstructDimensions());
     }
 
-    private List<Core.Model.Dimension> ConstructDimensions()
+    private List<Dimension> ConstructDimensions()
     {
-      var result = new List<Core.Model.Dimension>();
+      var result = new List<Dimension>();
       if (_DataSource == null) return result;
       foreach (var editDimensionEntityViewModel in _DataSource)
       {
@@ -118,7 +112,7 @@ namespace ControlReport
       return result;
     }
 
-    private void btnMachCadHandle_Click(object sender, EventArgs e)
+    private void btnMachCadHandle_Click(object i_Sender, EventArgs e)
     {
       if (dataGridView1.SelectedRows.Count >= 0)
       {
@@ -128,14 +122,14 @@ namespace ControlReport
       }
     }
 
-    private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+    private void dataGridView1_RowEnter(object i_Sender, DataGridViewCellEventArgs e)
     {
       if(_Part!=null && _Part.Dimensions.Count>0)
       _SeletedDimension = _Part.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
     }
 
-    private void btnNew_Click(object sender, EventArgs e)
+    private void btnNew_Click(object i_Sender, EventArgs e)
     {
       _SeletedDimension = new Dimension() {SerialNumber = _DataSource.Count + 1, Part = _Part};
       //_Part.Dimensions.Add(_SeletedDimension);
@@ -145,7 +139,7 @@ namespace ControlReport
       dataGridView1.Refresh();
     }
 
-    private void btnDelete_Click(object sender, EventArgs e)
+    private void btnDelete_Click(object i_Sender, EventArgs e)
     {
       if (_DataSource != null && _DataSource.Count > 1)
       {

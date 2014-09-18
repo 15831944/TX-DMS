@@ -15,7 +15,7 @@ namespace TxPms
   {
     void Initialize()
     {
-      this.Load += CadForm_Load;
+      Load += CadForm_Load;
       editReportToolStripMenuItem.Enabled = false;
       Mediator.Mediator.Instance.Register(UI.EditReport, OnEdit);
       Mediator.Mediator.Instance.Register(UI.ExecuteReport, ShowExecuteControl);
@@ -96,19 +96,15 @@ namespace TxPms
     {
       if (panelReportContainer.Controls.Contains(executeReportControl1))
         return;
-      panelReportContainer.Controls.Clear(); //panelReportContainer  splitContainer1.Panel1.Controls
+      panelReportContainer.Controls.Clear(); 
       panelReportContainer.Controls.Add(executeReportControl1);
       LeftStripStatusLabel.Text = @"正在执行外协件";
     }
 
-    void CadForm_Load(object sender, EventArgs e)
+    void CadForm_Load(object i_Sender, EventArgs e)
     {
       panelReportContainer.Controls.Clear();
       LeftStripStatusLabel.Text = @"请选择或新建外协件";
-     
     }
   }
-
-  
-
 }

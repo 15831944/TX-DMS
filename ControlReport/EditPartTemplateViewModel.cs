@@ -21,16 +21,6 @@ namespace ControlReport
       get { return _PartTemplate.CadNumber; }
       set { _PartTemplate.CadNumber = value; }
     }
-    public int TotalCount
-    {
-      get { return _PartTemplate.TotalCount; }
-      set { _PartTemplate.TotalCount = value; }
-    }
-    public int SampleCount
-    {
-      get { return _PartTemplate.SampleCount; }
-      set { _PartTemplate.SampleCount = value; }
-    }
   }
 
   class EditDimensionEntityViewModel

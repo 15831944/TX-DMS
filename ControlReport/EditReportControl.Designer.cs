@@ -28,11 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -45,27 +45,27 @@
       this.label7 = new System.Windows.Forms.Label();
       this.txtPartNumber = new System.Windows.Forms.TextBox();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
-      this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.PlusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.MinusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.IsCanHandleMatched = new System.Windows.Forms.DataGridViewImageColumn();
       this.panel1 = new System.Windows.Forms.Panel();
       this.btnDelete = new System.Windows.Forms.Button();
       this.btnNew = new System.Windows.Forms.Button();
       this.btnMachCadHandle = new System.Windows.Forms.Button();
       this.btnAddCadFile = new System.Windows.Forms.Button();
       this.btnSave = new System.Windows.Forms.Button();
+      this.IsCanHandleMatched = new System.Windows.Forms.DataGridViewImageColumn();
+      this.MinusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.PlusTolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.NominalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.tableLayoutPanel1.SuspendLayout();
       this.tableLayoutPanel2.SuspendLayout();
       this.flowLayoutPanel1.SuspendLayout();
       this.flowLayoutPanel3.SuspendLayout();
       this.flowLayoutPanel4.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.panel1.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.SuspendLayout();
       // 
       // tableLayoutPanel1
@@ -207,93 +207,6 @@
       this.tableLayoutPanel3.Size = new System.Drawing.Size(574, 522);
       this.tableLayoutPanel3.TabIndex = 4;
       // 
-      // dataGridView1
-      // 
-      this.dataGridView1.AllowUserToAddRows = false;
-      this.dataGridView1.AllowUserToOrderColumns = true;
-      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IndexColumn,
-            this.DimensionTypeEditColumn,
-            this.NominalColumn,
-            this.PlusTolColumn,
-            this.MinusTolColumn,
-            this.IsCanHandleMatched});
-      this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-      this.dataGridView1.Location = new System.Drawing.Point(1, 7);
-      this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 7, 1, 1);
-      this.dataGridView1.MultiSelect = false;
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.RowTemplate.Height = 23;
-      this.dataGridView1.Size = new System.Drawing.Size(572, 459);
-      this.dataGridView1.TabIndex = 5;
-      this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
-      // 
-      // IndexColumn
-      // 
-      this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
-      this.IndexColumn.Frozen = true;
-      this.IndexColumn.HeaderText = "序号";
-      this.IndexColumn.MinimumWidth = 40;
-      this.IndexColumn.Name = "IndexColumn";
-      this.IndexColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-      this.IndexColumn.Width = 40;
-      // 
-      // DimensionTypeEditColumn
-      // 
-      this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
-      this.DimensionTypeEditColumn.Frozen = true;
-      this.DimensionTypeEditColumn.HeaderText = "检验项目";
-      this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
-      this.DimensionTypeEditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.DimensionTypeEditColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.DimensionTypeEditColumn.Width = 65;
-      // 
-      // NominalColumn
-      // 
-      this.NominalColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
-      this.NominalColumn.HeaderText = "理论值";
-      this.NominalColumn.Name = "NominalColumn";
-      this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-      this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      // 
-      // PlusTolColumn
-      // 
-      this.PlusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.PlusTolColumn.DataPropertyName = "PlusTol";
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle4;
-      this.PlusTolColumn.HeaderText = "上公差";
-      this.PlusTolColumn.Name = "PlusTolColumn";
-      // 
-      // MinusTolColumn
-      // 
-      this.MinusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.MinusTolColumn.DataPropertyName = "MinusTol";
-      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle5;
-      this.MinusTolColumn.HeaderText = "下公差";
-      this.MinusTolColumn.Name = "MinusTolColumn";
-      // 
-      // IsCanHandleMatched
-      // 
-      this.IsCanHandleMatched.DataPropertyName = "CanHandleStatus";
-      this.IsCanHandleMatched.HeaderText = "关联标注";
-      this.IsCanHandleMatched.Name = "IsCanHandleMatched";
-      this.IsCanHandleMatched.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.IsCanHandleMatched.Width = 60;
-      // 
       // panel1
       // 
       this.panel1.Controls.Add(this.btnDelete);
@@ -357,6 +270,93 @@
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
+      // IsCanHandleMatched
+      // 
+      this.IsCanHandleMatched.DataPropertyName = "CanHandleStatus";
+      this.IsCanHandleMatched.HeaderText = "关联标注";
+      this.IsCanHandleMatched.Name = "IsCanHandleMatched";
+      this.IsCanHandleMatched.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.IsCanHandleMatched.Width = 60;
+      // 
+      // MinusTolColumn
+      // 
+      this.MinusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.MinusTolColumn.DataPropertyName = "MinusTol";
+      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle5;
+      this.MinusTolColumn.HeaderText = "下公差";
+      this.MinusTolColumn.Name = "MinusTolColumn";
+      // 
+      // PlusTolColumn
+      // 
+      this.PlusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.PlusTolColumn.DataPropertyName = "PlusTol";
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle4;
+      this.PlusTolColumn.HeaderText = "上公差";
+      this.PlusTolColumn.Name = "PlusTolColumn";
+      // 
+      // NominalColumn
+      // 
+      this.NominalColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.NominalColumn.DataPropertyName = "Nominal";
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      this.NominalColumn.HeaderText = "理论值";
+      this.NominalColumn.Name = "NominalColumn";
+      this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      // 
+      // DimensionTypeEditColumn
+      // 
+      this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      this.DimensionTypeEditColumn.Frozen = true;
+      this.DimensionTypeEditColumn.HeaderText = "检验项目";
+      this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
+      this.DimensionTypeEditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.DimensionTypeEditColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+      this.DimensionTypeEditColumn.Width = 65;
+      // 
+      // IndexColumn
+      // 
+      this.IndexColumn.DataPropertyName = "SerialNumber";
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      this.IndexColumn.Frozen = true;
+      this.IndexColumn.HeaderText = "序号";
+      this.IndexColumn.MinimumWidth = 40;
+      this.IndexColumn.Name = "IndexColumn";
+      this.IndexColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+      this.IndexColumn.Width = 40;
+      // 
+      // dataGridView1
+      // 
+      this.dataGridView1.AllowUserToAddRows = false;
+      this.dataGridView1.AllowUserToOrderColumns = true;
+      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)
+                  | System.Windows.Forms.AnchorStyles.Right)));
+      this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IndexColumn,
+            this.DimensionTypeEditColumn,
+            this.NominalColumn,
+            this.PlusTolColumn,
+            this.MinusTolColumn,
+            this.IsCanHandleMatched});
+      this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+      this.dataGridView1.Location = new System.Drawing.Point(1, 7);
+      this.dataGridView1.Margin = new System.Windows.Forms.Padding(1, 7, 1, 1);
+      this.dataGridView1.MultiSelect = false;
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.RowTemplate.Height = 23;
+      this.dataGridView1.Size = new System.Drawing.Size(572, 459);
+      this.dataGridView1.TabIndex = 5;
+      this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
+      // 
       // EditReportControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -374,8 +374,8 @@
       this.flowLayoutPanel4.ResumeLayout(false);
       this.flowLayoutPanel4.PerformLayout();
       this.tableLayoutPanel3.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.panel1.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -391,7 +391,6 @@
     private System.Windows.Forms.TextBox txtPartName;
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-    private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Button btnSave;
     private System.Windows.Forms.Button btnAddCadFile;
@@ -399,13 +398,14 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.TextBox txtSecondNumber;
     private System.Windows.Forms.Button btnMachCadHandle;
+    private System.Windows.Forms.Button btnDelete;
+    private System.Windows.Forms.Button btnNew;
+    private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.DataGridViewTextBoxColumn IndexColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn DimensionTypeEditColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn PlusTolColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn MinusTolColumn;
     private System.Windows.Forms.DataGridViewImageColumn IsCanHandleMatched;
-    private System.Windows.Forms.Button btnDelete;
-    private System.Windows.Forms.Button btnNew;
   }
 }

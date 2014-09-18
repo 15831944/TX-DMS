@@ -87,5 +87,21 @@ namespace Core.Service
       DbDimension dbDimension = new DbDimension();
       dbDimension.InsertDimension(i_Dimension);
     }
+
+    public List<PartReport> GetPartReports()
+    {
+      DbPartReport dbPartReport = new DbPartReport();
+      return dbPartReport.GetPartReports();
+    }
+    public List<PartReport> GetPartReports(Part i_Part)
+    {
+      DbPartReport dbPartReport = new DbPartReport();
+      return dbPartReport.GetPartReportsByPart(i_Part);
+    }
+    public void SaveReport(PartReport i_PartReport)
+    {
+      DbPartReport dbPartReport = new DbPartReport();
+      dbPartReport.InsertPartReport(i_PartReport);
+    }
   }
 }

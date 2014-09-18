@@ -57,13 +57,28 @@ namespace ControlReport
       }
 
       dataGridView1.DataSource = viewModels;
-      txtManufacturer.Text = _PartReport.Supplier;
-      txtPartName.Text = _CurrentTemplate.Name;
-      txtPartNumber.Text = _CurrentTemplate.CadNumber;
-      txtSecondNumber.Text = _CurrentTemplate.SecondNumber;
-      txtTotolNumber.Text = _CurrentTemplate.TotalCount.ToString(CultureInfo.InvariantCulture);
-      txtSampleNumber.Text = _CurrentTemplate.SampleCount.ToString(CultureInfo.InvariantCulture);
-
+      txtManufacturer.DataBindings.Clear();
+      txtManufacturer.DataBindings.Add("Text", _PartReport, "Supplier"); // = _PartReport.Supplier;
+      txtPartName.DataBindings.Clear();
+      txtPartName.DataBindings.Add("Text", _CurrentTemplate, "Name"); //txtPartName.Text = _CurrentTemplate.Name;
+      txtPartNumber.DataBindings.Clear();
+      txtPartNumber.DataBindings.Add("Text", _CurrentTemplate, "CadNumber");
+        //txtPartNumber.Text = _CurrentTemplate.CadNumber;
+      txtSecondNumber.DataBindings.Clear();
+      txtSecondNumber.DataBindings.Add("Text", _CurrentTemplate, "SecondNumber");
+        //txtSecondNumber.Text = _CurrentTemplate.SecondNumber;
+      txtTotolNumber.DataBindings.Clear();
+      txtTotolNumber.DataBindings.Add("Text", _PartReport, "TotalCount");
+        //txtTotolNumber.Text = _PartReport.TotalCount.ToString(CultureInfo.InvariantCulture);
+      txtSampleNumber.DataBindings.Clear();
+      txtSampleNumber.DataBindings.Add("Text", _PartReport, "SampleCount");
+        //txtSampleNumber.Text = _PartReport.SampleCount.ToString(CultureInfo.InvariantCulture);
+      txtOperator.DataBindings.Clear();
+      txtOperator.DataBindings.Add("Text", _PartReport, "Operator"); //txtOperator.Text = _PartReport.Operator;
+      txtMeasurementDateTime.DataBindings.Clear();
+      txtMeasurementDateTime.DataBindings.Add("Text", _PartReport, "MeasurementDatetime");
+      txtOperatorComment.DataBindings.Clear();
+      txtOperatorComment.DataBindings.Add("Text", _PartReport, "OperatorComment");
     }
 
 
@@ -83,6 +98,11 @@ namespace ControlReport
       _SeletedDimension = _CurrentTemplate.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
 
+    }
+
+    private void btnCreateReport_Click(object sender, EventArgs e)
+    {
+      PmsService.Instance.SaveReport(_PartReport);
     }
   }
 }
