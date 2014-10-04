@@ -65,9 +65,10 @@ namespace TxPms
         Directory.CreateDirectory(destinyDir);
       if (database != null)
       {
-        var path = string.Format(@"{0}\{1}.dwg", destinyDir, part.CadNumber);
+        var fileName = part.CadNumber.Replace('/', '_');
+        var path = string.Format(@"{0}\{1}.dwg", destinyDir, fileName);
         database.SaveAs(path, DwgVersion.Current);
-        part.CadFilename = part.CadNumber+".dwg";
+        part.CadFilename = fileName+".dwg";
         PmsService.Instance.SavePart(part);
       }
     }

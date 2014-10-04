@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -70,20 +70,12 @@
       this.btnApproveFail = new System.Windows.Forms.Button();
       this.btnCreateReport = new System.Windows.Forms.Button();
       this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-      this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
-      this.chkBoxApprove = new System.Windows.Forms.CheckBox();
-      this.label15 = new System.Windows.Forms.Label();
-      this.dateTimePickerApprove = new System.Windows.Forms.DateTimePicker();
       this.txtApprove = new System.Windows.Forms.TextBox();
       this.label12 = new System.Windows.Forms.Label();
       this.label11 = new System.Windows.Forms.Label();
       this.txtOperatorComment = new System.Windows.Forms.TextBox();
       this.label13 = new System.Windows.Forms.Label();
       this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-      this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-      this.chkBoxAudit = new System.Windows.Forms.CheckBox();
-      this.label14 = new System.Windows.Forms.Label();
-      this.dateTimePickerAudit = new System.Windows.Forms.DateTimePicker();
       this.txtAudit = new System.Windows.Forms.TextBox();
       this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
       this.btnAuditPass = new System.Windows.Forms.Button();
@@ -102,9 +94,7 @@
       this.tableApprove.SuspendLayout();
       this.flowLayoutPanel12.SuspendLayout();
       this.tableLayoutPanel4.SuspendLayout();
-      this.flowLayoutPanel10.SuspendLayout();
       this.tableLayoutPanel3.SuspendLayout();
-      this.flowLayoutPanel9.SuspendLayout();
       this.flowLayoutPanel11.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -165,8 +155,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle16;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -177,8 +167,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle17;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -189,8 +179,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle18;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -485,7 +475,7 @@
       this.tableApprove.ColumnCount = 3;
       this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.99053F));
       this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.00948F));
-      this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+      this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
       this.tableApprove.Controls.Add(this.flowLayoutPanel12, 2, 2);
       this.tableApprove.Controls.Add(this.btnCreateReport, 2, 0);
       this.tableApprove.Controls.Add(this.tableLayoutPanel4, 1, 2);
@@ -510,10 +500,11 @@
       // 
       this.flowLayoutPanel12.Controls.Add(this.btnApprovePass);
       this.flowLayoutPanel12.Controls.Add(this.btnApproveFail);
+      this.flowLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-      this.flowLayoutPanel12.Location = new System.Drawing.Point(624, 132);
+      this.flowLayoutPanel12.Location = new System.Drawing.Point(618, 132);
       this.flowLayoutPanel12.Name = "flowLayoutPanel12";
-      this.flowLayoutPanel12.Size = new System.Drawing.Size(109, 58);
+      this.flowLayoutPanel12.Size = new System.Drawing.Size(117, 58);
       this.flowLayoutPanel12.TabIndex = 11;
       // 
       // btnApprovePass
@@ -536,9 +527,12 @@
       // 
       // btnCreateReport
       // 
-      this.btnCreateReport.Location = new System.Drawing.Point(624, 4);
+      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnCreateReport.Location = new System.Drawing.Point(621, 4);
+      this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
       this.btnCreateReport.Name = "btnCreateReport";
-      this.btnCreateReport.Size = new System.Drawing.Size(75, 21);
+      this.btnCreateReport.Size = new System.Drawing.Size(75, 57);
       this.btnCreateReport.TabIndex = 4;
       this.btnCreateReport.Text = "生成报告";
       this.btnCreateReport.UseVisualStyleBackColor = true;
@@ -546,61 +540,17 @@
       // tableLayoutPanel4
       // 
       this.tableLayoutPanel4.ColumnCount = 1;
-      this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel10, 0, 1);
+      this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel4.Controls.Add(this.txtApprove, 0, 0);
       this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel4.Location = new System.Drawing.Point(82, 129);
+      this.tableLayoutPanel4.Location = new System.Drawing.Point(81, 129);
       this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-      this.tableLayoutPanel4.RowCount = 2;
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel4.Size = new System.Drawing.Size(538, 64);
+      this.tableLayoutPanel4.RowCount = 1;
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel4.Size = new System.Drawing.Size(533, 64);
       this.tableLayoutPanel4.TabIndex = 7;
-      // 
-      // flowLayoutPanel10
-      // 
-      this.flowLayoutPanel10.Controls.Add(this.chkBoxApprove);
-      this.flowLayoutPanel10.Controls.Add(this.label15);
-      this.flowLayoutPanel10.Controls.Add(this.dateTimePickerApprove);
-      this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 35);
-      this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-      this.flowLayoutPanel10.Size = new System.Drawing.Size(532, 26);
-      this.flowLayoutPanel10.TabIndex = 2;
-      // 
-      // chkBoxApprove
-      // 
-      this.chkBoxApprove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.chkBoxApprove.AutoSize = true;
-      this.chkBoxApprove.Location = new System.Drawing.Point(3, 3);
-      this.chkBoxApprove.Name = "chkBoxApprove";
-      this.chkBoxApprove.Size = new System.Drawing.Size(48, 21);
-      this.chkBoxApprove.TabIndex = 1;
-      this.chkBoxApprove.Text = "评审";
-      this.chkBoxApprove.UseVisualStyleBackColor = true;
-      // 
-      // label15
-      // 
-      this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.label15.AutoSize = true;
-      this.label15.Location = new System.Drawing.Point(84, 0);
-      this.label15.Margin = new System.Windows.Forms.Padding(30, 0, 5, 0);
-      this.label15.Name = "label15";
-      this.label15.Size = new System.Drawing.Size(35, 27);
-      this.label15.TabIndex = 2;
-      this.label15.Text = "日期:";
-      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // dateTimePickerApprove
-      // 
-      this.dateTimePickerApprove.Location = new System.Drawing.Point(127, 3);
-      this.dateTimePickerApprove.Name = "dateTimePickerApprove";
-      this.dateTimePickerApprove.Size = new System.Drawing.Size(200, 21);
-      this.dateTimePickerApprove.TabIndex = 3;
       // 
       // txtApprove
       // 
@@ -608,7 +558,7 @@
       this.txtApprove.Location = new System.Drawing.Point(3, 3);
       this.txtApprove.Multiline = true;
       this.txtApprove.Name = "txtApprove";
-      this.txtApprove.Size = new System.Drawing.Size(532, 26);
+      this.txtApprove.Size = new System.Drawing.Size(527, 58);
       this.txtApprove.TabIndex = 3;
       // 
       // label12
@@ -619,7 +569,7 @@
       this.label12.AutoSize = true;
       this.label12.Location = new System.Drawing.Point(4, 65);
       this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(74, 63);
+      this.label12.Size = new System.Drawing.Size(73, 63);
       this.label12.TabIndex = 4;
       this.label12.Text = "评审:";
       this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -632,7 +582,7 @@
       this.label11.AutoSize = true;
       this.label11.Location = new System.Drawing.Point(4, 1);
       this.label11.Name = "label11";
-      this.label11.Size = new System.Drawing.Size(74, 63);
+      this.label11.Size = new System.Drawing.Size(73, 63);
       this.label11.TabIndex = 0;
       this.label11.Text = "检验员及\r\n结论:";
       this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -640,10 +590,10 @@
       // txtOperatorComment
       // 
       this.txtOperatorComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtOperatorComment.Location = new System.Drawing.Point(85, 4);
+      this.txtOperatorComment.Location = new System.Drawing.Point(84, 4);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(532, 57);
+      this.txtOperatorComment.Size = new System.Drawing.Size(527, 57);
       this.txtOperatorComment.TabIndex = 3;
       // 
       // label13
@@ -654,69 +604,25 @@
       this.label13.AutoSize = true;
       this.label13.Location = new System.Drawing.Point(4, 129);
       this.label13.Name = "label13";
-      this.label13.Size = new System.Drawing.Size(74, 64);
+      this.label13.Size = new System.Drawing.Size(73, 64);
       this.label13.TabIndex = 5;
-      this.label13.Text = "评审:";
+      this.label13.Text = "审批:";
       this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // tableLayoutPanel3
       // 
       this.tableLayoutPanel3.ColumnCount = 1;
-      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel9, 0, 1);
+      this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanel3.Controls.Add(this.txtAudit, 0, 0);
       this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel3.Location = new System.Drawing.Point(82, 65);
+      this.tableLayoutPanel3.Location = new System.Drawing.Point(81, 65);
       this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-      this.tableLayoutPanel3.RowCount = 2;
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(538, 63);
+      this.tableLayoutPanel3.RowCount = 1;
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(533, 63);
       this.tableLayoutPanel3.TabIndex = 6;
-      // 
-      // flowLayoutPanel9
-      // 
-      this.flowLayoutPanel9.Controls.Add(this.chkBoxAudit);
-      this.flowLayoutPanel9.Controls.Add(this.label14);
-      this.flowLayoutPanel9.Controls.Add(this.dateTimePickerAudit);
-      this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 34);
-      this.flowLayoutPanel9.Name = "flowLayoutPanel9";
-      this.flowLayoutPanel9.Size = new System.Drawing.Size(532, 26);
-      this.flowLayoutPanel9.TabIndex = 2;
-      // 
-      // chkBoxAudit
-      // 
-      this.chkBoxAudit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.chkBoxAudit.AutoSize = true;
-      this.chkBoxAudit.Location = new System.Drawing.Point(3, 3);
-      this.chkBoxAudit.Name = "chkBoxAudit";
-      this.chkBoxAudit.Size = new System.Drawing.Size(48, 21);
-      this.chkBoxAudit.TabIndex = 1;
-      this.chkBoxAudit.Text = "评审";
-      this.chkBoxAudit.UseVisualStyleBackColor = true;
-      // 
-      // label14
-      // 
-      this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.label14.AutoSize = true;
-      this.label14.Location = new System.Drawing.Point(84, 0);
-      this.label14.Margin = new System.Windows.Forms.Padding(30, 0, 5, 0);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(35, 27);
-      this.label14.TabIndex = 2;
-      this.label14.Text = "日期:";
-      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // dateTimePickerAudit
-      // 
-      this.dateTimePickerAudit.Location = new System.Drawing.Point(127, 3);
-      this.dateTimePickerAudit.Name = "dateTimePickerAudit";
-      this.dateTimePickerAudit.Size = new System.Drawing.Size(200, 21);
-      this.dateTimePickerAudit.TabIndex = 3;
       // 
       // txtAudit
       // 
@@ -724,16 +630,17 @@
       this.txtAudit.Location = new System.Drawing.Point(3, 3);
       this.txtAudit.Multiline = true;
       this.txtAudit.Name = "txtAudit";
-      this.txtAudit.Size = new System.Drawing.Size(532, 25);
+      this.txtAudit.Size = new System.Drawing.Size(527, 57);
       this.txtAudit.TabIndex = 3;
       // 
       // flowLayoutPanel11
       // 
       this.flowLayoutPanel11.Controls.Add(this.btnAuditPass);
       this.flowLayoutPanel11.Controls.Add(this.btnAuditFail);
-      this.flowLayoutPanel11.Location = new System.Drawing.Point(624, 68);
+      this.flowLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.flowLayoutPanel11.Location = new System.Drawing.Point(618, 68);
       this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-      this.flowLayoutPanel11.Size = new System.Drawing.Size(109, 57);
+      this.flowLayoutPanel11.Size = new System.Drawing.Size(117, 57);
       this.flowLayoutPanel11.TabIndex = 10;
       // 
       // btnAuditPass
@@ -788,12 +695,8 @@
       this.flowLayoutPanel12.ResumeLayout(false);
       this.tableLayoutPanel4.ResumeLayout(false);
       this.tableLayoutPanel4.PerformLayout();
-      this.flowLayoutPanel10.ResumeLayout(false);
-      this.flowLayoutPanel10.PerformLayout();
       this.tableLayoutPanel3.ResumeLayout(false);
       this.tableLayoutPanel3.PerformLayout();
-      this.flowLayoutPanel9.ResumeLayout(false);
-      this.flowLayoutPanel9.PerformLayout();
       this.flowLayoutPanel11.ResumeLayout(false);
       this.ResumeLayout(false);
 
@@ -840,12 +743,7 @@
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.Label label13;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-    private System.Windows.Forms.CheckBox chkBoxAudit;
-    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-    private System.Windows.Forms.Label label14;
-    private System.Windows.Forms.DateTimePicker dateTimePickerAudit;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-    private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
     private System.Windows.Forms.TextBox txtApprove;
     private System.Windows.Forms.TextBox txtAudit;
     private System.Windows.Forms.TextBox txtOperatorComment;
@@ -855,8 +753,5 @@
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
     private System.Windows.Forms.Button btnApprovePass;
     private System.Windows.Forms.Button btnApproveFail;
-    private System.Windows.Forms.CheckBox chkBoxApprove;
-    private System.Windows.Forms.Label label15;
-    private System.Windows.Forms.DateTimePicker dateTimePickerApprove;
   }
 }
