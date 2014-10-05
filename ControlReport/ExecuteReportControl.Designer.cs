@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -155,8 +155,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle16;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -167,8 +167,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle17;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -179,8 +179,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle18;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -475,7 +475,7 @@
       this.tableApprove.ColumnCount = 3;
       this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.99053F));
       this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.00948F));
-      this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+      this.tableApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
       this.tableApprove.Controls.Add(this.flowLayoutPanel12, 2, 2);
       this.tableApprove.Controls.Add(this.btnCreateReport, 2, 0);
       this.tableApprove.Controls.Add(this.tableLayoutPanel4, 1, 2);
@@ -502,9 +502,9 @@
       this.flowLayoutPanel12.Controls.Add(this.btnApproveFail);
       this.flowLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
       this.flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-      this.flowLayoutPanel12.Location = new System.Drawing.Point(618, 132);
+      this.flowLayoutPanel12.Location = new System.Drawing.Point(614, 132);
       this.flowLayoutPanel12.Name = "flowLayoutPanel12";
-      this.flowLayoutPanel12.Size = new System.Drawing.Size(117, 58);
+      this.flowLayoutPanel12.Size = new System.Drawing.Size(121, 58);
       this.flowLayoutPanel12.TabIndex = 11;
       // 
       // btnApprovePass
@@ -529,7 +529,7 @@
       // 
       this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                   | System.Windows.Forms.AnchorStyles.Left)));
-      this.btnCreateReport.Location = new System.Drawing.Point(621, 4);
+      this.btnCreateReport.Location = new System.Drawing.Point(617, 4);
       this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
       this.btnCreateReport.Name = "btnCreateReport";
       this.btnCreateReport.Size = new System.Drawing.Size(75, 57);
@@ -548,8 +548,8 @@
       this.tableLayoutPanel4.Name = "tableLayoutPanel4";
       this.tableLayoutPanel4.RowCount = 1;
       this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel4.Size = new System.Drawing.Size(533, 64);
+      this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+      this.tableLayoutPanel4.Size = new System.Drawing.Size(529, 64);
       this.tableLayoutPanel4.TabIndex = 7;
       // 
       // txtApprove
@@ -558,7 +558,7 @@
       this.txtApprove.Location = new System.Drawing.Point(3, 3);
       this.txtApprove.Multiline = true;
       this.txtApprove.Name = "txtApprove";
-      this.txtApprove.Size = new System.Drawing.Size(527, 58);
+      this.txtApprove.Size = new System.Drawing.Size(523, 58);
       this.txtApprove.TabIndex = 3;
       // 
       // label12
@@ -593,7 +593,7 @@
       this.txtOperatorComment.Location = new System.Drawing.Point(84, 4);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(527, 57);
+      this.txtOperatorComment.Size = new System.Drawing.Size(523, 57);
       this.txtOperatorComment.TabIndex = 3;
       // 
       // label13
@@ -620,8 +620,8 @@
       this.tableLayoutPanel3.Name = "tableLayoutPanel3";
       this.tableLayoutPanel3.RowCount = 1;
       this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanel3.Size = new System.Drawing.Size(533, 63);
+      this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+      this.tableLayoutPanel3.Size = new System.Drawing.Size(529, 63);
       this.tableLayoutPanel3.TabIndex = 6;
       // 
       // txtAudit
@@ -630,7 +630,7 @@
       this.txtAudit.Location = new System.Drawing.Point(3, 3);
       this.txtAudit.Multiline = true;
       this.txtAudit.Name = "txtAudit";
-      this.txtAudit.Size = new System.Drawing.Size(527, 57);
+      this.txtAudit.Size = new System.Drawing.Size(523, 57);
       this.txtAudit.TabIndex = 3;
       // 
       // flowLayoutPanel11
@@ -638,9 +638,9 @@
       this.flowLayoutPanel11.Controls.Add(this.btnAuditPass);
       this.flowLayoutPanel11.Controls.Add(this.btnAuditFail);
       this.flowLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.flowLayoutPanel11.Location = new System.Drawing.Point(618, 68);
+      this.flowLayoutPanel11.Location = new System.Drawing.Point(614, 68);
       this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-      this.flowLayoutPanel11.Size = new System.Drawing.Size(117, 57);
+      this.flowLayoutPanel11.Size = new System.Drawing.Size(121, 57);
       this.flowLayoutPanel11.TabIndex = 10;
       // 
       // btnAuditPass

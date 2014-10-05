@@ -25,4 +25,9 @@ namespace Mediator
   {
     OnDataArrived
   }
+
+  public enum App
+  {
+    OnLogin
+  }
 }

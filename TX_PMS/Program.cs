@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Login;
+using Mediator;
 
 namespace TxPms
 {
@@ -32,10 +34,21 @@ namespace TxPms
     [STAThread]
     static void Main()
     {
+      Mediator.Mediator.Instance.Register(App.OnLogin, i_O =>
+        {
+          var isSucceed = (bool) i_O;
+          if (isSucceed)
+          {
+            
+          }
+        });
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      
-      Application.Run(new CadForm());
+
+      var loginForm = new LoginForm();
+      var result = loginForm.ShowDialog();
+      if(result == DialogResult.OK)
+        Application.Run(new CadForm());
     }
   }
 }

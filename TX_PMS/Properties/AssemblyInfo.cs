@@ -21,17 +21,18 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Resources;
 
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Teigha?NET for .dwg files: OdViewExMgd sample")] // FILE_DESCRIPTION
-[assembly: AssemblyDescription("Teigha?NET for .dwg files 3.3.0.0")]
+[assembly: AssemblyTitle("PMS")] // FILE_DESCRIPTION
+[assembly: AssemblyDescription("Part Management System")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Open Design Alliance Inc. ('Open Design')")]
-[assembly: AssemblyProduct("Teigha?NET for .dwg files")]
-[assembly: AssemblyCopyright("Copyright 2009-2010, Open Design Alliance Inc. ('Open Design')")] 
+[assembly: AssemblyCompany("kaixuan studio")]
+[assembly: AssemblyProduct("PMS")]
+[assembly: AssemblyCopyright("Copyrigh")] 
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -52,3 +53,4 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("1.0.0.*")]
 [assembly: AssemblyFileVersion("3.2.0.0")]
+[assembly: NeutralResourcesLanguageAttribute("zh-CN")]
