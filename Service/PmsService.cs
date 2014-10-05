@@ -35,11 +35,18 @@ namespace Core.Service
       return part.GetPartsByCadNumber(i_CadNumber);
     }
 
-    public void GetDimensionsByPart(Part i_Part)
+    public void PopulateDimensionsForPart(Part i_Part)
     {
       var dimension = new DbDimension();
       i_Part.Dimensions = dimension.GetDimensionsByPart(i_Part);
       i_Part.Dimensions.Sort((i_Dimension, i_Dimension1) => i_Dimension.SerialNumber - i_Dimension1.SerialNumber);
+    }
+
+    public void PopulateDimensionsForReport(PartReport i_PartReport)
+    {
+      var dimension = new DbDimension();
+      i_PartReport.Dimensions = dimension.GetDimensionsByMeasureMentReport(i_PartReport);
+      i_PartReport.Dimensions.Sort((i_Dimension, i_Dimension1) => i_Dimension.SerialNumber - i_Dimension1.SerialNumber);
     }
 
     public void SaveDimesinos(List<Dimension> i_Dimensions)
@@ -104,6 +111,9 @@ namespace Core.Service
       var u = users[0];
       if (u.Password.Trim() != i_Password.Trim())
         throw new PmsIncorrectPasswordException(i_UserName);
+      Instance.CurrentUser = u;
     }
+
+    public User CurrentUser { get; set; }
   }
 }

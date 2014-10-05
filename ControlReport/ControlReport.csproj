@@ -61,6 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowseReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseReportForm.Designer.cs">
+      <DependentUpon>BrowseReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrowseReportViewModel.cs" />
     <Compile Include="EditPartTemplateViewModel.cs" />
     <Compile Include="ExecuteReportViewModel.cs" />
     <Compile Include="EditReportControl.cs">
@@ -89,6 +96,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BrowseReportForm.resx">
+      <DependentUpon>BrowseReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditReportControl.resx">
       <DependentUpon>EditReportControl.cs</DependentUpon>
     </EmbeddedResource>

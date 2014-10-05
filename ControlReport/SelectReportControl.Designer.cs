@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.label7 = new System.Windows.Forms.Label();
-      this.comboPartCadNumber = new System.Windows.Forms.ComboBox();
+      this.comboPartName = new System.Windows.Forms.ComboBox();
       this.btnCancel = new System.Windows.Forms.Button();
       this.btnOK = new System.Windows.Forms.Button();
       this.SuspendLayout();
@@ -43,19 +43,19 @@
       this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.label7.Location = new System.Drawing.Point(78, 34);
       this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(69, 15);
+      this.label7.Size = new System.Drawing.Size(45, 15);
       this.label7.TabIndex = 6;
-      this.label7.Text = "零件图号：";
+      this.label7.Text = "零件：";
       this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // comboPartCadNumber
+      // comboPartName
       // 
-      this.comboPartCadNumber.FormattingEnabled = true;
-      this.comboPartCadNumber.Location = new System.Drawing.Point(157, 32);
-      this.comboPartCadNumber.Name = "comboPartCadNumber";
-      this.comboPartCadNumber.Size = new System.Drawing.Size(163, 21);
-      this.comboPartCadNumber.TabIndex = 7;
-      this.comboPartCadNumber.Text = "请选择...";
+      this.comboPartName.FormattingEnabled = true;
+      this.comboPartName.Location = new System.Drawing.Point(157, 32);
+      this.comboPartName.Name = "comboPartName";
+      this.comboPartName.Size = new System.Drawing.Size(163, 21);
+      this.comboPartName.TabIndex = 7;
+      this.comboPartName.Text = "请选择...";
       // 
       // btnCancel
       // 
@@ -83,11 +83,11 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(382, 141);
       this.Controls.Add(this.label7);
-      this.Controls.Add(this.comboPartCadNumber);
+      this.Controls.Add(this.comboPartName);
       this.Controls.Add(this.btnCancel);
       this.Controls.Add(this.btnOK);
       this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "SelectReportControl";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.ResumeLayout(false);
@@ -98,7 +98,7 @@
     #endregion
 
     private System.Windows.Forms.Label label7;
-    private System.Windows.Forms.ComboBox comboPartCadNumber;
+    private System.Windows.Forms.ComboBox comboPartName;
     private System.Windows.Forms.Button btnCancel;
     private System.Windows.Forms.Button btnOK;
 

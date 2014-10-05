@@ -11,6 +11,10 @@ namespace ControlReport
   public class ExecuteDimensionEntityViewModel 
   {
     private readonly Dimension _Dimension;
+    public Dimension GetDimension()
+    {
+      return _Dimension;
+    }
     public ExecuteDimensionEntityViewModel(Dimension i_Dimension)
     {
       _Dimension = i_Dimension;

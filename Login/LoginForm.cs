@@ -22,7 +22,7 @@ namespace Login
       try
       {
         PmsService.Instance.CheckUser(TxtUserName.Text, TxtPwd.Text);
-        //Mediator.Mediator.Instance.NotifyColleagues(App.OnLogin, true);
+        
         DialogResult = DialogResult.OK;
         Close();
       }

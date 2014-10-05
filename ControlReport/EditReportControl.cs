@@ -75,7 +75,7 @@ namespace ControlReport
     {
 
       _DataSource.Clear();
-      PmsService.Instance.GetDimensionsByPart(i_Part);
+      PmsService.Instance.PopulateDimensionsForPart(i_Part);
       foreach (var en in i_Part.Dimensions)
       {
         _DataSource.Add(new EditDimensionEntityViewModel(en));

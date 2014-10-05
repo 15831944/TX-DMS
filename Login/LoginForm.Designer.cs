@@ -100,6 +100,7 @@
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Name = "LoginForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "登陆";
       this.ResumeLayout(false);
       this.PerformLayout();

@@ -28,12 +28,9 @@ namespace ControlReport
       {
         viewModels.Add(new PartTemplateViewModel(partTemplate));
       }
-      comboPartCadNumber.DataSource = viewModels;
-      comboPartCadNumber.ValueMember = "Part";
-      comboPartCadNumber.DisplayMember = "PartCadNumber";
-
-
-
+      comboPartName.DataSource = viewModels;
+      comboPartName.ValueMember = "Part";
+      comboPartName.DisplayMember = "PartName";
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
@@ -43,7 +40,7 @@ namespace ControlReport
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-      PmsService.Instance.CurrentTemplate = (Part) comboPartCadNumber.SelectedValue;
+      PmsService.Instance.CurrentTemplate = (Part) comboPartName.SelectedValue;
       Mediator.Mediator.Instance.NotifyColleagues(UI.SelectPartTemplate, PmsService.Instance.CurrentTemplate);
       Close();
     }
@@ -58,6 +55,7 @@ namespace ControlReport
 
       public string PartSecondNumber { get { return _PartTemplate.SecondNumber; } }
       public string PartCadNumber { get { return _PartTemplate.CadNumber; } }
+      public string PartName { get { return _PartTemplate.Name; } }
       public Part Part { get { return _PartTemplate; } } 
     }
   }

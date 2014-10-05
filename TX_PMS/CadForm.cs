@@ -593,5 +593,11 @@ namespace TxPms
       MockMeasureToolForm frm = new MockMeasureToolForm();
       frm.Show(this);
     }
+
+    private void BrowseReportMenuItem_Click(object sender, EventArgs e)
+    {
+      BrowseReportForm frm = new BrowseReportForm();
+      frm.Show(this);
+    }
   }
 }

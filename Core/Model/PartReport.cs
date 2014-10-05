@@ -20,8 +20,11 @@ namespace Core.Model
     public DateTime ApproveDatetime{ get; set; }
     public string ApproveComment { get; set; }
     public Part Part { get; set; }
+
+    public List<Dimension> Dimensions { get; set; }
     public PartReport()
     {
+      Dimensions = new List<Dimension>();
       Part= new Part(){Id = -1};
     }
   }

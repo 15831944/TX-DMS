@@ -61,11 +61,11 @@ namespace TxPms
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
       this.LeftStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.ReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.PartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.NewPartStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-      this.editReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.executeReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.SelectPartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editPartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.executePartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.FitToWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.CadLayoutModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +73,10 @@ namespace TxPms
       this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.editReportControl1 = new ControlReport.EditReportControl();
       this.executeReportControl1 = new ControlReport.ExecuteReportControl();
+      this.ReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.AuditReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.BrowseReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.ApproveReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
@@ -161,7 +165,8 @@ namespace TxPms
       // menuStrip1
       // 
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ReportToolStripMenuItem,
+            this.PartToolStripMenuItem,
+            this.ReportMenuItem,
             this.CadToolStripMenuItem,
             this.mockToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -170,44 +175,44 @@ namespace TxPms
       this.menuStrip1.TabIndex = 3;
       this.menuStrip1.Text = "menuStrip1";
       // 
-      // ReportToolStripMenuItem
+      // PartToolStripMenuItem
       // 
-      this.ReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.PartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewPartStripMenuItem,
-            this.toolStripMenuItem1,
-            this.editReportToolStripMenuItem,
-            this.executeReportToolStripMenuItem});
-      this.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem";
-      this.ReportToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-      this.ReportToolStripMenuItem.Text = "报告";
+            this.SelectPartMenuItem,
+            this.editPartMenuItem,
+            this.executePartMenuItem});
+      this.PartToolStripMenuItem.Name = "PartToolStripMenuItem";
+      this.PartToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+      this.PartToolStripMenuItem.Text = "零件";
       // 
       // NewPartStripMenuItem
       // 
       this.NewPartStripMenuItem.Name = "NewPartStripMenuItem";
-      this.NewPartStripMenuItem.Size = new System.Drawing.Size(94, 22);
+      this.NewPartStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.NewPartStripMenuItem.Text = "新建";
       this.NewPartStripMenuItem.Click += new System.EventHandler(this.NewPartStripMenuItem_Click);
       // 
-      // toolStripMenuItem1
+      // SelectPartMenuItem
       // 
-      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
-      this.toolStripMenuItem1.Text = "选择";
-      this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+      this.SelectPartMenuItem.Name = "SelectPartMenuItem";
+      this.SelectPartMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.SelectPartMenuItem.Text = "选择";
+      this.SelectPartMenuItem.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
       // 
-      // editReportToolStripMenuItem
+      // editPartMenuItem
       // 
-      this.editReportToolStripMenuItem.Name = "editReportToolStripMenuItem";
-      this.editReportToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-      this.editReportToolStripMenuItem.Text = "编辑";
-      this.editReportToolStripMenuItem.Click += new System.EventHandler(this.editReportToolStripMenuItem_Click);
+      this.editPartMenuItem.Name = "editPartMenuItem";
+      this.editPartMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.editPartMenuItem.Text = "编辑";
+      this.editPartMenuItem.Click += new System.EventHandler(this.editReportToolStripMenuItem_Click);
       // 
-      // executeReportToolStripMenuItem
+      // executePartMenuItem
       // 
-      this.executeReportToolStripMenuItem.Name = "executeReportToolStripMenuItem";
-      this.executeReportToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-      this.executeReportToolStripMenuItem.Text = "执行";
-      this.executeReportToolStripMenuItem.Click += new System.EventHandler(this.executeReportToolStripMenuItem_Click);
+      this.executePartMenuItem.Name = "executePartMenuItem";
+      this.executePartMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.executePartMenuItem.Text = "执行";
+      this.executePartMenuItem.Click += new System.EventHandler(this.executeReportToolStripMenuItem_Click);
       // 
       // CadToolStripMenuItem
       // 
@@ -266,6 +271,35 @@ namespace TxPms
       this.executeReportControl1.Size = new System.Drawing.Size(412, 600);
       this.executeReportControl1.TabIndex = 0;
       // 
+      // ReportMenuItem
+      // 
+      this.ReportMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BrowseReportMenuItem,
+            this.AuditReportMenuItem,
+            this.ApproveReportMenuItem});
+      this.ReportMenuItem.Name = "ReportMenuItem";
+      this.ReportMenuItem.Size = new System.Drawing.Size(41, 20);
+      this.ReportMenuItem.Text = "报告";
+      // 
+      // AuditReportMenuItem
+      // 
+      this.AuditReportMenuItem.Name = "AuditReportMenuItem";
+      this.AuditReportMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.AuditReportMenuItem.Text = "评审";
+      // 
+      // BrowseReportMenuItem
+      // 
+      this.BrowseReportMenuItem.Name = "BrowseReportMenuItem";
+      this.BrowseReportMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.BrowseReportMenuItem.Text = "查看";
+      this.BrowseReportMenuItem.Click += new System.EventHandler(this.BrowseReportMenuItem_Click);
+      // 
+      // ApproveReportMenuItem
+      // 
+      this.ApproveReportMenuItem.Name = "ApproveReportMenuItem";
+      this.ApproveReportMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.ApproveReportMenuItem.Text = "审批";
+      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -303,10 +337,10 @@ namespace TxPms
     private System.Windows.Forms.ToolStripMenuItem CadToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem FitToWindowToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem CadLayoutModeToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem ReportToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem editReportToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem executeReportToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+    private System.Windows.Forms.ToolStripMenuItem PartToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem editPartMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem executePartMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem SelectPartMenuItem;
     private EditReportControl editReportControl1;
     private ExecuteReportControl executeReportControl1;
     private ToolStripMenuItem NewPartStripMenuItem;
@@ -317,6 +351,10 @@ namespace TxPms
     private Panel panelGraphicContainer;
     private Panel panel1;
     private Panel panelReportContainer;
+    private ToolStripMenuItem ReportMenuItem;
+    private ToolStripMenuItem AuditReportMenuItem;
+    private ToolStripMenuItem BrowseReportMenuItem;
+    private ToolStripMenuItem ApproveReportMenuItem;
   }
 }
 
