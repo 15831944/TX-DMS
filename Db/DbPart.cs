@@ -51,6 +51,36 @@ namespace Db
       return result;
     }
 
+    public Part GetPartById(int i_Id)
+    {
+      return GetPartWithCondition(string.Format("Id={0}", i_Id));
+    }
+
+    private Part GetPartWithCondition(string i_Condition)
+    {
+      var result = new List<Part>();
+      DbHelper db = new DbHelper();
+      var selCmd =
+        db.GetSqlStringCommond(string.Format("Select {1} from Part where {0}", i_Condition, Columns));
+      var reader = db.ExecuteReader(selCmd);
+      while (reader.Read())
+      {
+        result.Add(new Part()
+        {
+          Id = reader.GetInt32(0),
+          Name = reader.IsDBNull(1) ? "" : reader.GetString(1),
+          CadNumber = reader.IsDBNull(2) ? "" : reader.GetString(2),
+          SecondNumber = reader.IsDBNull(3) ? "" : reader.GetString(3),
+          CadFilename = reader.IsDBNull(4) ? "" : reader.GetString(4),
+        });
+      }
+      selCmd.Connection.Close();
+      if (result.Count == 0) return null;
+      else
+      {
+        return result[0];
+      }
+    }
     public int UpdatePart(Part i_Part)
     {
       DbHelper db = new DbHelper();

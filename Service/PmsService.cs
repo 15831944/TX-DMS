@@ -89,7 +89,13 @@ namespace Core.Service
     public List<PartReport> GetPartReports()
     {
       var dbPartReport = new DbPartReport();
-      return dbPartReport.GetPartReports();
+      var result = dbPartReport.GetPartReports();
+      var dbPart = new DbPart();
+      foreach (var partReport in result)
+      {
+        partReport.Part = dbPart.GetPartById(partReport.Part.Id);
+      }
+      return result;
     }
     public List<PartReport> GetPartReports(Part i_Part)
     {
@@ -99,7 +105,20 @@ namespace Core.Service
     public void SaveReport(PartReport i_PartReport)
     {
       var dbPartReport = new DbPartReport();
-      dbPartReport.InsertPartReport(i_PartReport);
+      if (i_PartReport.Id == -1)
+        dbPartReport.InsertPartReport(i_PartReport);
+      else 
+        dbPartReport.UpdatePartReport(i_PartReport);
+
+
+      var dbDimension = new DbDimension();
+      foreach (var dimension in i_PartReport.Dimensions)
+      {
+        dimension.PartReport = i_PartReport;
+        if (dimension.Id == -1)
+          dbDimension.InsertDimension(dimension);
+        else dbDimension.UpdateDimension(dimension);
+      }
     }
 
     public void CheckUser(string i_UserName, string i_Password)

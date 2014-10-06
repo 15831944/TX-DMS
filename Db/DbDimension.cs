@@ -60,7 +60,7 @@ namespace Db
       return result;
     }
 
-    public void CommitDimensions(List<Dimension> i_Dimensions)
+    public void UpdateDimensions(List<Dimension> i_Dimensions)
     {
       DbHelper db = new DbHelper();
       // "Id, SerialNumber, Prefix, Symbol, Norminal, MinusTol, PlusTol, Measured, Type, PartID, MeasurementReportID, CadHandle";
@@ -68,10 +68,10 @@ namespace Db
       {
         var updateCmd = db.GetSqlStringCommond(
           string.Format(
-            "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}' where Id = {1}",
+            "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}', PartID={11}, MeasurementReportID={12} where Id = {1}",
             TableName, dimension.Id, dimension.SerialNumber, dimension.PreFix, (int)dimension.Symbol, dimension.Nominal,
             dimension.MinusTol, dimension.PlusTol, float.IsNaN(dimension.Measured) ? "null" : dimension.Measured.ToString("0.00"),
-            dimension.Dimensiontype, dimension.CadHandle));
+            dimension.Dimensiontype, dimension.CadHandle, dimension.Part.Id,dimension.PartReport.Id));
         db.ExecuteNonQuery(updateCmd);
       }
     }

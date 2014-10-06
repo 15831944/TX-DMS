@@ -2,6 +2,9 @@
 {
   public class Dimension
   {
+    /// <summary>
+    /// 为了简便期间，讲dimension的理论模型与报告模型使用同一个类，Part和PartReport必须有有一个的ID为-1，因为程序中通过PartID,或PartReportID来过滤dimensions
+    /// </summary>
     public Part Part { get; set; }
     public PartReport PartReport { get; set; }
     public Dimension()
@@ -47,6 +50,30 @@
     public override string ToString()
     {
       return string.Format("{0}{1}{2} {3}-{4}", PreFix, Symbol, Nominal, MinusTol, PlusTol);
+    }
+
+    /// <summary>
+    /// 重新创建一个dimension，在数据库中没有任何信息，因为所有的ID都为-1
+    /// </summary>
+    /// <returns></returns>
+    public Dimension Clone()
+    {
+      var result = new Dimension()
+        {
+          CadHandle = CadHandle,
+          Dimensiontype = Dimensiontype,
+          Id = -1,
+          Measured = Measured,
+          MinusTol = MinusTol,
+          Nominal = Nominal,
+          Part = Part,
+          PartReport = PartReport          ,
+          PlusTol = PlusTol,
+          PreFix = PreFix, SerialNumber = SerialNumber, Symbol = Symbol
+        };
+      result.Part.Id = -1;
+      result.PartReport.Id = -1;
+      return result;
     }
   }
 

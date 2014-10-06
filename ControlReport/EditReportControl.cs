@@ -19,8 +19,8 @@ namespace ControlReport
     public EditReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, OnPartSpecified);
-      Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
+      Mediator.Mediator.Instance.Register(UI.SelectPart, OnPartSpecified);
+      Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
       Mediator.Mediator.Instance.Register(Cad.OnDimensionSelected, OnCadElementSelected);
      
     }
@@ -96,7 +96,7 @@ namespace ControlReport
 
     private void btnSave_Click(object i_Sender, EventArgs e)
     {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.SavePartTemplate,_Part);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.SavePart,_Part);
       PmsService.Instance.SavePart(_Part);
       PmsService.Instance.SaveDimesinos(ConstructDimensions());
     }

@@ -6,6 +6,7 @@ namespace Core.Model
 {
   public class PartReport
   {
+    public readonly static DateTime InvalidDateTime = new DateTime(1900,1,1,0,0,0);
     public int Id { get; set; }
     public int SampleCount { get; set; }
     public int TotalCount { get; set; }
@@ -24,8 +25,12 @@ namespace Core.Model
     public List<Dimension> Dimensions { get; set; }
     public PartReport()
     {
+      Id = -1;
       Dimensions = new List<Dimension>();
       Part= new Part(){Id = -1};
+      MeasurementDatetime = InvalidDateTime;
+      AuditDatetime = InvalidDateTime;
+      ApproveDatetime = InvalidDateTime;
     }
   }
 }

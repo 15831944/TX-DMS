@@ -17,10 +17,10 @@ namespace ControlReport
       get { return _PartReport.Part.CadNumber; }
     }
 
-    public string Supplier
-    {
-      get { return _PartReport.Supplier; }
-    }
+//    public string Supplier
+//    {
+//      get { return _PartReport.Supplier; }
+//    }
 
     public string MeasurementResult
     {
@@ -43,5 +43,9 @@ namespace ControlReport
     }
 
     private readonly PartReport _PartReport;
+    public PartReport GetPartReport()
+    {
+      return _PartReport;
+    }
   }
 }

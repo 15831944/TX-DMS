@@ -10,10 +10,11 @@ namespace Mediator
   {
     EditReport,
     ExecuteReport,
-    SelectPartTemplate,
-    CreatePartTemplate,
+    SelectPart,
+    CreatePart,
     OpenCadFile,
-    SavePartTemplate
+    SavePart,
+    SelectPartReport
   }
 
   public enum Cad

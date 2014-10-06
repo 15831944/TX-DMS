@@ -19,37 +19,43 @@ namespace TxPms
       editPartMenuItem.Enabled = false;
       Mediator.Mediator.Instance.Register(UI.EditReport, OnEdit);
       Mediator.Mediator.Instance.Register(UI.ExecuteReport, ShowExecuteControl);
-      Mediator.Mediator.Instance.Register(UI.SelectPartTemplate, i_O =>
+      Mediator.Mediator.Instance.Register(UI.SelectPart, i_O => OpenDwgFile(i_O as Part));
+      Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
-          editPartMenuItem.Enabled = true;
-          ShowExecuteControl(null);
-          var part = i_O as Part;
-          if (part == null)
-          {
-            CloseDwgFile();
-            return;
-          }
-          if (string.IsNullOrEmpty(part.CadFilename))
-          {
-            CloseDwgFile();
-            return;
-          }
-
-          var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath,part.CadFilename);
-          if (!File.Exists(filePath))
-          {
-            CloseDwgFile();
-            return;
-          }
-          OpenDwgFile(filePath);
-          if(!panelGraphicContainer.Controls.Contains(panel1))
-            panelGraphicContainer.Controls.Add(panel1);
+          var report = i_O as PartReport;
+          if (report == null) return;
+          OpenDwgFile(report.Part);
         });
-      Mediator.Mediator.Instance.Register(UI.CreatePartTemplate, OnCreate);
+      Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
       Mediator.Mediator.Instance.Register(UI.OpenCadFile, file_open_handler);
-      Mediator.Mediator.Instance.Register(UI.SavePartTemplate, OnSavePart);
+      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
     }
 
+    private void OpenDwgFile(Part i_Part)
+    {
+      editPartMenuItem.Enabled = true;
+      ShowExecuteControl(null);
+      if (i_Part == null)
+      {
+        CloseDwgFile();
+        return;
+      }
+      if (string.IsNullOrEmpty(i_Part.CadFilename))
+      {
+        CloseDwgFile();
+        return;
+      }
+
+      var filePath = string.Format(@"{0}\CADResources\{1}", Application.StartupPath, i_Part.CadFilename);
+      if (!File.Exists(filePath))
+      {
+        CloseDwgFile();
+        return;
+      }
+      OpenDwgFile(filePath);
+      if (!panelGraphicContainer.Controls.Contains(panel1))
+        panelGraphicContainer.Controls.Add(panel1);
+    }
     private void CloseDwgFile()
     {
       panelGraphicContainer.Controls.Clear();

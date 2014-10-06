@@ -356,9 +356,8 @@ namespace MediatorTest
     [TestMethod()]
     public void InstanceTest()
     {
-      Mediator.Mediator actual;
-      actual = Mediator.Mediator.Instance;
-      Assert.Inconclusive("Verify the correctness of this test method.");
+      DateTime d = DateTime.Parse("2000-1-1 0:00:00");
+      Debug.WriteLine(d);
     }
   }
 }

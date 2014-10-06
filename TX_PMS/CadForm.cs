@@ -585,7 +585,7 @@ namespace TxPms
     private void NewPartStripMenuItem_Click(object sender, EventArgs e)
     {
 
-      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePartTemplate, null);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
     }
 
     private void measureToolToolStripMenuItem_Click(object sender, EventArgs e)
