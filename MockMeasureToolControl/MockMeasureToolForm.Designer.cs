@@ -124,6 +124,7 @@
       this.Controls.Add(this.textBox1);
       this.Controls.Add(this.trackBar1);
       this.Name = "MockMeasureToolForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "模拟量具";
       this.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MockMeasureToolForm_Scroll);
       ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();

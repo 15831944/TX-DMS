@@ -22,6 +22,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using ControlReport;
+using Core.Service;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
@@ -166,7 +167,8 @@ namespace TxPms
         FitToWindowToolStripMenuItem.Enabled = true;
         CadLayoutModeToolStripMenuItem.Enabled = true;
         panel1.Enabled = true;
-        Text = String.Format("外协件检验系统 - [{0}]", openFileDialog.SafeFileName);
+        Text = String.Format("外协件检验系统 - [{0}]", PmsService.Instance.CurrentTemplate==null?"":PmsService.Instance.CurrentTemplate.Name)
+        ;
 
         initializeGraphics();
         Invalidate();

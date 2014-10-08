@@ -84,6 +84,55 @@ namespace ControlReport
       }
     }
 
+    private void OnPartSpecified(object i_O)
+    {
+      var template = i_O as Part;
+      if (template == null)
+        return;
+      _PartReport = new PartReport() { Part = template };
+      _CurrentTemplate = template;
+      if (_CurrentTemplate == null)
+        return;
+
+
+      _DataSource = new List<ExecuteDimensionEntityViewModel>();
+
+      PmsService.Instance.PopulateDimensionsForPart(_CurrentTemplate);
+
+      foreach (var en in _CurrentTemplate.Dimensions)
+      {
+        var newDimension = en.Clone();
+        _PartReport.Dimensions.Add(newDimension); //为PartReport创建新的dimensions从而用于插入数据库 
+        _DataSource.Add(new ExecuteDimensionEntityViewModel(newDimension));
+      }
+
+      if (_CurrentTemplate.Dimensions.Count > 0)
+      {
+        _SeletedDimension = _PartReport.Dimensions[0];
+      }
+
+      dataGridView1.DataSource = _DataSource;
+      BindingTextControls();
+      RefreshCommentControls();
+      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
+      {
+        LblTester.Text = PmsService.Instance.CurrentUser.Name;
+        LblTestDate.Text = DateTime.Now.ToLongDateString();
+      }
+      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
+      {
+        BindMeasurementControl();
+        LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
+        LblAuditDate.Text = DateTime.Now.ToLongDateString();
+      }
+      if (PmsService.Instance.CurrentUser.Group.Name == "审批")
+      {
+        BindMeasurementControl();
+        BindAuditControl();
+        LblApprover.Text = PmsService.Instance.CurrentUser.Name;
+        LblApproveDate.Text = DateTime.Now.ToLongDateString();
+      }
+    }
     private void BindingTextControls()
     {
       txtManufacturer.DataBindings.Clear();
@@ -164,54 +213,6 @@ namespace ControlReport
     }
 
 
-    private void OnPartSpecified(object i_O)
-    {
-      var template = i_O as Part;
-      if (template == null)
-        return;
-      _PartReport = new PartReport() {Part = template};
-      _CurrentTemplate = template;
-      if (_CurrentTemplate == null)
-        return;
-
-
-      _DataSource = new List<ExecuteDimensionEntityViewModel>();
-
-      PmsService.Instance.PopulateDimensionsForPart(_CurrentTemplate);
-      
-      foreach (var en in _CurrentTemplate.Dimensions)
-      {
-        _PartReport.Dimensions.Add(en.Clone()); //为PartReport创建新的dimensions从而用于插入数据库 
-        _DataSource.Add(new ExecuteDimensionEntityViewModel(en));
-      }
-
-      if (_CurrentTemplate.Dimensions.Count > 0)
-      {
-        _SeletedDimension = _CurrentTemplate.Dimensions[0];
-      }
-
-      dataGridView1.DataSource = _DataSource;
-      BindingTextControls();
-      RefreshCommentControls();
-      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
-      {
-        LblTester.Text = PmsService.Instance.CurrentUser.Name;
-        LblTestDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
-      {
-        BindMeasurementControl();
-        LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
-        LblAuditDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "审批")
-      {
-        BindMeasurementControl();
-        BindAuditControl();
-        LblApprover.Text = PmsService.Instance.CurrentUser.Name;
-        LblApproveDate.Text = DateTime.Now.ToLongDateString();
-      }
-    }
 
     private void BindMeasurementControl()
     {
