@@ -16,7 +16,7 @@ namespace TxPms
     void Initialize()
     {
       Load += CadForm_Load;
-      editPartMenuItem.Enabled = false;
+      //editPartMenuItem.Enabled = false;
       Mediator.Mediator.Instance.Register(UI.EditReport, OnEdit);
       Mediator.Mediator.Instance.Register(UI.ExecuteReport, ShowExecuteControl);
       Mediator.Mediator.Instance.Register(UI.SelectPart, i_O => OpenDwgFile(i_O as Part));
@@ -33,7 +33,7 @@ namespace TxPms
 
     private void OpenDwgFile(Part i_Part)
     {
-      editPartMenuItem.Enabled = true;
+      //editPartMenuItem.Enabled = true;
       ShowExecuteControl(null);
       if (i_Part == null)
       {
@@ -81,13 +81,13 @@ namespace TxPms
 
     private void OnEdit(object i_Obj)
     {
-      LeftStripStatusLabel.Text = @"正在编辑外协件";
+      //LeftStripStatusLabel.Text = @"正在编辑外协件";
       ShowEditControl(i_Obj);
     }
 
     void OnCreate(object i_O)
     {
-      LeftStripStatusLabel.Text = @"正在创建外协件";
+      //LeftStripStatusLabel.Text = @"正在创建外协件";
       ShowEditControl(i_O);
       CloseDwgFile();
     }
@@ -105,13 +105,13 @@ namespace TxPms
         return;
       panelReportContainer.Controls.Clear(); 
       panelReportContainer.Controls.Add(executeReportControl1);
-      LeftStripStatusLabel.Text = @"正在执行外协件";
+      //LeftStripStatusLabel.Text = @"正在执行外协件";
     }
 
     void CadForm_Load(object i_Sender, EventArgs e)
     {
       panelReportContainer.Controls.Clear();
-      LeftStripStatusLabel.Text = @"请选择或新建外协件";
+     // LeftStripStatusLabel.Text = @"请选择或新建外协件";
     }
   }
 }

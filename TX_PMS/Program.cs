@@ -48,7 +48,7 @@ namespace TxPms
       var loginForm = new LoginForm();
       var result = loginForm.ShowDialog();
       if(result == DialogResult.OK)
-        Application.Run(new CadForm());
+        Application.Run(new MainForm());
     }
   }
 }

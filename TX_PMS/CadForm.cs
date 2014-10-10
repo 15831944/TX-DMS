@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 
 namespace TxPms
 {
-  public partial class CadForm : Form
+  public partial class CadForm : UserControl
   {
     enum Mode
     {
@@ -74,8 +74,8 @@ namespace TxPms
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
       splitContainer1.MouseWheel += Form1_MouseWheel;
-      FitToWindowToolStripMenuItem.Enabled = false;
-      CadLayoutModeToolStripMenuItem.Enabled = false;
+      //FitToWindowToolStripMenuItem.Enabled = false;
+      //CadLayoutModeToolStripMenuItem.Enabled = false;
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
 
@@ -164,8 +164,8 @@ namespace TxPms
         String str = HostApplicationServices.Current.FontMapFileName;
 
         //menuStrip.
-        FitToWindowToolStripMenuItem.Enabled = true;
-        CadLayoutModeToolStripMenuItem.Enabled = true;
+       // FitToWindowToolStripMenuItem.Enabled = true;
+       // CadLayoutModeToolStripMenuItem.Enabled = true;
         panel1.Enabled = true;
         Text = String.Format("外协件检验系统 - [{0}]", PmsService.Instance.CurrentTemplate==null?"":PmsService.Instance.CurrentTemplate.Name)
         ;
@@ -175,16 +175,16 @@ namespace TxPms
         zoom_extents_handler(null, null);
 
 
-        CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
+       // CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
         using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
         {
           foreach (DBDictionaryEntry dicEntry in layoutDict)
           {
             var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
-            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-              {
-                layout1
-              });
+//            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+//              {
+//                layout1
+//              });
             layout1.Click += layout1_Click;
           }
         }
@@ -259,7 +259,7 @@ namespace TxPms
         }
       }
     }
-    private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+    public void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
       DisposeResource();
     }
@@ -557,49 +557,6 @@ namespace TxPms
       }
     }
 
-    private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (database != null)
-      {
-        if (DialogResult.OK == saveAsFileDialog.ShowDialog(this))
-        {
-          database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
-        }
-      }
-    }
 
-    private void editReportToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.EditReport, null);
-    }
-
-    private void executeReportToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
-    }
-
-    private void toolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-      SelectReportControl selectReportControl = new SelectReportControl();
-      selectReportControl.ShowDialog(this);
-    }
-
-    private void NewPartStripMenuItem_Click(object sender, EventArgs e)
-    {
-
-      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
-    }
-
-    private void measureToolToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      MockMeasureToolForm frm = new MockMeasureToolForm();
-      frm.Show(this);
-    }
-
-    private void BrowseReportMenuItem_Click(object sender, EventArgs e)
-    {
-      BrowseReportForm frm = new BrowseReportForm();
-      frm.Show(this);
-    }
   }
 }

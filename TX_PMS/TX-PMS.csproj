@@ -71,10 +71,13 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TD_Mgd_3.03_9, Version=3.0.0.8111, Culture=neutral, PublicKeyToken=460a0bef3ba73253, processorArchitecture=AMD64">
@@ -91,7 +94,7 @@
     </Compile>
     <Compile Include="Export_Import\ImExport.cs" />
     <Compile Include="CadForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CadForm.Designer.cs">
       <DependentUpon>CadForm.cs</DependentUpon>
@@ -114,6 +117,12 @@
     <Compile Include="Export_Import\publishSetting.Designer.cs">
       <DependentUpon>publishSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Print\PageSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,7 +133,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplitContainerPanel1.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <EmbeddedResource Include="Export_Import\BMPExport.resx">
       <SubType>Designer</SubType>
@@ -137,6 +146,9 @@
     <EmbeddedResource Include="Export_Import\PDFExport.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PDFExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Print\PageSetup.resx">
       <SubType>Designer</SubType>
