@@ -14,7 +14,7 @@ using Teigha.DatabaseServices;
 
 namespace TxPms
 {
-  public partial class MainForm : Form
+  public partial class MainForm : QRibbonForm  
   {
     private CadForm _CadForm  = new CadForm();
     public MainForm()
@@ -89,40 +89,7 @@ namespace TxPms
 //      }
     }
 
-    private void editReportToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.EditReport, null);
-    }
 
-    private void executeReportToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
-    }
-
-    private void SelectToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      SelectReportControl selectReportControl = new SelectReportControl();
-      selectReportControl.ShowDialog(this);
-    }
-
-    private void NewPartStripMenuItem_Click(object sender, EventArgs e)
-    {
-
-      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
-    }
-
-
-
-    private void BrowseReportMenuItem_Click(object sender, EventArgs e)
-    {
-      BrowseReportForm frm = new BrowseReportForm();
-      //frm.Show(this);
-    }
-
-    private void qCompositeMenuItem1_ItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
-    {
-
-    }
 
     private void qRibbonItem4_ItemActivated(object sender, QCompositeEventArgs e)
     {
