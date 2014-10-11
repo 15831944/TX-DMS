@@ -7,10 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using Core.Service;
 using Mediator;
+using Qios.DevSuite.Components;
 
 namespace ControlReport
 {
-  public partial class BrowseReportForm : Form
+  public partial class BrowseReportForm : QDockingWindow
   {
     private List<BrowseReportViewModel> _DateSource;
     private BrowseReportViewModel _SelectedReportViewModel;
@@ -45,12 +46,13 @@ namespace ControlReport
       if(_SelectedReportViewModel==null)
         return;
       Mediator.Mediator.Instance.NotifyColleagues(UI.SelectPartReport,_SelectedReportViewModel.GetPartReport());
-      Close();
+      //Close();
     }
 
     private void btnClose_Click(object sender, EventArgs e)
     {
-      Close();
+      //Close();
     }
+
   }
 }

@@ -90,8 +90,8 @@ namespace TxPms
       // splitContainer1.Panel2
       // 
       this.splitContainer1.Panel2.Controls.Add(this.panelGraphicContainer);
-      this.splitContainer1.Size = new System.Drawing.Size(1290, 568);
-      this.splitContainer1.SplitterDistance = 420;
+      this.splitContainer1.Size = new System.Drawing.Size(1282, 534);
+      this.splitContainer1.SplitterDistance = 417;
       this.splitContainer1.SplitterWidth = 1;
       this.splitContainer1.TabIndex = 2;
       // 
@@ -101,7 +101,7 @@ namespace TxPms
       this.panelReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panelReportContainer.Location = new System.Drawing.Point(0, 0);
       this.panelReportContainer.Name = "panelReportContainer";
-      this.panelReportContainer.Size = new System.Drawing.Size(420, 568);
+      this.panelReportContainer.Size = new System.Drawing.Size(417, 534);
       this.panelReportContainer.TabIndex = 0;
       // 
       // panelGraphicContainer
@@ -111,7 +111,7 @@ namespace TxPms
       this.panelGraphicContainer.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panelGraphicContainer.Location = new System.Drawing.Point(0, 0);
       this.panelGraphicContainer.Name = "panelGraphicContainer";
-      this.panelGraphicContainer.Size = new System.Drawing.Size(869, 568);
+      this.panelGraphicContainer.Size = new System.Drawing.Size(864, 534);
       this.panelGraphicContainer.TabIndex = 2;
       // 
       // panel1
@@ -120,7 +120,7 @@ namespace TxPms
       this.panel1.Enabled = false;
       this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(865, 564);
+      this.panel1.Size = new System.Drawing.Size(860, 530);
       this.panel1.TabIndex = 1;
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -152,9 +152,9 @@ namespace TxPms
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.ClientSize = new System.Drawing.Size(1282, 534);
       this.Controls.Add(this.splitContainer1);
       this.Name = "CadForm";
-      this.Size = new System.Drawing.Size(1290, 568);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
       this.splitContainer1.Panel1.ResumeLayout(false);

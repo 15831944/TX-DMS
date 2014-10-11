@@ -51,6 +51,10 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\QIOS\Qios.DevSuite.Components 4.0\Bin\Qios.DevSuite.Components.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -62,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseReportForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="BrowseReportForm.Designer.cs">
       <DependentUpon>BrowseReportForm.cs</DependentUpon>

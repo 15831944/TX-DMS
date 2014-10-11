@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 
 namespace TxPms
 {
-  public partial class CadForm : UserControl
+  public partial class CadForm : Form
   {
     enum Mode
     {
@@ -74,11 +74,9 @@ namespace TxPms
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
       splitContainer1.MouseWheel += Form1_MouseWheel;
-      //FitToWindowToolStripMenuItem.Enabled = false;
-      //CadLayoutModeToolStripMenuItem.Enabled = false;
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
-
+      
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
       //DisableAero();
@@ -130,6 +128,7 @@ namespace TxPms
         if (!panelGraphicContainer.Controls.Contains(panel1))
           panelGraphicContainer.Controls.Add(panel1);
       }
+      this.Show();
     }
 
     private void OpenDwgFile(string i_Path)
@@ -170,34 +169,30 @@ namespace TxPms
         Text = String.Format("外协件检验系统 - [{0}]", PmsService.Instance.CurrentTemplate==null?"":PmsService.Instance.CurrentTemplate.Name)
         ;
 
-        initializeGraphics();
+        InitializeGraphics();
         Invalidate();
         zoom_extents_handler(null, null);
 
-
+        Mediator.Mediator.Instance.NotifyColleagues(Cad.OnOpened, database);
        // CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
-        using (DBDictionary layoutDict = (DBDictionary) database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
-        {
-          foreach (DBDictionaryEntry dicEntry in layoutDict)
-          {
-            var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
-//            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-//              {
-//                layout1
-//              });
-            layout1.Click += layout1_Click;
-          }
-        }
+
       }
+      panel1.Focus();
     }
 
-    void layout1_Click(object sender, EventArgs e)
+//    void layout1_Click(object sender, EventArgs e)
+//    {
+//      LayoutManager LayMan = LayoutManager.Current;
+//      LayMan.CurrentLayout = ((ToolStripMenuItem) sender).Text;
+//    }
+
+    public void SetLayout(string i_LayoutString)
     {
       LayoutManager LayMan = LayoutManager.Current;
-      LayMan.CurrentLayout = ((ToolStripMenuItem) sender).Text;
+      LayMan.CurrentLayout = i_LayoutString;
     }
 
-    void initializeGraphics()
+    void InitializeGraphics()
     {
       try
       {
@@ -437,7 +432,7 @@ namespace TxPms
     {
       helperDevice.Dispose();
       graphics.Dispose();
-      initializeGraphics();
+      InitializeGraphics();
     }
 
 

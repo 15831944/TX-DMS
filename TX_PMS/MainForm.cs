@@ -8,17 +8,62 @@ using System.Windows.Forms;
 using ControlReport;
 using Mediator;
 using MockMeasureToolControl;
+using Qios.DevSuite.Components;
+using Qios.DevSuite.Components.Ribbon;
 using Teigha.DatabaseServices;
 
 namespace TxPms
 {
   public partial class MainForm : Form
   {
+    private CadForm _CadForm  = new CadForm();
     public MainForm()
     {
       InitializeComponent();
+      _CadForm.MdiParent = this;
+      _CadForm.WindowState = FormWindowState.Maximized;
+     // _CadForm.ControlBox = false;
+      _CadForm.Show();
+      DockReportControl();
+      this.FormClosing += MainForm_FormClosing;
+      Mediator.Mediator.Instance.Register(Cad.OnOpened, OnCadOpened);
 
-      this.FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
+    }
+
+    void DockReportControl()
+    {
+      BrowseReportForm tmp_oTasks = new BrowseReportForm();
+      tmp_oTasks.Owner = this;
+      tmp_oTasks.Closing += new CancelEventHandler(Tasks_Closing);
+      tmp_oTasks.DockWindow(this.qDockBarBottom);	
+    }
+    private void Tasks_Closing(object sender, CancelEventArgs e)
+    {
+      //allow the user to cancel the closing of forms
+      //e.Cancel = (MessageBox.Show("Do you want to close " + ((Control)sender).Text + "?", "Closing...", MessageBoxButtons.OKCancel) == DialogResult.Cancel);
+    }
+
+    private void OnCadOpened(object i_Obj)
+    {
+      Database database = i_Obj as Database;
+      if(database==null) return;
+
+      using (DBDictionary layoutDict = (DBDictionary)database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
+      {
+//        qCadToolBar.Controls.Clear();
+//        foreach (DBDictionaryEntry dicEntry in layoutDict)
+//        {
+//
+//          //var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
+//          //            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+//          //              {
+//          //                layout1
+//          //              });
+//          //layout1.Click += layout1_Click;
+//          qCadToolBar.ToolItems.Add(new QToolItem(dicEntry.Key));
+//
+//        }
+      }
     }
 
     void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,7 +114,12 @@ namespace TxPms
     private void BrowseReportMenuItem_Click(object sender, EventArgs e)
     {
       BrowseReportForm frm = new BrowseReportForm();
-      frm.Show(this);
+      //frm.Show(this);
+    }
+
+    private void qCompositeMenuItem1_ItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+    {
+
     }
   }
 }
