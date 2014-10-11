@@ -54,16 +54,9 @@ namespace TxPms
     {
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
-      this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-      this.panelReportContainer = new System.Windows.Forms.Panel();
-      this.panelGraphicContainer = new System.Windows.Forms.Panel();
-      this.panel1 = new System.Windows.Forms.Panel();
       this.editReportControl1 = new ControlReport.EditReportControl();
       this.executeReportControl1 = new ControlReport.ExecuteReportControl();
-      this.splitContainer1.Panel1.SuspendLayout();
-      this.splitContainer1.Panel2.SuspendLayout();
-      this.splitContainer1.SuspendLayout();
-      this.panelGraphicContainer.SuspendLayout();
+      this.panel1 = new System.Windows.Forms.Panel();
       this.SuspendLayout();
       // 
       // openFileDialog
@@ -75,58 +68,6 @@ namespace TxPms
       // 
       this.saveAsFileDialog.DefaultExt = "DWG";
       this.saveAsFileDialog.Filter = "\"DWG files|*.dwg\"";
-      // 
-      // splitContainer1
-      // 
-      this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.splitContainer1.IsSplitterFixed = true;
-      this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-      this.splitContainer1.Name = "splitContainer1";
-      // 
-      // splitContainer1.Panel1
-      // 
-      this.splitContainer1.Panel1.Controls.Add(this.panelReportContainer);
-      // 
-      // splitContainer1.Panel2
-      // 
-      this.splitContainer1.Panel2.Controls.Add(this.panelGraphicContainer);
-      this.splitContainer1.Size = new System.Drawing.Size(1282, 534);
-      this.splitContainer1.SplitterDistance = 417;
-      this.splitContainer1.SplitterWidth = 1;
-      this.splitContainer1.TabIndex = 2;
-      // 
-      // panelReportContainer
-      // 
-      this.panelReportContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.panelReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panelReportContainer.Location = new System.Drawing.Point(0, 0);
-      this.panelReportContainer.Name = "panelReportContainer";
-      this.panelReportContainer.Size = new System.Drawing.Size(417, 534);
-      this.panelReportContainer.TabIndex = 0;
-      // 
-      // panelGraphicContainer
-      // 
-      this.panelGraphicContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.panelGraphicContainer.Controls.Add(this.panel1);
-      this.panelGraphicContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panelGraphicContainer.Location = new System.Drawing.Point(0, 0);
-      this.panelGraphicContainer.Name = "panelGraphicContainer";
-      this.panelGraphicContainer.Size = new System.Drawing.Size(864, 534);
-      this.panelGraphicContainer.TabIndex = 2;
-      // 
-      // panel1
-      // 
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Enabled = false;
-      this.panel1.Location = new System.Drawing.Point(0, 0);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(860, 530);
-      this.panel1.TabIndex = 1;
-      this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
-      this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-      this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-      this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-      this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
       // 
       // editReportControl1
       // 
@@ -148,19 +89,29 @@ namespace TxPms
       this.executeReportControl1.Size = new System.Drawing.Size(412, 600);
       this.executeReportControl1.TabIndex = 0;
       // 
+      // panel1
+      // 
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.panel1.Enabled = false;
+      this.panel1.Location = new System.Drawing.Point(0, 0);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(1282, 534);
+      this.panel1.TabIndex = 5;
+      this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
+      this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+      this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+      this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+      this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
+      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(1282, 534);
-      this.Controls.Add(this.splitContainer1);
+      this.Controls.Add(this.panel1);
       this.Name = "CadForm";
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-      this.splitContainer1.Panel1.ResumeLayout(false);
-      this.splitContainer1.Panel2.ResumeLayout(false);
-      this.splitContainer1.ResumeLayout(false);
-      this.panelGraphicContainer.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -169,12 +120,9 @@ namespace TxPms
 
     private System.Windows.Forms.OpenFileDialog openFileDialog;
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
-    private System.Windows.Forms.SplitContainer splitContainer1;
     private EditReportControl editReportControl1;
     private ExecuteReportControl executeReportControl1;
-    private Panel panelGraphicContainer;
     private Panel panel1;
-    private Panel panelReportContainer;
   }
 }
 

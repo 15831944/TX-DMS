@@ -22,7 +22,7 @@ namespace TxPms
       InitializeComponent();
       _CadForm.MdiParent = this;
       _CadForm.WindowState = FormWindowState.Maximized;
-     // _CadForm.ControlBox = false;
+      _CadForm.ControlBox = false;
       _CadForm.Show();
       DockReportControl();
       this.FormClosing += MainForm_FormClosing;
@@ -35,7 +35,13 @@ namespace TxPms
       BrowseReportForm tmp_oTasks = new BrowseReportForm();
       tmp_oTasks.Owner = this;
       tmp_oTasks.Closing += new CancelEventHandler(Tasks_Closing);
-      tmp_oTasks.DockWindow(this.qDockBarBottom);	
+      tmp_oTasks.DockWindow(this.qDockBarBottom);
+      tmp_oTasks.SlideWindow(true,false);
+     
+      PartForm partForm = new PartForm();
+      partForm.Owner = this;
+      partForm.DockWindow(this.qDockBarRight);
+
     }
     private void Tasks_Closing(object sender, CancelEventArgs e)
     {

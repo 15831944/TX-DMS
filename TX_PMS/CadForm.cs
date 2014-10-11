@@ -73,7 +73,7 @@ namespace TxPms
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
-      splitContainer1.MouseWheel += Form1_MouseWheel;
+      this.MouseWheel += Form1_MouseWheel;
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
       
@@ -94,10 +94,10 @@ namespace TxPms
     {
       if (helperDevice == null)
         return;
-      int mouseX = e.X-splitContainer1.Panel1.Width;
+      int mouseX = e.X;// -splitContainer1.Panel1.Width;
       int mouseY = e.Y;
-      if (mouseX < panel1.Left || mouseY < panel1.Top || mouseX > panel1.Right || mouseY > panel1.Bottom)
-        return;
+      //if (mouseX < panel1.Left || mouseY < panel1.Top || mouseX > panel1.Right || mouseY > panel1.Bottom)
+     //   return;
 
       //Debug.WriteLine(string.Format("mouse location in panel coordinates x:{0}, y{1}",p.X,p.Y));
       using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
@@ -125,8 +125,8 @@ namespace TxPms
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {
         OpenDwgFile(openFileDialog.FileName);
-        if (!panelGraphicContainer.Controls.Contains(panel1))
-          panelGraphicContainer.Controls.Add(panel1);
+//        if (!panelGraphicContainer.Controls.Contains(panel1))
+//          panelGraphicContainer.Controls.Add(panel1);
       }
       this.Show();
     }
@@ -145,8 +145,8 @@ namespace TxPms
       try
       {
         database.ReadDwgFile(i_Path, FileOpenMode.OpenForReadAndAllShare, false, "");
-        if (!panelGraphicContainer.Controls.Contains(panel1)) //panelGraphicContainer
-          panelGraphicContainer.Controls.Add(panel1);
+//        if (!panelGraphicContainer.Controls.Contains(panel1)) //panelGraphicContainer
+//          panelGraphicContainer.Controls.Add(panel1);
       }
       catch (System.Exception ex)
       {
@@ -280,10 +280,14 @@ namespace TxPms
       if (helperDevice != null)
       {
         Rectangle r = panel1.Bounds;
-        r.Offset(-panel1.Location.X, -panel1.Location.Y);
-        // HDC assigned to the device corresponds to the whole client area of the panel
-        helperDevice.OnSize(r);
-        Invalidate();
+
+          r.Offset(-panel1.Location.X, -panel1.Location.Y);
+          // HDC assigned to the device corresponds to the whole client area of the panel
+        if (r.Height > 0 && r.Width > 0)
+        {
+          helperDevice.OnSize(r);
+          Invalidate();
+        }
       }
     }
     private void panel1_Resize(object sender, EventArgs e)
@@ -360,21 +364,7 @@ namespace TxPms
 
     public void zoom_extents_handler(object sender, EventArgs e)
     {
-      if (database == null)
-        return;
-      using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
-      {
-        // using protocol extensions we handle PS and MS viewports in the same manner
-        AbstractViewportData pAVD = new AbstractViewportData(pVpObj);
-        Teigha.GraphicsSystem.View pView = pAVD.GsView;
-        // do actual zooming - change GS view
-        zoom_extents(pView, pVpObj);
-        // save changes to database
-        pAVD.SetView(pView);
-        pAVD.Dispose();
-        pVpObj.Dispose();
-        Invalidate();
-      }
+
     }
 
     private void Form1_KeyDown(object sender, KeyEventArgs e)
