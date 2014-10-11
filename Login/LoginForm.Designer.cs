@@ -30,10 +30,10 @@
     {
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.TxtUserName = new System.Windows.Forms.TextBox();
-      this.TxtPwd = new System.Windows.Forms.TextBox();
-      this.BtnOK = new System.Windows.Forms.Button();
-      this.BtnCancel = new System.Windows.Forms.Button();
+      this.qInputBoxUser = new Qios.DevSuite.Components.QInputBox();
+      this.qInputBoxPwd = new Qios.DevSuite.Components.QInputBox();
+      this.qButtonOK = new Qios.DevSuite.Components.QButton();
+      this.qButtonCancel = new Qios.DevSuite.Components.QButton();
       this.SuspendLayout();
       // 
       // label1
@@ -54,49 +54,49 @@
       this.label2.TabIndex = 1;
       this.label2.Text = "密码:";
       // 
-      // TxtUserName
+      // qInputBoxUser
       // 
-      this.TxtUserName.Location = new System.Drawing.Point(106, 30);
-      this.TxtUserName.Name = "TxtUserName";
-      this.TxtUserName.Size = new System.Drawing.Size(100, 21);
-      this.TxtUserName.TabIndex = 2;
+      this.qInputBoxUser.Location = new System.Drawing.Point(106, 30);
+      this.qInputBoxUser.Name = "qInputBoxUser";
+      this.qInputBoxUser.Size = new System.Drawing.Size(100, 18);
+      this.qInputBoxUser.TabIndex = 6;
       // 
-      // TxtPwd
+      // qInputBoxPwd
       // 
-      this.TxtPwd.Location = new System.Drawing.Point(106, 72);
-      this.TxtPwd.Name = "TxtPwd";
-      this.TxtPwd.Size = new System.Drawing.Size(100, 21);
-      this.TxtPwd.TabIndex = 3;
+      this.qInputBoxPwd.Location = new System.Drawing.Point(106, 71);
+      this.qInputBoxPwd.Name = "qInputBoxPwd";
+      this.qInputBoxPwd.Size = new System.Drawing.Size(100, 18);
+      this.qInputBoxPwd.TabIndex = 7;
       // 
-      // BtnOK
+      // qButtonOK
       // 
-      this.BtnOK.Location = new System.Drawing.Point(55, 117);
-      this.BtnOK.Name = "BtnOK";
-      this.BtnOK.Size = new System.Drawing.Size(75, 23);
-      this.BtnOK.TabIndex = 4;
-      this.BtnOK.Text = "确定 ";
-      this.BtnOK.UseVisualStyleBackColor = true;
-      this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
+      this.qButtonOK.Image = null;
+      this.qButtonOK.Location = new System.Drawing.Point(48, 118);
+      this.qButtonOK.Name = "qButtonOK";
+      this.qButtonOK.Size = new System.Drawing.Size(75, 23);
+      this.qButtonOK.TabIndex = 8;
+      this.qButtonOK.Text = "确定";
+      this.qButtonOK.Click += new System.EventHandler(this.BtnOK_Click);
       // 
-      // BtnCancel
+      // qButtonCancel
       // 
-      this.BtnCancel.Location = new System.Drawing.Point(149, 117);
-      this.BtnCancel.Name = "BtnCancel";
-      this.BtnCancel.Size = new System.Drawing.Size(75, 23);
-      this.BtnCancel.TabIndex = 5;
-      this.BtnCancel.Text = "取消";
-      this.BtnCancel.UseVisualStyleBackColor = true;
-      this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+      this.qButtonCancel.Image = null;
+      this.qButtonCancel.Location = new System.Drawing.Point(157, 118);
+      this.qButtonCancel.Name = "qButtonCancel";
+      this.qButtonCancel.Size = new System.Drawing.Size(75, 23);
+      this.qButtonCancel.TabIndex = 9;
+      this.qButtonCancel.Text = "取消";
+      this.qButtonCancel.Click += new System.EventHandler(this.BtnCancel_Click);
       // 
       // LoginForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(287, 186);
-      this.Controls.Add(this.BtnCancel);
-      this.Controls.Add(this.BtnOK);
-      this.Controls.Add(this.TxtPwd);
-      this.Controls.Add(this.TxtUserName);
+      this.ClientSize = new System.Drawing.Size(287, 170);
+      this.Controls.Add(this.qButtonCancel);
+      this.Controls.Add(this.qButtonOK);
+      this.Controls.Add(this.qInputBoxPwd);
+      this.Controls.Add(this.qInputBoxUser);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Name = "LoginForm";
@@ -111,10 +111,10 @@
 
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox TxtUserName;
-    private System.Windows.Forms.TextBox TxtPwd;
-    private System.Windows.Forms.Button BtnOK;
-    private System.Windows.Forms.Button BtnCancel;
+    private Qios.DevSuite.Components.QInputBox qInputBoxUser;
+    private Qios.DevSuite.Components.QInputBox qInputBoxPwd;
+    private Qios.DevSuite.Components.QButton qButtonOK;
+    private Qios.DevSuite.Components.QButton qButtonCancel;
 
   }
 }

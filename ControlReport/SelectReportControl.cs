@@ -12,7 +12,7 @@ using Mediator;
 
 namespace ControlReport
 {
-  public partial class SelectReportControl : Form
+  public partial class SelectReportControl : Qios.DevSuite.Components.Ribbon.QRibbonForm
   {
     public SelectReportControl()
     {
@@ -28,9 +28,9 @@ namespace ControlReport
       {
         viewModels.Add(new PartTemplateViewModel(partTemplate));
       }
-      comboPartName.DataSource = viewModels;
-      comboPartName.ValueMember = "Part";
-      comboPartName.DisplayMember = "PartName";
+      comboPartNameEx.DataSource = viewModels;
+      comboPartNameEx.ValueMember = "Part";
+      comboPartNameEx.DisplayMember = "PartName";
     }
 
     private void btnCancel_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ControlReport
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-      PmsService.Instance.CurrentTemplate = (Part) comboPartName.SelectedValue;
+      PmsService.Instance.CurrentTemplate = (Part) comboPartNameEx.SelectedValue;
       Mediator.Mediator.Instance.NotifyColleagues(UI.SelectPart, PmsService.Instance.CurrentTemplate);
       Close();
     }

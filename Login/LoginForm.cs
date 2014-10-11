@@ -7,10 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using Core.Service;
 using Mediator;
+using Qios.DevSuite.Components.Ribbon;
 
 namespace Login
 {
-  public partial class LoginForm : Form
+  public partial class LoginForm : QRibbonForm
   {
     public LoginForm()
     {
@@ -21,7 +22,7 @@ namespace Login
     {
       try
       {
-        PmsService.Instance.CheckUser(TxtUserName.Text, TxtPwd.Text);
+        PmsService.Instance.CheckUser(qInputBoxUser.Text, qInputBoxPwd.Text);
         
         DialogResult = DialogResult.OK;
         Close();

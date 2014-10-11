@@ -111,11 +111,7 @@ namespace TxPms
       Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
     }
 
-    private void measureToolToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      MockMeasureToolForm frm = new MockMeasureToolForm();
-      frm.Show(this);
-    }
+
 
     private void BrowseReportMenuItem_Click(object sender, EventArgs e)
     {
@@ -126,6 +122,33 @@ namespace TxPms
     private void qCompositeMenuItem1_ItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
     {
 
+    }
+
+    private void qRibbonItem4_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      MockMeasureToolForm frm = new MockMeasureToolForm();
+      frm.Show(this);
+    }
+
+    private void qRibbonItemOpen_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      SelectReportControl selectReportControl = new SelectReportControl();
+      selectReportControl.ShowDialog(this);
+    }
+
+    private void qRibbonItemExecute_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
+    }
+
+    private void qRibbonItemEdit_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(UI.EditReport, null);
+    }
+
+    private void qRibbonItemNew_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
     }
   }
 }
