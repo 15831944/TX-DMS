@@ -8,9 +8,9 @@ namespace Db
 {
   public class DbPartReport
   {
-    private const string TableName="MeasuremntReport";
-    private const string AllColumns = "Id, SampleCount, TotalCount, Supplier,  Operator,MeasureDatetime, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment, PartID";
-    private const string InsertColumns = "SampleCount, TotalCount, Supplier,  Operator,MeasureDatetime, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment, PartID";
+    private const string TableName="Report";
+    private const string AllColumns = "Id, TaskID, MeasureDatetime, Operator, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment";
+    private const string InsertColumns = " TaskID, MeasureDatetime, Operator, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment";
     public List<PartReport> GetPartReports()
     {
       var result = new List<PartReport>();
@@ -26,11 +26,17 @@ namespace Db
       return result;
     }
 
-    public List<PartReport> GetPartReportsByPart(Part i_Part)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="i_Task"></param>
+    /// <returns></returns>
+    public PartReport GetPartReportsByPart(Task i_Task)
     {
       var result = new List<PartReport>();
       DbHelper db = new DbHelper();
-      var selCmd = db.GetSqlStringCommond(string.Format("select {0} from {1} where PartID={2}", AllColumns, TableName,i_Part.Id));
+      var selCmd =
+        db.GetSqlStringCommond(string.Format("select {0} from {1} where TaskId={2}", AllColumns, TableName, i_Task.Id));
 
       var reader = db.ExecuteReader(selCmd);
       while (reader.Read())
@@ -38,47 +44,32 @@ namespace Db
         result.Add(PopulatePartReport(reader));
       }
       selCmd.Connection.Close();
-      return result;
+      if (result.Count == 0) return new PartReport(){Id = -1};
+      return result[0];
     }
+
     public void UpdatePartReport(PartReport i_PartReport)
     {
       DbHelper db = new DbHelper();
       var updateCmd = db.GetSqlStringCommond(
-        //"SampleCount, TotalCount, Supplier,  Operator,MeasureDatetime, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment, PartID"
+        //" TaskID, MeasureDatetime, Operator, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment";
         string.Format(
-          "update {0} set SampleCount={2},TotalCount={3},Supplier='{4}',Operator='{5}',MeasureDatetime='{6}',OperatorComment='{7}',Auditor='{8}', AuditDatetime='{9}',AuditComment='{10}',Approver='{11}',ApproveDatetime='{12}',ApproveComment='{13}',PartID={14} where ID={15}", TableName, "",
-          i_PartReport.SampleCount, i_PartReport.TotalCount, i_PartReport.Supplier, i_PartReport.Operator, i_PartReport.MeasurementDatetime
+          "update {0} set Operator='{1}',MeasureDatetime='{2}',OperatorComment='{3}',Auditor='{4}', AuditDatetime='{5}',AuditComment='{6}',Approver='{7}',ApproveDatetime='{8}',ApproveComment='{9}', TaskId={10} where ID={11}", 
+         TableName, i_PartReport.Operator, i_PartReport.MeasurementDatetime
           , i_PartReport.OperatorComment, i_PartReport.Auditor, i_PartReport.AuditDatetime, i_PartReport.AuditComment,
-          i_PartReport.Approver, i_PartReport.ApproveDatetime, i_PartReport.ApproveComment, i_PartReport.Part.Id, i_PartReport.Id));
+          i_PartReport.Approver, i_PartReport.ApproveDatetime, i_PartReport.ApproveComment, i_PartReport.Task.Id, i_PartReport.Id));
       db.ExecuteNonQuery(updateCmd);
-
-
-
-      /**
-       *       DbHelper db = new DbHelper();
-      // "Id, SerialNumber, Prefix, Symbol, Norminal, MinusTol, PlusTol, Measured, Type, PartID, MeasurementReportID, CadHandle";
-      foreach (var dimension in i_Dimensions)
-      {
-        var updateCmd = db.GetSqlStringCommond(
-          string.Format(
-            "update {0} set SerialNumber={2}, Prefix='{3}', Symbol={4},Norminal={5}, MinusTol={6}, PlusTol={7}, Measured={8}, Type='{9}', CadHandle='{10}' where Id = {1}",
-            TableName, dimension.Id, dimension.SerialNumber, dimension.PreFix, (int)dimension.Symbol, dimension.Nominal,
-            dimension.MinusTol, dimension.PlusTol, float.IsNaN(dimension.Measured) ? "null" : dimension.Measured.ToString("0.00"),
-            dimension.Dimensiontype, dimension.CadHandle));
-        db.ExecuteNonQuery(updateCmd);
-      }
-       * **/
     }
     public void InsertPartReport(PartReport i_PartReport)
     {
       DbHelper db = new DbHelper();
       var updateCmd = db.GetSqlStringCommond(
-        //"SampleCount, TotalCount, Supplier,  Operator,MeasureDatetime, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment, PartID";
+        //TaskID, MeasureDatetime, Operator, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment";
         string.Format(
-          "insert into {0} ({1}) values({2},{3},'{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}',{14})",TableName,InsertColumns,
-          i_PartReport.SampleCount,i_PartReport.TotalCount,i_PartReport.Supplier,i_PartReport.Operator,i_PartReport.MeasurementDatetime
+          "insert into {0} ({1}) values({2},'{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')",TableName,InsertColumns,
+         i_PartReport.Task.Id, i_PartReport.MeasurementDatetime, i_PartReport.Operator
           ,i_PartReport.OperatorComment,i_PartReport.Auditor,i_PartReport.AuditDatetime, i_PartReport.AuditComment,
-          i_PartReport.Approver,i_PartReport.ApproveDatetime,i_PartReport.ApproveComment,i_PartReport.Part.Id));
+          i_PartReport.Approver,i_PartReport.ApproveDatetime,i_PartReport.ApproveComment));
       db.ExecuteNonQuery(updateCmd);
       var selectCmd = db.GetSqlStringCommond(string.Format("select MAX(ID) from {0}", TableName));
       selectCmd.Connection.Open();
@@ -92,22 +83,21 @@ namespace Db
 
     private PartReport PopulatePartReport(DbDataReader i_Reader)
     {
+      //"Id, TaskID, MeasureDatetime, Operator, OperatorComment, Auditor, AuditDatetime, AuditComment, Approver, ApproveDatetime, ApproveComment";
+      int i = 0;
       return new PartReport()
         {
-          Id = i_Reader.GetInt32(0),
-          SampleCount = i_Reader.IsDBNull(1) ? 0 : i_Reader.GetInt32(1),
-          TotalCount = i_Reader.IsDBNull(2) ? 0 : i_Reader.GetInt32(2),
-          Supplier = i_Reader.IsDBNull(3) ? "" : i_Reader.GetString(3),
-          Operator = i_Reader.IsDBNull(4) ? "" : i_Reader.GetString(4),
-          MeasurementDatetime = i_Reader.IsDBNull(5) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(5),
-          OperatorComment = i_Reader.IsDBNull(6) ? "" : i_Reader.GetString(6),
-          Auditor = i_Reader.IsDBNull(7) ? "" : i_Reader.GetString(7),
-          AuditDatetime = i_Reader.IsDBNull(8) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(8),
-          AuditComment = i_Reader.IsDBNull(9) ? "" : i_Reader.GetString(9),
-          Approver = i_Reader.IsDBNull(10) ? "" : i_Reader.GetString(10),
-          ApproveDatetime = i_Reader.IsDBNull(11) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(11),
-          ApproveComment = i_Reader.IsDBNull(12) ? "" : i_Reader.GetString(12),
-          Part = new Part() {Id = i_Reader.IsDBNull(13) ? 0 : i_Reader.GetInt32(13),}
+          Id = i_Reader.GetInt32(i),
+          Task = new Task() { Id = i_Reader.IsDBNull(++i) ? 0 : i_Reader.GetInt32(i) },
+          MeasurementDatetime = i_Reader.IsDBNull(++i) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(i),
+          Operator = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          OperatorComment = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          Auditor = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          AuditDatetime = i_Reader.IsDBNull(++i) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(i),
+          AuditComment = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          Approver = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          ApproveDatetime = i_Reader.IsDBNull(++i) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(i),
+          ApproveComment = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
         };
     }
   }

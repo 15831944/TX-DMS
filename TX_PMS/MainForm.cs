@@ -97,25 +97,31 @@ namespace TxPms
       frm.Show(this);
     }
 
-    private void qRibbonItemOpen_ItemActivated(object sender, QCompositeEventArgs e)
+    private void qRibbonItemOpenPart_ItemActivated(object sender, QCompositeEventArgs e)
     {
       SelectReportControl selectReportControl = new SelectReportControl();
       selectReportControl.ShowDialog(this);
     }
 
-    private void qRibbonItemExecute_ItemActivated(object sender, QCompositeEventArgs e)
+    private void qRibbonItemExecutePart_ItemActivated(object sender, QCompositeEventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
     }
 
-    private void qRibbonItemEdit_ItemActivated(object sender, QCompositeEventArgs e)
+    private void qRibbonItemEditPart_ItemActivated(object sender, QCompositeEventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.EditReport, null);
     }
 
-    private void qRibbonItemNew_ItemActivated(object sender, QCompositeEventArgs e)
+    private void qRibbonItemNewPart_ItemActivated(object sender, QCompositeEventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
+    }
+
+    private void qRibbonItemNewTask_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      TaskForm taskForm = new TaskForm();
+      taskForm.ShowDialog(this);
     }
   }
 }

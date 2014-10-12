@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockMeasureToolControl", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{7F9E39B1-228A-470B-B5EA-2022A401CD83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbTest", "DbTest\DbTest.csproj", "{A9385437-B6F9-4719-8655-C78123720F4F}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = TX-PMS.vsmdi
@@ -151,6 +153,16 @@ Global
 		{7F9E39B1-228A-470B-B5EA-2022A401CD83}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7F9E39B1-228A-470B-B5EA-2022A401CD83}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7F9E39B1-228A-470B-B5EA-2022A401CD83}.Release|x86.ActiveCfg = Release|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A9385437-B6F9-4719-8655-C78123720F4F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

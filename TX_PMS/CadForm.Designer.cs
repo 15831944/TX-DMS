@@ -101,7 +101,6 @@ namespace TxPms
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
       this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
       this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-      this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
       // 
       // CadForm
       // 
@@ -113,6 +112,7 @@ namespace TxPms
       this.Name = "CadForm";
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+      this.Resize += new System.EventHandler(this.panel1_Resize);
       this.ResumeLayout(false);
 
     }

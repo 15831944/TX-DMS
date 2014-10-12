@@ -9,12 +9,12 @@ namespace ControlReport
   {
     public string Partname
     {
-      get { return _PartReport.Part.Name; }
+      get { return _PartReport.Task.Part.Name; }
     }
 
     public string PartCadNumber
     {
-      get { return _PartReport.Part.CadNumber; }
+      get { return _PartReport.Task.Part.CadNumber; }
     }
 
 //    public string Supplier

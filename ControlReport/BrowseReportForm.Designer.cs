@@ -90,6 +90,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.CanClose = false;
       this.Controls.Add(this.dataGridView1);
       this.Name = "BrowseReportForm";
       this.Size = new System.Drawing.Size(750, 175);

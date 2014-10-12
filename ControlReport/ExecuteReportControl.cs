@@ -38,7 +38,7 @@ namespace ControlReport
       if (partReport == null)
         return;
       _PartReport = partReport;
-      _CurrentTemplate = partReport.Part;
+      _CurrentTemplate = partReport.Task.Part;
       if (_CurrentTemplate == null)
         return;
 
@@ -86,11 +86,11 @@ namespace ControlReport
 
     private void OnPartSpecified(object i_O)
     {
-      var template = i_O as Part;
-      if (template == null)
+      var task = i_O as Task;
+      if (task == null)
         return;
-      _PartReport = new PartReport() { Part = template };
-      _CurrentTemplate = template;
+      _PartReport = new PartReport() { Task = task };
+      _CurrentTemplate = task.Part;
       if (_CurrentTemplate == null)
         return;
 

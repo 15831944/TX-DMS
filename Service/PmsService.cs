@@ -90,17 +90,12 @@ namespace Core.Service
     {
       var dbPartReport = new DbPartReport();
       var result = dbPartReport.GetPartReports();
-      var dbPart = new DbPart();
+      var dbTask = new DbTask();
       foreach (var partReport in result)
       {
-        partReport.Part = dbPart.GetPartById(partReport.Part.Id);
+        partReport.Task = dbTask.GetTask(partReport.Task);
       }
       return result;
-    }
-    public List<PartReport> GetPartReports(Part i_Part)
-    {
-      var dbPartReport = new DbPartReport();
-      return dbPartReport.GetPartReportsByPart(i_Part);
     }
     public void SaveReport(PartReport i_PartReport)
     {

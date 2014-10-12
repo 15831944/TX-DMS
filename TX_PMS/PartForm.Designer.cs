@@ -34,6 +34,9 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.CanClose = false;
+      this.CanDockBottom = false;
+      this.CanDockLeft = false;
       this.Name = "PartForm";
       this.Size = new System.Drawing.Size(536, 584);
       this.Text = "零件";

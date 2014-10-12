@@ -20,7 +20,7 @@ namespace TxPms
         {
           var report = i_O as PartReport;
           if (report == null) return;
-          OpenDwgFile(report.Part);
+          OpenDwgFile(report.Task.Part);
         });
      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
     }
