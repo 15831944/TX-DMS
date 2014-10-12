@@ -79,7 +79,8 @@ namespace DbTest
         Name = "task",
         Part = new Part(){Id = -1},
         SampleNumber = 10,
-        TotalNumber = 1000
+        TotalNumber = 1000,
+        Creator = "Creator"
       };
       target.InsertTask(report);
 

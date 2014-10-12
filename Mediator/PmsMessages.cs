@@ -14,7 +14,8 @@ namespace Mediator
     CreatePart,
     OpenCadFile,
     SavePart,
-    SelectPartReport
+    SelectPartReport,
+    SelectTask
   }
 
   public enum Cad

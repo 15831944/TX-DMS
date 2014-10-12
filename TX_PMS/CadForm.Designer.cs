@@ -54,8 +54,6 @@ namespace TxPms
     {
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
-      this.editReportControl1 = new ControlReport.EditReportControl();
-      this.executeReportControl1 = new ControlReport.ExecuteReportControl();
       this.panel1 = new System.Windows.Forms.Panel();
       this.SuspendLayout();
       // 
@@ -71,23 +69,10 @@ namespace TxPms
       // 
       // editReportControl1
       // 
-      this.editReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.editReportControl1.Location = new System.Drawing.Point(1, 0);
-      this.editReportControl1.Margin = new System.Windows.Forms.Padding(1, 8, 1, 1);
-      this.editReportControl1.Name = "editReportControl1";
-      this.editReportControl1.Size = new System.Drawing.Size(414, 610);
-      this.editReportControl1.TabIndex = 0;
+
       // 
       // executeReportControl1
-      // 
-      this.executeReportControl1.AutoScroll = true;
-      this.executeReportControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.executeReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.executeReportControl1.Location = new System.Drawing.Point(3, 5);
-      this.executeReportControl1.Margin = new System.Windows.Forms.Padding(1);
-      this.executeReportControl1.Name = "executeReportControl1";
-      this.executeReportControl1.Size = new System.Drawing.Size(412, 600);
-      this.executeReportControl1.TabIndex = 0;
+
       // 
       // panel1
       // 
@@ -121,8 +106,6 @@ namespace TxPms
 
     private System.Windows.Forms.OpenFileDialog openFileDialog;
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
-    private EditReportControl editReportControl1;
-    private ExecuteReportControl executeReportControl1;
     private Panel panel1;
   }
 }

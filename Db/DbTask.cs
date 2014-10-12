@@ -10,8 +10,8 @@ namespace Db
   public class DbTask
   {
     private const string TableName = "Task";
-    private const string AllColumns = "Id, PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name";
-    private const string InsertColumns = " PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name";
+    private const string AllColumns = "Id, PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name, Creator";
+    private const string InsertColumns = " PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name, Creator";
 
     public List<Task> GetTasks()
     {
@@ -44,25 +44,25 @@ namespace Db
       return result[0];
     }
 
-    public void UpdateTask(Task i_Task)
+    public int UpdateTask(Task i_Task)
     {
       DbHelper db = new DbHelper();
       var updateCmd = db.GetSqlStringCommond(
         //" PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name";
         string.Format(
-          "update {0} set PartID={1},SupplierId={2},TotalNumber={3},SampleNumber={4}, CreateDatetime='{5}',Name='{6}' where ID={7}",
-         TableName, i_Task.Part.Id, i_Task.Supplier.Id, i_Task.TotalNumber, i_Task.SampleNumber, i_Task.CreateDatetime, i_Task.Name, i_Task.Id));
-      db.ExecuteNonQuery(updateCmd);
+          "update {0} set PartID={1},SupplierId={2},TotalNumber={3},SampleNumber={4}, CreateDatetime='{5}',Name='{6}', Creator='{7}' where ID={8}",
+         TableName, i_Task.Part.Id, i_Task.Supplier.Id, i_Task.TotalNumber, i_Task.SampleNumber, i_Task.CreateDatetime, i_Task.Name, i_Task.Creator, i_Task.Id));
+      return db.ExecuteNonQuery(updateCmd);
     }
 
     public void InsertTask(Task i_Task)
     {
       DbHelper db = new DbHelper();
       var updateCmd = db.GetSqlStringCommond(
-        //" PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name";
+        //" PartID, SupplierId, TotalNumber, SampleNumber, CreateDatetime, Name, Creator";
         string.Format(
-          "insert into {0} ({1}) values({2},{3},{4},{5},'{6}','{7}')", TableName, InsertColumns,
-         i_Task.Part.Id, i_Task.Supplier.Id,i_Task.TotalNumber, i_Task.SampleNumber, i_Task.CreateDatetime, i_Task.Name));
+          "insert into {0} ({1}) values({2},{3},{4},{5},'{6}','{7}','{8}')", TableName, InsertColumns,
+         i_Task.Part.Id, i_Task.Supplier.Id,i_Task.TotalNumber, i_Task.SampleNumber, i_Task.CreateDatetime, i_Task.Name, i_Task.Creator));
       db.ExecuteNonQuery(updateCmd);
       var selectCmd = db.GetSqlStringCommond(string.Format("select MAX(ID) from {0}", TableName));
       selectCmd.Connection.Open();
@@ -87,6 +87,7 @@ namespace Db
           SampleNumber = i_Reader.IsDBNull(++i) ? 0 : i_Reader.GetInt32(i),
           CreateDatetime = i_Reader.IsDBNull(++i) ? PartReport.InvalidDateTime : i_Reader.GetDateTime(i),
           Name = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
+          Creator = i_Reader.IsDBNull(++i) ? "" : i_Reader.GetString(i),
         };
     }
   }

@@ -15,7 +15,12 @@ namespace TxPms
   {
     void Initialize()
     {
-      Mediator.Mediator.Instance.Register(UI.SelectPart, i_O => OpenDwgFile(i_O as Part));
+      Mediator.Mediator.Instance.Register(UI.SelectTask, i_O =>
+        {
+          var task = i_O as Task;
+          if (task == null) return;
+          OpenDwgFile(task.Part);
+        });
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
           var report = i_O as PartReport;

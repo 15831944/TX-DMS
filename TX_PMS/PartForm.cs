@@ -30,7 +30,7 @@ namespace TxPms
           ShowExecuteControl(null);
         });
       Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
-      Mediator.Mediator.Instance.Register(UI.SelectPart, ShowExecuteControl);
+      Mediator.Mediator.Instance.Register(UI.SelectTask, ShowExecuteControl);
     }
 
     private void OnEdit(object i_Obj)

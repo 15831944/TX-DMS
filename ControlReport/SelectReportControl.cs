@@ -45,7 +45,7 @@ namespace ControlReport
       Close();
     }
 
-    class PartTemplateViewModel
+    public class PartTemplateViewModel
     {
       private readonly Part _PartTemplate;
       public PartTemplateViewModel(Part i_PartTemplate)

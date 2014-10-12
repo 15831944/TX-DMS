@@ -15,6 +15,7 @@ namespace ControlReport
   {
     private Part _CurrentTemplate;
     private PartReport _PartReport;
+    private Task _Task;
     private Dimension _SeletedDimension;
     private int _SelectedRow;
 
@@ -24,7 +25,7 @@ namespace ControlReport
     public ExecuteReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectPart, OnPartSpecified);
+      Mediator.Mediator.Instance.Register(UI.SelectTask, OnPartTask);
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, OnPartReportSpecified);
       Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, OnMeasurementDataArrived);
 
@@ -37,6 +38,7 @@ namespace ControlReport
       var partReport = i_Obj as PartReport;
       if (partReport == null)
         return;
+      _Task = partReport.Task;
       _PartReport = partReport;
       _CurrentTemplate = partReport.Task.Part;
       if (_CurrentTemplate == null)
@@ -84,11 +86,12 @@ namespace ControlReport
       }
     }
 
-    private void OnPartSpecified(object i_O)
+    private void OnPartTask(object i_O)
     {
       var task = i_O as Task;
       if (task == null)
         return;
+      _Task = task;
       _PartReport = new PartReport() { Task = task };
       _CurrentTemplate = task.Part;
       if (_CurrentTemplate == null)
@@ -136,7 +139,7 @@ namespace ControlReport
     private void BindingTextControls()
     {
       txtManufacturer.DataBindings.Clear();
-      txtManufacturer.DataBindings.Add("Text", _PartReport, "Supplier"); 
+      txtManufacturer.DataBindings.Add("Text", _Task.Supplier, "Name"); 
       txtPartName.DataBindings.Clear();
       txtPartName.DataBindings.Add("Text", _CurrentTemplate, "Name"); 
       txtPartNumber.DataBindings.Clear();
@@ -144,9 +147,9 @@ namespace ControlReport
       txtSecondNumber.DataBindings.Clear();
       txtSecondNumber.DataBindings.Add("Text", _CurrentTemplate, "SecondNumber");
       txtTotolNumber.DataBindings.Clear();
-      txtTotolNumber.DataBindings.Add("Text", _PartReport, "TotalCount");
+      txtTotolNumber.DataBindings.Add("Text", _Task, "TotalNumber");
       txtSampleNumber.DataBindings.Clear();
-      txtSampleNumber.DataBindings.Add("Text", _PartReport, "SampleCount");
+      txtSampleNumber.DataBindings.Add("Text", _Task, "SampleNumber");
     }
 
     void RefreshCommentControls()

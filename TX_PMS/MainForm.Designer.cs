@@ -57,7 +57,7 @@ namespace TxPms
       this.qRibbonPanel8 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemEditTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPanel9 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-      this.qRibbonItemTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
+      this.qRibbonItemExecuteTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbon1)).BeginInit();
@@ -258,14 +258,15 @@ namespace TxPms
       // 
       // qRibbonPanel9
       // 
-      this.qRibbonPanel9.Items.Add(this.qRibbonItemTask);
+      this.qRibbonPanel9.Items.Add(this.qRibbonItemExecuteTask);
       this.qRibbonPanel9.Title = "";
       // 
-      // qRibbonItemTask
+      // qRibbonItemExecuteTask
       // 
-      this.qRibbonItemTask.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
-      this.qRibbonItemTask.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItemTask.Icon")));
-      this.qRibbonItemTask.Title = "执行";
+      this.qRibbonItemExecuteTask.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
+      this.qRibbonItemExecuteTask.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItemExecuteTask.Icon")));
+      this.qRibbonItemExecuteTask.Title = "执行";
+      this.qRibbonItemExecuteTask.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemExecuteTask_ItemActivated);
       // 
       // MainForm
       // 
@@ -321,7 +322,7 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel8;
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemEditTask;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel9;
-    private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemTask;
+    private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemExecuteTask;
 
 
   }

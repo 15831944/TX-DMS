@@ -80,6 +80,14 @@ namespace Core.Service
         dbPart.InsertPart(i_Part);
     }
 
+    public void Save(Task i_Task)
+    {
+      var dbTask = new DbTask();
+      int ret = dbTask.UpdateTask(i_Task);
+      if(ret==0)
+        dbTask.InsertTask(i_Task);
+    }
+
     public void InsertDimension(Dimension i_Dimension)
     {
       var dbDimension = new DbDimension();
@@ -126,6 +134,24 @@ namespace Core.Service
       if (u.Password.Trim() != i_Password.Trim())
         throw new PmsIncorrectPasswordException(i_UserName);
       Instance.CurrentUser = u;
+    }
+    public List<Supplier> GetSuppliers()
+    {
+      DbSupplier db = new DbSupplier();
+      return db.GetSuppliers();
+    }
+
+    public List<Task> GetTasks()
+    {
+      DbTask dbTask = new DbTask();
+      
+      var result = dbTask.GetTasks();
+      foreach (var task in result)
+      {
+        task.Part = new DbPart().GetPartById(task.Part.Id);
+        task.Supplier = new DbSupplier().GetSupplier(task.Supplier.Id);
+      }
+      return result;
     }
 
     public User CurrentUser { get; set; }

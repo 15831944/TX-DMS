@@ -417,7 +417,7 @@
       this.tableResult.ColumnCount = 3;
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
       this.tableResult.Controls.Add(this.ChkApprove, 2, 2);
       this.tableResult.Controls.Add(this.ChkAudit, 2, 1);
       this.tableResult.Controls.Add(this.tableLayoutPanelApprove, 1, 2);
@@ -441,10 +441,10 @@
       // 
       this.ChkApprove.AutoSize = true;
       this.ChkApprove.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ChkApprove.Location = new System.Drawing.Point(394, 132);
+      this.ChkApprove.Location = new System.Drawing.Point(393, 132);
       this.ChkApprove.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkApprove.Name = "ChkApprove";
-      this.ChkApprove.Size = new System.Drawing.Size(70, 58);
+      this.ChkApprove.Size = new System.Drawing.Size(71, 58);
       this.ChkApprove.TabIndex = 17;
       this.ChkApprove.Text = "通过";
       this.ChkApprove.UseVisualStyleBackColor = true;
@@ -455,10 +455,10 @@
                   | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.ChkAudit.AutoSize = true;
-      this.ChkAudit.Location = new System.Drawing.Point(394, 68);
+      this.ChkAudit.Location = new System.Drawing.Point(393, 68);
       this.ChkAudit.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkAudit.Name = "ChkAudit";
-      this.ChkAudit.Size = new System.Drawing.Size(70, 57);
+      this.ChkAudit.Size = new System.Drawing.Size(71, 57);
       this.ChkAudit.TabIndex = 16;
       this.ChkAudit.Text = "通过";
       this.ChkAudit.UseVisualStyleBackColor = true;
@@ -477,7 +477,7 @@
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(331, 64);
+      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(330, 64);
       this.tableLayoutPanelApprove.TabIndex = 15;
       // 
       // txtApproveComment
@@ -486,7 +486,7 @@
       this.txtApproveComment.Location = new System.Drawing.Point(3, 3);
       this.txtApproveComment.Multiline = true;
       this.txtApproveComment.Name = "txtApproveComment";
-      this.txtApproveComment.Size = new System.Drawing.Size(325, 40);
+      this.txtApproveComment.Size = new System.Drawing.Size(324, 40);
       this.txtApproveComment.TabIndex = 4;
       // 
       // tableLayoutPanelApproverDate
@@ -506,7 +506,7 @@
       this.tableLayoutPanelApproverDate.Name = "tableLayoutPanelApproverDate";
       this.tableLayoutPanelApproverDate.RowCount = 1;
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(331, 18);
+      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(330, 18);
       this.tableLayoutPanelApproverDate.TabIndex = 5;
       // 
       // LblApproveDate
@@ -515,7 +515,7 @@
       this.LblApproveDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblApproveDate.Location = new System.Drawing.Point(228, 0);
       this.LblApproveDate.Name = "LblApproveDate";
-      this.LblApproveDate.Size = new System.Drawing.Size(100, 18);
+      this.LblApproveDate.Size = new System.Drawing.Size(99, 18);
       this.LblApproveDate.TabIndex = 3;
       this.LblApproveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -564,7 +564,7 @@
       this.tableLayoutPanelAudit.RowCount = 2;
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(331, 63);
+      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(330, 63);
       this.tableLayoutPanelAudit.TabIndex = 14;
       // 
       // txtAuditComment
@@ -573,7 +573,7 @@
       this.txtAuditComment.Location = new System.Drawing.Point(3, 3);
       this.txtAuditComment.Multiline = true;
       this.txtAuditComment.Name = "txtAuditComment";
-      this.txtAuditComment.Size = new System.Drawing.Size(325, 39);
+      this.txtAuditComment.Size = new System.Drawing.Size(324, 39);
       this.txtAuditComment.TabIndex = 4;
       // 
       // tableLayoutPanelAutidtorDate
@@ -593,7 +593,7 @@
       this.tableLayoutPanelAutidtorDate.Name = "tableLayoutPanelAutidtorDate";
       this.tableLayoutPanelAutidtorDate.RowCount = 1;
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(331, 18);
+      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(330, 18);
       this.tableLayoutPanelAutidtorDate.TabIndex = 5;
       // 
       // LblAuditDate
@@ -602,7 +602,7 @@
       this.LblAuditDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblAuditDate.Location = new System.Drawing.Point(228, 0);
       this.LblAuditDate.Name = "LblAuditDate";
-      this.LblAuditDate.Size = new System.Drawing.Size(100, 18);
+      this.LblAuditDate.Size = new System.Drawing.Size(99, 18);
       this.LblAuditDate.TabIndex = 3;
       this.LblAuditDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -655,7 +655,7 @@
       // 
       this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                   | System.Windows.Forms.AnchorStyles.Left)));
-      this.btnCreateReport.Location = new System.Drawing.Point(390, 4);
+      this.btnCreateReport.Location = new System.Drawing.Point(389, 4);
       this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
       this.btnCreateReport.Name = "btnCreateReport";
       this.btnCreateReport.Size = new System.Drawing.Size(71, 57);
@@ -704,7 +704,7 @@
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(331, 63);
+      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(330, 63);
       this.tableLayoutPanelMesurement.TabIndex = 12;
       // 
       // txtOperatorComment
@@ -713,7 +713,7 @@
       this.txtOperatorComment.Location = new System.Drawing.Point(3, 3);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(325, 39);
+      this.txtOperatorComment.Size = new System.Drawing.Size(324, 39);
       this.txtOperatorComment.TabIndex = 4;
       // 
       // tableLayoutPanelTesterDate
@@ -733,7 +733,7 @@
       this.tableLayoutPanelTesterDate.Name = "tableLayoutPanelTesterDate";
       this.tableLayoutPanelTesterDate.RowCount = 1;
       this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(331, 18);
+      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(330, 18);
       this.tableLayoutPanelTesterDate.TabIndex = 5;
       // 
       // LblTestDate
@@ -742,7 +742,7 @@
       this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblTestDate.Location = new System.Drawing.Point(228, 0);
       this.LblTestDate.Name = "LblTestDate";
-      this.LblTestDate.Size = new System.Drawing.Size(100, 18);
+      this.LblTestDate.Size = new System.Drawing.Size(99, 18);
       this.LblTestDate.TabIndex = 3;
       this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 

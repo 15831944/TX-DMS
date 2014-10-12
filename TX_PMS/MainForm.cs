@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ControlReport;
+using Core.Service;
 using Mediator;
 using MockMeasureToolControl;
 using Qios.DevSuite.Components;
@@ -122,6 +123,14 @@ namespace TxPms
     {
       TaskForm taskForm = new TaskForm();
       taskForm.ShowDialog(this);
+    }
+
+    private void qRibbonItemExecuteTask_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      var tasks = PmsService.Instance.GetTasks();
+      if(tasks.Count==0) return;
+
+      Mediator.Mediator.Instance.NotifyColleagues(UI.SelectTask, tasks[tasks.Count-1]);
     }
   }
 }
