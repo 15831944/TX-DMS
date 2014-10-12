@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Core.Model;
 using Core.Service;
 using Mediator;
+using Service;
 using Teigha.DatabaseServices;
 using Dimension = Core.Model.Dimension;
 
@@ -18,7 +19,7 @@ namespace ControlReport
     private Task _Task;
     private Dimension _SeletedDimension;
     private int _SelectedRow;
-
+    private ExecutionManager _ExecutionManager;
     public delegate void InvokeDelegate();
 
     private List<ExecuteDimensionEntityViewModel> _DataSource;
@@ -92,29 +93,14 @@ namespace ControlReport
       if (task == null)
         return;
       _Task = task;
-      _PartReport = new PartReport() { Task = task };
+      _ExecutionManager = new ExecutionManager(_Task);
       _CurrentTemplate = task.Part;
       if (_CurrentTemplate == null)
         return;
+      Mediator.Mediator.Instance.NotifyColleagues(Execution.TaskStarted, task);
 
+      CreateReportModel();
 
-      _DataSource = new List<ExecuteDimensionEntityViewModel>();
-
-      PmsService.Instance.PopulateDimensionsForPart(_CurrentTemplate);
-
-      foreach (var en in _CurrentTemplate.Dimensions)
-      {
-        var newDimension = en.Clone();
-        _PartReport.Dimensions.Add(newDimension); //为PartReport创建新的dimensions从而用于插入数据库 
-        _DataSource.Add(new ExecuteDimensionEntityViewModel(newDimension));
-      }
-
-      if (_CurrentTemplate.Dimensions.Count > 0)
-      {
-        _SeletedDimension = _PartReport.Dimensions[0];
-      }
-
-      dataGridView1.DataSource = _DataSource;
       BindingTextControls();
       RefreshCommentControls();
       if (PmsService.Instance.CurrentUser.Group.Name == "检测")
@@ -136,6 +122,30 @@ namespace ControlReport
         LblApproveDate.Text = DateTime.Now.ToLongDateString();
       }
     }
+
+    private void CreateReportModel()
+    {
+      _PartReport = new PartReport() { Task = _Task };
+      _DataSource = new List<ExecuteDimensionEntityViewModel>();
+
+      if (_CurrentTemplate.Dimensions.Count == 0)
+        PmsService.Instance.PopulateDimensionsForPart(_CurrentTemplate);
+
+      foreach (var en in _CurrentTemplate.Dimensions)
+      {
+        var newDimension = en.Clone();
+        _PartReport.Dimensions.Add(newDimension); //为PartReport创建新的dimensions从而用于插入数据库 
+        _DataSource.Add(new ExecuteDimensionEntityViewModel(newDimension));
+      }
+
+      if (_CurrentTemplate.Dimensions.Count > 0)
+      {
+        _SeletedDimension = _PartReport.Dimensions[0];
+      }
+      dataGridView1.DataSource = _DataSource;
+      dataGridView1.Rows[0].Selected = true;
+    }
+
     private void BindingTextControls()
     {
       txtManufacturer.DataBindings.Clear();
@@ -270,7 +280,13 @@ namespace ControlReport
       _PartReport.Operator = PmsService.Instance.CurrentUser.Name;
       _PartReport.MeasurementDatetime = DateTime.Now;
       _PartReport.OperatorComment = txtOperatorComment.Text;
-      PmsService.Instance.SaveReport(_PartReport);
+      _ExecutionManager.Finish(_PartReport);
+    }
+
+    private void buttonStart_Click(object sender, EventArgs e)
+    {
+      CreateReportModel();
+      _ExecutionManager.Start(_PartReport);
     }
   }
 }

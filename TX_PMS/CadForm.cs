@@ -542,6 +542,21 @@ namespace TxPms
       }
     }
 
+    private void CadForm_SizeChanged(object sender, EventArgs e)
+    {
+
+      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.Resize, null);
+    }
+
+    private void panel1_Resize_1(object sender, EventArgs e)
+    {
+
+    }
+
+    private void panel1_SizeChanged(object sender, EventArgs e)
+    {
+    }
+
 
   }
 }

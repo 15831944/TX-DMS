@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Core.Model;
 using Core.Service;
 using Mediator;
 using Qios.DevSuite.Components;
@@ -13,12 +14,30 @@ namespace ControlReport
 {
   public partial class BrowseReportForm : QDockingWindow
   {
-    private List<BrowseReportViewModel> _DateSource;
+    private BindingList<BrowseReportViewModel> _DateSource;
     private BrowseReportViewModel _SelectedReportViewModel;
     public BrowseReportForm()
     {
       InitializeComponent();
-      _DateSource = new List<BrowseReportViewModel>();
+      Mediator.Mediator.Instance.Register(Execution.OneCompleted, i_O =>
+        {
+          var report = i_O as PartReport;
+          if(report==null) return;
+          _DateSource.Add(new BrowseReportViewModel(report));
+          dataGridView1.DataSource = _DateSource;
+        });
+      Mediator.Mediator.Instance.Register(Execution.TaskStarted, i_O =>
+      {
+        var task = i_O as Task;
+        if (task == null) return;
+        var executedReports = PmsService.Instance.GetPartReports(task);
+        foreach (var report in executedReports)
+        {
+          _DateSource.Add(new BrowseReportViewModel(report)); 
+        }
+        dataGridView1.DataSource = _DateSource;
+      });
+      _DateSource = new BindingList<BrowseReportViewModel>();
       Load += BrowseReportForm_Load;
       dataGridView1.RowEnter += dataGridView1_RowEnter;
     }

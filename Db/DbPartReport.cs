@@ -31,7 +31,7 @@ namespace Db
     /// </summary>
     /// <param name="i_Task"></param>
     /// <returns></returns>
-    public PartReport GetPartReportsByPart(Task i_Task)
+    public List<PartReport> GetPartReports(Task i_Task)
     {
       var result = new List<PartReport>();
       DbHelper db = new DbHelper();
@@ -44,8 +44,7 @@ namespace Db
         result.Add(PopulatePartReport(reader));
       }
       selCmd.Connection.Close();
-      if (result.Count == 0) return new PartReport(){Id = -1};
-      return result[0];
+      return result;
     }
 
     public void UpdatePartReport(PartReport i_PartReport)

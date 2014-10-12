@@ -15,7 +15,8 @@ namespace Mediator
     OpenCadFile,
     SavePart,
     SelectPartReport,
-    SelectTask
+    SelectTask,
+    Resize
   }
 
   public enum Cad
@@ -31,6 +32,15 @@ namespace Mediator
 
   public enum App
   {
-    OnLogin
+    OnLogin,
+    ExecutionProgress
+  }
+
+  public enum Execution
+  {
+    TaskStarted,
+    TaskCompleted,
+    OneStarted,
+    OneCompleted
   }
 }

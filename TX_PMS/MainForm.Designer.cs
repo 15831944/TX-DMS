@@ -50,7 +50,7 @@ namespace TxPms
       this.qRibbon1 = new Qios.DevSuite.Components.Ribbon.QRibbon();
       this.qRibbonPage2 = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
       this.qRibbonPanel6 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-      this.qRibbonItem4 = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
+      this.qRibbonItemMockTool = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPage3 = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
       this.qRibbonPanel2 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemNewTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
@@ -58,6 +58,8 @@ namespace TxPms
       this.qRibbonItemEditTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPanel9 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemExecuteTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
+      this.toolStripStatusLabelTaskExecution = new System.Windows.Forms.ToolStripStatusLabel();
+      this.statusStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbon1)).BeginInit();
@@ -88,6 +90,8 @@ namespace TxPms
       // 
       // statusStrip1
       // 
+      this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelTaskExecution});
       this.statusStrip1.Location = new System.Drawing.Point(0, 600);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Size = new System.Drawing.Size(913, 22);
@@ -211,14 +215,15 @@ namespace TxPms
       // 
       // qRibbonPanel6
       // 
-      this.qRibbonPanel6.Items.Add(this.qRibbonItem4);
+      this.qRibbonPanel6.Items.Add(this.qRibbonItemMockTool);
       this.qRibbonPanel6.Title = "";
       // 
-      // qRibbonItem4
+      // qRibbonItemMockTool
       // 
-      this.qRibbonItem4.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
-      this.qRibbonItem4.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItem4.Icon")));
-      this.qRibbonItem4.Title = "量具";
+      this.qRibbonItemMockTool.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
+      this.qRibbonItemMockTool.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItemMockTool.Icon")));
+      this.qRibbonItemMockTool.Title = "量具";
+      this.qRibbonItemMockTool.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemMockTool_ItemActivated);
       // 
       // qRibbonPage3
       // 
@@ -268,6 +273,12 @@ namespace TxPms
       this.qRibbonItemExecuteTask.Title = "执行";
       this.qRibbonItemExecuteTask.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemExecuteTask_ItemActivated);
       // 
+      // toolStripStatusLabelTaskExecution
+      // 
+      this.toolStripStatusLabelTaskExecution.Name = "toolStripStatusLabelTaskExecution";
+      this.toolStripStatusLabelTaskExecution.Size = new System.Drawing.Size(77, 17);
+      this.toolStripStatusLabelTaskExecution.Text = "检验进度:0/0";
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -283,6 +294,8 @@ namespace TxPms
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+      this.statusStrip1.ResumeLayout(false);
+      this.statusStrip1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbon1)).EndInit();
@@ -315,7 +328,7 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbon qRibbon1;
     private Qios.DevSuite.Components.Ribbon.QRibbonPage qRibbonPage2;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel6;
-    private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItem4;
+    private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemMockTool;
     private Qios.DevSuite.Components.Ribbon.QRibbonPage qRibbonPage3;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel2;
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemNewTask;
@@ -323,6 +336,7 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemEditTask;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel9;
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemExecuteTask;
+    private ToolStripStatusLabel toolStripStatusLabelTaskExecution;
 
 
   }

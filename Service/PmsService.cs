@@ -105,6 +105,20 @@ namespace Core.Service
       }
       return result;
     }
+
+    public List<PartReport> GetPartReports(Task i_Task)
+    {
+      var dbPartReport = new DbPartReport();
+      var result = dbPartReport.GetPartReports(i_Task);
+      var dbTask = new DbTask();
+      foreach (var partReport in result)
+      {
+        partReport.Task = i_Task;
+      }
+      return result;
+    }
+
+
     public void SaveReport(PartReport i_PartReport)
     {
       var dbPartReport = new DbPartReport();

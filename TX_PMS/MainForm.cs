@@ -28,9 +28,14 @@ namespace TxPms
       DockReportControl();
       this.FormClosing += MainForm_FormClosing;
       Mediator.Mediator.Instance.Register(Cad.OnOpened, OnCadOpened);
-
+      Mediator.Mediator.Instance.Register(UI.Resize,i_O => this.BeginInvoke(new VoidDelegate(Invalidate),true));
+      Mediator.Mediator.Instance.Register(App.ExecutionProgress,i_O =>
+        {
+          toolStripStatusLabelTaskExecution.Text = string.Format("检验进度：{0}",i_O.ToString());
+        });
     }
 
+    public  delegate void VoidDelegate(bool i_B);
     void DockReportControl()
     {
       BrowseReportForm tmp_oTasks = new BrowseReportForm();
@@ -92,7 +97,7 @@ namespace TxPms
 
 
 
-    private void qRibbonItem4_ItemActivated(object sender, QCompositeEventArgs e)
+    private void qRibbonItemMockTool_ItemActivated(object sender, QCompositeEventArgs e)
     {
       MockMeasureToolForm frm = new MockMeasureToolForm();
       frm.Show(this);

@@ -67,13 +67,6 @@ namespace TxPms
       this.saveAsFileDialog.DefaultExt = "DWG";
       this.saveAsFileDialog.Filter = "\"DWG files|*.dwg\"";
       // 
-      // editReportControl1
-      // 
-
-      // 
-      // executeReportControl1
-
-      // 
       // panel1
       // 
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -82,10 +75,12 @@ namespace TxPms
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(1282, 534);
       this.panel1.TabIndex = 5;
+      this.panel1.SizeChanged += new System.EventHandler(this.panel1_SizeChanged);
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
       this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
       this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+      this.panel1.Resize += new System.EventHandler(this.panel1_Resize_1);
       // 
       // CadForm
       // 
@@ -95,6 +90,7 @@ namespace TxPms
       this.Controls.Add(this.panel1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
       this.Name = "CadForm";
+      this.SizeChanged += new System.EventHandler(this.CadForm_SizeChanged);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
       this.Resize += new System.EventHandler(this.panel1_Resize);

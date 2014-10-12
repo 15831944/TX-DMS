@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -76,7 +76,6 @@
       this.label17 = new System.Windows.Forms.Label();
       this.LblAuditor = new System.Windows.Forms.Label();
       this.label11 = new System.Windows.Forms.Label();
-      this.btnCreateReport = new System.Windows.Forms.Button();
       this.label12 = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
       this.tableLayoutPanelMesurement = new System.Windows.Forms.TableLayoutPanel();
@@ -86,6 +85,9 @@
       this.label14 = new System.Windows.Forms.Label();
       this.label10 = new System.Windows.Forms.Label();
       this.LblTester = new System.Windows.Forms.Label();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.btnCreateReport = new System.Windows.Forms.Button();
+      this.buttonStart = new System.Windows.Forms.Button();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -102,6 +104,7 @@
       this.tableLayoutPanelAutidtorDate.SuspendLayout();
       this.tableLayoutPanelMesurement.SuspendLayout();
       this.tableLayoutPanelTesterDate.SuspendLayout();
+      this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -160,8 +163,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle16;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -172,8 +175,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle17;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -184,8 +187,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle18;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -417,16 +420,16 @@
       this.tableResult.ColumnCount = 3;
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
       this.tableResult.Controls.Add(this.ChkApprove, 2, 2);
       this.tableResult.Controls.Add(this.ChkAudit, 2, 1);
       this.tableResult.Controls.Add(this.tableLayoutPanelApprove, 1, 2);
       this.tableResult.Controls.Add(this.tableLayoutPanelAudit, 1, 1);
       this.tableResult.Controls.Add(this.label11, 0, 0);
-      this.tableResult.Controls.Add(this.btnCreateReport, 2, 0);
       this.tableResult.Controls.Add(this.label12, 0, 1);
       this.tableResult.Controls.Add(this.label13, 0, 2);
       this.tableResult.Controls.Add(this.tableLayoutPanelMesurement, 1, 0);
+      this.tableResult.Controls.Add(this.panel1, 2, 0);
       this.tableResult.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableResult.Location = new System.Drawing.Point(3, 599);
       this.tableResult.Name = "tableResult";
@@ -441,10 +444,10 @@
       // 
       this.ChkApprove.AutoSize = true;
       this.ChkApprove.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ChkApprove.Location = new System.Drawing.Point(393, 132);
+      this.ChkApprove.Location = new System.Drawing.Point(391, 132);
       this.ChkApprove.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkApprove.Name = "ChkApprove";
-      this.ChkApprove.Size = new System.Drawing.Size(71, 58);
+      this.ChkApprove.Size = new System.Drawing.Size(73, 58);
       this.ChkApprove.TabIndex = 17;
       this.ChkApprove.Text = "通过";
       this.ChkApprove.UseVisualStyleBackColor = true;
@@ -455,10 +458,10 @@
                   | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.ChkAudit.AutoSize = true;
-      this.ChkAudit.Location = new System.Drawing.Point(393, 68);
+      this.ChkAudit.Location = new System.Drawing.Point(391, 68);
       this.ChkAudit.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkAudit.Name = "ChkAudit";
-      this.ChkAudit.Size = new System.Drawing.Size(71, 57);
+      this.ChkAudit.Size = new System.Drawing.Size(73, 57);
       this.ChkAudit.TabIndex = 16;
       this.ChkAudit.Text = "通过";
       this.ChkAudit.UseVisualStyleBackColor = true;
@@ -477,7 +480,7 @@
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(330, 64);
+      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(328, 64);
       this.tableLayoutPanelApprove.TabIndex = 15;
       // 
       // txtApproveComment
@@ -486,7 +489,7 @@
       this.txtApproveComment.Location = new System.Drawing.Point(3, 3);
       this.txtApproveComment.Multiline = true;
       this.txtApproveComment.Name = "txtApproveComment";
-      this.txtApproveComment.Size = new System.Drawing.Size(324, 40);
+      this.txtApproveComment.Size = new System.Drawing.Size(322, 40);
       this.txtApproveComment.TabIndex = 4;
       // 
       // tableLayoutPanelApproverDate
@@ -506,16 +509,16 @@
       this.tableLayoutPanelApproverDate.Name = "tableLayoutPanelApproverDate";
       this.tableLayoutPanelApproverDate.RowCount = 1;
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(330, 18);
+      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(328, 18);
       this.tableLayoutPanelApproverDate.TabIndex = 5;
       // 
       // LblApproveDate
       // 
       this.LblApproveDate.AutoSize = true;
       this.LblApproveDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblApproveDate.Location = new System.Drawing.Point(228, 0);
+      this.LblApproveDate.Location = new System.Drawing.Point(227, 0);
       this.LblApproveDate.Name = "LblApproveDate";
-      this.LblApproveDate.Size = new System.Drawing.Size(99, 18);
+      this.LblApproveDate.Size = new System.Drawing.Size(98, 18);
       this.LblApproveDate.TabIndex = 3;
       this.LblApproveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -523,7 +526,7 @@
       // 
       this.label20.AutoSize = true;
       this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label20.Location = new System.Drawing.Point(168, 0);
+      this.label20.Location = new System.Drawing.Point(167, 0);
       this.label20.Name = "label20";
       this.label20.Size = new System.Drawing.Size(54, 18);
       this.label20.TabIndex = 2;
@@ -547,7 +550,7 @@
       this.LblApprover.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblApprover.Location = new System.Drawing.Point(63, 0);
       this.LblApprover.Name = "LblApprover";
-      this.LblApprover.Size = new System.Drawing.Size(99, 18);
+      this.LblApprover.Size = new System.Drawing.Size(98, 18);
       this.LblApprover.TabIndex = 1;
       this.LblApprover.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -564,7 +567,7 @@
       this.tableLayoutPanelAudit.RowCount = 2;
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(330, 63);
+      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(328, 63);
       this.tableLayoutPanelAudit.TabIndex = 14;
       // 
       // txtAuditComment
@@ -573,7 +576,7 @@
       this.txtAuditComment.Location = new System.Drawing.Point(3, 3);
       this.txtAuditComment.Multiline = true;
       this.txtAuditComment.Name = "txtAuditComment";
-      this.txtAuditComment.Size = new System.Drawing.Size(324, 39);
+      this.txtAuditComment.Size = new System.Drawing.Size(322, 39);
       this.txtAuditComment.TabIndex = 4;
       // 
       // tableLayoutPanelAutidtorDate
@@ -593,16 +596,16 @@
       this.tableLayoutPanelAutidtorDate.Name = "tableLayoutPanelAutidtorDate";
       this.tableLayoutPanelAutidtorDate.RowCount = 1;
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(330, 18);
+      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(328, 18);
       this.tableLayoutPanelAutidtorDate.TabIndex = 5;
       // 
       // LblAuditDate
       // 
       this.LblAuditDate.AutoSize = true;
       this.LblAuditDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblAuditDate.Location = new System.Drawing.Point(228, 0);
+      this.LblAuditDate.Location = new System.Drawing.Point(227, 0);
       this.LblAuditDate.Name = "LblAuditDate";
-      this.LblAuditDate.Size = new System.Drawing.Size(99, 18);
+      this.LblAuditDate.Size = new System.Drawing.Size(98, 18);
       this.LblAuditDate.TabIndex = 3;
       this.LblAuditDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -610,7 +613,7 @@
       // 
       this.label16.AutoSize = true;
       this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label16.Location = new System.Drawing.Point(168, 0);
+      this.label16.Location = new System.Drawing.Point(167, 0);
       this.label16.Name = "label16";
       this.label16.Size = new System.Drawing.Size(54, 18);
       this.label16.TabIndex = 2;
@@ -634,7 +637,7 @@
       this.LblAuditor.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblAuditor.Location = new System.Drawing.Point(63, 0);
       this.LblAuditor.Name = "LblAuditor";
-      this.LblAuditor.Size = new System.Drawing.Size(99, 18);
+      this.LblAuditor.Size = new System.Drawing.Size(98, 18);
       this.LblAuditor.TabIndex = 1;
       this.LblAuditor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -650,19 +653,6 @@
       this.label11.TabIndex = 13;
       this.label11.Text = "检验:";
       this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // btnCreateReport
-      // 
-      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
-      this.btnCreateReport.Location = new System.Drawing.Point(389, 4);
-      this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
-      this.btnCreateReport.Name = "btnCreateReport";
-      this.btnCreateReport.Size = new System.Drawing.Size(71, 57);
-      this.btnCreateReport.TabIndex = 4;
-      this.btnCreateReport.Text = "完成";
-      this.btnCreateReport.UseVisualStyleBackColor = true;
-      this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
       // 
       // label12
       // 
@@ -704,7 +694,7 @@
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(330, 63);
+      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(328, 63);
       this.tableLayoutPanelMesurement.TabIndex = 12;
       // 
       // txtOperatorComment
@@ -713,7 +703,7 @@
       this.txtOperatorComment.Location = new System.Drawing.Point(3, 3);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(324, 39);
+      this.txtOperatorComment.Size = new System.Drawing.Size(322, 39);
       this.txtOperatorComment.TabIndex = 4;
       // 
       // tableLayoutPanelTesterDate
@@ -733,16 +723,16 @@
       this.tableLayoutPanelTesterDate.Name = "tableLayoutPanelTesterDate";
       this.tableLayoutPanelTesterDate.RowCount = 1;
       this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(330, 18);
+      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(328, 18);
       this.tableLayoutPanelTesterDate.TabIndex = 5;
       // 
       // LblTestDate
       // 
       this.LblTestDate.AutoSize = true;
       this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTestDate.Location = new System.Drawing.Point(228, 0);
+      this.LblTestDate.Location = new System.Drawing.Point(227, 0);
       this.LblTestDate.Name = "LblTestDate";
-      this.LblTestDate.Size = new System.Drawing.Size(99, 18);
+      this.LblTestDate.Size = new System.Drawing.Size(98, 18);
       this.LblTestDate.TabIndex = 3;
       this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -750,7 +740,7 @@
       // 
       this.label14.AutoSize = true;
       this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label14.Location = new System.Drawing.Point(168, 0);
+      this.label14.Location = new System.Drawing.Point(167, 0);
       this.label14.Name = "label14";
       this.label14.Size = new System.Drawing.Size(54, 18);
       this.label14.TabIndex = 2;
@@ -774,9 +764,42 @@
       this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblTester.Location = new System.Drawing.Point(63, 0);
       this.LblTester.Name = "LblTester";
-      this.LblTester.Size = new System.Drawing.Size(99, 18);
+      this.LblTester.Size = new System.Drawing.Size(98, 18);
       this.LblTester.TabIndex = 1;
       this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.buttonStart);
+      this.panel1.Controls.Add(this.btnCreateReport);
+      this.panel1.Location = new System.Drawing.Point(381, 1);
+      this.panel1.Margin = new System.Windows.Forms.Padding(0);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(86, 63);
+      this.panel1.TabIndex = 18;
+      // 
+      // btnCreateReport
+      // 
+      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnCreateReport.Location = new System.Drawing.Point(6, 34);
+      this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+      this.btnCreateReport.Name = "btnCreateReport";
+      this.btnCreateReport.Size = new System.Drawing.Size(68, 24);
+      this.btnCreateReport.TabIndex = 5;
+      this.btnCreateReport.Text = "完成";
+      this.btnCreateReport.UseVisualStyleBackColor = true;
+      this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
+      // 
+      // buttonStart
+      // 
+      this.buttonStart.Location = new System.Drawing.Point(7, 3);
+      this.buttonStart.Name = "buttonStart";
+      this.buttonStart.Size = new System.Drawing.Size(67, 26);
+      this.buttonStart.TabIndex = 6;
+      this.buttonStart.Text = "开始";
+      this.buttonStart.UseVisualStyleBackColor = true;
+      this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
       // 
       // ExecuteReportControl
       // 
@@ -817,6 +840,7 @@
       this.tableLayoutPanelMesurement.PerformLayout();
       this.tableLayoutPanelTesterDate.ResumeLayout(false);
       this.tableLayoutPanelTesterDate.PerformLayout();
+      this.panel1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -845,7 +869,6 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.TextBox txtManufacturer;
     private System.Windows.Forms.DataGridView dataGridView1;
-    private System.Windows.Forms.Button btnCreateReport;
     private System.Windows.Forms.TableLayoutPanel tableResult;
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.Label label13;
@@ -878,5 +901,8 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn MeasuredColumn;
     private System.Windows.Forms.DataGridViewImageColumn StatusColumn;
+    private System.Windows.Forms.Panel panel1;
+    private System.Windows.Forms.Button buttonStart;
+    private System.Windows.Forms.Button btnCreateReport;
   }
 }

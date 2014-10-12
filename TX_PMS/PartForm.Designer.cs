@@ -37,6 +37,7 @@
       this.CanClose = false;
       this.CanDockBottom = false;
       this.CanDockLeft = false;
+      this.FormBorderStyleUndocked = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
       this.Name = "PartForm";
       this.Size = new System.Drawing.Size(536, 584);
       this.Text = "零件";

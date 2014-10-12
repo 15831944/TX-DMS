@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExecutionManager.cs" />
     <Compile Include="PmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +66,10 @@
     <ProjectReference Include="..\Db\Db.csproj">
       <Project>{CA18F596-0878-40F3-B0DA-E550AC883192}</Project>
       <Name>Db</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mediator\Mediator.csproj">
+      <Project>{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}</Project>
+      <Name>Mediator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

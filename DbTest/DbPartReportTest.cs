@@ -85,7 +85,7 @@ namespace DbTest
        Approver = "Approver", ApproveComment = "Approve comment",ApproveDatetime = new DateTime(2014,10,10)};
       target.InsertPartReport(report);
 
-      var insertedTask = target.GetPartReportsByPart(report.Task);
+      var insertedTask = target.GetPartReports(report.Task);
       Assert.AreEqual(report.Id, insertedTask.Id);
       report.Task.Id = 2;
       target.UpdatePartReport(report);
