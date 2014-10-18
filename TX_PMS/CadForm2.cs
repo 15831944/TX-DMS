@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using ControlReport;
 using Core.Model;
@@ -20,14 +21,40 @@ namespace TxPms
           var task = i_O as Task;
           if (task == null) return;
           OpenDwgFile(task.Part);
+          OnRefreshCad(null);
         });
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
           var report = i_O as PartReport;
           if (report == null) return;
           OpenDwgFile(report.Task.Part);
+          OnRefreshCad(null);
         });
      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
+
+     Mediator.Mediator.Instance.Register(Cad.OnReFresh, OnRefreshCad);
+    }
+
+    private void OnRefreshCad(object i_Obj)
+    {
+      Thread t = new Thread(() =>
+      {
+        Thread.Sleep(1000);
+        if (panel1.IsDisposed)
+          return;
+        panel1.Invoke(new VoidDelegate2(Update1));
+
+      });
+      t.Start();
+    }
+
+
+    public void Update1()
+    {
+      //this.Focus();
+      //panel1.Focus();
+      Invalidate();
+      //panel1.Focus();
     }
 
     private void OpenDwgFile(Part i_Part)

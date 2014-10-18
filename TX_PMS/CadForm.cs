@@ -20,6 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using ControlReport;
 using Core.Service;
@@ -155,6 +156,7 @@ namespace TxPms
       }
 
 
+     
       if (bLoaded)
       {
         HostApplicationServices.WorkingDatabase = database;
@@ -170,15 +172,13 @@ namespace TxPms
         ;
 
         InitializeGraphics();
-        Invalidate();
-        zoom_extents_handler(null, null);
 
         Mediator.Mediator.Instance.NotifyColleagues(Cad.OnOpened, database);
        // CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
 
       }
-      panel1.Focus();
     }
+    public delegate void VoidDelegate2();
 
 //    void layout1_Click(object sender, EventArgs e)
 //    {
@@ -286,7 +286,7 @@ namespace TxPms
         if (r.Height > 0 && r.Width > 0)
         {
           helperDevice.OnSize(r);
-          Invalidate();
+          OnRefreshCad(null);
         }
       }
     }
@@ -548,15 +548,13 @@ namespace TxPms
       Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.Resize, null);
     }
 
-    private void panel1_Resize_1(object sender, EventArgs e)
-    {
-
-    }
-
     private void panel1_SizeChanged(object sender, EventArgs e)
     {
     }
 
-
+    private void testToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      OpenDwgFile(@"C:\Projects\Pms2\TX-DMS\TX_PMS\bin\x86\Debug\CADResources\716ML7-8C.00.01.dwg");
+    }
   }
 }

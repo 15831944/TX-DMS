@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ControlReport;
+using Core.Model;
 using Core.Service;
 using Mediator;
 using MockMeasureToolControl;
@@ -99,8 +100,9 @@ namespace TxPms
 
     private void qRibbonItemMockTool_ItemActivated(object sender, QCompositeEventArgs e)
     {
-      MockMeasureToolForm frm = new MockMeasureToolForm();
-      frm.Show(this);
+      //MockMeasureToolForm frm = new MockMeasureToolForm();
+      //frm.Show(this);
+      _CadForm.Focus();
     }
 
     private void qRibbonItemOpenPart_ItemActivated(object sender, QCompositeEventArgs e)
@@ -136,6 +138,16 @@ namespace TxPms
       if(tasks.Count==0) return;
 
       Mediator.Mediator.Instance.NotifyColleagues(UI.SelectTask, tasks[tasks.Count-1]);
+    }
+
+    private void MainForm_Activated(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnReFresh,null);
+    }
+
+    private void MainForm_Deactivate(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnReFresh, null);
     }
   }
 }

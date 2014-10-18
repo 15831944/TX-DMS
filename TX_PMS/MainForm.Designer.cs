@@ -34,6 +34,7 @@ namespace TxPms
       this.qDockBarBottom = new Qios.DevSuite.Components.QDockBar();
       this.qDockBarRight = new Qios.DevSuite.Components.QDockBar();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.toolStripStatusLabelTaskExecution = new System.Windows.Forms.ToolStripStatusLabel();
       this.qDockBarLeft = new Qios.DevSuite.Components.QDockBar();
       this.qRibbonCaption1 = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
       this.qRibbonPanel1 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
@@ -58,7 +59,6 @@ namespace TxPms
       this.qRibbonItemEditTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPanel9 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemExecuteTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
-      this.toolStripStatusLabelTaskExecution = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).BeginInit();
@@ -97,6 +97,12 @@ namespace TxPms
       this.statusStrip1.Size = new System.Drawing.Size(913, 22);
       this.statusStrip1.TabIndex = 18;
       this.statusStrip1.Text = "statusStrip1";
+      // 
+      // toolStripStatusLabelTaskExecution
+      // 
+      this.toolStripStatusLabelTaskExecution.Name = "toolStripStatusLabelTaskExecution";
+      this.toolStripStatusLabelTaskExecution.Size = new System.Drawing.Size(77, 17);
+      this.toolStripStatusLabelTaskExecution.Text = "检验进度:0/0";
       // 
       // qDockBarLeft
       // 
@@ -273,12 +279,6 @@ namespace TxPms
       this.qRibbonItemExecuteTask.Title = "执行";
       this.qRibbonItemExecuteTask.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemExecuteTask_ItemActivated);
       // 
-      // toolStripStatusLabelTaskExecution
-      // 
-      this.toolStripStatusLabelTaskExecution.Name = "toolStripStatusLabelTaskExecution";
-      this.toolStripStatusLabelTaskExecution.Size = new System.Drawing.Size(77, 17);
-      this.toolStripStatusLabelTaskExecution.Text = "检验进度:0/0";
-      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -294,6 +294,8 @@ namespace TxPms
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+      this.Activated += new System.EventHandler(this.MainForm_Activated);
+      this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
       this.statusStrip1.ResumeLayout(false);
       this.statusStrip1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).EndInit();

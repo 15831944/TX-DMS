@@ -23,7 +23,8 @@ namespace Mediator
   {
     OnDimensionSelected,
     OnTextSelected,
-    OnOpened
+    OnOpened,
+    OnReFresh
   }
   public enum MeasurementTool
   {
