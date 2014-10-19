@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using Core.Model;
 using Core.Service;
+using Dwglib;
 using Mediator;
 using Service;
 using Teigha.DatabaseServices;
@@ -30,7 +31,7 @@ namespace ControlReport
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, OnPartReportSpecified);
       Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, OnMeasurementDataArrived);
 
-      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelected, OnCadElementSelected);
+      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, OnCadElementSelected);
       this.dataGridView1.RowEnter += dataGridView1_RowEnter;
     }
 
@@ -192,14 +193,15 @@ namespace ControlReport
     }
     private void OnCadElementSelected(object i_Obj)
     {
-      var dim = i_Obj as DBObject;
-      if (dim == null)
+      var idString = i_Obj as string;
+      if (idString == null)
         return;
-      PmsService.Instance.CurrentCadHandle = dim.Handle.ToString().Trim();
-      TryToHightLightRow(PmsService.Instance.CurrentCadHandle);
+      var selectedObject = CadSelectionManager.Instance.GetObjectById(idString);
+      if(selectedObject==null) return;
+      TryToHightLightRow(selectedObject);
     }
 
-    private void TryToHightLightRow(string i_Handle)
+    private void TryToHightLightRow(DBObject i_SelectedObject)
     {
       dataGridView1.ClearSelection();
       //Highlight row accordingly
@@ -210,7 +212,7 @@ namespace ControlReport
       foreach (var editDimensionEntityViewModel in _DataSource)
       {
         rowNumber++;
-        if (editDimensionEntityViewModel.GetDimension().CadHandle == i_Handle.Trim())
+        if (editDimensionEntityViewModel.GetDimension().CadHandle == i_SelectedObject.Handle.ToString().Trim())
         {
           matched = true;
           break;
@@ -272,7 +274,7 @@ namespace ControlReport
     {
       _SeletedDimension = _PartReport.Dimensions[e.RowIndex];
       _SelectedRow = e.RowIndex;
-
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnDimensionSelectedInControl,_SeletedDimension.CadHandle);
     }
 
     private void btnCreateReport_Click(object sender, EventArgs e)

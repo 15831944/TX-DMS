@@ -32,8 +32,8 @@
       this.label2 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.qTextBoxCadNumber = new Qios.DevSuite.Components.QTextBox();
-      this.qComboBoxPartName = new Qios.DevSuite.Components.QComboBox();
+      this.qTextBoxCadName = new Qios.DevSuite.Components.QTextBox();
+      this.qComboBoxPartCadNumber = new Qios.DevSuite.Components.QComboBox();
       this.qButtonOK = new Qios.DevSuite.Components.QButton();
       this.qButtonCancel = new Qios.DevSuite.Components.QButton();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -49,7 +49,7 @@
       // label1
       // 
       this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(36, 29);
+      this.label1.Location = new System.Drawing.Point(211, 29);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(29, 12);
       this.label1.TabIndex = 0;
@@ -58,7 +58,7 @@
       // label2
       // 
       this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(211, 29);
+      this.label2.Location = new System.Drawing.Point(36, 29);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(29, 12);
       this.label2.TabIndex = 1;
@@ -75,8 +75,8 @@
       // 
       // groupBox1
       // 
-      this.groupBox1.Controls.Add(this.qTextBoxCadNumber);
-      this.groupBox1.Controls.Add(this.qComboBoxPartName);
+      this.groupBox1.Controls.Add(this.qTextBoxCadName);
+      this.groupBox1.Controls.Add(this.qComboBoxPartCadNumber);
       this.groupBox1.Controls.Add(this.label1);
       this.groupBox1.Controls.Add(this.label2);
       this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -87,20 +87,20 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "零件";
       // 
-      // qTextBoxCadNumber
+      // qTextBoxCadName
       // 
-      this.qTextBoxCadNumber.Location = new System.Drawing.Point(246, 26);
-      this.qTextBoxCadNumber.Name = "qTextBoxCadNumber";
-      this.qTextBoxCadNumber.Size = new System.Drawing.Size(100, 18);
-      this.qTextBoxCadNumber.TabIndex = 8;
+      this.qTextBoxCadName.Location = new System.Drawing.Point(246, 26);
+      this.qTextBoxCadName.Name = "qTextBoxCadName";
+      this.qTextBoxCadName.Size = new System.Drawing.Size(100, 18);
+      this.qTextBoxCadName.TabIndex = 8;
       // 
-      // qComboBoxPartName
+      // qComboBoxPartCadNumber
       // 
-      this.qComboBoxPartName.Location = new System.Drawing.Point(71, 26);
-      this.qComboBoxPartName.Name = "qComboBoxPartName";
-      this.qComboBoxPartName.Size = new System.Drawing.Size(100, 18);
-      this.qComboBoxPartName.TabIndex = 4;
-      this.qComboBoxPartName.SelectedItemChanged += new System.EventHandler(this.qComboBoxPartName_SelectedItemChanged);
+      this.qComboBoxPartCadNumber.Location = new System.Drawing.Point(71, 26);
+      this.qComboBoxPartCadNumber.Name = "qComboBoxPartCadNumber";
+      this.qComboBoxPartCadNumber.Size = new System.Drawing.Size(100, 18);
+      this.qComboBoxPartCadNumber.TabIndex = 4;
+      this.qComboBoxPartCadNumber.SelectedItemChanged += new System.EventHandler(this.qComboBoxPartName_SelectedItemChanged);
       // 
       // qButtonOK
       // 
@@ -207,12 +207,12 @@
     private Qios.DevSuite.Components.QButton qButtonOK;
     private Qios.DevSuite.Components.QButton qButtonCancel;
     private System.Windows.Forms.GroupBox groupBox2;
-    private Qios.DevSuite.Components.QComboBox qComboBoxPartName;
+    private Qios.DevSuite.Components.QComboBox qComboBoxPartCadNumber;
     private Qios.DevSuite.Components.QComboBox qComboBoxSupplier;
     private System.Windows.Forms.Label label4;
     private Qios.DevSuite.Components.QTextBox qTextBoxTotal;
     private System.Windows.Forms.Label label5;
     private Qios.DevSuite.Components.QTextBox qTextBoxSample;
-    private Qios.DevSuite.Components.QTextBox qTextBoxCadNumber;
+    private Qios.DevSuite.Components.QTextBox qTextBoxCadName;
   }
 }

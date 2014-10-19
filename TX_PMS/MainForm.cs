@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using ControlReport;
-using Core.Model;
 using Core.Service;
 using Mediator;
 using MockMeasureToolControl;
@@ -16,8 +12,9 @@ using Teigha.DatabaseServices;
 
 namespace TxPms
 {
-  public partial class MainForm : QRibbonForm  
+  public partial class MainForm : QRibbonForm
   {
+    public delegate void MessageHanlderDelegate(object i_B);
     private CadForm _CadForm  = new CadForm();
     public MainForm()
     {
@@ -28,15 +25,13 @@ namespace TxPms
       _CadForm.Show();
       DockReportControl();
       this.FormClosing += MainForm_FormClosing;
-      Mediator.Mediator.Instance.Register(Cad.OnOpened, OnCadOpened);
-      Mediator.Mediator.Instance.Register(UI.Resize,i_O => this.BeginInvoke(new VoidDelegate(Invalidate),true));
+      Mediator.Mediator.Instance.Register(Cad.OnOpened, i_O => BeginInvoke(new MessageHanlderDelegate(OnCadOpened), i_O));
       Mediator.Mediator.Instance.Register(App.ExecutionProgress,i_O =>
         {
           toolStripStatusLabelTaskExecution.Text = string.Format("检验进度：{0}",i_O.ToString());
         });
     }
 
-    public  delegate void VoidDelegate(bool i_B);
     void DockReportControl()
     {
       BrowseReportForm tmp_oTasks = new BrowseReportForm();
@@ -63,20 +58,24 @@ namespace TxPms
 
       using (DBDictionary layoutDict = (DBDictionary)database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
       {
-//        qCadToolBar.Controls.Clear();
-//        foreach (DBDictionaryEntry dicEntry in layoutDict)
-//        {
-//
-//          //var layout1 = new ToolStripMenuItem {Text = dicEntry.Key};
-//          //            CadLayoutModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
-//          //              {
-//          //                layout1
-//          //              });
-//          //layout1.Click += layout1_Click;
-//          qCadToolBar.ToolItems.Add(new QToolItem(dicEntry.Key));
-//
-//        }
+        qRibbonPageWindow.Items.Clear();
+        var ribbinPanel = new QRibbonPanel();
+        qRibbonPageWindow.Items.Add(ribbinPanel);
+        foreach (DBDictionaryEntry dicEntry in layoutDict)
+        {
+          var oneItem = new QRibbonItem();
+          oneItem.Title = dicEntry.Key;
+          oneItem.Configuration.IconConfiguration.IconSize=new Size(32,32);
+          ribbinPanel.Items.Add(oneItem);
+          oneItem.ItemActivated += oneItem_ItemActivated;
+        }
       }
+    }
+
+    void oneItem_ItemActivated(object sender, QCompositeEventArgs e)
+    {
+      LayoutManager LayMan = LayoutManager.Current;
+      LayMan.CurrentLayout = ((QRibbonItem)sender).Title;
     }
 
     void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -100,20 +99,14 @@ namespace TxPms
 
     private void qRibbonItemMockTool_ItemActivated(object sender, QCompositeEventArgs e)
     {
-      //MockMeasureToolForm frm = new MockMeasureToolForm();
-      //frm.Show(this);
-      _CadForm.Focus();
+      MockMeasureToolForm frm = new MockMeasureToolForm();
+      frm.Show(this);
     }
 
     private void qRibbonItemOpenPart_ItemActivated(object sender, QCompositeEventArgs e)
     {
       SelectReportControl selectReportControl = new SelectReportControl();
       selectReportControl.ShowDialog(this);
-    }
-
-    private void qRibbonItemExecutePart_ItemActivated(object sender, QCompositeEventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.ExecuteReport, null);
     }
 
     private void qRibbonItemEditPart_ItemActivated(object sender, QCompositeEventArgs e)

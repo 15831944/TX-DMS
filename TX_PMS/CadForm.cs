@@ -1,33 +1,10 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-// Copyright © 2009-2010, Open Design Alliance (the "Alliance") 
-// 
-// This software is owned by the Alliance, and may only be incorporated into 
-// application programs owned by members of the Alliance subject to a signed 
-// Membership Agreement and Supplemental Software License Agreement with the
-// Alliance. The structure and organization of this software are the valuable 
-// trade secrets of the Alliance and its suppliers. The software is also 
-// protected by copyright law and international treaty provisions. Application 
-// programs incorporating this software must include the following statement 
-// with their copyright notices:
-//
-// Teigha™.NET for .dwg files 2009-2010 by Open Design Alliance. All rights reserved.
-//
-// By use of this software, you acknowledge and accept these terms.
-//
-//
-// *DWG is the native and proprietary file format for AutoCAD® and a trademark 
-// of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
-///////////////////////////////////////////////////////////////////////////////
-using System;
+﻿using System;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
-using ControlReport;
 using Core.Service;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
-using MockMeasureToolControl;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
@@ -146,16 +123,12 @@ namespace TxPms
       try
       {
         database.ReadDwgFile(i_Path, FileOpenMode.OpenForReadAndAllShare, false, "");
-//        if (!panelGraphicContainer.Controls.Contains(panel1)) //panelGraphicContainer
-//          panelGraphicContainer.Controls.Add(panel1);
       }
       catch (System.Exception ex)
       {
         MessageBox.Show(ex.Message);
         bLoaded = false;
       }
-
-
      
       if (bLoaded)
       {
@@ -164,27 +137,17 @@ namespace TxPms
         lm.LayoutSwitched += reinitGraphDevice;
         String str = HostApplicationServices.Current.FontMapFileName;
 
-        //menuStrip.
-       // FitToWindowToolStripMenuItem.Enabled = true;
-       // CadLayoutModeToolStripMenuItem.Enabled = true;
         panel1.Enabled = true;
-        Text = String.Format("外协件检验系统 - [{0}]", PmsService.Instance.CurrentTemplate==null?"":PmsService.Instance.CurrentTemplate.Name)
-        ;
+        Text = String.Format("外协件检验系统 - [{0}]",
+                             PmsService.Instance.CurrentTemplate == null ? "" : PmsService.Instance.CurrentTemplate.Name);
 
         InitializeGraphics();
-
         Mediator.Mediator.Instance.NotifyColleagues(Cad.OnOpened, database);
-       // CadLayoutModeToolStripMenuItem.DropDownItems.Clear();
-
+          CadSelectionManager.Instance.Initialize(database);
       }
     }
-    public delegate void VoidDelegate2();
+    public delegate void VoidDelegate2(int i_Delayed);
 
-//    void layout1_Click(object sender, EventArgs e)
-//    {
-//      LayoutManager LayMan = LayoutManager.Current;
-//      LayMan.CurrentLayout = ((ToolStripMenuItem) sender).Text;
-//    }
 
     public void SetLayout(string i_LayoutString)
     {
@@ -261,20 +224,28 @@ namespace TxPms
 
     private void DisposeResource()
     {
+
       if (selRect != null)
         helperDevice.ActiveView.Erase(selRect);
       selRect = null;
 
-      gripManager.uninit();
+      if (gripManager != null)
+        gripManager.uninit();
       gripManager = null;
       if (graphics != null)
         graphics.Dispose();
+      graphics = null;
       if (helperDevice != null)
         helperDevice.Dispose();
+      helperDevice = null;
       if (database != null)
         database.Dispose();
-      dd.Dispose();
+      database = null;
+      if (dd != null)
+        dd.Dispose();
+      dd = null;
     }
+
     void resize()
     {
       if (helperDevice != null)
@@ -286,7 +257,7 @@ namespace TxPms
         if (r.Height > 0 && r.Width > 0)
         {
           helperDevice.OnSize(r);
-          OnRefreshCad(null);
+         UpdateCadAsync(500);
         }
       }
     }
@@ -461,7 +432,6 @@ namespace TxPms
                        new SR(selected, database.CurrentSpaceId), startSelPoint.X < e.X ? Teigha.GraphicsSystem.SelectionMode.Window : Teigha.GraphicsSystem.SelectionMode.Crossing);
           pView.Erase(selRect);
           selRect = null;
-
           gripManager.updateSelection(selected);
           helperDevice.Invalidate();
           Invalidate();
@@ -546,15 +516,6 @@ namespace TxPms
     {
 
       Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.Resize, null);
-    }
-
-    private void panel1_SizeChanged(object sender, EventArgs e)
-    {
-    }
-
-    private void testToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      OpenDwgFile(@"C:\Projects\Pms2\TX-DMS\TX_PMS\bin\x86\Debug\CADResources\716ML7-8C.00.01.dwg");
     }
   }
 }

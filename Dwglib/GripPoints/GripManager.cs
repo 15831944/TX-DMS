@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mediator;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Geometry;
@@ -431,21 +432,15 @@ namespace Dwglib.GripPoints
 
     public void updateSelection(ObjectIdCollection selected)
     {
-      ObjectIdCollection aNew = new ObjectIdCollection();
       foreach (ObjectId id in selected)
       {
-        if(!m_gripDataDict.ContainsKey(id))
+        if (!m_gripDataDict.ContainsKey(id))
         {
-          DbDumper dbDumper = new DbDumper();
-          dbDumper.dumpEntity(id, 3);
-          if (dbDumper.IsUsedInCad)
-          {
             updateEntityGrips(id); //Just show the first valid element in CAD window
+            Mediator.Mediator.Instance.NotifyColleaguesAsync(Cad.OnDimensionSelectedInCad, id.ToString());
             break;
-          }
         }
       }
-
       updateInvisibleGrips();
     }
 

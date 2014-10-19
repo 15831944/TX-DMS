@@ -28,11 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
       this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -238,8 +238,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle6;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -250,8 +250,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle7;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -263,8 +263,8 @@
       // 
       this.NominalColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle8;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
       this.NominalColumn.HeaderText = "理论值";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -274,8 +274,8 @@
       // 
       this.PlusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.PlusTolColumn.DataPropertyName = "PlusTol";
-      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle9;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.PlusTolColumn.DefaultCellStyle = dataGridViewCellStyle4;
       this.PlusTolColumn.HeaderText = "上公差";
       this.PlusTolColumn.Name = "PlusTolColumn";
       // 
@@ -283,8 +283,8 @@
       // 
       this.MinusTolColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.MinusTolColumn.DataPropertyName = "MinusTol";
-      dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle10;
+      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.MinusTolColumn.DefaultCellStyle = dataGridViewCellStyle5;
       this.MinusTolColumn.HeaderText = "下公差";
       this.MinusTolColumn.Name = "MinusTolColumn";
       // 
@@ -342,6 +342,7 @@
       this.btnAddCadFile.TabIndex = 8;
       this.btnAddCadFile.Text = "Cad文件";
       this.btnAddCadFile.UseVisualStyleBackColor = true;
+      this.btnAddCadFile.Click += new System.EventHandler(this.btnAddCadFile_Click);
       // 
       // btnMachCadHandle
       // 
@@ -352,6 +353,7 @@
       this.btnMachCadHandle.TabIndex = 4;
       this.btnMachCadHandle.Text = "指定标注";
       this.btnMachCadHandle.UseVisualStyleBackColor = true;
+      this.btnMachCadHandle.Click += new System.EventHandler(this.btnMatchCadHandle_Click);
       // 
       // btnSave
       // 
@@ -362,6 +364,7 @@
       this.btnSave.TabIndex = 7;
       this.btnSave.Text = "保存";
       this.btnSave.UseVisualStyleBackColor = true;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
       // btnDelete
       // 
@@ -372,6 +375,7 @@
       this.btnDelete.TabIndex = 6;
       this.btnDelete.Text = "删除";
       this.btnDelete.UseVisualStyleBackColor = true;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
       // 
       // btnNew
       // 
@@ -382,6 +386,7 @@
       this.btnNew.TabIndex = 5;
       this.btnNew.Text = "增加";
       this.btnNew.UseVisualStyleBackColor = true;
+      this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
       // 
       // EditReportControl
       // 

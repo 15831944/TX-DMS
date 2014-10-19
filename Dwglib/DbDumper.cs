@@ -238,7 +238,7 @@ namespace Dwglib
     {
       writeLine(indent, "Measurement", pDim.Measurement);
       writeLine(indent, "Dimension Text", pDim.DimensionText);
-      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnDimensionSelected, pDim);
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnValidDimensionParsed, pDim);
     }
     /************************************************************************/
     /* 2 Line Angular Dimension Dumper                                      */
@@ -868,7 +868,7 @@ namespace Dwglib
     {
       writeLine(indent++, pMText.GetRXClass().Name, pMText.Handle);
       writeLine(indent, "Contents", pMText.Contents);
-      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnDimensionSelected, pMText);
+      Mediator.Mediator.Instance.NotifyColleagues(Cad.OnValidDimensionParsed, pMText);
 
       dumpEntityData(pMText, indent);
     }
@@ -2066,7 +2066,7 @@ namespace Dwglib
       /**********************************************************************/
       /* Get a pointer to the Entity                                   */
       /**********************************************************************/
-      using (Entity pEnt = (Entity)id.Open(OpenMode.ForRead, false, true))
+      Entity pEnt = (Entity) id.GetObject(OpenMode.ForRead, false, true);
       {
         IsUsedInCad = true;
         /**********************************************************************/

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuxCls.cs" />
+    <Compile Include="CadSelectionManager.cs" />
     <Compile Include="DbDumper.cs" />
     <Compile Include="GripPoints\ExGripData.cs" />
     <Compile Include="GripPoints\ExGripDrag.cs" />

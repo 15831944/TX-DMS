@@ -86,36 +86,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Export_Import\BMPExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Export_Import\BMPExport.Designer.cs">
-      <DependentUpon>BMPExport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Export_Import\ImExport.cs" />
     <Compile Include="CadForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadForm.Designer.cs">
       <DependentUpon>CadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Export_Import\PDFExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Export_Import\PDFExport.Designer.cs">
-      <DependentUpon>PDFExport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Export_Import\PublishDrawingSheets.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Export_Import\PublishDrawingSheets.Designer.cs">
-      <DependentUpon>PublishDrawingSheets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Export_Import\publishSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Export_Import\publishSetting.Designer.cs">
-      <DependentUpon>publishSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -147,17 +122,9 @@
     <Compile Include="TaskForm.Designer.cs">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Export_Import\BMPExport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>BMPExport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CadForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Export_Import\PDFExport.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>PDFExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -173,14 +140,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Export_Import\PublishDrawingSheets.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>PublishDrawingSheets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Export_Import\publishSetting.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>publishSetting.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

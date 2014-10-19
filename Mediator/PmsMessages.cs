@@ -21,8 +21,9 @@ namespace Mediator
 
   public enum Cad
   {
-    OnDimensionSelected,
-    OnTextSelected,
+    OnValidDimensionParsed,
+    OnDimensionSelectedInCad,
+    OnDimensionSelectedInControl,
     OnOpened,
     OnReFresh
   }

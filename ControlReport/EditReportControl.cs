@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using Core.Model;
 using Core.Service;
+using Dwglib;
 using Mediator;
 using Teigha.DatabaseServices;
 using Dimension = Core.Model.Dimension;
@@ -21,20 +22,22 @@ namespace ControlReport
       InitializeComponent();
       Mediator.Mediator.Instance.Register(UI.SelectPart, OnPartSpecified);
       Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
-      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelected, OnCadElementSelected);
+      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, OnCadElementSelected);
      
     }
 
+    private DBObject _SelectedObject;
     private void OnCadElementSelected(object i_Obj)
     {
-      var dim = i_Obj as DBObject;
-      if (dim ==null)
+      var idString = i_Obj as string;
+      if (idString == null)
         return;
-      PmsService.Instance.CurrentCadHandle = dim.Handle.ToString().Trim();
-      TryToHightLightRow(PmsService.Instance.CurrentCadHandle);
+      _SelectedObject = CadSelectionManager.Instance.GetObjectById(idString);
+      if (_SelectedObject == null) return;
+      TryToHightLightRow(_SelectedObject);
     }
 
-    private void TryToHightLightRow(string i_Handle)
+    private void TryToHightLightRow(DBObject i_SelectedObject)
     {
       dataGridView1.ClearSelection();
       //Highlight row accordingly
@@ -45,7 +48,7 @@ namespace ControlReport
       foreach (var editDimensionEntityViewModel in _DataSource)
       {
         rowNumber++;
-        if (editDimensionEntityViewModel.GetDimension().CadHandle == i_Handle.Trim())
+        if (editDimensionEntityViewModel.GetDimension().CadHandle == i_SelectedObject.Handle.ToString().Trim())
         {
           matched = true;
           break;
@@ -112,12 +115,12 @@ namespace ControlReport
       return result;
     }
 
-    private void btnMachCadHandle_Click(object i_Sender, EventArgs e)
+    private void btnMatchCadHandle_Click(object i_Sender, EventArgs e)
     {
       if (dataGridView1.SelectedRows.Count >= 0)
       {
         var dim = _DataSource[_SelectedRow].GetDimension();
-        dim.CadHandle = PmsService.Instance.CurrentCadHandle;
+        dim.CadHandle = _SelectedObject.Handle.ToString();
         dataGridView1.InvalidateRow(_SelectedRow);
       }
     }

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ControlReport;
 using Core.Model;
 using Core.Service;
+using Dwglib;
 using Mediator;
 using Teigha.DatabaseServices;
 
@@ -16,6 +17,13 @@ namespace TxPms
   {
     void Initialize()
     {
+      Mediator.Mediator.Instance.Register(UI.SelectPart, i_O =>
+      {
+        var part = i_O as Part;
+        if (part == null) return;
+        OpenDwgFile(part,false);
+        OnRefreshCad(null);
+      });
       Mediator.Mediator.Instance.Register(UI.SelectTask, i_O =>
         {
           var task = i_O as Task;
@@ -33,6 +41,19 @@ namespace TxPms
      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
 
      Mediator.Mediator.Instance.Register(Cad.OnReFresh, OnRefreshCad);
+     Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInControl, OnDimensionSelectedInControl);
+    }
+
+    private void OnDimensionSelectedInControl(object i_Obj)
+    {
+      string cadHandle = i_Obj as string;
+      if (cadHandle == null) return;
+      var dbObj = CadSelectionManager.Instance.GetObjectByHandle(cadHandle);
+      if (dbObj == null) return;
+      
+      ClearSelection();
+      selected.Add(dbObj.Id);
+      gripManager.updateSelection(selected);
     }
 
     private void OnRefreshCad(object i_Obj)
@@ -42,22 +63,32 @@ namespace TxPms
         Thread.Sleep(1000);
         if (panel1.IsDisposed)
           return;
-        panel1.Invoke(new VoidDelegate2(Update1));
+        panel1.Invoke(new VoidDelegate2(Update1),1000);
 
       });
       t.Start();
     }
 
 
-    public void Update1()
+    private void UpdateCadAsync(int i_Delayed)
     {
-      //this.Focus();
-      //panel1.Focus();
-      Invalidate();
-      //panel1.Focus();
+      Thread t = new Thread(() =>
+      {
+        Thread.Sleep(800);
+        if (panel1.IsDisposed)
+          return;
+        panel1.Invoke(new VoidDelegate2(Update1),i_Delayed);
+
+      });
+      t.Start();
     }
 
-    private void OpenDwgFile(Part i_Part)
+    private void Update1(int i_Delayed)
+    {
+      Invalidate();
+    }
+
+    private void OpenDwgFile(Part i_Part, bool i_IsParse = true)
     {
       if (i_Part == null)
       {

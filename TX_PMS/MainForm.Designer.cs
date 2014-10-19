@@ -46,8 +46,6 @@ namespace TxPms
       this.qRibbonItemOpen = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPanel4 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemEdit = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
-      this.qRibbonPanel5 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-      this.qRibbonItemExecute = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbon1 = new Qios.DevSuite.Components.Ribbon.QRibbon();
       this.qRibbonPage2 = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
       this.qRibbonPanel6 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
@@ -59,6 +57,7 @@ namespace TxPms
       this.qRibbonItemEditTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPanel9 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemExecuteTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
+      this.qRibbonPageWindow = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
       this.statusStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).BeginInit();
@@ -66,6 +65,7 @@ namespace TxPms
       this.qRibbon1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage2)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage3)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.qRibbonPageWindow)).BeginInit();
       this.SuspendLayout();
       // 
       // qDockBarBottom
@@ -139,7 +139,6 @@ namespace TxPms
       this.qRibbonPage1.Items.Add(this.qRibbonPanel3);
       this.qRibbonPage1.Items.Add(this.qRibbonPanel7);
       this.qRibbonPage1.Items.Add(this.qRibbonPanel4);
-      this.qRibbonPage1.Items.Add(this.qRibbonPanel5);
       this.qRibbonPage1.Location = new System.Drawing.Point(2, 29);
       this.qRibbonPage1.Name = "qRibbonPage1";
       this.qRibbonPage1.PersistGuid = new System.Guid("446d545b-30dc-40fc-ac6c-8c4d715deecf");
@@ -183,24 +182,13 @@ namespace TxPms
       this.qRibbonItemEdit.Title = "编辑";
       this.qRibbonItemEdit.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemEditPart_ItemActivated);
       // 
-      // qRibbonPanel5
-      // 
-      this.qRibbonPanel5.Items.Add(this.qRibbonItemExecute);
-      this.qRibbonPanel5.Title = "";
-      // 
-      // qRibbonItemExecute
-      // 
-      this.qRibbonItemExecute.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
-      this.qRibbonItemExecute.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItemExecute.Icon")));
-      this.qRibbonItemExecute.Title = "执行";
-      this.qRibbonItemExecute.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemExecutePart_ItemActivated);
-      // 
       // qRibbon1
       // 
       this.qRibbon1.ActiveTabPage = this.qRibbonPage1;
       this.qRibbon1.Controls.Add(this.qRibbonPage2);
       this.qRibbon1.Controls.Add(this.qRibbonPage3);
       this.qRibbon1.Controls.Add(this.qRibbonPage1);
+      this.qRibbon1.Controls.Add(this.qRibbonPageWindow);
       this.qRibbon1.Cursor = System.Windows.Forms.Cursors.Default;
       this.qRibbon1.Dock = System.Windows.Forms.DockStyle.Top;
       this.qRibbon1.Location = new System.Drawing.Point(0, 28);
@@ -211,7 +199,7 @@ namespace TxPms
       // 
       // qRibbonPage2
       // 
-      this.qRibbonPage2.ButtonOrder = 2;
+      this.qRibbonPage2.ButtonOrder = 3;
       this.qRibbonPage2.Items.Add(this.qRibbonPanel6);
       this.qRibbonPage2.Location = new System.Drawing.Point(2, 29);
       this.qRibbonPage2.Name = "qRibbonPage2";
@@ -279,6 +267,15 @@ namespace TxPms
       this.qRibbonItemExecuteTask.Title = "执行";
       this.qRibbonItemExecuteTask.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qRibbonItemExecuteTask_ItemActivated);
       // 
+      // qRibbonPageWindow
+      // 
+      this.qRibbonPageWindow.ButtonOrder = 2;
+      this.qRibbonPageWindow.Location = new System.Drawing.Point(2, 29);
+      this.qRibbonPageWindow.Name = "qRibbonPageWindow";
+      this.qRibbonPageWindow.PersistGuid = new System.Guid("ff1f78a4-a365-4ecc-ac83-4a9a61b856bc");
+      this.qRibbonPageWindow.Size = new System.Drawing.Size(907, 62);
+      this.qRibbonPageWindow.Text = "窗口";
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -304,6 +301,7 @@ namespace TxPms
       this.qRibbon1.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage2)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage3)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.qRibbonPageWindow)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -325,8 +323,6 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemOpen;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel4;
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemEdit;
-    private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel5;
-    private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemExecute;
     private Qios.DevSuite.Components.Ribbon.QRibbon qRibbon1;
     private Qios.DevSuite.Components.Ribbon.QRibbonPage qRibbonPage2;
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel6;
@@ -339,6 +335,7 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbonPanel qRibbonPanel9;
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemExecuteTask;
     private ToolStripStatusLabel toolStripStatusLabelTaskExecution;
+    private Qios.DevSuite.Components.Ribbon.QRibbonPage qRibbonPageWindow;
 
 
   }

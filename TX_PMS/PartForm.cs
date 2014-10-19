@@ -22,13 +22,18 @@ namespace TxPms
       _EditReportControl.Dock = DockStyle.Fill;
       _ExecuteReportControl.Dock = DockStyle.Fill;
       Mediator.Mediator.Instance.Register(UI.EditReport, OnEdit);
-      Mediator.Mediator.Instance.Register(UI.ExecuteReport, ShowExecuteControl);
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
           var report = i_O as PartReport;
           if (report == null) return;
           ShowExecuteControl(null);
         });
+      Mediator.Mediator.Instance.Register(UI.SelectPart, i_O =>
+      {
+        var part = i_O as Part;
+        if (part == null) return;
+        ShowEditControl(null);
+      });
       Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
       Mediator.Mediator.Instance.Register(UI.SelectTask, ShowExecuteControl);
     }
@@ -45,19 +50,26 @@ namespace TxPms
 
     private void ShowEditControl(object i_O)
     {
+      
       if (Controls.Contains(_EditReportControl))
         return;
       Controls.Clear();
       Controls.Add(_EditReportControl);
 
     }
-
-    private void ShowExecuteControl(object i_O)
+    private void ShowExecuteControl()
     {
       if (Controls.Contains(_ExecuteReportControl))
         return;
       Controls.Clear();
       Controls.Add(_ExecuteReportControl);
     }
+
+    private void ShowExecuteControl(object i_O)
+    {
+      BeginInvoke(new Delegate(ShowExecuteControl));
+    }
+
+    public delegate void Delegate();
   }
 }

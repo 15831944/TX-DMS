@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -163,8 +163,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -175,8 +175,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle5;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -187,8 +187,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle6;
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -420,7 +420,7 @@
       this.tableResult.ColumnCount = 3;
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
       this.tableResult.Controls.Add(this.ChkApprove, 2, 2);
       this.tableResult.Controls.Add(this.ChkAudit, 2, 1);
       this.tableResult.Controls.Add(this.tableLayoutPanelApprove, 1, 2);
@@ -444,10 +444,10 @@
       // 
       this.ChkApprove.AutoSize = true;
       this.ChkApprove.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ChkApprove.Location = new System.Drawing.Point(390, 132);
+      this.ChkApprove.Location = new System.Drawing.Point(388, 132);
       this.ChkApprove.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkApprove.Name = "ChkApprove";
-      this.ChkApprove.Size = new System.Drawing.Size(74, 58);
+      this.ChkApprove.Size = new System.Drawing.Size(76, 58);
       this.ChkApprove.TabIndex = 17;
       this.ChkApprove.Text = "通过";
       this.ChkApprove.UseVisualStyleBackColor = true;
@@ -458,10 +458,10 @@
                   | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.ChkAudit.AutoSize = true;
-      this.ChkAudit.Location = new System.Drawing.Point(390, 68);
+      this.ChkAudit.Location = new System.Drawing.Point(388, 68);
       this.ChkAudit.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
       this.ChkAudit.Name = "ChkAudit";
-      this.ChkAudit.Size = new System.Drawing.Size(74, 57);
+      this.ChkAudit.Size = new System.Drawing.Size(76, 57);
       this.ChkAudit.TabIndex = 16;
       this.ChkAudit.Text = "通过";
       this.ChkAudit.UseVisualStyleBackColor = true;
@@ -480,7 +480,7 @@
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(327, 64);
+      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(325, 64);
       this.tableLayoutPanelApprove.TabIndex = 15;
       // 
       // txtApproveComment
@@ -489,7 +489,7 @@
       this.txtApproveComment.Location = new System.Drawing.Point(3, 3);
       this.txtApproveComment.Multiline = true;
       this.txtApproveComment.Name = "txtApproveComment";
-      this.txtApproveComment.Size = new System.Drawing.Size(321, 40);
+      this.txtApproveComment.Size = new System.Drawing.Size(319, 40);
       this.txtApproveComment.TabIndex = 4;
       // 
       // tableLayoutPanelApproverDate
@@ -509,16 +509,16 @@
       this.tableLayoutPanelApproverDate.Name = "tableLayoutPanelApproverDate";
       this.tableLayoutPanelApproverDate.RowCount = 1;
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(327, 18);
+      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(325, 18);
       this.tableLayoutPanelApproverDate.TabIndex = 5;
       // 
       // LblApproveDate
       // 
       this.LblApproveDate.AutoSize = true;
       this.LblApproveDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblApproveDate.Location = new System.Drawing.Point(226, 0);
+      this.LblApproveDate.Location = new System.Drawing.Point(225, 0);
       this.LblApproveDate.Name = "LblApproveDate";
-      this.LblApproveDate.Size = new System.Drawing.Size(98, 18);
+      this.LblApproveDate.Size = new System.Drawing.Size(97, 18);
       this.LblApproveDate.TabIndex = 3;
       this.LblApproveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -526,7 +526,7 @@
       // 
       this.label20.AutoSize = true;
       this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label20.Location = new System.Drawing.Point(166, 0);
+      this.label20.Location = new System.Drawing.Point(165, 0);
       this.label20.Name = "label20";
       this.label20.Size = new System.Drawing.Size(54, 18);
       this.label20.TabIndex = 2;
@@ -550,7 +550,7 @@
       this.LblApprover.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblApprover.Location = new System.Drawing.Point(63, 0);
       this.LblApprover.Name = "LblApprover";
-      this.LblApprover.Size = new System.Drawing.Size(97, 18);
+      this.LblApprover.Size = new System.Drawing.Size(96, 18);
       this.LblApprover.TabIndex = 1;
       this.LblApprover.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -567,7 +567,7 @@
       this.tableLayoutPanelAudit.RowCount = 2;
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(327, 63);
+      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(325, 63);
       this.tableLayoutPanelAudit.TabIndex = 14;
       // 
       // txtAuditComment
@@ -576,7 +576,7 @@
       this.txtAuditComment.Location = new System.Drawing.Point(3, 3);
       this.txtAuditComment.Multiline = true;
       this.txtAuditComment.Name = "txtAuditComment";
-      this.txtAuditComment.Size = new System.Drawing.Size(321, 39);
+      this.txtAuditComment.Size = new System.Drawing.Size(319, 39);
       this.txtAuditComment.TabIndex = 4;
       // 
       // tableLayoutPanelAutidtorDate
@@ -596,16 +596,16 @@
       this.tableLayoutPanelAutidtorDate.Name = "tableLayoutPanelAutidtorDate";
       this.tableLayoutPanelAutidtorDate.RowCount = 1;
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(327, 18);
+      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(325, 18);
       this.tableLayoutPanelAutidtorDate.TabIndex = 5;
       // 
       // LblAuditDate
       // 
       this.LblAuditDate.AutoSize = true;
       this.LblAuditDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblAuditDate.Location = new System.Drawing.Point(226, 0);
+      this.LblAuditDate.Location = new System.Drawing.Point(225, 0);
       this.LblAuditDate.Name = "LblAuditDate";
-      this.LblAuditDate.Size = new System.Drawing.Size(98, 18);
+      this.LblAuditDate.Size = new System.Drawing.Size(97, 18);
       this.LblAuditDate.TabIndex = 3;
       this.LblAuditDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -613,7 +613,7 @@
       // 
       this.label16.AutoSize = true;
       this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label16.Location = new System.Drawing.Point(166, 0);
+      this.label16.Location = new System.Drawing.Point(165, 0);
       this.label16.Name = "label16";
       this.label16.Size = new System.Drawing.Size(54, 18);
       this.label16.TabIndex = 2;
@@ -637,7 +637,7 @@
       this.LblAuditor.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblAuditor.Location = new System.Drawing.Point(63, 0);
       this.LblAuditor.Name = "LblAuditor";
-      this.LblAuditor.Size = new System.Drawing.Size(97, 18);
+      this.LblAuditor.Size = new System.Drawing.Size(96, 18);
       this.LblAuditor.TabIndex = 1;
       this.LblAuditor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -694,7 +694,7 @@
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(327, 63);
+      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(325, 63);
       this.tableLayoutPanelMesurement.TabIndex = 12;
       // 
       // txtOperatorComment
@@ -703,7 +703,7 @@
       this.txtOperatorComment.Location = new System.Drawing.Point(3, 3);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(321, 39);
+      this.txtOperatorComment.Size = new System.Drawing.Size(319, 39);
       this.txtOperatorComment.TabIndex = 4;
       // 
       // tableLayoutPanelTesterDate
@@ -723,16 +723,16 @@
       this.tableLayoutPanelTesterDate.Name = "tableLayoutPanelTesterDate";
       this.tableLayoutPanelTesterDate.RowCount = 1;
       this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(327, 18);
+      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(325, 18);
       this.tableLayoutPanelTesterDate.TabIndex = 5;
       // 
       // LblTestDate
       // 
       this.LblTestDate.AutoSize = true;
       this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTestDate.Location = new System.Drawing.Point(226, 0);
+      this.LblTestDate.Location = new System.Drawing.Point(225, 0);
       this.LblTestDate.Name = "LblTestDate";
-      this.LblTestDate.Size = new System.Drawing.Size(98, 18);
+      this.LblTestDate.Size = new System.Drawing.Size(97, 18);
       this.LblTestDate.TabIndex = 3;
       this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -740,7 +740,7 @@
       // 
       this.label14.AutoSize = true;
       this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label14.Location = new System.Drawing.Point(166, 0);
+      this.label14.Location = new System.Drawing.Point(165, 0);
       this.label14.Name = "label14";
       this.label14.Size = new System.Drawing.Size(54, 18);
       this.label14.TabIndex = 2;
@@ -764,7 +764,7 @@
       this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblTester.Location = new System.Drawing.Point(63, 0);
       this.LblTester.Name = "LblTester";
-      this.LblTester.Size = new System.Drawing.Size(97, 18);
+      this.LblTester.Size = new System.Drawing.Size(96, 18);
       this.LblTester.TabIndex = 1;
       this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -772,7 +772,7 @@
       // 
       this.panel1.Controls.Add(this.buttonStart);
       this.panel1.Controls.Add(this.btnCreateReport);
-      this.panel1.Location = new System.Drawing.Point(380, 1);
+      this.panel1.Location = new System.Drawing.Point(378, 1);
       this.panel1.Margin = new System.Windows.Forms.Padding(0);
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(86, 63);
