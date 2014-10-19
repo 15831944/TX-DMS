@@ -58,6 +58,7 @@ namespace TxPms
       this.qRibbonPanel9 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
       this.qRibbonItemExecuteTask = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
       this.qRibbonPageWindow = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
+      this.toolStripStatusLabelCadParsing = new System.Windows.Forms.ToolStripStatusLabel();
       this.statusStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.qRibbonPage1)).BeginInit();
@@ -91,7 +92,8 @@ namespace TxPms
       // statusStrip1
       // 
       this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelTaskExecution});
+            this.toolStripStatusLabelTaskExecution,
+            this.toolStripStatusLabelCadParsing});
       this.statusStrip1.Location = new System.Drawing.Point(0, 600);
       this.statusStrip1.Name = "statusStrip1";
       this.statusStrip1.Size = new System.Drawing.Size(913, 22);
@@ -276,6 +278,11 @@ namespace TxPms
       this.qRibbonPageWindow.Size = new System.Drawing.Size(907, 62);
       this.qRibbonPageWindow.Text = "窗口";
       // 
+      // toolStripStatusLabelCadParsing
+      // 
+      this.toolStripStatusLabelCadParsing.Name = "toolStripStatusLabelCadParsing";
+      this.toolStripStatusLabelCadParsing.Size = new System.Drawing.Size(0, 17);
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -336,6 +343,7 @@ namespace TxPms
     private Qios.DevSuite.Components.Ribbon.QRibbonItem qRibbonItemExecuteTask;
     private ToolStripStatusLabel toolStripStatusLabelTaskExecution;
     private Qios.DevSuite.Components.Ribbon.QRibbonPage qRibbonPageWindow;
+    private ToolStripStatusLabel toolStripStatusLabelCadParsing;
 
 
   }

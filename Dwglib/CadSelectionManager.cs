@@ -25,6 +25,7 @@ namespace Dwglib
 
     public DBObject GetObjectById(string i_IdStrng)
     {
+      if (!_IsInitialized) return null;
       DBObject result = null;
       foreach (var validDbObject in _ValidDbObjects)
       {
@@ -39,6 +40,7 @@ namespace Dwglib
 
     public DBObject GetObjectByHandle(string i_HandleString)
     {
+      if (!_IsInitialized) return null;
       DBObject result = null;
       foreach (var validDbObject in _ValidDbObjects)
       {
@@ -51,11 +53,11 @@ namespace Dwglib
       return result;
     }
 
+    private bool _IsInitialized = false;
     public void Initialize(Database pDb)
     {
+      _IsInitialized = false;
       _ValidDbObjects.Clear();
-
-      
         try
           {
             /****************************************************************/
@@ -76,7 +78,8 @@ namespace Dwglib
         {
           Console.WriteLine(@"Teigha?NET for .dwg files Error: " + e.Message);
         }
-      }
+      _IsInitialized = true;
+    }
     
   }
 }

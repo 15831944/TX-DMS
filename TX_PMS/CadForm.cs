@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using Core.Service;
 using Dwglib;
@@ -143,7 +144,8 @@ namespace TxPms
 
         InitializeGraphics();
         Mediator.Mediator.Instance.NotifyColleagues(Cad.OnOpened, database);
-          CadSelectionManager.Instance.Initialize(database);
+        ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
+        UpdateCadAsync(1000);
       }
     }
     public delegate void VoidDelegate2(int i_Delayed);
