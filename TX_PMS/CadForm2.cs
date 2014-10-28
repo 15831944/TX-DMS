@@ -21,26 +21,22 @@ namespace TxPms
       {
         var part = i_O as Part;
         if (part == null) return;
-        OpenDwgFile(part,false);
-        OnRefreshCad(null);
+        OpenDwgFile(part);
       });
       Mediator.Mediator.Instance.Register(UI.SelectTask, i_O =>
         {
           var task = i_O as Task;
           if (task == null) return;
-          OpenDwgFile(task.Part);
-          OnRefreshCad(null);
+        //  OpenDwgFile(task.Part);
+        //  OnRefreshCad(null);
         });
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
           var report = i_O as PartReport;
           if (report == null) return;
           OpenDwgFile(report.Task.Part);
-          OnRefreshCad(null);
         });
      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
-
-     Mediator.Mediator.Instance.Register(Cad.OnReFresh, OnRefreshCad);
      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInControl, OnDimensionSelectedInControl);
     }
 
@@ -51,44 +47,12 @@ namespace TxPms
       var dbObj = CadSelectionManager.Instance.GetObjectByHandle(cadHandle);
       if (dbObj == null) return;
       
-      ClearSelection();
+      //ClearSelection();
       selected.Add(dbObj.Id);
       gripManager.updateSelection(selected);
     }
 
-    private void OnRefreshCad(object i_Obj)
-    {
-      Thread t = new Thread(() =>
-      {
-        Thread.Sleep(1000);
-        if (panel1.IsDisposed)
-          return;
-        panel1.Invoke(new VoidDelegate2(Update1),1000);
-
-      });
-      t.Start();
-    }
-
-
-    private void UpdateCadAsync(int i_Delayed)
-    {
-      Thread t = new Thread(() =>
-      {
-        Thread.Sleep(800);
-        if (panel1.IsDisposed)
-          return;
-        panel1.Invoke(new VoidDelegate2(Update1),i_Delayed);
-
-      });
-      t.Start();
-    }
-
-    private void Update1(int i_Delayed)
-    {
-      Invalidate();
-    }
-
-    private void OpenDwgFile(Part i_Part, bool i_IsParse = true)
+    private void OpenDwgFile(Part i_Part)
     {
       if (i_Part == null)
       {
@@ -104,7 +68,7 @@ namespace TxPms
       {
         return;
       }
-      OpenDwgFile(filePath);
+      //OpenDwgFile(filePath);
     }
 
     private void OnSavePart(object i_Obj)

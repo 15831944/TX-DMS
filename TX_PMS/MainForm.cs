@@ -81,7 +81,7 @@ namespace TxPms
 
     void MainForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-      _CadForm.Form1_FormClosing(sender,e);
+      //_CadForm.Form1_FormClosing(sender,e);
     }
 
 

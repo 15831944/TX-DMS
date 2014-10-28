@@ -2,10 +2,12 @@
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using ControlReport;
 using Core.Service;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
+using MockMeasureToolControl;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
@@ -24,9 +26,9 @@ namespace TxPms
       DragDrop
     }
     private bool _IsMoving;
-    Services dd;
+    Teigha.Runtime.Services dd;
     Graphics graphics;
-    LayoutHelperDevice helperDevice;
+    Teigha.GraphicsSystem.LayoutHelperDevice helperDevice;
     Database database = null;
     ObjectIdCollection selected = new ObjectIdCollection();
     Point2d startSelPoint;
@@ -48,14 +50,15 @@ namespace TxPms
 
     public CadForm()
     {
-      dd = new Services();
+      dd = new Teigha.Runtime.Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
-      this.MouseWheel += Form1_MouseWheel;
+      this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
+
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
-      
+
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
       //DisableAero();
@@ -73,12 +76,6 @@ namespace TxPms
     {
       if (helperDevice == null)
         return;
-      int mouseX = e.X;// -splitContainer1.Panel1.Width;
-      int mouseY = e.Y;
-      //if (mouseX < panel1.Left || mouseY < panel1.Top || mouseX > panel1.Right || mouseY > panel1.Bottom)
-     //   return;
-
-      //Debug.WriteLine(string.Format("mouse location in panel coordinates x:{0}, y{1}",p.X,p.Y));
       using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
       {
         // camera position in world coordinates
@@ -87,8 +84,8 @@ namespace TxPms
         pos = pos.TransformBy(pView.WorldToDeviceMatrix);
         int vx = (int)pos.X;
         int vy = (int)pos.Y;
-        vx = mouseX - vx;
-        vy = mouseY - vy;
+        vx = e.X - vx;
+        vy = e.Y - vy;
         // we move point of view to the mouse location, to create an illusion of scrolling in/out there
         dolly(pView, -vx, -vy);
         // note that we essentially ignore delta value (sign is enough for illustrative purposes)
@@ -98,58 +95,71 @@ namespace TxPms
         Invalidate();
       }
     }
-
-    public void file_open_handler(object i_O)
+    private void file_open_handler(object sender, EventArgs e)
     {
       if (DialogResult.OK == openFileDialog.ShowDialog(this))
       {
-        OpenDwgFile(openFileDialog.FileName);
-//        if (!panelGraphicContainer.Controls.Contains(panel1))
-//          panelGraphicContainer.Controls.Add(panel1);
+        if (lm != null)
+        {
+          lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+          HostApplicationServices.WorkingDatabase = null;
+          lm = null;
+        }
+
+        bool bLoaded = true;
+        database = new Database(false, false);
+        if (openFileDialog.FilterIndex == 1)
+        {
+          try
+          {
+            database.ReadDwgFile(openFileDialog.FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
+          }
+          catch (System.Exception ex)
+          {
+            MessageBox.Show(ex.Message);
+            bLoaded = false;
+          }
+        }
+        else if (openFileDialog.FilterIndex == 2)
+        {
+          try
+          {
+            database.DxfIn(openFileDialog.FileName, "");
+          }
+          catch (System.Exception ex)
+          {
+            MessageBox.Show(ex.Message);
+            bLoaded = false;
+          }
+        }
+
+        if (bLoaded)
+        {
+          HostApplicationServices.WorkingDatabase = database;
+          lm = LayoutManager.Current;
+          lm.LayoutSwitched += new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+          String str = HostApplicationServices.Current.FontMapFileName;
+
+          //menuStrip.
+          exportToolStripMenuItem.Enabled = true;
+          zoomToExtentsToolStripMenuItem.Enabled = true;
+          zoomWindowToolStripMenuItem.Enabled = true;
+          setAvtiveLayoutToolStripMenuItem.Enabled = true;
+          fileDependencyToolStripMenuItem.Enabled = true;
+          panel1.Enabled = true;
+          pageSetupToolStripMenuItem.Enabled = true;
+          printPreviewToolStripMenuItem.Enabled = true;
+          printToolStripMenuItem.Enabled = true;
+          Text = String.Format("外协件检验系统 - [{0}]",
+                               PmsService.Instance.CurrentTemplate == null
+                                 ? ""
+                                 : PmsService.Instance.CurrentTemplate.Name);
+          ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
+          initializeGraphics();
+          Invalidate();
+        }
       }
-      this.Show();
     }
-
-    private void OpenDwgFile(string i_Path)
-    {
-      if (lm != null)
-      {
-        lm.LayoutSwitched -= reinitGraphDevice;
-        HostApplicationServices.WorkingDatabase = null;
-        lm = null;
-      }
-
-      bool bLoaded = true;
-      database = new Database(false, false);
-      try
-      {
-        database.ReadDwgFile(i_Path, FileOpenMode.OpenForReadAndAllShare, false, "");
-      }
-      catch (System.Exception ex)
-      {
-        MessageBox.Show(ex.Message);
-        bLoaded = false;
-      }
-     
-      if (bLoaded)
-      {
-        HostApplicationServices.WorkingDatabase = database;
-        lm = LayoutManager.Current;
-        lm.LayoutSwitched += reinitGraphDevice;
-        String str = HostApplicationServices.Current.FontMapFileName;
-
-        panel1.Enabled = true;
-        Text = String.Format("外协件检验系统 - [{0}]",
-                             PmsService.Instance.CurrentTemplate == null ? "" : PmsService.Instance.CurrentTemplate.Name);
-
-        InitializeGraphics();
-        Mediator.Mediator.Instance.NotifyColleagues(Cad.OnOpened, database);
-        ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
-        UpdateCadAsync(1000);
-      }
-    }
-    public delegate void VoidDelegate2(int i_Delayed);
-
 
     public void SetLayout(string i_LayoutString)
     {
@@ -157,7 +167,7 @@ namespace TxPms
       LayMan.CurrentLayout = i_LayoutString;
     }
 
-    void InitializeGraphics()
+    void initializeGraphics()
     {
       try
       {
@@ -166,7 +176,7 @@ namespace TxPms
         using (GsModule gsModule = (GsModule)SystemObjects.DynamicLinker.LoadModule("WinGDI.txv", false, true))
         {
           // create graphics device
-          using (Device graphichsDevice = gsModule.CreateDevice())
+          using (Teigha.GraphicsSystem.Device graphichsDevice = gsModule.CreateDevice())
           {
             // setup device properties
             using (Dictionary props = graphichsDevice.Properties)
@@ -219,48 +229,31 @@ namespace TxPms
         }
       }
     }
-    public void Form1_FormClosing(object sender, FormClosingEventArgs e)
+    private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
-      DisposeResource();
-    }
-
-    private void DisposeResource()
-    {
-
       if (selRect != null)
         helperDevice.ActiveView.Erase(selRect);
       selRect = null;
 
-      if (gripManager != null)
-        gripManager.uninit();
+      gripManager.uninit();
       gripManager = null;
       if (graphics != null)
         graphics.Dispose();
-      graphics = null;
       if (helperDevice != null)
         helperDevice.Dispose();
-      helperDevice = null;
       if (database != null)
         database.Dispose();
-      database = null;
-      if (dd != null)
-        dd.Dispose();
-      dd = null;
+      dd.Dispose();
     }
-
     void resize()
     {
       if (helperDevice != null)
       {
         Rectangle r = panel1.Bounds;
-
-          r.Offset(-panel1.Location.X, -panel1.Location.Y);
-          // HDC assigned to the device corresponds to the whole client area of the panel
-        if (r.Height > 0 && r.Width > 0)
-        {
-          helperDevice.OnSize(r);
-         UpdateCadAsync(500);
-        }
+        r.Offset(-panel1.Location.X, -panel1.Location.Y);
+        // HDC assigned to the device corresponds to the whole client area of the panel
+        helperDevice.OnSize(r);
+        Invalidate();
       }
     }
     private void panel1_Resize(object sender, EventArgs e)
@@ -335,9 +328,21 @@ namespace TxPms
     }
     // the same as Editor.ActiveViewportId if ApplicationServices are available
 
-    public void zoom_extents_handler(object sender, EventArgs e)
+    private void zoom_extents_handler(object sender, EventArgs e)
     {
-
+      using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
+      {
+        // using protocol extensions we handle PS and MS viewports in the same manner
+        AbstractViewportData pAVD = new AbstractViewportData(pVpObj);
+        Teigha.GraphicsSystem.View pView = pAVD.GsView;
+        // do actual zooming - change GS view
+        zoom_extents(pView, pVpObj);
+        // save changes to database
+        pAVD.SetView(pView);
+        pAVD.Dispose();
+        pVpObj.Dispose();
+        Invalidate();
+      }
     }
 
     private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -379,23 +384,29 @@ namespace TxPms
       }
     }
 
-    private void ClearSelection()
-    {
-      foreach (ObjectId id in selected)
-      {
-        gripManager.removeEntityGrips(id, true);
-      }
-      selected.Clear();
-      if (helperDevice != null)
-        helperDevice.Invalidate();
-      Invalidate();
-    }
-
     private void reinitGraphDevice(object sender, Teigha.DatabaseServices.LayoutEventArgs e)
     {
       helperDevice.Dispose();
       graphics.Dispose();
-      InitializeGraphics();
+      initializeGraphics();
+    }
+
+    private void setActiveLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (helperDevice != null)
+      {
+       // SelectLayouts selLayoutForm = new SelectLayouts(database);
+       // selLayoutForm.Show();
+      }
+    }
+
+    private void fileDependencyToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (helperDevice != null)
+      {
+        //File_Dependency fileDependencyForm = new File_Dependency(database);
+        //fileDependencyForm.Show();
+      }
     }
 
 
@@ -407,17 +418,17 @@ namespace TxPms
         {
           int vx = e.X;
           int vy = e.Y;
-          vx = (int)startSelPoint.X- vx;
-          vy = (int)startSelPoint.Y - vy;
+          vx = (int) startSelPoint.X - vx;
+          vy = (int) startSelPoint.Y - vy;
           // we move point of view to the mouse location, to create an illusion of scrolling in/out there
           dolly(pView, -vx, -vy);
-          startSelPoint = new Point2d(e.X,e.Y);
+          startSelPoint = new Point2d(e.X, e.Y);
           Invalidate();
         }
       }
     }
-
     private int _SelectRegion = 20;
+
     private void Form1_MouseDown(object sender, MouseEventArgs e)
     {
       if (e.Button == MouseButtons.Left)
@@ -430,8 +441,12 @@ namespace TxPms
           startSelPoint = new Point2d(e.X, e.Y);
           Invalidate();
           selRect.setValue(toEyeToWorld(e.X + _SelectRegion, e.Y + _SelectRegion));
-          pView.Select(new Point2dCollection(new Point2d[] {startSelPoint, new Point2d(e.X + _SelectRegion, e.Y + _SelectRegion)}),
-                       new SR(selected, database.CurrentSpaceId), startSelPoint.X < e.X ? Teigha.GraphicsSystem.SelectionMode.Window : Teigha.GraphicsSystem.SelectionMode.Crossing);
+          pView.Select(
+            new Point2dCollection(new Point2d[] {startSelPoint, new Point2d(e.X + _SelectRegion, e.Y + _SelectRegion)}),
+            new SR(selected, database.CurrentSpaceId),
+            startSelPoint.X < e.X
+              ? Teigha.GraphicsSystem.SelectionMode.Window
+              : Teigha.GraphicsSystem.SelectionMode.Crossing);
           pView.Erase(selRect);
           selRect = null;
           gripManager.updateSelection(selected);
@@ -439,11 +454,23 @@ namespace TxPms
           Invalidate();
         }
       }
-      else if(e.Button == MouseButtons.Right)
+      else if (e.Button == MouseButtons.Right)
       {
         _IsMoving = true;
         startSelPoint = new Point2d(e.X, e.Y);
       }
+    }
+
+    private void ClearSelection()
+    {
+      foreach (ObjectId id in selected)
+      {
+        gripManager.removeEntityGrips(id, true);
+      }
+      selected.Clear();
+      if (helperDevice != null)
+        helperDevice.Invalidate();
+      Invalidate();
     }
 
     private void Form1_MouseUp(object sender, MouseEventArgs e)
@@ -496,9 +523,13 @@ namespace TxPms
       }
     }
 
+    private void zoomWindowToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      bZoomWindow = 0;
+    }
+
     private void panel1_MouseClick(object sender, MouseEventArgs e)
     {
-      panel1.Focus();
       if (bZoomWindow > -1 && bZoomWindow < 2)
       {
         if (bZoomWindow == 1)
@@ -514,10 +545,110 @@ namespace TxPms
       }
     }
 
-    private void CadForm_SizeChanged(object sender, EventArgs e)
+    private void exportToPDFToolStripMenuItem_Click(object sender, EventArgs e)
     {
+     // PDFExport PDFExportForm = new PDFExport(database);
+    //  PDFExportForm.Show();
+    }
 
-      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.Resize, null);
+    private void saveBitmapToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+    //  BMPExport bmpExport = new BMPExport(database);
+     // bmpExport.Show();
+    }
+
+    private void exportToDWFToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+     // ImExport.DWF_export(database, helperDevice);
+    }
+
+    private void publish3dToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      //ImExport.Publish3d(database, helperDevice);
+    }
+
+    private void exportToSVGToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      //ImExport.SVG_export(database);
+    }
+
+    private void publishToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+     // ImExport.Publish(database, helperDevice);
+    }
+
+    private void importDwfToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+     // ImExport.Dwf_import(database);
+    }
+    bool newRegApp(Database db, string regAppName)
+    {
+      using (RegAppTable pRegAppTable = (RegAppTable)db.RegAppTableId.GetObject(OpenMode.ForWrite))
+      {
+        if (!pRegAppTable.Has(regAppName))
+        {
+          using (RegAppTableRecord pRegApp = new RegAppTableRecord())
+          {
+            pRegApp.Name = regAppName;
+            pRegAppTable.Add(pRegApp);
+          }
+          return true;
+        }
+      }
+      return false;
+    }
+
+    private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
+      {
+        AbstractViewportData pAVD = new AbstractViewportData(pVpObj);
+        pAVD.SetView(helperDevice.ActiveView);
+      }
+
+      TransactionManager tm = database.TransactionManager;
+      using (Transaction ta = tm.StartTransaction())
+      {
+        using (BlockTableRecord blTableRecord = (BlockTableRecord)database.CurrentSpaceId.GetObject(OpenMode.ForRead))
+        {
+          using (Layout pLayObj = (Layout)blTableRecord.LayoutId.GetObject(OpenMode.ForWrite))
+          {
+            PlotSettings ps = (PlotSettings)pLayObj;
+            Print.PageSetup pageSetupDlg = new Print.PageSetup(ps);
+            if (pageSetupDlg.ShowDialog() == DialogResult.OK)
+            {
+              ta.Commit();
+            }
+            else
+            {
+              ta.Abort();
+            }
+          }
+        }
+      }
+    }
+
+    private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (database != null)
+      {
+        if (DialogResult.OK == saveAsFileDialog.ShowDialog(this))
+        {
+          database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
+        }
+      }
+    }
+
+    private void printToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Print.Printing pr = new Print.Printing();
+      pr.Print(database, helperDevice.ActiveView, false);
+    }
+
+    private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Print.Printing pr = new Print.Printing();
+      pr.Print(database, helperDevice.ActiveView, true);
     }
   }
 }
