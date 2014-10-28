@@ -28,18 +28,5 @@ namespace MockMeasureToolControl
       textBox1.Text = data.ToString("0.00");
       Mediator.Mediator.Instance.NotifyColleaguesAsync(MeasurementTool.OnDataArrived, data);
     }
-
-    private void button1_Click(object sender, EventArgs e)
-    {
-         st = new SplitterTest();
-        st.Show(this);
-    }
-
-      private SplitterTest st;
-    private void button1_Click_1(object sender, EventArgs e)
-    {
-        if(st!=null)
-            st.ToggleLeftPanel();
-    }
   }
 }

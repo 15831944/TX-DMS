@@ -11,7 +11,7 @@ using Qios.DevSuite.Components.Ribbon;
 
 namespace Login
 {
-  public partial class LoginForm : QRibbonForm
+  public partial class LoginForm : Form
   {
     public LoginForm()
     {

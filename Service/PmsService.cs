@@ -16,7 +16,7 @@ namespace Core.Service
       get { return _pmsService ?? (_pmsService = new PmsService()); }
     }
 
-    public Part CurrentTemplate { get; set; }
+    public Part CurrentPart { get; set; }
 
     public void CreatePart(Part i_Part)
     {

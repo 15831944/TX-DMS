@@ -65,19 +65,10 @@
       <DependentUpon>MockMeasureToolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplitterTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SplitterTest.Designer.cs">
-      <DependentUpon>SplitterTest.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MockMeasureToolForm.resx">
       <DependentUpon>MockMeasureToolForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SplitterTest.resx">
-      <DependentUpon>SplitterTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

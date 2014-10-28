@@ -54,207 +54,56 @@ namespace TxPms
     private void InitializeComponent()
     {
       this.menuStrip = new System.Windows.Forms.MenuStrip();
-      this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.partToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.zoomToExtentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.zoomWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.expotToDWFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.exportToSVGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveBitmapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.publish3dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.importDwfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-      this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.setActiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.setAvtiveLayoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.fileDependencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.panel1 = new System.Windows.Forms.Panel();
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitter1 = new System.Windows.Forms.Splitter();
+      this.newPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.newTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.executeTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.mockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.DimensionReportContainer = new System.Windows.Forms.Panel();
       this.menuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip
       // 
       this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.setActiveLayoutToolStripMenuItem});
+            this.partToolStripMenuItem,
+            this.taskToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.mockToolStripMenuItem});
       this.menuStrip.Location = new System.Drawing.Point(0, 0);
       this.menuStrip.Name = "menuStrip";
       this.menuStrip.Size = new System.Drawing.Size(852, 25);
       this.menuStrip.TabIndex = 0;
       this.menuStrip.Text = "menuStrip1";
       // 
-      // fileToolStripMenuItem
+      // partToolStripMenuItem
       // 
-      this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+      this.partToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newPartToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.zoomToExtentsToolStripMenuItem,
-            this.zoomWindowToolStripMenuItem,
-            this.exportToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.pageSetupToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.printToolStripMenuItem,
-            this.saveAsToolStripMenuItem});
-      this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-      this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
-      this.fileToolStripMenuItem.Text = "File";
+            this.editPartToolStripMenuItem});
+      this.partToolStripMenuItem.Name = "partToolStripMenuItem";
+      this.partToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.partToolStripMenuItem.Text = "工件";
       // 
       // openToolStripMenuItem
       // 
       this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-      this.openToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.openToolStripMenuItem.Text = "Open";
-      this.openToolStripMenuItem.Click += new System.EventHandler(this.file_open_handler);
-      // 
-      // zoomToExtentsToolStripMenuItem
-      // 
-      this.zoomToExtentsToolStripMenuItem.Enabled = false;
-      this.zoomToExtentsToolStripMenuItem.Name = "zoomToExtentsToolStripMenuItem";
-      this.zoomToExtentsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.zoomToExtentsToolStripMenuItem.Text = "Zoom to extents";
-      this.zoomToExtentsToolStripMenuItem.Click += new System.EventHandler(this.zoom_extents_handler);
-      // 
-      // zoomWindowToolStripMenuItem
-      // 
-      this.zoomWindowToolStripMenuItem.Enabled = false;
-      this.zoomWindowToolStripMenuItem.Name = "zoomWindowToolStripMenuItem";
-      this.zoomWindowToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.zoomWindowToolStripMenuItem.Text = "Zoom window";
-      this.zoomWindowToolStripMenuItem.Click += new System.EventHandler(this.zoomWindowToolStripMenuItem_Click);
-      // 
-      // exportToolStripMenuItem
-      // 
-      this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToPDFToolStripMenuItem,
-            this.expotToDWFToolStripMenuItem,
-            this.exportToSVGToolStripMenuItem,
-            this.saveBitmapToolStripMenuItem,
-            this.publishToolStripMenuItem,
-            this.publish3dToolStripMenuItem,
-            this.importDwfToolStripMenuItem});
-      this.exportToolStripMenuItem.Enabled = false;
-      this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-      this.exportToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.exportToolStripMenuItem.Text = "Export";
-      // 
-      // exportToPDFToolStripMenuItem
-      // 
-      this.exportToPDFToolStripMenuItem.Name = "exportToPDFToolStripMenuItem";
-      this.exportToPDFToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.exportToPDFToolStripMenuItem.Text = "Export to PDF...";
-      this.exportToPDFToolStripMenuItem.Click += new System.EventHandler(this.exportToPDFToolStripMenuItem_Click);
-      // 
-      // expotToDWFToolStripMenuItem
-      // 
-      this.expotToDWFToolStripMenuItem.Name = "expotToDWFToolStripMenuItem";
-      this.expotToDWFToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.expotToDWFToolStripMenuItem.Text = "Export to DWF...";
-      this.expotToDWFToolStripMenuItem.Click += new System.EventHandler(this.exportToDWFToolStripMenuItem_Click);
-      // 
-      // exportToSVGToolStripMenuItem
-      // 
-      this.exportToSVGToolStripMenuItem.Name = "exportToSVGToolStripMenuItem";
-      this.exportToSVGToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.exportToSVGToolStripMenuItem.Text = "Export to SVG...";
-      this.exportToSVGToolStripMenuItem.Click += new System.EventHandler(this.exportToSVGToolStripMenuItem_Click);
-      // 
-      // saveBitmapToolStripMenuItem
-      // 
-      this.saveBitmapToolStripMenuItem.Name = "saveBitmapToolStripMenuItem";
-      this.saveBitmapToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.saveBitmapToolStripMenuItem.Text = "Save Bitmap...";
-      this.saveBitmapToolStripMenuItem.Click += new System.EventHandler(this.saveBitmapToolStripMenuItem_Click);
-      // 
-      // publishToolStripMenuItem
-      // 
-      this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-      this.publishToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.publishToolStripMenuItem.Text = "Publish...";
-      this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
-      // 
-      // publish3dToolStripMenuItem
-      // 
-      this.publish3dToolStripMenuItem.Name = "publish3dToolStripMenuItem";
-      this.publish3dToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.publish3dToolStripMenuItem.Text = "3dPublish...";
-      this.publish3dToolStripMenuItem.Click += new System.EventHandler(this.publish3dToolStripMenuItem_Click);
-      // 
-      // importDwfToolStripMenuItem
-      // 
-      this.importDwfToolStripMenuItem.Name = "importDwfToolStripMenuItem";
-      this.importDwfToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-      this.importDwfToolStripMenuItem.Text = "ImportDwf";
-      this.importDwfToolStripMenuItem.Click += new System.EventHandler(this.importDwfToolStripMenuItem_Click);
-      // 
-      // toolStripSeparator1
-      // 
-      this.toolStripSeparator1.Name = "toolStripSeparator1";
-      this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
-      // 
-      // pageSetupToolStripMenuItem
-      // 
-      this.pageSetupToolStripMenuItem.Enabled = false;
-      this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
-      this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.pageSetupToolStripMenuItem.Text = "PageSetup";
-      this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
-      // 
-      // printPreviewToolStripMenuItem
-      // 
-      this.printPreviewToolStripMenuItem.Enabled = false;
-      this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-      this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.printPreviewToolStripMenuItem.Text = "Print Preview";
-      this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
-      // 
-      // printToolStripMenuItem
-      // 
-      this.printToolStripMenuItem.Enabled = false;
-      this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-      this.printToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.printToolStripMenuItem.Text = "Print";
-      this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
-      // 
-      // saveAsToolStripMenuItem
-      // 
-      this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-      this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-      this.saveAsToolStripMenuItem.Text = "SaveAs";
-      this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
-      // 
-      // setActiveLayoutToolStripMenuItem
-      // 
-      this.setActiveLayoutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setAvtiveLayoutToolStripMenuItem,
-            this.fileDependencyToolStripMenuItem});
-      this.setActiveLayoutToolStripMenuItem.Name = "setActiveLayoutToolStripMenuItem";
-      this.setActiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-      this.setActiveLayoutToolStripMenuItem.Text = "View";
-      // 
-      // setAvtiveLayoutToolStripMenuItem
-      // 
-      this.setAvtiveLayoutToolStripMenuItem.Enabled = false;
-      this.setAvtiveLayoutToolStripMenuItem.Name = "setAvtiveLayoutToolStripMenuItem";
-      this.setAvtiveLayoutToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-      this.setAvtiveLayoutToolStripMenuItem.Text = "Set Avtive Layout";
-      this.setAvtiveLayoutToolStripMenuItem.Click += new System.EventHandler(this.setActiveLayoutToolStripMenuItem_Click);
-      // 
-      // fileDependencyToolStripMenuItem
-      // 
-      this.fileDependencyToolStripMenuItem.Enabled = false;
-      this.fileDependencyToolStripMenuItem.Name = "fileDependencyToolStripMenuItem";
-      this.fileDependencyToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-      this.fileDependencyToolStripMenuItem.Text = "File Dependency";
-      this.fileDependencyToolStripMenuItem.Click += new System.EventHandler(this.fileDependencyToolStripMenuItem_Click);
+      this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.openToolStripMenuItem.Text = "打开";
+      this.openToolStripMenuItem.Click += new System.EventHandler(this.part_open_handler);
       // 
       // panel1
       // 
@@ -282,23 +131,111 @@ namespace TxPms
       // 
       // splitter1
       // 
+      this.splitter1.BackColor = System.Drawing.SystemColors.ActiveCaption;
       this.splitter1.Location = new System.Drawing.Point(596, 25);
       this.splitter1.Name = "splitter1";
       this.splitter1.Size = new System.Drawing.Size(3, 467);
       this.splitter1.TabIndex = 2;
       this.splitter1.TabStop = false;
       // 
+      // newPartToolStripMenuItem
+      // 
+      this.newPartToolStripMenuItem.Name = "newPartToolStripMenuItem";
+      this.newPartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.newPartToolStripMenuItem.Text = "新建";
+      this.newPartToolStripMenuItem.Click += new System.EventHandler(this.newPartToolStripMenuItem_Click);
+      // 
+      // editPartToolStripMenuItem
+      // 
+      this.editPartToolStripMenuItem.Name = "editPartToolStripMenuItem";
+      this.editPartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.editPartToolStripMenuItem.Text = "编辑";
+      // 
+      // taskToolStripMenuItem
+      // 
+      this.taskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newTaskToolStripMenuItem,
+            this.editTaskToolStripMenuItem,
+            this.executeTaskToolStripMenuItem});
+      this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
+      this.taskToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.taskToolStripMenuItem.Text = "任务";
+      // 
+      // newTaskToolStripMenuItem
+      // 
+      this.newTaskToolStripMenuItem.Name = "newTaskToolStripMenuItem";
+      this.newTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.newTaskToolStripMenuItem.Text = "新建";
+      this.newTaskToolStripMenuItem.Click += new System.EventHandler(this.newTaskToolStripMenuItem_Click);
+      // 
+      // editTaskToolStripMenuItem
+      // 
+      this.editTaskToolStripMenuItem.Name = "editTaskToolStripMenuItem";
+      this.editTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.editTaskToolStripMenuItem.Text = "编辑";
+      // 
+      // executeTaskToolStripMenuItem
+      // 
+      this.executeTaskToolStripMenuItem.Name = "executeTaskToolStripMenuItem";
+      this.executeTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.executeTaskToolStripMenuItem.Text = "执行";
+      this.executeTaskToolStripMenuItem.Click += new System.EventHandler(this.executeTaskToolStripMenuItem_Click);
+      // 
+      // viewToolStripMenuItem
+      // 
+      this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CadToolStripMenuItem,
+            this.reportToolStripMenuItem});
+      this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+      this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.viewToolStripMenuItem.Text = "窗口";
+      // 
+      // CadToolStripMenuItem
+      // 
+      this.CadToolStripMenuItem.Name = "CadToolStripMenuItem";
+      this.CadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.CadToolStripMenuItem.Text = "图形";
+      // 
+      // reportToolStripMenuItem
+      // 
+      this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+      this.reportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.reportToolStripMenuItem.Text = "报告";
+      // 
+      // mockToolStripMenuItem
+      // 
+      this.mockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.measureToolToolStripMenuItem});
+      this.mockToolStripMenuItem.Name = "mockToolStripMenuItem";
+      this.mockToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.mockToolStripMenuItem.Text = "模拟";
+      // 
+      // measureToolToolStripMenuItem
+      // 
+      this.measureToolToolStripMenuItem.Name = "measureToolToolStripMenuItem";
+      this.measureToolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.measureToolToolStripMenuItem.Text = "量具";
+      // 
+      // DimensionReportContainer
+      // 
+      this.DimensionReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.DimensionReportContainer.Location = new System.Drawing.Point(599, 25);
+      this.DimensionReportContainer.Name = "DimensionReportContainer";
+      this.DimensionReportContainer.Size = new System.Drawing.Size(253, 467);
+      this.DimensionReportContainer.TabIndex = 3;
+      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(852, 492);
+      this.Controls.Add(this.DimensionReportContainer);
       this.Controls.Add(this.splitter1);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.menuStrip);
       this.MainMenuStrip = this.menuStrip;
       this.Name = "CadForm";
-      this.Text = "OdViewExMgd";
+      this.Text = "外协件检验系统";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -312,30 +249,24 @@ namespace TxPms
     #endregion
 
     private System.Windows.Forms.MenuStrip menuStrip;
-    private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem partToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.OpenFileDialog openFileDialog;
-    private System.Windows.Forms.ToolStripMenuItem zoomToExtentsToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem setActiveLayoutToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem setAvtiveLayoutToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem zoomWindowToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToPDFToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem saveBitmapToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem expotToDWFToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem publish3dToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem exportToSVGToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem importDwfToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem fileDependencyToolStripMenuItem;
-    private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-    private System.Windows.Forms.ToolStripMenuItem pageSetupToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
-    private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
     private Splitter splitter1;
+    private ToolStripMenuItem newPartToolStripMenuItem;
+    private ToolStripMenuItem editPartToolStripMenuItem;
+    private ToolStripMenuItem taskToolStripMenuItem;
+    private ToolStripMenuItem newTaskToolStripMenuItem;
+    private ToolStripMenuItem editTaskToolStripMenuItem;
+    private ToolStripMenuItem executeTaskToolStripMenuItem;
+    private ToolStripMenuItem viewToolStripMenuItem;
+    private ToolStripMenuItem CadToolStripMenuItem;
+    private ToolStripMenuItem reportToolStripMenuItem;
+    private ToolStripMenuItem mockToolStripMenuItem;
+    private ToolStripMenuItem measureToolToolStripMenuItem;
+    private Panel DimensionReportContainer;
   }
 }
 

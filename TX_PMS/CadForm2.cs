@@ -27,7 +27,7 @@ namespace TxPms
         {
           var task = i_O as Task;
           if (task == null) return;
-          OpenDwgFile(task.Part);
+         // OpenDwgFile(task.Part);
         });
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {

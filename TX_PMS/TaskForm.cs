@@ -5,7 +5,7 @@ using Core.Service;
 
 namespace TxPms
 {
-  public partial class TaskForm : Qios.DevSuite.Components.Ribbon.QRibbonForm
+  public partial class TaskForm : Form
   {
     public TaskForm()
     {

@@ -67,7 +67,7 @@
       // label3
       // 
       this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(12, 25);
+      this.label3.Location = new System.Drawing.Point(12, 30);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(53, 12);
       this.label3.TabIndex = 2;
@@ -105,7 +105,7 @@
       // qButtonOK
       // 
       this.qButtonOK.Image = null;
-      this.qButtonOK.Location = new System.Drawing.Point(94, 156);
+      this.qButtonOK.Location = new System.Drawing.Point(94, 179);
       this.qButtonOK.Name = "qButtonOK";
       this.qButtonOK.Size = new System.Drawing.Size(75, 23);
       this.qButtonOK.TabIndex = 4;
@@ -115,7 +115,7 @@
       // qButtonCancel
       // 
       this.qButtonCancel.Image = null;
-      this.qButtonCancel.Location = new System.Drawing.Point(234, 156);
+      this.qButtonCancel.Location = new System.Drawing.Point(234, 179);
       this.qButtonCancel.Name = "qButtonCancel";
       this.qButtonCancel.Size = new System.Drawing.Size(75, 23);
       this.qButtonCancel.TabIndex = 5;
@@ -133,14 +133,14 @@
       this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
       this.groupBox2.Location = new System.Drawing.Point(0, 59);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(395, 83);
+      this.groupBox2.Size = new System.Drawing.Size(395, 114);
       this.groupBox2.TabIndex = 6;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "批次";
       // 
       // qTextBoxSample
       // 
-      this.qTextBoxSample.Location = new System.Drawing.Point(246, 52);
+      this.qTextBoxSample.Location = new System.Drawing.Point(246, 65);
       this.qTextBoxSample.Name = "qTextBoxSample";
       this.qTextBoxSample.Size = new System.Drawing.Size(100, 18);
       this.qTextBoxSample.TabIndex = 7;
@@ -148,7 +148,7 @@
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(211, 55);
+      this.label5.Location = new System.Drawing.Point(211, 68);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(29, 12);
       this.label5.TabIndex = 6;
@@ -156,7 +156,7 @@
       // 
       // qTextBoxTotal
       // 
-      this.qTextBoxTotal.Location = new System.Drawing.Point(71, 52);
+      this.qTextBoxTotal.Location = new System.Drawing.Point(71, 65);
       this.qTextBoxTotal.Name = "qTextBoxTotal";
       this.qTextBoxTotal.Size = new System.Drawing.Size(102, 18);
       this.qTextBoxTotal.TabIndex = 5;
@@ -164,7 +164,7 @@
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(36, 55);
+      this.label4.Location = new System.Drawing.Point(36, 68);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(29, 12);
       this.label4.TabIndex = 4;
@@ -172,7 +172,7 @@
       // 
       // qComboBoxSupplier
       // 
-      this.qComboBoxSupplier.Location = new System.Drawing.Point(71, 22);
+      this.qComboBoxSupplier.Location = new System.Drawing.Point(71, 27);
       this.qComboBoxSupplier.Name = "qComboBoxSupplier";
       this.qComboBoxSupplier.Size = new System.Drawing.Size(100, 18);
       this.qComboBoxSupplier.TabIndex = 3;
@@ -181,15 +181,15 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(395, 196);
+      this.ClientSize = new System.Drawing.Size(395, 219);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.qButtonCancel);
       this.Controls.Add(this.qButtonOK);
       this.Controls.Add(this.groupBox1);
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
       this.Name = "TaskForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-      this.Text = "qRibbonCaption1";
+      this.Text = "新建任务";
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.groupBox2.ResumeLayout(false);

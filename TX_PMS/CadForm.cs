@@ -519,42 +519,6 @@ namespace TxPms
       }
     }
 
-    private void exportToPDFToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-     // PDFExport PDFExportForm = new PDFExport(database);
-    //  PDFExportForm.Show();
-    }
-
-    private void saveBitmapToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-    //  BMPExport bmpExport = new BMPExport(database);
-     // bmpExport.Show();
-    }
-
-    private void exportToDWFToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-     // ImExport.DWF_export(database, helperDevice);
-    }
-
-    private void publish3dToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      //ImExport.Publish3d(database, helperDevice);
-    }
-
-    private void exportToSVGToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      //ImExport.SVG_export(database);
-    }
-
-    private void publishToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-     // ImExport.Publish(database, helperDevice);
-    }
-
-    private void importDwfToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-     // ImExport.Dwf_import(database);
-    }
     bool newRegApp(Database db, string regAppName)
     {
       using (RegAppTable pRegAppTable = (RegAppTable)db.RegAppTableId.GetObject(OpenMode.ForWrite))
@@ -627,8 +591,7 @@ namespace TxPms
 
     private void newPartToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      var taskForm = new TaskForm();
-      taskForm.ShowDialog(this);
+      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
     }
 
     private void executeTaskToolStripMenuItem_Click(object sender, EventArgs e)
@@ -638,8 +601,20 @@ namespace TxPms
 
       var executedPart = tasks[tasks.Count - 1];
       PmsService.Instance.CurrentPart = executedPart.Part;
+      DimensionReportContainer.Controls.Clear();
+      DimensionReportContainer.Controls.Add(_ExecuteReportControl);
       Mediator.Mediator.Instance.NotifyColleagues(UI.SelectTask, executedPart);
 
+      OpenDwgFile(executedPart.Part);
     }
+
+    private void newTaskToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      var taskForm = new TaskForm();
+      taskForm.ShowDialog(this);
+    }
+
+    ExecuteReportControl _ExecuteReportControl = new ExecuteReportControl(){Dock = DockStyle.Fill};
+    EditReportControl _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
   }
 }
