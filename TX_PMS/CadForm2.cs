@@ -27,8 +27,7 @@ namespace TxPms
         {
           var task = i_O as Task;
           if (task == null) return;
-        //  OpenDwgFile(task.Part);
-        //  OnRefreshCad(null);
+          OpenDwgFile(task.Part);
         });
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O =>
         {
@@ -47,7 +46,7 @@ namespace TxPms
       var dbObj = CadSelectionManager.Instance.GetObjectByHandle(cadHandle);
       if (dbObj == null) return;
       
-      //ClearSelection();
+      ClearSelection();
       selected.Add(dbObj.Id);
       gripManager.updateSelection(selected);
     }
@@ -68,7 +67,7 @@ namespace TxPms
       {
         return;
       }
-      //OpenDwgFile(filePath);
+      OpenDwgFile(filePath);
     }
 
     private void OnSavePart(object i_Obj)
@@ -87,6 +86,27 @@ namespace TxPms
         part.CadFilename = fileName+".dwg";
         PmsService.Instance.SavePart(part);
       }
+    }
+
+    private void OnDwgFileOpened(Database database1)
+    {
+      using (DBDictionary layoutDict = (DBDictionary)database1.LayoutDictionaryId.GetObject(OpenMode.ForRead))
+      {
+        CadToolStripMenuItem.DropDownItems.Clear();
+        foreach (DBDictionaryEntry dicEntry in layoutDict)
+        {
+          ToolStripItem item = new ToolStripButton(dicEntry.Key);
+          item.Click+=item_Click;
+          CadToolStripMenuItem.DropDownItems.Add(item);
+        }
+      }
+    }
+
+    void item_Click(object sender, EventArgs e)
+    {
+      var item = sender as ToolStripItem;
+      if (item != null)
+        SetLayout(item.Text);
     }
   }
 }

@@ -40,8 +40,8 @@ namespace ControlReport
 
     private void btnOK_Click(object sender, EventArgs e)
     {
-      PmsService.Instance.CurrentTemplate = (Part) comboPartNameEx.SelectedValue;
-      Mediator.Mediator.Instance.NotifyColleagues(UI.SelectPart, PmsService.Instance.CurrentTemplate);
+      PmsService.Instance.CurrentPart = (Part) comboPartNameEx.SelectedValue;
+      Mediator.Mediator.Instance.NotifyColleagues(UI.SelectPart, PmsService.Instance.CurrentPart);
       Close();
     }
 

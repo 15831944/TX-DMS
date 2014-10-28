@@ -95,69 +95,62 @@ namespace TxPms
         Invalidate();
       }
     }
-    private void file_open_handler(object sender, EventArgs e)
+    private void part_open_handler(object sender, EventArgs e)
     {
-      if (DialogResult.OK == openFileDialog.ShowDialog(this))
+      var selectReportControl = new SelectReportControl();
+      selectReportControl.ShowDialog(this);
+    }
+
+    private void OpenDwgFile(string i_FileName)
+    {
+      if (lm != null)
       {
-        if (lm != null)
-        {
-          lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
-          HostApplicationServices.WorkingDatabase = null;
-          lm = null;
-        }
+        lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+        HostApplicationServices.WorkingDatabase = null;
+        lm = null;
+      }
 
-        bool bLoaded = true;
-        database = new Database(false, false);
-        if (openFileDialog.FilterIndex == 1)
+      bool bLoaded = true;
+      database = new Database(false, false);
+      if (openFileDialog.FilterIndex == 1)
+      {
+        try
         {
-          try
-          {
-            database.ReadDwgFile(openFileDialog.FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
-          }
-          catch (System.Exception ex)
-          {
-            MessageBox.Show(ex.Message);
-            bLoaded = false;
-          }
+          database.ReadDwgFile(i_FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
         }
-        else if (openFileDialog.FilterIndex == 2)
+        catch (System.Exception ex)
         {
-          try
-          {
-            database.DxfIn(openFileDialog.FileName, "");
-          }
-          catch (System.Exception ex)
-          {
-            MessageBox.Show(ex.Message);
-            bLoaded = false;
-          }
+          MessageBox.Show(ex.Message);
+          bLoaded = false;
         }
+      }
+      else if (openFileDialog.FilterIndex == 2)
+      {
+        try
+        {
+          database.DxfIn(openFileDialog.FileName, "");
+        }
+        catch (System.Exception ex)
+        {
+          MessageBox.Show(ex.Message);
+          bLoaded = false;
+        }
+      }
 
-        if (bLoaded)
-        {
-          HostApplicationServices.WorkingDatabase = database;
-          lm = LayoutManager.Current;
-          lm.LayoutSwitched += new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
-          String str = HostApplicationServices.Current.FontMapFileName;
-
-          //menuStrip.
-          exportToolStripMenuItem.Enabled = true;
-          zoomToExtentsToolStripMenuItem.Enabled = true;
-          zoomWindowToolStripMenuItem.Enabled = true;
-          setAvtiveLayoutToolStripMenuItem.Enabled = true;
-          fileDependencyToolStripMenuItem.Enabled = true;
-          panel1.Enabled = true;
-          pageSetupToolStripMenuItem.Enabled = true;
-          printPreviewToolStripMenuItem.Enabled = true;
-          printToolStripMenuItem.Enabled = true;
-          Text = String.Format("外协件检验系统 - [{0}]",
-                               PmsService.Instance.CurrentTemplate == null
-                                 ? ""
-                                 : PmsService.Instance.CurrentTemplate.Name);
-          ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
-          initializeGraphics();
-          Invalidate();
-        }
+      if (bLoaded)
+      {
+        HostApplicationServices.WorkingDatabase = database;
+        lm = LayoutManager.Current;
+        lm.LayoutSwitched += new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+        panel1.Enabled = true;
+        Text = String.Format("外协件检验系统 - [{0}]",
+                             PmsService.Instance.CurrentPart == null
+                               ? ""
+                               : PmsService.Instance.CurrentPart.Name);
+        ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
+        OnDwgFileOpened(database);
+        initializeGraphics();
+        Invalidate();
       }
     }
 
@@ -225,7 +218,7 @@ namespace TxPms
         }
         catch (System.Exception ex)
         {
-          graphics.DrawString(ex.ToString(), new Font("Arial", 16), new SolidBrush(Color.Black), new PointF(150.0F, 150.0F));
+         // graphics.DrawString(ex.ToString(), new Font("Arial", 16), new SolidBrush(Color.Black), new PointF(150.0F, 150.0F));
         }
       }
     }
@@ -250,8 +243,8 @@ namespace TxPms
       if (helperDevice != null)
       {
         Rectangle r = panel1.Bounds;
+        if (r.Height == 0) return; //当最小化窗口时，height为0，此时helperDevice.OnSize(r);会抛出异常
         r.Offset(-panel1.Location.X, -panel1.Location.Y);
-        // HDC assigned to the device corresponds to the whole client area of the panel
         helperDevice.OnSize(r);
         Invalidate();
       }
@@ -390,25 +383,6 @@ namespace TxPms
       graphics.Dispose();
       initializeGraphics();
     }
-
-    private void setActiveLayoutToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (helperDevice != null)
-      {
-       // SelectLayouts selLayoutForm = new SelectLayouts(database);
-       // selLayoutForm.Show();
-      }
-    }
-
-    private void fileDependencyToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (helperDevice != null)
-      {
-        //File_Dependency fileDependencyForm = new File_Dependency(database);
-        //fileDependencyForm.Show();
-      }
-    }
-
 
     private void panel1_MouseMove(object sender, MouseEventArgs e)
     {
@@ -649,6 +623,23 @@ namespace TxPms
     {
       Print.Printing pr = new Print.Printing();
       pr.Print(database, helperDevice.ActiveView, true);
+    }
+
+    private void newPartToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      var taskForm = new TaskForm();
+      taskForm.ShowDialog(this);
+    }
+
+    private void executeTaskToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      var tasks = PmsService.Instance.GetTasks();
+      if (tasks.Count == 0) return;
+
+      var executedPart = tasks[tasks.Count - 1];
+      PmsService.Instance.CurrentPart = executedPart.Part;
+      Mediator.Mediator.Instance.NotifyColleagues(UI.SelectTask, executedPart);
+
     }
   }
 }
