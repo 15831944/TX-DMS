@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Mediator;
 using Teigha.DatabaseServices;
@@ -54,6 +55,7 @@ namespace Dwglib
     }
 
     private bool _IsInitialized = false;
+    public bool IsInitializing = false;
     public void Initialize(Database pDb)
     {
       _IsInitialized = false;
@@ -63,21 +65,23 @@ namespace Dwglib
             /****************************************************************/
             /* Display the File Version                                     */
             /****************************************************************/
-            Console.WriteLine("File Version: {0}", pDb.OriginalFileVersion);
+            Debug.WriteLine(string.Format("File Version: {0}", pDb.OriginalFileVersion));
             /****************************************************************/
             /* Dump the database                                            */
             /****************************************************************/
+            IsInitializing = true;
             var dumper = new DbDumper();
             dumper.dump(pDb, 0);
-          
+            Debug.WriteLine(string.Format("Dump is completed", pDb.OriginalFileVersion));
         }
         /********************************************************************/
         /* Display the error                                                */
         /********************************************************************/
         catch (System.Exception e)
         {
-          Console.WriteLine(@"Teigha?NET for .dwg files Error: " + e.Message);
+          Debug.WriteLine(@"Teigha?NET for .dwg files Error: " + e.Message);
         }
+      IsInitializing = false;
       _IsInitialized = true;
     }
     

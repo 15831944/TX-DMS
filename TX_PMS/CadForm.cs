@@ -55,7 +55,7 @@ namespace TxPms
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
-
+      this.SizeChanged += CadForm_SizeChanged;
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
 
@@ -63,6 +63,11 @@ namespace TxPms
       mouseMode = Mode.Quiescent;
       //DisableAero();
       Initialize();
+    }
+
+    void CadForm_SizeChanged(object sender, EventArgs e)
+    {
+      panel1.Size = new Size((int)(Width*0.618),panel1.Size.Height);
     }
 
     // helper function transforming parameters from screen to world coordinates
@@ -74,6 +79,8 @@ namespace TxPms
     }
     void Form1_MouseWheel(object sender, MouseEventArgs e)
     {
+      if (!IsMouseEventNeeded(e.X, e.Y))
+        return;
       if (helperDevice == null)
         return;
       using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
@@ -103,6 +110,12 @@ namespace TxPms
 
     private void OpenDwgFile(string i_FileName)
     {
+//      if (CadSelectionManager.Instance.IsInitializing)
+//      {
+//        MessageBox.Show("正在初始化Cad文件, 请稍后...");
+//        return;
+//      }
+
       if (lm != null)
       {
         lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
@@ -112,29 +125,15 @@ namespace TxPms
 
       bool bLoaded = true;
       database = new Database(false, false);
-      if (openFileDialog.FilterIndex == 1)
+
+      try
       {
-        try
-        {
-          database.ReadDwgFile(i_FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
-        }
-        catch (System.Exception ex)
-        {
-          MessageBox.Show(ex.Message);
-          bLoaded = false;
-        }
+        database.ReadDwgFile(i_FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
       }
-      else if (openFileDialog.FilterIndex == 2)
+      catch (System.Exception ex)
       {
-        try
-        {
-          database.DxfIn(openFileDialog.FileName, "");
-        }
-        catch (System.Exception ex)
-        {
-          MessageBox.Show(ex.Message);
-          bLoaded = false;
-        }
+        MessageBox.Show(ex.Message);
+        bLoaded = false;
       }
 
       if (bLoaded)
@@ -147,8 +146,11 @@ namespace TxPms
                              PmsService.Instance.CurrentPart == null
                                ? ""
                                : PmsService.Instance.CurrentPart.Name);
-        ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
-        OnDwgFileOpened(database);
+
+        //todo 不应该放在多线程中，总是造成异常，每次打开的时候，应该先解析，完成后显示
+        //CadSelectionManager.Instance.Initialize(database);
+
+        OnDwgFileOpened();
         initializeGraphics();
         Invalidate();
       }
@@ -386,6 +388,8 @@ namespace TxPms
 
     private void panel1_MouseMove(object sender, MouseEventArgs e)
     {
+      if (!IsMouseEventNeeded(e.X, e.Y))
+        return;
       if (_IsMoving)
       {
         using (Teigha.GraphicsSystem.View pView = helperDevice.ActiveView)
@@ -601,11 +605,16 @@ namespace TxPms
 
       var executedPart = tasks[tasks.Count - 1];
       PmsService.Instance.CurrentPart = executedPart.Part;
-      DimensionReportContainer.Controls.Clear();
-      DimensionReportContainer.Controls.Add(_ExecuteReportControl);
-      Mediator.Mediator.Instance.NotifyColleagues(UI.SelectTask, executedPart);
-
+      if (!DimensionReportContainer.Controls.Contains(_ExecuteReportControl))
+      {
+        DimensionReportContainer.Controls.Clear();
+        DimensionReportContainer.Controls.Add(_ExecuteReportControl);
+      }
       OpenDwgFile(executedPart.Part);
+      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.SelectTask, executedPart);
+
+      panel1.Focus(); //在选择几次打开之后，在选择执行，mouseWheel不起作用
+
     }
 
     private void newTaskToolStripMenuItem_Click(object sender, EventArgs e)
@@ -616,5 +625,10 @@ namespace TxPms
 
     ExecuteReportControl _ExecuteReportControl = new ExecuteReportControl(){Dock = DockStyle.Fill};
     EditReportControl _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
+
+    private void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+    {
+      OnDwgFileOpened();
+    }
   }
 }

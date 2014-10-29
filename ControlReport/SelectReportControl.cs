@@ -12,7 +12,7 @@ using Mediator;
 
 namespace ControlReport
 {
-  public partial class SelectReportControl : Qios.DevSuite.Components.Ribbon.QRibbonForm
+  public partial class SelectReportControl : Form
   {
     public SelectReportControl()
     {

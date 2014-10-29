@@ -88,11 +88,9 @@ namespace ControlReport
       }
     }
 
-    private void OnPartTask(object i_O)
+    public delegate void InitializeControlsDelegate(Task i_Task);
+    private void InitializeControls(Task task)
     {
-      var task = i_O as Task;
-      if (task == null)
-        return;
       _Task = task;
       _ExecutionManager = new ExecutionManager(_Task);
       _CurrentTemplate = task.Part;
@@ -122,6 +120,13 @@ namespace ControlReport
         LblApprover.Text = PmsService.Instance.CurrentUser.Name;
         LblApproveDate.Text = DateTime.Now.ToLongDateString();
       }
+    }
+    private void OnPartTask(object i_O)
+    {
+      var task = i_O as Task;
+      if (task == null)
+        return;
+      BeginInvoke(new InitializeControlsDelegate(InitializeControls),task);
     }
 
     private void CreateReportModel()

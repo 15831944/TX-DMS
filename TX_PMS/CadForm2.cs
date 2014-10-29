@@ -21,6 +21,11 @@ namespace TxPms
       {
         var part = i_O as Part;
         if (part == null) return;
+        if (!DimensionReportContainer.Controls.Contains(_EditReportControl))
+        {
+          DimensionReportContainer.Controls.Clear();
+          DimensionReportContainer.Controls.Add(_EditReportControl);
+        }
         OpenDwgFile(part);
       });
       Mediator.Mediator.Instance.Register(UI.SelectTask, i_O =>
@@ -88,9 +93,12 @@ namespace TxPms
       }
     }
 
-    private void OnDwgFileOpened(Database database1)
+    
+
+    private void OnDwgFileOpened()
     {
-      using (DBDictionary layoutDict = (DBDictionary)database1.LayoutDictionaryId.GetObject(OpenMode.ForRead))
+      if (database == null) return;
+      using (DBDictionary layoutDict = (DBDictionary)database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
       {
         CadToolStripMenuItem.DropDownItems.Clear();
         foreach (DBDictionaryEntry dicEntry in layoutDict)
@@ -107,6 +115,14 @@ namespace TxPms
       var item = sender as ToolStripItem;
       if (item != null)
         SetLayout(item.Text);
+    }
+
+    bool IsMouseEventNeeded(int i_MouseX, int i_MouseY)
+    {
+      if (i_MouseX > panel1.Location.X && i_MouseY > panel1.Location.Y
+          && i_MouseX < (panel1.Location.X + panel1.Size.Width) && i_MouseY < (panel1.Location.Y + panel1.Size.Height))
+        return true;
+      return false;
     }
   }
 }

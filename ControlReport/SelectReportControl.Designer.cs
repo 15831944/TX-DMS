@@ -1,4 +1,6 @@
-﻿namespace ControlReport
+﻿using System.Windows.Forms;
+
+namespace ControlReport
 {
   partial class SelectReportControl
   {
@@ -29,19 +31,19 @@
     private void InitializeComponent()
     {
       this.label7 = new System.Windows.Forms.Label();
-      this.comboPartNameEx = new Qios.DevSuite.Components.QComboBox();
-      this.qButtonOK = new Qios.DevSuite.Components.QButton();
-      this.qButtonCancel = new Qios.DevSuite.Components.QButton();
+      this.comboPartNameEx = new System.Windows.Forms.ComboBox();
+      this.qButtonOK = new System.Windows.Forms.Button();
+      this.qButtonCancel = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label7
       // 
-      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label7.AutoSize = true;
       this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.Location = new System.Drawing.Point(48, 32);
+      this.label7.Location = new System.Drawing.Point(62, 33);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(45, 15);
       this.label7.TabIndex = 6;
@@ -50,14 +52,13 @@
       // 
       // comboPartNameEx
       // 
-      this.comboPartNameEx.Location = new System.Drawing.Point(114, 30);
+      this.comboPartNameEx.Location = new System.Drawing.Point(138, 30);
       this.comboPartNameEx.Name = "comboPartNameEx";
-      this.comboPartNameEx.Size = new System.Drawing.Size(163, 19);
+      this.comboPartNameEx.Size = new System.Drawing.Size(121, 21);
       this.comboPartNameEx.TabIndex = 8;
       // 
       // qButtonOK
       // 
-      this.qButtonOK.Image = null;
       this.qButtonOK.Location = new System.Drawing.Point(51, 83);
       this.qButtonOK.Name = "qButtonOK";
       this.qButtonOK.Size = new System.Drawing.Size(75, 23);
@@ -67,8 +68,7 @@
       // 
       // qButtonCancel
       // 
-      this.qButtonCancel.Image = null;
-      this.qButtonCancel.Location = new System.Drawing.Point(184, 83);
+      this.qButtonCancel.Location = new System.Drawing.Point(171, 83);
       this.qButtonCancel.Name = "qButtonCancel";
       this.qButtonCancel.Size = new System.Drawing.Size(75, 23);
       this.qButtonCancel.TabIndex = 10;
@@ -96,9 +96,9 @@
     #endregion
 
     private System.Windows.Forms.Label label7;
-    private Qios.DevSuite.Components.QComboBox comboPartNameEx;
-    private Qios.DevSuite.Components.QButton qButtonOK;
-    private Qios.DevSuite.Components.QButton qButtonCancel;
+    private ComboBox comboPartNameEx;
+    private Button qButtonOK;
+    private Button qButtonCancel;
 
 
   }
