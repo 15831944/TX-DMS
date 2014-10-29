@@ -50,19 +50,24 @@ namespace TxPms
 
     public CadForm()
     {
+      Initialize();
       dd = new Teigha.Runtime.Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       InitializeComponent();
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
       this.SizeChanged += CadForm_SizeChanged;
+
+      //初始化要放在Initialize之后，ExecuteReportControl和EditReportControl的消息接受要在主窗口之后，否则异步处理会抱怨说还没初始化
+      _ExecuteReportControl = new ExecuteReportControl() { Dock = DockStyle.Fill };
+      _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
+
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
 
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
       //DisableAero();
-      Initialize();
     }
 
     void CadForm_SizeChanged(object sender, EventArgs e)
@@ -623,8 +628,8 @@ namespace TxPms
       taskForm.ShowDialog(this);
     }
 
-    ExecuteReportControl _ExecuteReportControl = new ExecuteReportControl(){Dock = DockStyle.Fill};
-    EditReportControl _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
+    ExecuteReportControl _ExecuteReportControl;
+    private EditReportControl _EditReportControl;
 
     private void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
     {

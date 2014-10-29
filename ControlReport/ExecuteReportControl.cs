@@ -27,11 +27,11 @@ namespace ControlReport
     public ExecuteReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectTask, OnPartTask);
-      Mediator.Mediator.Instance.Register(UI.SelectPartReport, OnPartReportSpecified);
-      Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, OnMeasurementDataArrived);
+      Mediator.Mediator.Instance.Register(UI.SelectTask, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartTask),i_O));
+      Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartReportSpecified), i_O));//OnPartReportSpecified
+      Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, i_O => BeginInvoke(new MessageHandlerDelegate(OnMeasurementDataArrived), i_O));//OnMeasurementDataArrived
 
-      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, OnCadElementSelected);
+      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, i_O => BeginInvoke(new MessageHandlerDelegate(OnCadElementSelected), i_O));//OnCadElementSelected
       this.dataGridView1.RowEnter += dataGridView1_RowEnter;
     }
 
@@ -88,9 +88,12 @@ namespace ControlReport
       }
     }
 
-    public delegate void InitializeControlsDelegate(Task i_Task);
-    private void InitializeControls(Task task)
+    public delegate void MessageHandlerDelegate(object i_Obj);
+    private void OnPartTask(object i_O)
     {
+      var task = i_O as Task;
+      if (task == null)
+        return;
       _Task = task;
       _ExecutionManager = new ExecutionManager(_Task);
       _CurrentTemplate = task.Part;
@@ -120,13 +123,6 @@ namespace ControlReport
         LblApprover.Text = PmsService.Instance.CurrentUser.Name;
         LblApproveDate.Text = DateTime.Now.ToLongDateString();
       }
-    }
-    private void OnPartTask(object i_O)
-    {
-      var task = i_O as Task;
-      if (task == null)
-        return;
-      BeginInvoke(new InitializeControlsDelegate(InitializeControls),task);
     }
 
     private void CreateReportModel()

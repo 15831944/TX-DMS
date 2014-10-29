@@ -20,12 +20,13 @@ namespace ControlReport
     public EditReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectPart, OnPartSpecified);
-      Mediator.Mediator.Instance.Register(UI.CreatePart, OnCreate);
-      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, OnCadElementSelected);
+      Mediator.Mediator.Instance.Register(UI.SelectPart, i_O => BeginInvoke(new MessageHanderDelegate(OnPartSpecified),i_O));
+      Mediator.Mediator.Instance.Register(UI.CreatePart, i_O => BeginInvoke(new MessageHanderDelegate(OnCreate),i_O));
+      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad,i_O => BeginInvoke(new MessageHanderDelegate( OnCadElementSelected),i_O));
      
     }
 
+    private delegate void MessageHanderDelegate(object i_O);
     private DBObject _SelectedObject;
     private void OnCadElementSelected(object i_Obj)
     {
