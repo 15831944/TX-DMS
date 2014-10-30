@@ -24,15 +24,22 @@ namespace ControlReport
     public delegate void InvokeDelegate();
 
     private List<ExecuteDimensionEntityViewModel> _DataSource;
+
     public ExecuteReportControl()
     {
       InitializeComponent();
-      Mediator.Mediator.Instance.Register(UI.SelectTask, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartTask),i_O));
+      this.dataGridView1.RowEnter += dataGridView1_RowEnter;
+      Load += ExecuteReportControl_Load;
+    }
+
+    void ExecuteReportControl_Load(object sender, EventArgs e)
+    {
+      Mediator.Mediator.Instance.Register(UI.SelectTask, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartTask), i_O));
       Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartReportSpecified), i_O));//OnPartReportSpecified
       Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, i_O => BeginInvoke(new MessageHandlerDelegate(OnMeasurementDataArrived), i_O));//OnMeasurementDataArrived
 
       Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, i_O => BeginInvoke(new MessageHandlerDelegate(OnCadElementSelected), i_O));//OnCadElementSelected
-      this.dataGridView1.RowEnter += dataGridView1_RowEnter;
+
     }
 
     private void OnPartReportSpecified(object i_Obj)
@@ -172,15 +179,15 @@ namespace ControlReport
       {
         txtAuditComment.Enabled = false;
         txtApproveComment.Enabled = false;
-        ChkAudit.Enabled = false;
-        ChkApprove.Enabled = false;
+        //ChkAudit.Enabled = false;
+        //ChkApprove.Enabled = false;
       }
       if (PmsService.Instance.CurrentUser.Group.Name == "评审")
       {
         txtOperatorComment.Enabled = false;
         btnCreateReport.Visible = false;
-        ChkAudit.Enabled = true;
-        ChkApprove.Enabled = false;
+        //ChkAudit.Enabled = true;
+       // ChkApprove.Enabled = false;
         txtApproveComment.Enabled = false;
       }
       if (PmsService.Instance.CurrentUser.Group.Name == "审批")
@@ -188,8 +195,8 @@ namespace ControlReport
         txtOperatorComment.Enabled = false;
         btnCreateReport.Visible = false;
         txtAuditComment.Enabled = false;
-        ChkAudit.Enabled = false;
-        ChkApprove.Enabled = true;
+        //ChkAudit.Enabled = false;
+        //ChkApprove.Enabled = true;
       }
     }
     private void OnCadElementSelected(object i_Obj)

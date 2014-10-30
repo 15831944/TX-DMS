@@ -55,12 +55,8 @@ namespace TxPms
     {
       this.menuStrip = new System.Windows.Forms.MenuStrip();
       this.partToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-      this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
-      this.splitter1 = new System.Windows.Forms.Splitter();
       this.newPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.editPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,6 +67,10 @@ namespace TxPms
       this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+      this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
+      this.splitter1 = new System.Windows.Forms.Splitter();
       this.DimensionReportContainer = new System.Windows.Forms.Panel();
       this.menuStrip.SuspendLayout();
       this.SuspendLayout();
@@ -98,12 +98,90 @@ namespace TxPms
       this.partToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
       this.partToolStripMenuItem.Text = "工件";
       // 
+      // newPartToolStripMenuItem
+      // 
+      this.newPartToolStripMenuItem.Name = "newPartToolStripMenuItem";
+      this.newPartToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.newPartToolStripMenuItem.Text = "新建";
+      this.newPartToolStripMenuItem.Click += new System.EventHandler(this.newPartToolStripMenuItem_Click);
+      // 
       // openToolStripMenuItem
       // 
       this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-      this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.openToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
       this.openToolStripMenuItem.Text = "打开";
       this.openToolStripMenuItem.Click += new System.EventHandler(this.part_open_handler);
+      // 
+      // editPartToolStripMenuItem
+      // 
+      this.editPartToolStripMenuItem.Name = "editPartToolStripMenuItem";
+      this.editPartToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.editPartToolStripMenuItem.Text = "编辑";
+      // 
+      // taskToolStripMenuItem
+      // 
+      this.taskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newTaskToolStripMenuItem,
+            this.editTaskToolStripMenuItem,
+            this.executeTaskToolStripMenuItem});
+      this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
+      this.taskToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.taskToolStripMenuItem.Text = "任务";
+      // 
+      // newTaskToolStripMenuItem
+      // 
+      this.newTaskToolStripMenuItem.Name = "newTaskToolStripMenuItem";
+      this.newTaskToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.newTaskToolStripMenuItem.Text = "新建";
+      this.newTaskToolStripMenuItem.Click += new System.EventHandler(this.newTaskToolStripMenuItem_Click);
+      // 
+      // editTaskToolStripMenuItem
+      // 
+      this.editTaskToolStripMenuItem.Name = "editTaskToolStripMenuItem";
+      this.editTaskToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.editTaskToolStripMenuItem.Text = "编辑";
+      // 
+      // executeTaskToolStripMenuItem
+      // 
+      this.executeTaskToolStripMenuItem.Name = "executeTaskToolStripMenuItem";
+      this.executeTaskToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.executeTaskToolStripMenuItem.Text = "执行";
+      this.executeTaskToolStripMenuItem.Click += new System.EventHandler(this.executeTaskToolStripMenuItem_Click);
+      // 
+      // viewToolStripMenuItem
+      // 
+      this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CadToolStripMenuItem,
+            this.reportToolStripMenuItem});
+      this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+      this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.viewToolStripMenuItem.Text = "窗口";
+      // 
+      // CadToolStripMenuItem
+      // 
+      this.CadToolStripMenuItem.Name = "CadToolStripMenuItem";
+      this.CadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.CadToolStripMenuItem.Text = "图形";
+      // 
+      // reportToolStripMenuItem
+      // 
+      this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+      this.reportToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.reportToolStripMenuItem.Text = "报告";
+      // 
+      // mockToolStripMenuItem
+      // 
+      this.mockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.measureToolToolStripMenuItem});
+      this.mockToolStripMenuItem.Name = "mockToolStripMenuItem";
+      this.mockToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+      this.mockToolStripMenuItem.Text = "模拟";
+      // 
+      // measureToolToolStripMenuItem
+      // 
+      this.measureToolToolStripMenuItem.Name = "measureToolToolStripMenuItem";
+      this.measureToolToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.measureToolToolStripMenuItem.Text = "量具";
       // 
       // panel1
       // 
@@ -138,84 +216,6 @@ namespace TxPms
       this.splitter1.TabIndex = 2;
       this.splitter1.TabStop = false;
       // 
-      // newPartToolStripMenuItem
-      // 
-      this.newPartToolStripMenuItem.Name = "newPartToolStripMenuItem";
-      this.newPartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.newPartToolStripMenuItem.Text = "新建";
-      this.newPartToolStripMenuItem.Click += new System.EventHandler(this.newPartToolStripMenuItem_Click);
-      // 
-      // editPartToolStripMenuItem
-      // 
-      this.editPartToolStripMenuItem.Name = "editPartToolStripMenuItem";
-      this.editPartToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.editPartToolStripMenuItem.Text = "编辑";
-      // 
-      // taskToolStripMenuItem
-      // 
-      this.taskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newTaskToolStripMenuItem,
-            this.editTaskToolStripMenuItem,
-            this.executeTaskToolStripMenuItem});
-      this.taskToolStripMenuItem.Name = "taskToolStripMenuItem";
-      this.taskToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-      this.taskToolStripMenuItem.Text = "任务";
-      // 
-      // newTaskToolStripMenuItem
-      // 
-      this.newTaskToolStripMenuItem.Name = "newTaskToolStripMenuItem";
-      this.newTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.newTaskToolStripMenuItem.Text = "新建";
-      this.newTaskToolStripMenuItem.Click += new System.EventHandler(this.newTaskToolStripMenuItem_Click);
-      // 
-      // editTaskToolStripMenuItem
-      // 
-      this.editTaskToolStripMenuItem.Name = "editTaskToolStripMenuItem";
-      this.editTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.editTaskToolStripMenuItem.Text = "编辑";
-      // 
-      // executeTaskToolStripMenuItem
-      // 
-      this.executeTaskToolStripMenuItem.Name = "executeTaskToolStripMenuItem";
-      this.executeTaskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.executeTaskToolStripMenuItem.Text = "执行";
-      this.executeTaskToolStripMenuItem.Click += new System.EventHandler(this.executeTaskToolStripMenuItem_Click);
-      // 
-      // viewToolStripMenuItem
-      // 
-      this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CadToolStripMenuItem,
-            this.reportToolStripMenuItem});
-      this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-      this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-      this.viewToolStripMenuItem.Text = "窗口";
-      // 
-      // CadToolStripMenuItem
-      // 
-      this.CadToolStripMenuItem.Name = "CadToolStripMenuItem";
-      this.CadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.CadToolStripMenuItem.Text = "图形";
-      // 
-      // reportToolStripMenuItem
-      // 
-      this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-      this.reportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.reportToolStripMenuItem.Text = "报告";
-      // 
-      // mockToolStripMenuItem
-      // 
-      this.mockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.measureToolToolStripMenuItem});
-      this.mockToolStripMenuItem.Name = "mockToolStripMenuItem";
-      this.mockToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-      this.mockToolStripMenuItem.Text = "模拟";
-      // 
-      // measureToolToolStripMenuItem
-      // 
-      this.measureToolToolStripMenuItem.Name = "measureToolToolStripMenuItem";
-      this.measureToolToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.measureToolToolStripMenuItem.Text = "量具";
-      // 
       // DimensionReportContainer
       // 
       this.DimensionReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -236,6 +236,7 @@ namespace TxPms
       this.MainMenuStrip = this.menuStrip;
       this.Name = "CadForm";
       this.Text = "外协件检验系统";
+      this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

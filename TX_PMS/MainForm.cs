@@ -38,8 +38,8 @@ namespace TxPms
       BrowseReportForm tmp_oTasks = new BrowseReportForm();
       tmp_oTasks.Owner = this;
       tmp_oTasks.Closing += new CancelEventHandler(Tasks_Closing);
-      tmp_oTasks.DockWindow(this.qDockBarBottom);
-      tmp_oTasks.SlideWindow(true,false);
+      //tmp_oTasks.DockWindow(this.qDockBarBottom);
+     // tmp_oTasks.SlideWindow(true,false);
      
       PartForm partForm = new PartForm();
       partForm.Owner = this;

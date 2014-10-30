@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Core.Model;
 using Core.Service;
 using Mediator;
-using Qios.DevSuite.Components;
 
 namespace ControlReport
 {
-  public partial class BrowseReportForm : QDockingWindow
+  public partial class BrowseReportForm : Form
   {
     private BindingList<BrowseReportViewModel> _DateSource;
     private BrowseReportViewModel _SelectedReportViewModel;

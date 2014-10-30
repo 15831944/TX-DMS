@@ -28,9 +28,9 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,17 +59,13 @@
       this.label3 = new System.Windows.Forms.Label();
       this.txtManufacturer = new System.Windows.Forms.TextBox();
       this.tableResult = new System.Windows.Forms.TableLayoutPanel();
-      this.ChkApprove = new System.Windows.Forms.CheckBox();
-      this.ChkAudit = new System.Windows.Forms.CheckBox();
       this.tableLayoutPanelApprove = new System.Windows.Forms.TableLayoutPanel();
-      this.txtApproveComment = new System.Windows.Forms.TextBox();
       this.tableLayoutPanelApproverDate = new System.Windows.Forms.TableLayoutPanel();
       this.LblApproveDate = new System.Windows.Forms.Label();
       this.label20 = new System.Windows.Forms.Label();
       this.label21 = new System.Windows.Forms.Label();
       this.LblApprover = new System.Windows.Forms.Label();
       this.tableLayoutPanelAudit = new System.Windows.Forms.TableLayoutPanel();
-      this.txtAuditComment = new System.Windows.Forms.TextBox();
       this.tableLayoutPanelAutidtorDate = new System.Windows.Forms.TableLayoutPanel();
       this.LblAuditDate = new System.Windows.Forms.Label();
       this.label16 = new System.Windows.Forms.Label();
@@ -78,16 +74,26 @@
       this.label11 = new System.Windows.Forms.Label();
       this.label12 = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
-      this.tableLayoutPanelMesurement = new System.Windows.Forms.TableLayoutPanel();
-      this.txtOperatorComment = new System.Windows.Forms.TextBox();
-      this.tableLayoutPanelTesterDate = new System.Windows.Forms.TableLayoutPanel();
-      this.LblTestDate = new System.Windows.Forms.Label();
-      this.label14 = new System.Windows.Forms.Label();
-      this.label10 = new System.Windows.Forms.Label();
-      this.LblTester = new System.Windows.Forms.Label();
       this.panel1 = new System.Windows.Forms.Panel();
       this.buttonStart = new System.Windows.Forms.Button();
       this.btnCreateReport = new System.Windows.Forms.Button();
+      this.tableLayoutPanelMesurement = new System.Windows.Forms.TableLayoutPanel();
+      this.tableLayoutPanelTesterDate = new System.Windows.Forms.TableLayoutPanel();
+      this.label14 = new System.Windows.Forms.Label();
+      this.LblTestDate = new System.Windows.Forms.Label();
+      this.LblTester = new System.Windows.Forms.Label();
+      this.label10 = new System.Windows.Forms.Label();
+      this.label8 = new System.Windows.Forms.Label();
+      this.label9 = new System.Windows.Forms.Label();
+      this.comboTest = new System.Windows.Forms.ComboBox();
+      this.txtOperatorComment = new System.Windows.Forms.TextBox();
+      this.txtAuditComment = new System.Windows.Forms.TextBox();
+      this.label15 = new System.Windows.Forms.Label();
+      this.label18 = new System.Windows.Forms.Label();
+      this.comboAudit = new System.Windows.Forms.ComboBox();
+      this.txtApproveComment = new System.Windows.Forms.TextBox();
+      this.comboBox1 = new System.Windows.Forms.ComboBox();
+      this.label19 = new System.Windows.Forms.Label();
       this.tableLayoutPanel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
@@ -102,9 +108,9 @@
       this.tableLayoutPanelApproverDate.SuspendLayout();
       this.tableLayoutPanelAudit.SuspendLayout();
       this.tableLayoutPanelAutidtorDate.SuspendLayout();
+      this.panel1.SuspendLayout();
       this.tableLayoutPanelMesurement.SuspendLayout();
       this.tableLayoutPanelTesterDate.SuspendLayout();
-      this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -163,8 +169,8 @@
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle7;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -175,8 +181,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle8;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -187,8 +193,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle9;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -247,8 +253,8 @@
       // 
       // label2
       // 
-      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label2.AutoSize = true;
       this.label2.Location = new System.Drawing.Point(3, 0);
       this.label2.Name = "label2";
@@ -277,8 +283,8 @@
       // 
       // label4
       // 
-      this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label4.AutoSize = true;
       this.label4.Location = new System.Drawing.Point(3, 0);
       this.label4.Name = "label4";
@@ -307,8 +313,8 @@
       // 
       // label5
       // 
-      this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label5.AutoSize = true;
       this.label5.Location = new System.Drawing.Point(3, 0);
       this.label5.Name = "label5";
@@ -337,8 +343,8 @@
       // 
       // label7
       // 
-      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label7.AutoSize = true;
       this.label7.Location = new System.Drawing.Point(3, 0);
       this.label7.Name = "label7";
@@ -367,8 +373,8 @@
       // 
       // label6
       // 
-      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label6.AutoSize = true;
       this.label6.Location = new System.Drawing.Point(3, 0);
       this.label6.Name = "label6";
@@ -397,8 +403,8 @@
       // 
       // label3
       // 
-      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.label3.AutoSize = true;
       this.label3.Location = new System.Drawing.Point(3, 0);
       this.label3.Name = "label3";
@@ -420,9 +426,7 @@
       this.tableResult.ColumnCount = 3;
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
-      this.tableResult.Controls.Add(this.ChkApprove, 2, 2);
-      this.tableResult.Controls.Add(this.ChkAudit, 2, 1);
+      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
       this.tableResult.Controls.Add(this.tableLayoutPanelApprove, 1, 2);
       this.tableResult.Controls.Add(this.tableLayoutPanelAudit, 1, 1);
       this.tableResult.Controls.Add(this.label11, 0, 0);
@@ -437,60 +441,24 @@
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+      this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableResult.Size = new System.Drawing.Size(468, 194);
       this.tableResult.TabIndex = 9;
-      // 
-      // ChkApprove
-      // 
-      this.ChkApprove.AutoSize = true;
-      this.ChkApprove.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ChkApprove.Location = new System.Drawing.Point(388, 132);
-      this.ChkApprove.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-      this.ChkApprove.Name = "ChkApprove";
-      this.ChkApprove.Size = new System.Drawing.Size(76, 58);
-      this.ChkApprove.TabIndex = 17;
-      this.ChkApprove.Text = "通过";
-      this.ChkApprove.UseVisualStyleBackColor = true;
-      // 
-      // ChkAudit
-      // 
-      this.ChkAudit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.ChkAudit.AutoSize = true;
-      this.ChkAudit.Location = new System.Drawing.Point(388, 68);
-      this.ChkAudit.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-      this.ChkAudit.Name = "ChkAudit";
-      this.ChkAudit.Size = new System.Drawing.Size(76, 57);
-      this.ChkAudit.TabIndex = 16;
-      this.ChkAudit.Text = "通过";
-      this.ChkAudit.UseVisualStyleBackColor = true;
       // 
       // tableLayoutPanelApprove
       // 
       this.tableLayoutPanelApprove.ColumnCount = 1;
       this.tableLayoutPanelApprove.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelApprove.Controls.Add(this.txtApproveComment, 0, 0);
-      this.tableLayoutPanelApprove.Controls.Add(this.tableLayoutPanelApproverDate, 0, 1);
+      this.tableLayoutPanelApprove.Controls.Add(this.tableLayoutPanelApproverDate, 0, 0);
       this.tableLayoutPanelApprove.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanelApprove.Location = new System.Drawing.Point(52, 129);
       this.tableLayoutPanelApprove.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelApprove.Name = "tableLayoutPanelApprove";
-      this.tableLayoutPanelApprove.RowCount = 2;
-      this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanelApprove.RowCount = 1;
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
       this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(325, 64);
+      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(324, 64);
       this.tableLayoutPanelApprove.TabIndex = 15;
-      // 
-      // txtApproveComment
-      // 
-      this.txtApproveComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtApproveComment.Location = new System.Drawing.Point(3, 3);
-      this.txtApproveComment.Multiline = true;
-      this.txtApproveComment.Name = "txtApproveComment";
-      this.txtApproveComment.Size = new System.Drawing.Size(319, 40);
-      this.txtApproveComment.TabIndex = 4;
       // 
       // tableLayoutPanelApproverDate
       // 
@@ -499,26 +467,31 @@
       this.tableLayoutPanelApproverDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanelApproverDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
       this.tableLayoutPanelApproverDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanelApproverDate.Controls.Add(this.LblApproveDate, 3, 0);
-      this.tableLayoutPanelApproverDate.Controls.Add(this.label20, 2, 0);
-      this.tableLayoutPanelApproverDate.Controls.Add(this.label21, 0, 0);
-      this.tableLayoutPanelApproverDate.Controls.Add(this.LblApprover, 1, 0);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.label19, 0, 0);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.LblApproveDate, 3, 1);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.label20, 2, 1);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.label21, 0, 1);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.LblApprover, 1, 1);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.txtApproveComment, 3, 0);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.comboBox1, 1, 0);
       this.tableLayoutPanelApproverDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanelApproverDate.Location = new System.Drawing.Point(0, 46);
+      this.tableLayoutPanelApproverDate.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanelApproverDate.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelApproverDate.Name = "tableLayoutPanelApproverDate";
-      this.tableLayoutPanelApproverDate.RowCount = 1;
+      this.tableLayoutPanelApproverDate.RowCount = 2;
+      this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(325, 18);
+      this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(324, 64);
       this.tableLayoutPanelApproverDate.TabIndex = 5;
       // 
       // LblApproveDate
       // 
       this.LblApproveDate.AutoSize = true;
       this.LblApproveDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblApproveDate.Location = new System.Drawing.Point(225, 0);
+      this.LblApproveDate.Location = new System.Drawing.Point(225, 45);
       this.LblApproveDate.Name = "LblApproveDate";
-      this.LblApproveDate.Size = new System.Drawing.Size(97, 18);
+      this.LblApproveDate.Size = new System.Drawing.Size(96, 19);
       this.LblApproveDate.TabIndex = 3;
       this.LblApproveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -526,9 +499,9 @@
       // 
       this.label20.AutoSize = true;
       this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label20.Location = new System.Drawing.Point(165, 0);
+      this.label20.Location = new System.Drawing.Point(165, 45);
       this.label20.Name = "label20";
-      this.label20.Size = new System.Drawing.Size(54, 18);
+      this.label20.Size = new System.Drawing.Size(54, 19);
       this.label20.TabIndex = 2;
       this.label20.Text = "日期：";
       this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -537,9 +510,9 @@
       // 
       this.label21.AutoSize = true;
       this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label21.Location = new System.Drawing.Point(3, 0);
+      this.label21.Location = new System.Drawing.Point(3, 45);
       this.label21.Name = "label21";
-      this.label21.Size = new System.Drawing.Size(54, 18);
+      this.label21.Size = new System.Drawing.Size(54, 19);
       this.label21.TabIndex = 0;
       this.label21.Text = "检验员：";
       this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -548,9 +521,9 @@
       // 
       this.LblApprover.AutoSize = true;
       this.LblApprover.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblApprover.Location = new System.Drawing.Point(63, 0);
+      this.LblApprover.Location = new System.Drawing.Point(63, 45);
       this.LblApprover.Name = "LblApprover";
-      this.LblApprover.Size = new System.Drawing.Size(96, 18);
+      this.LblApprover.Size = new System.Drawing.Size(96, 19);
       this.LblApprover.TabIndex = 1;
       this.LblApprover.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -558,26 +531,16 @@
       // 
       this.tableLayoutPanelAudit.ColumnCount = 1;
       this.tableLayoutPanelAudit.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelAudit.Controls.Add(this.txtAuditComment, 0, 0);
-      this.tableLayoutPanelAudit.Controls.Add(this.tableLayoutPanelAutidtorDate, 0, 1);
+      this.tableLayoutPanelAudit.Controls.Add(this.tableLayoutPanelAutidtorDate, 0, 0);
       this.tableLayoutPanelAudit.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanelAudit.Location = new System.Drawing.Point(52, 65);
       this.tableLayoutPanelAudit.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelAudit.Name = "tableLayoutPanelAudit";
-      this.tableLayoutPanelAudit.RowCount = 2;
-      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanelAudit.RowCount = 1;
       this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(325, 63);
+      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(324, 63);
       this.tableLayoutPanelAudit.TabIndex = 14;
-      // 
-      // txtAuditComment
-      // 
-      this.txtAuditComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtAuditComment.Location = new System.Drawing.Point(3, 3);
-      this.txtAuditComment.Multiline = true;
-      this.txtAuditComment.Name = "txtAuditComment";
-      this.txtAuditComment.Size = new System.Drawing.Size(319, 39);
-      this.txtAuditComment.TabIndex = 4;
       // 
       // tableLayoutPanelAutidtorDate
       // 
@@ -586,26 +549,32 @@
       this.tableLayoutPanelAutidtorDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanelAutidtorDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
       this.tableLayoutPanelAutidtorDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanelAutidtorDate.Controls.Add(this.LblAuditDate, 3, 0);
-      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label16, 2, 0);
-      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label17, 0, 0);
-      this.tableLayoutPanelAutidtorDate.Controls.Add(this.LblAuditor, 1, 0);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.comboAudit, 1, 0);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label15, 0, 0);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.LblAuditDate, 3, 1);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label16, 2, 1);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label17, 0, 1);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.LblAuditor, 1, 1);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.txtAuditComment, 3, 0);
+      this.tableLayoutPanelAutidtorDate.Controls.Add(this.label18, 2, 0);
       this.tableLayoutPanelAutidtorDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanelAutidtorDate.Location = new System.Drawing.Point(0, 45);
+      this.tableLayoutPanelAutidtorDate.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanelAutidtorDate.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelAutidtorDate.Name = "tableLayoutPanelAutidtorDate";
-      this.tableLayoutPanelAutidtorDate.RowCount = 1;
+      this.tableLayoutPanelAutidtorDate.RowCount = 2;
+      this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(325, 18);
+      this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(324, 63);
       this.tableLayoutPanelAutidtorDate.TabIndex = 5;
       // 
       // LblAuditDate
       // 
       this.LblAuditDate.AutoSize = true;
       this.LblAuditDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblAuditDate.Location = new System.Drawing.Point(225, 0);
+      this.LblAuditDate.Location = new System.Drawing.Point(225, 46);
       this.LblAuditDate.Name = "LblAuditDate";
-      this.LblAuditDate.Size = new System.Drawing.Size(97, 18);
+      this.LblAuditDate.Size = new System.Drawing.Size(96, 17);
       this.LblAuditDate.TabIndex = 3;
       this.LblAuditDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -613,9 +582,9 @@
       // 
       this.label16.AutoSize = true;
       this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label16.Location = new System.Drawing.Point(165, 0);
+      this.label16.Location = new System.Drawing.Point(165, 46);
       this.label16.Name = "label16";
-      this.label16.Size = new System.Drawing.Size(54, 18);
+      this.label16.Size = new System.Drawing.Size(54, 17);
       this.label16.TabIndex = 2;
       this.label16.Text = "日期：";
       this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -624,9 +593,9 @@
       // 
       this.label17.AutoSize = true;
       this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label17.Location = new System.Drawing.Point(3, 0);
+      this.label17.Location = new System.Drawing.Point(3, 46);
       this.label17.Name = "label17";
-      this.label17.Size = new System.Drawing.Size(54, 18);
+      this.label17.Size = new System.Drawing.Size(54, 17);
       this.label17.TabIndex = 0;
       this.label17.Text = "检验员：";
       this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,17 +604,17 @@
       // 
       this.LblAuditor.AutoSize = true;
       this.LblAuditor.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblAuditor.Location = new System.Drawing.Point(63, 0);
+      this.LblAuditor.Location = new System.Drawing.Point(63, 46);
       this.LblAuditor.Name = "LblAuditor";
-      this.LblAuditor.Size = new System.Drawing.Size(96, 18);
+      this.LblAuditor.Size = new System.Drawing.Size(96, 17);
       this.LblAuditor.TabIndex = 1;
       this.LblAuditor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label11
       // 
-      this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
+      this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.label11.AutoSize = true;
       this.label11.Location = new System.Drawing.Point(4, 1);
       this.label11.Name = "label11";
@@ -656,9 +625,9 @@
       // 
       // label12
       // 
-      this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
+      this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.label12.AutoSize = true;
       this.label12.Location = new System.Drawing.Point(4, 65);
       this.label12.Name = "label12";
@@ -669,9 +638,9 @@
       // 
       // label13
       // 
-      this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
+      this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.label13.AutoSize = true;
       this.label13.Location = new System.Drawing.Point(4, 129);
       this.label13.Name = "label13";
@@ -680,99 +649,11 @@
       this.label13.Text = "审批:";
       this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // tableLayoutPanelMesurement
-      // 
-      this.tableLayoutPanelMesurement.ColumnCount = 1;
-      this.tableLayoutPanelMesurement.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelMesurement.Controls.Add(this.txtOperatorComment, 0, 0);
-      this.tableLayoutPanelMesurement.Controls.Add(this.tableLayoutPanelTesterDate, 0, 1);
-      this.tableLayoutPanelMesurement.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanelMesurement.Location = new System.Drawing.Point(52, 1);
-      this.tableLayoutPanelMesurement.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanelMesurement.Name = "tableLayoutPanelMesurement";
-      this.tableLayoutPanelMesurement.RowCount = 2;
-      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(325, 63);
-      this.tableLayoutPanelMesurement.TabIndex = 12;
-      // 
-      // txtOperatorComment
-      // 
-      this.txtOperatorComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtOperatorComment.Location = new System.Drawing.Point(3, 3);
-      this.txtOperatorComment.Multiline = true;
-      this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(319, 39);
-      this.txtOperatorComment.TabIndex = 4;
-      // 
-      // tableLayoutPanelTesterDate
-      // 
-      this.tableLayoutPanelTesterDate.ColumnCount = 4;
-      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanelTesterDate.Controls.Add(this.LblTestDate, 3, 0);
-      this.tableLayoutPanelTesterDate.Controls.Add(this.label14, 2, 0);
-      this.tableLayoutPanelTesterDate.Controls.Add(this.label10, 0, 0);
-      this.tableLayoutPanelTesterDate.Controls.Add(this.LblTester, 1, 0);
-      this.tableLayoutPanelTesterDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanelTesterDate.Location = new System.Drawing.Point(0, 45);
-      this.tableLayoutPanelTesterDate.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanelTesterDate.Name = "tableLayoutPanelTesterDate";
-      this.tableLayoutPanelTesterDate.RowCount = 1;
-      this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(325, 18);
-      this.tableLayoutPanelTesterDate.TabIndex = 5;
-      // 
-      // LblTestDate
-      // 
-      this.LblTestDate.AutoSize = true;
-      this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTestDate.Location = new System.Drawing.Point(225, 0);
-      this.LblTestDate.Name = "LblTestDate";
-      this.LblTestDate.Size = new System.Drawing.Size(97, 18);
-      this.LblTestDate.TabIndex = 3;
-      this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
-      // label14
-      // 
-      this.label14.AutoSize = true;
-      this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label14.Location = new System.Drawing.Point(165, 0);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(54, 18);
-      this.label14.TabIndex = 2;
-      this.label14.Text = "日期：";
-      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // label10
-      // 
-      this.label10.AutoSize = true;
-      this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label10.Location = new System.Drawing.Point(3, 0);
-      this.label10.Name = "label10";
-      this.label10.Size = new System.Drawing.Size(54, 18);
-      this.label10.TabIndex = 0;
-      this.label10.Text = "检验员：";
-      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // LblTester
-      // 
-      this.LblTester.AutoSize = true;
-      this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTester.Location = new System.Drawing.Point(63, 0);
-      this.LblTester.Name = "LblTester";
-      this.LblTester.Size = new System.Drawing.Size(96, 18);
-      this.LblTester.TabIndex = 1;
-      this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      // 
       // panel1
       // 
       this.panel1.Controls.Add(this.buttonStart);
       this.panel1.Controls.Add(this.btnCreateReport);
-      this.panel1.Location = new System.Drawing.Point(378, 1);
+      this.panel1.Location = new System.Drawing.Point(377, 1);
       this.panel1.Margin = new System.Windows.Forms.Padding(0);
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(86, 63);
@@ -790,8 +671,8 @@
       // 
       // btnCreateReport
       // 
-      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
       this.btnCreateReport.Location = new System.Drawing.Point(6, 34);
       this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
       this.btnCreateReport.Name = "btnCreateReport";
@@ -800,6 +681,199 @@
       this.btnCreateReport.Text = "完成";
       this.btnCreateReport.UseVisualStyleBackColor = true;
       this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
+      // 
+      // tableLayoutPanelMesurement
+      // 
+      this.tableLayoutPanelMesurement.ColumnCount = 1;
+      this.tableLayoutPanelMesurement.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanelMesurement.Controls.Add(this.tableLayoutPanelTesterDate, 0, 0);
+      this.tableLayoutPanelMesurement.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanelMesurement.Location = new System.Drawing.Point(52, 1);
+      this.tableLayoutPanelMesurement.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanelMesurement.Name = "tableLayoutPanelMesurement";
+      this.tableLayoutPanelMesurement.RowCount = 1;
+      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelMesurement.TabIndex = 12;
+      // 
+      // tableLayoutPanelTesterDate
+      // 
+      this.tableLayoutPanelTesterDate.ColumnCount = 4;
+      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+      this.tableLayoutPanelTesterDate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanelTesterDate.Controls.Add(this.LblTestDate, 3, 1);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.label14, 2, 1);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.label10, 0, 1);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.LblTester, 1, 1);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.label8, 0, 0);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.label9, 2, 0);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.comboTest, 1, 0);
+      this.tableLayoutPanelTesterDate.Controls.Add(this.txtOperatorComment, 3, 0);
+      this.tableLayoutPanelTesterDate.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanelTesterDate.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanelTesterDate.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanelTesterDate.Name = "tableLayoutPanelTesterDate";
+      this.tableLayoutPanelTesterDate.RowCount = 2;
+      this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+      this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelTesterDate.TabIndex = 5;
+      // 
+      // label14
+      // 
+      this.label14.AutoSize = true;
+      this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label14.Location = new System.Drawing.Point(165, 44);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(54, 19);
+      this.label14.TabIndex = 2;
+      this.label14.Text = "日期：";
+      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // LblTestDate
+      // 
+      this.LblTestDate.AutoSize = true;
+      this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.LblTestDate.Location = new System.Drawing.Point(225, 44);
+      this.LblTestDate.Name = "LblTestDate";
+      this.LblTestDate.Size = new System.Drawing.Size(96, 19);
+      this.LblTestDate.TabIndex = 3;
+      this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // LblTester
+      // 
+      this.LblTester.AutoSize = true;
+      this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.LblTester.Location = new System.Drawing.Point(63, 44);
+      this.LblTester.Name = "LblTester";
+      this.LblTester.Size = new System.Drawing.Size(96, 19);
+      this.LblTester.TabIndex = 1;
+      this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // label10
+      // 
+      this.label10.AutoSize = true;
+      this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label10.Location = new System.Drawing.Point(3, 44);
+      this.label10.Name = "label10";
+      this.label10.Size = new System.Drawing.Size(54, 19);
+      this.label10.TabIndex = 0;
+      this.label10.Text = "检验员：";
+      this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label8
+      // 
+      this.label8.AutoSize = true;
+      this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label8.Location = new System.Drawing.Point(3, 0);
+      this.label8.Name = "label8";
+      this.label8.Size = new System.Drawing.Size(54, 44);
+      this.label8.TabIndex = 4;
+      this.label8.Text = "结果：";
+      this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label9
+      // 
+      this.label9.AutoSize = true;
+      this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label9.Location = new System.Drawing.Point(165, 0);
+      this.label9.Name = "label9";
+      this.label9.Size = new System.Drawing.Size(54, 44);
+      this.label9.TabIndex = 5;
+      this.label9.Text = "备注：";
+      this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // comboTest
+      // 
+      this.comboTest.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.comboTest.FormattingEnabled = true;
+      this.comboTest.Location = new System.Drawing.Point(63, 12);
+      this.comboTest.Name = "comboTest";
+      this.comboTest.Size = new System.Drawing.Size(96, 20);
+      this.comboTest.TabIndex = 6;
+      // 
+      // txtOperatorComment
+      // 
+      this.txtOperatorComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.txtOperatorComment.Location = new System.Drawing.Point(225, 3);
+      this.txtOperatorComment.Multiline = true;
+      this.txtOperatorComment.Name = "txtOperatorComment";
+      this.txtOperatorComment.Size = new System.Drawing.Size(96, 38);
+      this.txtOperatorComment.TabIndex = 7;
+      // 
+      // txtAuditComment
+      // 
+      this.txtAuditComment.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtAuditComment.Location = new System.Drawing.Point(225, 3);
+      this.txtAuditComment.Multiline = true;
+      this.txtAuditComment.Name = "txtAuditComment";
+      this.txtAuditComment.Size = new System.Drawing.Size(96, 40);
+      this.txtAuditComment.TabIndex = 4;
+      // 
+      // label15
+      // 
+      this.label15.AutoSize = true;
+      this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label15.Location = new System.Drawing.Point(3, 0);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(54, 46);
+      this.label15.TabIndex = 5;
+      this.label15.Text = "结果：";
+      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // label18
+      // 
+      this.label18.AutoSize = true;
+      this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label18.Location = new System.Drawing.Point(165, 0);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(54, 46);
+      this.label18.TabIndex = 6;
+      this.label18.Text = "备注:";
+      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // comboAudit
+      // 
+      this.comboAudit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.comboAudit.FormattingEnabled = true;
+      this.comboAudit.Location = new System.Drawing.Point(63, 13);
+      this.comboAudit.Name = "comboAudit";
+      this.comboAudit.Size = new System.Drawing.Size(96, 20);
+      this.comboAudit.TabIndex = 7;
+      // 
+      // txtApproveComment
+      // 
+      this.txtApproveComment.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtApproveComment.Location = new System.Drawing.Point(225, 3);
+      this.txtApproveComment.Multiline = true;
+      this.txtApproveComment.Name = "txtApproveComment";
+      this.txtApproveComment.Size = new System.Drawing.Size(96, 39);
+      this.txtApproveComment.TabIndex = 4;
+      // 
+      // comboBox1
+      // 
+      this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.comboBox1.FormattingEnabled = true;
+      this.comboBox1.Location = new System.Drawing.Point(63, 12);
+      this.comboBox1.Name = "comboBox1";
+      this.comboBox1.Size = new System.Drawing.Size(96, 20);
+      this.comboBox1.TabIndex = 8;
+      // 
+      // label19
+      // 
+      this.label19.AutoSize = true;
+      this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label19.Location = new System.Drawing.Point(3, 0);
+      this.label19.Name = "label19";
+      this.label19.Size = new System.Drawing.Size(54, 45);
+      this.label19.TabIndex = 9;
+      this.label19.Text = "结果：";
+      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // ExecuteReportControl
       // 
@@ -829,18 +903,15 @@
       this.tableResult.ResumeLayout(false);
       this.tableResult.PerformLayout();
       this.tableLayoutPanelApprove.ResumeLayout(false);
-      this.tableLayoutPanelApprove.PerformLayout();
       this.tableLayoutPanelApproverDate.ResumeLayout(false);
       this.tableLayoutPanelApproverDate.PerformLayout();
       this.tableLayoutPanelAudit.ResumeLayout(false);
-      this.tableLayoutPanelAudit.PerformLayout();
       this.tableLayoutPanelAutidtorDate.ResumeLayout(false);
       this.tableLayoutPanelAutidtorDate.PerformLayout();
+      this.panel1.ResumeLayout(false);
       this.tableLayoutPanelMesurement.ResumeLayout(false);
-      this.tableLayoutPanelMesurement.PerformLayout();
       this.tableLayoutPanelTesterDate.ResumeLayout(false);
       this.tableLayoutPanelTesterDate.PerformLayout();
-      this.panel1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -872,30 +943,19 @@
     private System.Windows.Forms.TableLayoutPanel tableResult;
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.Label label13;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMesurement;
     private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.TextBox txtOperatorComment;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTesterDate;
-    private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.Label LblTester;
-    private System.Windows.Forms.Label label14;
-    private System.Windows.Forms.Label LblTestDate;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAudit;
-    private System.Windows.Forms.TextBox txtAuditComment;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAutidtorDate;
     private System.Windows.Forms.Label LblAuditDate;
     private System.Windows.Forms.Label label16;
     private System.Windows.Forms.Label label17;
     private System.Windows.Forms.Label LblAuditor;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelApprove;
-    private System.Windows.Forms.TextBox txtApproveComment;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelApproverDate;
     private System.Windows.Forms.Label LblApproveDate;
     private System.Windows.Forms.Label label20;
     private System.Windows.Forms.Label label21;
     private System.Windows.Forms.Label LblApprover;
-    private System.Windows.Forms.CheckBox ChkApprove;
-    private System.Windows.Forms.CheckBox ChkAudit;
     private System.Windows.Forms.DataGridViewTextBoxColumn IndexColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn DimensionTypeEditColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
@@ -904,5 +964,22 @@
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Button buttonStart;
     private System.Windows.Forms.Button btnCreateReport;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMesurement;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTesterDate;
+    private System.Windows.Forms.Label LblTestDate;
+    private System.Windows.Forms.Label label14;
+    private System.Windows.Forms.Label label10;
+    private System.Windows.Forms.Label LblTester;
+    private System.Windows.Forms.Label label8;
+    private System.Windows.Forms.Label label9;
+    private System.Windows.Forms.ComboBox comboTest;
+    private System.Windows.Forms.TextBox txtOperatorComment;
+    private System.Windows.Forms.TextBox txtAuditComment;
+    private System.Windows.Forms.Label label15;
+    private System.Windows.Forms.Label label18;
+    private System.Windows.Forms.ComboBox comboAudit;
+    private System.Windows.Forms.TextBox txtApproveComment;
+    private System.Windows.Forms.ComboBox comboBox1;
+    private System.Windows.Forms.Label label19;
   }
 }
