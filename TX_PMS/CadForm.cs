@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ using Teigha.Runtime;
 using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 using System.Runtime.InteropServices;
+using Exception = System.Exception;
 
 namespace TxPms
 {
@@ -115,12 +117,6 @@ namespace TxPms
 
     private void OpenDwgFile(string i_FileName)
     {
-//      if (CadSelectionManager.Instance.IsInitializing)
-//      {
-//        MessageBox.Show("正在初始化Cad文件, 请稍后...");
-//        return;
-//      }
-
       if (lm != null)
       {
         lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
@@ -129,6 +125,7 @@ namespace TxPms
       }
 
       bool bLoaded = true;
+      CadSelectionManager.Instance.Dispose();
       database = new Database(false, false);
 
       try
@@ -151,13 +148,7 @@ namespace TxPms
                              PmsService.Instance.CurrentPart == null
                                ? ""
                                : PmsService.Instance.CurrentPart.Name);
-
-        //todo 不应该放在多线程中，总是造成异常，每次打开的时候，应该先解析，完成后显示
-        //CadSelectionManager.Instance.Initialize(database);
-
         OnDwgFileOpened();
-        initializeGraphics();
-        Invalidate();
       }
     }
 
@@ -231,19 +222,28 @@ namespace TxPms
     }
     private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
-      if (selRect != null)
-        helperDevice.ActiveView.Erase(selRect);
-      selRect = null;
+      try
+      {
+        CadSelectionManager.Instance.Dispose();
+        if (selRect != null)
+          helperDevice.ActiveView.Erase(selRect);
+        selRect = null;
 
-      gripManager.uninit();
-      gripManager = null;
-      if (graphics != null)
-        graphics.Dispose();
-      if (helperDevice != null)
-        helperDevice.Dispose();
-      if (database != null)
-        database.Dispose();
-      dd.Dispose();
+        gripManager.uninit();
+        gripManager = null;
+        if (graphics != null)
+          graphics.Dispose();
+        if (helperDevice != null)
+          helperDevice.Dispose();
+        if (database != null)
+          database.Dispose();
+        dd.Dispose();
+
+      }
+      catch(System.Exception ex)
+      {
+        Debug.WriteLine(ex.Message);
+      }
     }
     void resize()
     {
@@ -615,7 +615,9 @@ namespace TxPms
         DimensionReportContainer.Controls.Clear();
         DimensionReportContainer.Controls.Add(_ExecuteReportControl);
       }
+
       OpenDwgFile(executedPart.Part);
+
       Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.SelectTask, executedPart);
 
       panel1.Focus(); //在选择几次打开之后，在选择执行，mouseWheel不起作用

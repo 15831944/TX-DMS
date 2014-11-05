@@ -72,7 +72,9 @@ namespace TxPms
       this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.splitter1 = new System.Windows.Forms.Splitter();
       this.DimensionReportContainer = new System.Windows.Forms.Panel();
+      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
       this.menuStrip.SuspendLayout();
+      this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip
@@ -185,6 +187,7 @@ namespace TxPms
       // 
       // panel1
       // 
+
       this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
       this.panel1.Enabled = false;
       this.panel1.Location = new System.Drawing.Point(0, 25);
@@ -224,6 +227,14 @@ namespace TxPms
       this.DimensionReportContainer.Size = new System.Drawing.Size(253, 467);
       this.DimensionReportContainer.TabIndex = 3;
       // 
+      // statusStrip1
+      // 
+      this.statusStrip1.Location = new System.Drawing.Point(0, 445);
+      this.statusStrip1.Name = "statusStrip1";
+      this.statusStrip1.Size = new System.Drawing.Size(596, 22);
+      this.statusStrip1.TabIndex = 0;
+      this.statusStrip1.Text = "statusStrip1";
+      // 
       // CadForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -233,6 +244,7 @@ namespace TxPms
       this.Controls.Add(this.splitter1);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.menuStrip);
+      this.Controls.Add(this.statusStrip1);
       this.MainMenuStrip = this.menuStrip;
       this.Name = "CadForm";
       this.Text = "外协件检验系统";
@@ -268,6 +280,7 @@ namespace TxPms
     private ToolStripMenuItem mockToolStripMenuItem;
     private ToolStripMenuItem measureToolToolStripMenuItem;
     private Panel DimensionReportContainer;
+    private StatusStrip statusStrip1;
   }
 }
 

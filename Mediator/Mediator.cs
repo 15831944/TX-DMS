@@ -5,6 +5,7 @@ using System.Threading;
 
 namespace Mediator
 {
+  public delegate void MessageHanlderDelegate(object i_B);
   public enum Options
   {
     Default,

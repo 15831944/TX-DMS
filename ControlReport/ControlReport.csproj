@@ -68,6 +68,12 @@
       <DependentUpon>BrowseReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BrowseReportViewModel.cs" />
+    <Compile Include="CadParseProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadParseProgressForm.Designer.cs">
+      <DependentUpon>CadParseProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditPartTemplateViewModel.cs" />
     <Compile Include="ExecuteReportViewModel.cs" />
     <Compile Include="EditReportControl.cs">
@@ -98,6 +104,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BrowseReportForm.resx">
       <DependentUpon>BrowseReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadParseProgressForm.resx">
+      <DependentUpon>CadParseProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditReportControl.resx">
       <DependentUpon>EditReportControl.cs</DependentUpon>

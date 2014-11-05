@@ -15,8 +15,10 @@ namespace TxPms
 {
   partial class  CadForm
   {
+    private CadParseProgressForm _CadParseProgressForm;
     void Initialize()
     {
+      _CadParseProgressForm = new CadParseProgressForm();
       Mediator.Mediator.Instance.Register(UI.SelectPart, i_O =>
       {
         var part = i_O as Part;
@@ -42,12 +44,36 @@ namespace TxPms
         });
      Mediator.Mediator.Instance.Register(UI.SavePart, OnSavePart);
      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInControl, OnDimensionSelectedInControl);
+      Mediator.Mediator.Instance.Register(Cad.Parsing, OnCadFileParsing);
+    }
+
+    private void OnCadFileParsing(object i_Obj)
+    {
+      this.BeginInvoke(new MainForm.MessageHanlderDelegate
+                         (i_O =>
+                           {
+                             var parseStatus = (CadParseStatus)i_O ;
+                             if (parseStatus == CadParseStatus.Started)
+                             {
+                               _CadParseProgressForm.ShowDialog();
+                             }
+                             else if(parseStatus == CadParseStatus.Finished)
+                             {
+                               _CadParseProgressForm.Close();
+                               Populate_CadViewMenu();
+                               initializeGraphics();
+                               Invalidate();
+                               panel1.Focus();
+                             }
+                             
+                           }), i_Obj);
     }
 
     private void OnDimensionSelectedInControl(object i_Obj)
     {
       string cadHandle = i_Obj as string;
       if (cadHandle == null) return;
+      if (CadSelectionManager.Instance.IsInitializing) return;
       var dbObj = CadSelectionManager.Instance.GetObjectByHandle(cadHandle);
       if (dbObj == null) return;
       
@@ -97,6 +123,14 @@ namespace TxPms
 
     private void OnDwgFileOpened()
     {
+      //todo 不应该放在多线程中，总是造成异常，每次打开的时候，应该先解析，完成后显示
+      if (database == null) return;
+      //todo 需要重新新建一个database
+      ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
+    }
+
+    private void Populate_CadViewMenu()
+    {
       if (database == null) return;
       using (DBDictionary layoutDict = (DBDictionary)database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
       {
@@ -104,7 +138,7 @@ namespace TxPms
         foreach (DBDictionaryEntry dicEntry in layoutDict)
         {
           ToolStripItem item = new ToolStripButton(dicEntry.Key);
-          item.Click+=item_Click;
+          item.Click += item_Click;
           CadToolStripMenuItem.DropDownItems.Add(item);
         }
       }

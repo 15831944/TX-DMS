@@ -88,37 +88,37 @@ namespace Dwglib
     /************************************************************************/
     static void writeLine(int indent, object leftString, object rightString, int colWidth)
     {
-      string spaces = "                                                            ";
-      string leader = ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
-
-      const int tabSize = 2;
-
-      /**********************************************************************/
-      /* Indent leftString with spaces characters                           */
-      /**********************************************************************/
-      string newleftString = spaces.Substring(0, tabSize * indent) + leftString.ToString();
-
-      /**********************************************************************/
-      /* If rightString is not specified, just output the indented          */
-      /* leftString. Otherwise, fill the space between leftString and       */
-      /* rightString with leader characters.                                */
-      /**********************************************************************/
-      if (rightString == null || ((rightString is string) && ((string)rightString) == ""))
-      {
-        Debug.WriteLine(newleftString);
-      }
-      else
-      {
-        int leaders = colWidth - newleftString.Length;
-        if (leaders > 0)
-        {
-          Debug.WriteLine(newleftString + leader.Substring(newleftString.Length, leaders) + rightString.ToString());
-        }
-        else
-        {
-          Debug.WriteLine(newleftString + ' ' + rightString.ToString());
-        }
-      }
+//      string spaces = "                                                            ";
+//      string leader = ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+//
+//      const int tabSize = 2;
+//
+//      /**********************************************************************/
+//      /* Indent leftString with spaces characters                           */
+//      /**********************************************************************/
+//      string newleftString = spaces.Substring(0, tabSize * indent) + leftString.ToString();
+//
+//      /**********************************************************************/
+//      /* If rightString is not specified, just output the indented          */
+//      /* leftString. Otherwise, fill the space between leftString and       */
+//      /* rightString with leader characters.                                */
+//      /**********************************************************************/
+//      if (rightString == null || ((rightString is string) && ((string)rightString) == ""))
+//      {
+//        Debug.WriteLine(newleftString);
+//      }
+//      else
+//      {
+//        int leaders = colWidth - newleftString.Length;
+//        if (leaders > 0)
+//        {
+//          Debug.WriteLine(newleftString + leader.Substring(newleftString.Length, leaders) + rightString.ToString());
+//        }
+//        else
+//        {
+//          Debug.WriteLine(newleftString + ' ' + rightString.ToString());
+//        }
+//      }
     }
     static void writeLine(int indent, object leftString, object rightString)
     {
@@ -1863,19 +1863,48 @@ namespace Dwglib
 
     public void dump(Database pDb, int indent)
     {
-      dumpHeader(pDb, indent);
-      dumpLayers(pDb, indent);
-      dumpLinetypes(pDb, indent);
-      dumpTextStyles(pDb, indent);
-      dumpDimStyles(pDb, indent);
-      dumpRegApps(pDb, indent);
-      dumpViewports(pDb, indent);
-      dumpViews(pDb, indent);
-      dumpMLineStyles(pDb, indent);
-      dumpUCSTable(pDb, indent);
-      dumpObject(pDb.NamedObjectsDictionaryId, "Named Objects Dictionary", indent);
+//      dumpHeader(pDb, indent);
+//      dumpLayers(pDb, indent);
+//      dumpLinetypes(pDb, indent);
+//      dumpTextStyles(pDb, indent);
+//      dumpDimStyles(pDb, indent);
+//      dumpRegApps(pDb, indent);
+//      dumpViewports(pDb, indent);
+//      dumpViews(pDb, indent);
+//      dumpMLineStyles(pDb, indent);
+//      dumpUCSTable(pDb, indent);
+//      dumpObject(pDb.NamedObjectsDictionaryId, "Named Objects Dictionary", indent);
       dumpBlocks(pDb, indent);
     }
+
+    public void Dispose()
+    {
+      if (pTable != null)
+      {
+        if(!pTable.IsDisposed)
+          pTable.Dispose();
+      }
+      foreach (var blockTableRecord in _BlockTableRecords)
+      {
+        if (!blockTableRecord.IsDisposed)
+        {
+          blockTableRecord.Dispose();
+        }
+      }
+      _BlockTableRecords.Clear();
+
+      foreach (var entity in _Entities)
+      {
+        if (!entity.IsDisposed)
+        {
+          entity.Dispose();
+        }
+      }
+      _Entities.Clear();
+    }
+    private BlockTable pTable;
+    private List<BlockTableRecord>  _BlockTableRecords = new List<BlockTableRecord>();
+    private List<Entity>  _Entities = new List<Entity>();
     /************************************************************************/
     /* Dump the BlockTable                                                  */
     /************************************************************************/
@@ -1884,7 +1913,7 @@ namespace Dwglib
       /**********************************************************************/
       /* Get a pointer to the BlockTable                               */
       /**********************************************************************/
-      using (BlockTable pTable = (BlockTable)pDb.BlockTableId.Open(OpenMode.ForRead))
+      pTable = (BlockTable) pDb.BlockTableId.Open(OpenMode.ForRead);
       {
         /**********************************************************************/
         /* Dump the Description                                               */
@@ -1900,7 +1929,8 @@ namespace Dwglib
           /********************************************************************/
           /* Open the BlockTableRecord for Reading                            */
           /********************************************************************/
-          using (BlockTableRecord pBlock = (BlockTableRecord)id.Open(OpenMode.ForRead))
+          BlockTableRecord pBlock = (BlockTableRecord) id.Open(OpenMode.ForRead);
+          _BlockTableRecords.Add(pBlock);
           {
             /********************************************************************/
             /* Dump the BlockTableRecord                                        */
@@ -2067,6 +2097,7 @@ namespace Dwglib
       /* Get a pointer to the Entity                                   */
       /**********************************************************************/
       Entity pEnt = (Entity) id.GetObject(OpenMode.ForRead, false, true);
+      _Entities.Add(pEnt);
       {
         IsUsedInCad = true;
         /**********************************************************************/

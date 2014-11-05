@@ -25,7 +25,8 @@ namespace Mediator
     OnDimensionSelectedInCad,
     OnDimensionSelectedInControl,
     OnOpened,
-    OnReFresh
+    OnReFresh,
+    Parsing
   }
   public enum MeasurementTool
   {
@@ -44,5 +45,11 @@ namespace Mediator
     TaskCompleted,
     OneStarted,
     OneCompleted
+  }
+  public enum CadParseStatus
+  {
+    Started,
+    Finished,
+    Error
   }
 }

@@ -59,6 +59,8 @@ namespace Dwglib
     public void Initialize(Database pDb)
     {
       _IsInitialized = false;
+      Dispose();
+      Mediator.Mediator.Instance.NotifyColleagues(Mediator.Cad.Parsing, CadParseStatus.Started);
       _ValidDbObjects.Clear();
         try
           {
@@ -70,8 +72,8 @@ namespace Dwglib
             /* Dump the database                                            */
             /****************************************************************/
             IsInitializing = true;
-            var dumper = new DbDumper();
-            dumper.dump(pDb, 0);
+            _Dumper = new DbDumper();
+            _Dumper.dump(pDb, 0);
             Debug.WriteLine(string.Format("Dump is completed", pDb.OriginalFileVersion));
         }
         /********************************************************************/
@@ -80,10 +82,20 @@ namespace Dwglib
         catch (System.Exception e)
         {
           Debug.WriteLine(@"Teigha?NET for .dwg files Error: " + e.Message);
+          Mediator.Mediator.Instance.NotifyColleagues(Mediator.Cad.Parsing, CadParseStatus.Error);
         }
+        Mediator.Mediator.Instance.NotifyColleagues(Mediator.Cad.Parsing, CadParseStatus.Finished);
       IsInitializing = false;
       _IsInitialized = true;
     }
-    
+
+    private DbDumper _Dumper;
+    public void Dispose()
+    {
+      if (_Dumper != null)
+      {
+        _Dumper.Dispose();
+      }
+    }
   }
 }
