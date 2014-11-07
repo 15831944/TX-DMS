@@ -59,7 +59,6 @@ namespace Dwglib
     public void Initialize(Database pDb)
     {
       _IsInitialized = false;
-      Dispose();
       Mediator.Mediator.Instance.NotifyColleagues(Mediator.Cad.Parsing, CadParseStatus.Started);
       _ValidDbObjects.Clear();
         try

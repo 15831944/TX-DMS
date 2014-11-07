@@ -130,7 +130,7 @@ namespace Dwglib
     }
     static void writeLine()
     {
-      Console.WriteLine();
+      //Console.WriteLine();
     }
     static void dumpEntityData(Entity pEnt, int indent)
     {
@@ -367,11 +367,6 @@ namespace Dwglib
     /************************************************************************/
     void dump(AlignedDimension pDim, int indent)
     {
-      writeLine(indent++, pDim.GetRXClass().Name, pDim.Handle);
-      writeLine(indent, "Dimension line Point", pDim.DimLinePoint);
-      writeLine(indent, "Oblique", toDegreeString(pDim.Oblique));
-      writeLine(indent, "Extension Line 1 Point", pDim.XLine1Point);
-      writeLine(indent, "Extension Line 2 Point", pDim.XLine2Point);
       dumpDimData(pDim, indent);
     }
 
@@ -1863,36 +1858,11 @@ namespace Dwglib
 
     public void dump(Database pDb, int indent)
     {
-//      dumpHeader(pDb, indent);
-//      dumpLayers(pDb, indent);
-//      dumpLinetypes(pDb, indent);
-//      dumpTextStyles(pDb, indent);
-//      dumpDimStyles(pDb, indent);
-//      dumpRegApps(pDb, indent);
-//      dumpViewports(pDb, indent);
-//      dumpViews(pDb, indent);
-//      dumpMLineStyles(pDb, indent);
-//      dumpUCSTable(pDb, indent);
-//      dumpObject(pDb.NamedObjectsDictionaryId, "Named Objects Dictionary", indent);
       dumpBlocks(pDb, indent);
     }
 
     public void Dispose()
     {
-      if (pTable != null)
-      {
-        if(!pTable.IsDisposed)
-          pTable.Dispose();
-      }
-      foreach (var blockTableRecord in _BlockTableRecords)
-      {
-        if (!blockTableRecord.IsDisposed)
-        {
-          blockTableRecord.Dispose();
-        }
-      }
-      _BlockTableRecords.Clear();
-
       foreach (var entity in _Entities)
       {
         if (!entity.IsDisposed)
@@ -1901,6 +1871,23 @@ namespace Dwglib
         }
       }
       _Entities.Clear();
+
+      foreach (var blockTableRecord in _BlockTableRecords)
+      {
+        if (!blockTableRecord.IsDisposed)
+        {
+          blockTableRecord.Dispose();
+        }
+      }
+      _BlockTableRecords.Clear();
+      if (pTable != null)
+      {
+        if (!pTable.IsDisposed)
+        {
+          pTable.Dispose();
+          pTable = null;
+        }
+      }
     }
     private BlockTable pTable;
     private List<BlockTableRecord>  _BlockTableRecords = new List<BlockTableRecord>();
@@ -1916,12 +1903,6 @@ namespace Dwglib
       pTable = (BlockTable) pDb.BlockTableId.Open(OpenMode.ForRead);
       {
         /**********************************************************************/
-        /* Dump the Description                                               */
-        /**********************************************************************/
-        writeLine();
-        writeLine(indent++, pTable.GetRXClass().Name);
-
-        /**********************************************************************/
         /* Step through the BlockTable                                        */
         /**********************************************************************/
         foreach (ObjectId id in pTable)
@@ -1932,41 +1913,6 @@ namespace Dwglib
           BlockTableRecord pBlock = (BlockTableRecord) id.Open(OpenMode.ForRead);
           _BlockTableRecords.Add(pBlock);
           {
-            /********************************************************************/
-            /* Dump the BlockTableRecord                                        */
-            /********************************************************************/
-            writeLine();
-            writeLine(indent, pBlock.GetRXClass().Name);
-            writeLine(indent + 1, "Name", pBlock.Name);
-            writeLine(indent + 1, "Anonymous", pBlock.IsAnonymous);
-            writeLine(indent + 1, "Comments", pBlock.Comments);
-            writeLine(indent + 1, "Origin", pBlock.Origin);
-            writeLine(indent + 1, "Block Insert Units", pBlock.Units);
-            writeLine(indent + 1, "Block Scaling", pBlock.BlockScaling);
-            writeLine(indent + 1, "Explodable", pBlock.Explodable);
-            writeLine(indent + 1, "IsDynamicBlock", pBlock.IsDynamicBlock);
-
-            try
-            {
-              Extents3d extents = new Extents3d(new Point3d(1E+20, 1E+20, 1E+20), new Point3d(1E-20, 1E-20, 1E-20));
-              extents.AddBlockExtents(pBlock);
-              writeLine(indent + 1, "Min Extents", extents.MinPoint);
-              writeLine(indent + 1, "Max Extents", extents.MaxPoint);
-            }
-            catch (System.Exception)
-            {
-            }
-            writeLine(indent + 1, "Layout", pBlock.IsLayout);
-            writeLine(indent + 1, "Has Attribute Definitions", pBlock.HasAttributeDefinitions);
-            writeLine(indent + 1, "Xref Status", pBlock.XrefStatus);
-            if (pBlock.XrefStatus != XrefStatus.NotAnXref)
-            {
-              writeLine(indent + 1, "Xref Path", pBlock.PathName);
-              writeLine(indent + 1, "From Xref Attach", pBlock.IsFromExternalReference);
-              writeLine(indent + 1, "From Xref Overlay", pBlock.IsFromOverlayReference);
-              writeLine(indent + 1, "Xref Unloaded", pBlock.IsUnloaded);
-            }
-
             /********************************************************************/
             /* Step through the BlockTableRecord                                */
             /********************************************************************/
@@ -2103,7 +2049,6 @@ namespace Dwglib
         /**********************************************************************/
         /* Dump the entity                                                    */
         /**********************************************************************/
-        writeLine();
         // Protocol extensions are not supported in DD.NET (as well as in ARX.NET)
         // so we just switch by entity type here
         // (maybe it makes sense to make a map: type -> delegate)
@@ -2140,19 +2085,6 @@ namespace Dwglib
             IsUsedInCad = false;
             break;
         }
-
-        /**********************************************************************/
-        /* Dump the Xdata                                                     */
-        /**********************************************************************/
-        //dumpXdata(pEnt.XData, indent);
-
-        /**********************************************************************/
-        /* Dump the Extension Dictionary                                      */
-        /**********************************************************************/
-//        if (!pEnt.ExtensionDictionary.IsNull)
-//        {
-//          dumpObject(pEnt.ExtensionDictionary, "ACAD_XDICTIONARY", indent);
-//        }
       }
     }
     public void dumpHeader(Database pDb, int indent)

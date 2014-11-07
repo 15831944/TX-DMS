@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using ControlReport;
@@ -53,9 +54,7 @@ namespace TxPms
     public CadForm()
     {
       Initialize();
-      dd = new Teigha.Runtime.Services();
-      SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
-      SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
+
       InitializeComponent();
       this.MouseWheel += new MouseEventHandler(Form1_MouseWheel);
       this.SizeChanged += CadForm_SizeChanged;
@@ -64,12 +63,59 @@ namespace TxPms
       _ExecuteReportControl = new ExecuteReportControl() { Dock = DockStyle.Fill };
       _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
 
+
+     
+      //DisableAero();
+    }
+
+    private void InitiailizeCadComponent()
+    {
+      dd = new Teigha.Runtime.Services();
+      SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
+      SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       HostApplicationServices.Current = new HostAppServ(dd);
       Environment.SetEnvironmentVariable("DDPLOTSTYLEPATHS", ((HostAppServ)HostApplicationServices.Current).FindConfigPath(String.Format("PrinterStyleSheetDir")));
 
       gripManager = new ExGripManager();
       mouseMode = Mode.Quiescent;
-      //DisableAero();
+    }
+
+    private void DisposeCadComponent()
+    {
+      try
+      {
+        CadSelectionManager.Instance.Dispose();
+        if (selRect != null)
+          helperDevice.ActiveView.Erase(selRect);
+        selRect = null;
+        if (gripManager != null)
+        {
+          gripManager.uninit();
+          gripManager = null;
+        }
+        if (graphics != null)
+          graphics.Dispose();
+        if (helperDevice != null)
+          if (!helperDevice.IsDisposed)
+          { helperDevice.Dispose();
+            helperDevice = null;
+          }
+        if (database != null)
+          if (!database.IsDisposed)
+          {database.Dispose();
+            database = null;
+          }
+        if (dd != null)
+        {
+          dd.Dispose();
+          dd = null;
+        }
+
+      }
+      catch (System.Exception ex)
+      {
+        Debug.WriteLine(ex.Message);
+      }
     }
 
     void CadForm_SizeChanged(object sender, EventArgs e)
@@ -117,6 +163,8 @@ namespace TxPms
 
     private void OpenDwgFile(string i_FileName)
     {
+      DisposeCadComponent();
+      InitiailizeCadComponent();
       if (lm != null)
       {
         lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
@@ -130,7 +178,7 @@ namespace TxPms
 
       try
       {
-        database.ReadDwgFile(i_FileName, FileOpenMode.OpenForReadAndAllShare, false, "");
+        database.ReadDwgFile(i_FileName, FileShare.Read, true, "");
       }
       catch (System.Exception ex)
       {
@@ -222,28 +270,7 @@ namespace TxPms
     }
     private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
-      try
-      {
-        CadSelectionManager.Instance.Dispose();
-        if (selRect != null)
-          helperDevice.ActiveView.Erase(selRect);
-        selRect = null;
-
-        gripManager.uninit();
-        gripManager = null;
-        if (graphics != null)
-          graphics.Dispose();
-        if (helperDevice != null)
-          helperDevice.Dispose();
-        if (database != null)
-          database.Dispose();
-        dd.Dispose();
-
-      }
-      catch(System.Exception ex)
-      {
-        Debug.WriteLine(ex.Message);
-      }
+      DisposeCadComponent();
     }
     void resize()
     {
