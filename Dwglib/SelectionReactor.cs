@@ -19,12 +19,8 @@
 // of Autodesk, Inc. The Open Design Alliance is not associated with Autodesk.
 ///////////////////////////////////////////////////////////////////////////////
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Teigha;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
-using Teigha.Runtime;
 using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 

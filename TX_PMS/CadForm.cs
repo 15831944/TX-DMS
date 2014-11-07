@@ -2,21 +2,18 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using ControlReport;
 using Core.Service;
 using Dwglib;
 using Dwglib.GripPoints;
 using Mediator;
-using MockMeasureToolControl;
 using Teigha.DatabaseServices;
 using Teigha.GraphicsSystem;
 using Teigha.Runtime;
 using Teigha.GraphicsInterface;
 using Teigha.Geometry;
 using System.Runtime.InteropServices;
-using Exception = System.Exception;
 
 namespace TxPms
 {
@@ -29,7 +26,7 @@ namespace TxPms
       DragDrop
     }
     private bool _IsMoving;
-    Teigha.Runtime.Services dd;
+    Services dd;
     Graphics graphics;
     Teigha.GraphicsSystem.LayoutHelperDevice helperDevice;
     Database database = null;
@@ -70,7 +67,7 @@ namespace TxPms
 
     private void InitiailizeCadComponent()
     {
-      dd = new Teigha.Runtime.Services();
+      dd = new Services();
       SystemObjects.DynamicLinker.LoadApp("GripPoints", false, false);
       SystemObjects.DynamicLinker.LoadApp("PlotSettingsValidator", false, false);
       HostApplicationServices.Current = new HostAppServ(dd);
@@ -84,6 +81,7 @@ namespace TxPms
     {
       try
       {
+        ClearSelection();
         CadSelectionManager.Instance.Dispose();
         if (selRect != null)
           helperDevice.ActiveView.Erase(selRect);
@@ -167,7 +165,7 @@ namespace TxPms
       InitiailizeCadComponent();
       if (lm != null)
       {
-        lm.LayoutSwitched -= new Teigha.DatabaseServices.LayoutEventHandler(reinitGraphDevice);
+        lm.LayoutSwitched -= reinitGraphDevice;
         HostApplicationServices.WorkingDatabase = null;
         lm = null;
       }

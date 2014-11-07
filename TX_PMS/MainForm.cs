@@ -37,7 +37,7 @@ namespace TxPms
     {
       BrowseReportForm tmp_oTasks = new BrowseReportForm();
       tmp_oTasks.Owner = this;
-      tmp_oTasks.Closing += new CancelEventHandler(Tasks_Closing);
+      tmp_oTasks.Closing += Tasks_Closing;
       //tmp_oTasks.DockWindow(this.qDockBarBottom);
      // tmp_oTasks.SlideWindow(true,false);
      
@@ -83,19 +83,6 @@ namespace TxPms
     {
       //_CadForm.Form1_FormClosing(sender,e);
     }
-
-
-    private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-//      if (database != null)
-//      {
-//        if (DialogResult.OK == saveAsFileDialog.ShowDialog(this))
-//        {
-//          database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
-//        }
-//      }
-    }
-
 
 
     private void qRibbonItemMockTool_ItemActivated(object sender, QCompositeEventArgs e)
