@@ -28,11 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
       this.label1 = new System.Windows.Forms.Label();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.rootTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.IndexColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.DimensionTypeEditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,40 +61,40 @@
       this.tableResult = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanelApprove = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanelApproverDate = new System.Windows.Forms.TableLayoutPanel();
+      this.label19 = new System.Windows.Forms.Label();
       this.LblApproveDate = new System.Windows.Forms.Label();
       this.label20 = new System.Windows.Forms.Label();
       this.label21 = new System.Windows.Forms.Label();
       this.LblApprover = new System.Windows.Forms.Label();
+      this.txtApproveComment = new System.Windows.Forms.TextBox();
+      this.comboApprove = new System.Windows.Forms.ComboBox();
       this.tableLayoutPanelAudit = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanelAutidtorDate = new System.Windows.Forms.TableLayoutPanel();
+      this.comboAudit = new System.Windows.Forms.ComboBox();
+      this.label15 = new System.Windows.Forms.Label();
       this.LblAuditDate = new System.Windows.Forms.Label();
       this.label16 = new System.Windows.Forms.Label();
       this.label17 = new System.Windows.Forms.Label();
       this.LblAuditor = new System.Windows.Forms.Label();
+      this.txtAuditComment = new System.Windows.Forms.TextBox();
+      this.label18 = new System.Windows.Forms.Label();
       this.label11 = new System.Windows.Forms.Label();
       this.label12 = new System.Windows.Forms.Label();
       this.label13 = new System.Windows.Forms.Label();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.buttonStart = new System.Windows.Forms.Button();
-      this.btnCreateReport = new System.Windows.Forms.Button();
       this.tableLayoutPanelMesurement = new System.Windows.Forms.TableLayoutPanel();
       this.tableLayoutPanelTesterDate = new System.Windows.Forms.TableLayoutPanel();
-      this.label14 = new System.Windows.Forms.Label();
       this.LblTestDate = new System.Windows.Forms.Label();
-      this.LblTester = new System.Windows.Forms.Label();
+      this.label14 = new System.Windows.Forms.Label();
       this.label10 = new System.Windows.Forms.Label();
+      this.LblTester = new System.Windows.Forms.Label();
       this.label8 = new System.Windows.Forms.Label();
       this.label9 = new System.Windows.Forms.Label();
       this.comboTest = new System.Windows.Forms.ComboBox();
       this.txtOperatorComment = new System.Windows.Forms.TextBox();
-      this.txtAuditComment = new System.Windows.Forms.TextBox();
-      this.label15 = new System.Windows.Forms.Label();
-      this.label18 = new System.Windows.Forms.Label();
-      this.comboAudit = new System.Windows.Forms.ComboBox();
-      this.txtApproveComment = new System.Windows.Forms.TextBox();
-      this.comboBox1 = new System.Windows.Forms.ComboBox();
-      this.label19 = new System.Windows.Forms.Label();
-      this.tableLayoutPanel1.SuspendLayout();
+      this.buttonStart = new System.Windows.Forms.Button();
+      this.btnCreateReport = new System.Windows.Forms.Button();
+      this.ExecuteControlPanel = new System.Windows.Forms.Panel();
+      this.rootTableLayoutPanel.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.tableLayoutPanel2.SuspendLayout();
       this.flowLayoutPanel2.SuspendLayout();
@@ -108,9 +108,9 @@
       this.tableLayoutPanelApproverDate.SuspendLayout();
       this.tableLayoutPanelAudit.SuspendLayout();
       this.tableLayoutPanelAutidtorDate.SuspendLayout();
-      this.panel1.SuspendLayout();
       this.tableLayoutPanelMesurement.SuspendLayout();
       this.tableLayoutPanelTesterDate.SuspendLayout();
+      this.ExecuteControlPanel.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -125,24 +125,26 @@
       this.label1.Text = "外协件检验报告";
       this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // tableLayoutPanel1
+      // rootTableLayoutPanel
       // 
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 2);
-      this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.tableResult, 0, 3);
-      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 4;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(474, 796);
-      this.tableLayoutPanel1.TabIndex = 0;
+      this.rootTableLayoutPanel.ColumnCount = 1;
+      this.rootTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.rootTableLayoutPanel.Controls.Add(this.dataGridView1, 0, 2);
+      this.rootTableLayoutPanel.Controls.Add(this.label1, 0, 0);
+      this.rootTableLayoutPanel.Controls.Add(this.tableLayoutPanel2, 0, 1);
+      this.rootTableLayoutPanel.Controls.Add(this.tableResult, 0, 4);
+      this.rootTableLayoutPanel.Controls.Add(this.ExecuteControlPanel, 0, 3);
+      this.rootTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.rootTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+      this.rootTableLayoutPanel.Name = "rootTableLayoutPanel";
+      this.rootTableLayoutPanel.RowCount = 5;
+      this.rootTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+      this.rootTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+      this.rootTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.rootTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+      this.rootTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+      this.rootTableLayoutPanel.Size = new System.Drawing.Size(474, 796);
+      this.rootTableLayoutPanel.TabIndex = 0;
       // 
       // dataGridView1
       // 
@@ -163,14 +165,14 @@
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.RowTemplate.Height = 23;
       this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dataGridView1.Size = new System.Drawing.Size(472, 460);
+      this.dataGridView1.Size = new System.Drawing.Size(472, 420);
       this.dataGridView1.TabIndex = 7;
       // 
       // IndexColumn
       // 
       this.IndexColumn.DataPropertyName = "SerialNumber";
-      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle7;
+      dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+      this.IndexColumn.DefaultCellStyle = dataGridViewCellStyle10;
       this.IndexColumn.Frozen = true;
       this.IndexColumn.HeaderText = "序号";
       this.IndexColumn.MinimumWidth = 40;
@@ -181,8 +183,8 @@
       // DimensionTypeEditColumn
       // 
       this.DimensionTypeEditColumn.DataPropertyName = "DimensionType";
-      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle8;
+      dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.DimensionTypeEditColumn.DefaultCellStyle = dataGridViewCellStyle11;
       this.DimensionTypeEditColumn.Frozen = true;
       this.DimensionTypeEditColumn.HeaderText = "检验项目";
       this.DimensionTypeEditColumn.Name = "DimensionTypeEditColumn";
@@ -193,8 +195,8 @@
       // NominalColumn
       // 
       this.NominalColumn.DataPropertyName = "Nominal";
-      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle9;
+      dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      this.NominalColumn.DefaultCellStyle = dataGridViewCellStyle12;
       this.NominalColumn.HeaderText = "标准要求";
       this.NominalColumn.Name = "NominalColumn";
       this.NominalColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -423,17 +425,16 @@
       // tableResult
       // 
       this.tableResult.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-      this.tableResult.ColumnCount = 3;
+      this.tableResult.ColumnCount = 2;
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
       this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+      this.tableResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableResult.Controls.Add(this.tableLayoutPanelApprove, 1, 2);
       this.tableResult.Controls.Add(this.tableLayoutPanelAudit, 1, 1);
       this.tableResult.Controls.Add(this.label11, 0, 0);
       this.tableResult.Controls.Add(this.label12, 0, 1);
       this.tableResult.Controls.Add(this.label13, 0, 2);
       this.tableResult.Controls.Add(this.tableLayoutPanelMesurement, 1, 0);
-      this.tableResult.Controls.Add(this.panel1, 2, 0);
       this.tableResult.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableResult.Location = new System.Drawing.Point(3, 599);
       this.tableResult.Name = "tableResult";
@@ -441,7 +442,6 @@
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
       this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-      this.tableResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tableResult.Size = new System.Drawing.Size(468, 194);
       this.tableResult.TabIndex = 9;
       // 
@@ -455,9 +455,9 @@
       this.tableLayoutPanelApprove.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelApprove.Name = "tableLayoutPanelApprove";
       this.tableLayoutPanelApprove.RowCount = 1;
-      this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(324, 64);
+      this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+      this.tableLayoutPanelApprove.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+      this.tableLayoutPanelApprove.Size = new System.Drawing.Size(415, 64);
       this.tableLayoutPanelApprove.TabIndex = 15;
       // 
       // tableLayoutPanelApproverDate
@@ -473,7 +473,7 @@
       this.tableLayoutPanelApproverDate.Controls.Add(this.label21, 0, 1);
       this.tableLayoutPanelApproverDate.Controls.Add(this.LblApprover, 1, 1);
       this.tableLayoutPanelApproverDate.Controls.Add(this.txtApproveComment, 3, 0);
-      this.tableLayoutPanelApproverDate.Controls.Add(this.comboBox1, 1, 0);
+      this.tableLayoutPanelApproverDate.Controls.Add(this.comboApprove, 1, 0);
       this.tableLayoutPanelApproverDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tableLayoutPanelApproverDate.Location = new System.Drawing.Point(0, 0);
       this.tableLayoutPanelApproverDate.Margin = new System.Windows.Forms.Padding(0);
@@ -482,16 +482,27 @@
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelApproverDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(324, 64);
+      this.tableLayoutPanelApproverDate.Size = new System.Drawing.Size(415, 64);
       this.tableLayoutPanelApproverDate.TabIndex = 5;
+      // 
+      // label19
+      // 
+      this.label19.AutoSize = true;
+      this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label19.Location = new System.Drawing.Point(3, 0);
+      this.label19.Name = "label19";
+      this.label19.Size = new System.Drawing.Size(54, 45);
+      this.label19.TabIndex = 9;
+      this.label19.Text = "结果：";
+      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // LblApproveDate
       // 
       this.LblApproveDate.AutoSize = true;
       this.LblApproveDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblApproveDate.Location = new System.Drawing.Point(225, 45);
+      this.LblApproveDate.Location = new System.Drawing.Point(270, 45);
       this.LblApproveDate.Name = "LblApproveDate";
-      this.LblApproveDate.Size = new System.Drawing.Size(96, 19);
+      this.LblApproveDate.Size = new System.Drawing.Size(142, 19);
       this.LblApproveDate.TabIndex = 3;
       this.LblApproveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -499,7 +510,7 @@
       // 
       this.label20.AutoSize = true;
       this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label20.Location = new System.Drawing.Point(165, 45);
+      this.label20.Location = new System.Drawing.Point(210, 45);
       this.label20.Name = "label20";
       this.label20.Size = new System.Drawing.Size(54, 19);
       this.label20.TabIndex = 2;
@@ -523,9 +534,27 @@
       this.LblApprover.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblApprover.Location = new System.Drawing.Point(63, 45);
       this.LblApprover.Name = "LblApprover";
-      this.LblApprover.Size = new System.Drawing.Size(96, 19);
+      this.LblApprover.Size = new System.Drawing.Size(141, 19);
       this.LblApprover.TabIndex = 1;
       this.LblApprover.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtApproveComment
+      // 
+      this.txtApproveComment.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtApproveComment.Location = new System.Drawing.Point(270, 3);
+      this.txtApproveComment.Multiline = true;
+      this.txtApproveComment.Name = "txtApproveComment";
+      this.txtApproveComment.Size = new System.Drawing.Size(142, 39);
+      this.txtApproveComment.TabIndex = 4;
+      // 
+      // comboApprove
+      // 
+      this.comboApprove.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.comboApprove.FormattingEnabled = true;
+      this.comboApprove.Location = new System.Drawing.Point(63, 12);
+      this.comboApprove.Name = "comboApprove";
+      this.comboApprove.Size = new System.Drawing.Size(119, 20);
+      this.comboApprove.TabIndex = 8;
       // 
       // tableLayoutPanelAudit
       // 
@@ -537,9 +566,9 @@
       this.tableLayoutPanelAudit.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelAudit.Name = "tableLayoutPanelAudit";
       this.tableLayoutPanelAudit.RowCount = 1;
-      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+      this.tableLayoutPanelAudit.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+      this.tableLayoutPanelAudit.Size = new System.Drawing.Size(415, 63);
       this.tableLayoutPanelAudit.TabIndex = 14;
       // 
       // tableLayoutPanelAutidtorDate
@@ -565,16 +594,36 @@
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tableLayoutPanelAutidtorDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelAutidtorDate.Size = new System.Drawing.Size(415, 63);
       this.tableLayoutPanelAutidtorDate.TabIndex = 5;
+      // 
+      // comboAudit
+      // 
+      this.comboAudit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.comboAudit.FormattingEnabled = true;
+      this.comboAudit.Location = new System.Drawing.Point(63, 13);
+      this.comboAudit.Name = "comboAudit";
+      this.comboAudit.Size = new System.Drawing.Size(119, 20);
+      this.comboAudit.TabIndex = 7;
+      // 
+      // label15
+      // 
+      this.label15.AutoSize = true;
+      this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label15.Location = new System.Drawing.Point(3, 0);
+      this.label15.Name = "label15";
+      this.label15.Size = new System.Drawing.Size(54, 46);
+      this.label15.TabIndex = 5;
+      this.label15.Text = "结果：";
+      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // LblAuditDate
       // 
       this.LblAuditDate.AutoSize = true;
       this.LblAuditDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblAuditDate.Location = new System.Drawing.Point(225, 46);
+      this.LblAuditDate.Location = new System.Drawing.Point(270, 46);
       this.LblAuditDate.Name = "LblAuditDate";
-      this.LblAuditDate.Size = new System.Drawing.Size(96, 17);
+      this.LblAuditDate.Size = new System.Drawing.Size(142, 17);
       this.LblAuditDate.TabIndex = 3;
       this.LblAuditDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
@@ -582,7 +631,7 @@
       // 
       this.label16.AutoSize = true;
       this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label16.Location = new System.Drawing.Point(165, 46);
+      this.label16.Location = new System.Drawing.Point(210, 46);
       this.label16.Name = "label16";
       this.label16.Size = new System.Drawing.Size(54, 17);
       this.label16.TabIndex = 2;
@@ -606,9 +655,29 @@
       this.LblAuditor.Dock = System.Windows.Forms.DockStyle.Fill;
       this.LblAuditor.Location = new System.Drawing.Point(63, 46);
       this.LblAuditor.Name = "LblAuditor";
-      this.LblAuditor.Size = new System.Drawing.Size(96, 17);
+      this.LblAuditor.Size = new System.Drawing.Size(141, 17);
       this.LblAuditor.TabIndex = 1;
       this.LblAuditor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // txtAuditComment
+      // 
+      this.txtAuditComment.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.txtAuditComment.Location = new System.Drawing.Point(270, 3);
+      this.txtAuditComment.Multiline = true;
+      this.txtAuditComment.Name = "txtAuditComment";
+      this.txtAuditComment.Size = new System.Drawing.Size(142, 40);
+      this.txtAuditComment.TabIndex = 4;
+      // 
+      // label18
+      // 
+      this.label18.AutoSize = true;
+      this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label18.Location = new System.Drawing.Point(210, 0);
+      this.label18.Name = "label18";
+      this.label18.Size = new System.Drawing.Size(54, 46);
+      this.label18.TabIndex = 6;
+      this.label18.Text = "备注:";
+      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label11
       // 
@@ -649,39 +718,6 @@
       this.label13.Text = "审批:";
       this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // panel1
-      // 
-      this.panel1.Controls.Add(this.buttonStart);
-      this.panel1.Controls.Add(this.btnCreateReport);
-      this.panel1.Location = new System.Drawing.Point(377, 1);
-      this.panel1.Margin = new System.Windows.Forms.Padding(0);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(86, 63);
-      this.panel1.TabIndex = 18;
-      // 
-      // buttonStart
-      // 
-      this.buttonStart.Location = new System.Drawing.Point(7, 3);
-      this.buttonStart.Name = "buttonStart";
-      this.buttonStart.Size = new System.Drawing.Size(67, 26);
-      this.buttonStart.TabIndex = 6;
-      this.buttonStart.Text = "开始";
-      this.buttonStart.UseVisualStyleBackColor = true;
-      this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-      // 
-      // btnCreateReport
-      // 
-      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-      this.btnCreateReport.Location = new System.Drawing.Point(6, 34);
-      this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
-      this.btnCreateReport.Name = "btnCreateReport";
-      this.btnCreateReport.Size = new System.Drawing.Size(68, 24);
-      this.btnCreateReport.TabIndex = 5;
-      this.btnCreateReport.Text = "完成";
-      this.btnCreateReport.UseVisualStyleBackColor = true;
-      this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
-      // 
       // tableLayoutPanelMesurement
       // 
       this.tableLayoutPanelMesurement.ColumnCount = 1;
@@ -692,9 +728,9 @@
       this.tableLayoutPanelMesurement.Margin = new System.Windows.Forms.Padding(0);
       this.tableLayoutPanelMesurement.Name = "tableLayoutPanelMesurement";
       this.tableLayoutPanelMesurement.RowCount = 1;
-      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+      this.tableLayoutPanelMesurement.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+      this.tableLayoutPanelMesurement.Size = new System.Drawing.Size(415, 63);
       this.tableLayoutPanelMesurement.TabIndex = 12;
       // 
       // tableLayoutPanelTesterDate
@@ -719,39 +755,29 @@
       this.tableLayoutPanelTesterDate.RowCount = 2;
       this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
       this.tableLayoutPanelTesterDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(324, 63);
+      this.tableLayoutPanelTesterDate.Size = new System.Drawing.Size(415, 63);
       this.tableLayoutPanelTesterDate.TabIndex = 5;
-      // 
-      // label14
-      // 
-      this.label14.AutoSize = true;
-      this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label14.Location = new System.Drawing.Point(165, 44);
-      this.label14.Name = "label14";
-      this.label14.Size = new System.Drawing.Size(54, 19);
-      this.label14.TabIndex = 2;
-      this.label14.Text = "日期：";
-      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // LblTestDate
       // 
       this.LblTestDate.AutoSize = true;
       this.LblTestDate.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTestDate.Location = new System.Drawing.Point(225, 44);
+      this.LblTestDate.Location = new System.Drawing.Point(270, 44);
       this.LblTestDate.Name = "LblTestDate";
-      this.LblTestDate.Size = new System.Drawing.Size(96, 19);
+      this.LblTestDate.Size = new System.Drawing.Size(142, 19);
       this.LblTestDate.TabIndex = 3;
       this.LblTestDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
-      // LblTester
+      // label14
       // 
-      this.LblTester.AutoSize = true;
-      this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.LblTester.Location = new System.Drawing.Point(63, 44);
-      this.LblTester.Name = "LblTester";
-      this.LblTester.Size = new System.Drawing.Size(96, 19);
-      this.LblTester.TabIndex = 1;
-      this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.label14.AutoSize = true;
+      this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.label14.Location = new System.Drawing.Point(210, 44);
+      this.label14.Name = "label14";
+      this.label14.Size = new System.Drawing.Size(54, 19);
+      this.label14.TabIndex = 2;
+      this.label14.Text = "日期：";
+      this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // label10
       // 
@@ -763,6 +789,16 @@
       this.label10.TabIndex = 0;
       this.label10.Text = "检验员：";
       this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // LblTester
+      // 
+      this.LblTester.AutoSize = true;
+      this.LblTester.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.LblTester.Location = new System.Drawing.Point(63, 44);
+      this.LblTester.Name = "LblTester";
+      this.LblTester.Size = new System.Drawing.Size(141, 19);
+      this.LblTester.TabIndex = 1;
+      this.LblTester.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // label8
       // 
@@ -779,7 +815,7 @@
       // 
       this.label9.AutoSize = true;
       this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label9.Location = new System.Drawing.Point(165, 0);
+      this.label9.Location = new System.Drawing.Point(210, 0);
       this.label9.Name = "label9";
       this.label9.Size = new System.Drawing.Size(54, 44);
       this.label9.TabIndex = 5;
@@ -792,7 +828,7 @@
       this.comboTest.FormattingEnabled = true;
       this.comboTest.Location = new System.Drawing.Point(63, 12);
       this.comboTest.Name = "comboTest";
-      this.comboTest.Size = new System.Drawing.Size(96, 20);
+      this.comboTest.Size = new System.Drawing.Size(119, 20);
       this.comboTest.TabIndex = 6;
       // 
       // txtOperatorComment
@@ -800,80 +836,45 @@
       this.txtOperatorComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtOperatorComment.Location = new System.Drawing.Point(225, 3);
+      this.txtOperatorComment.Location = new System.Drawing.Point(270, 3);
       this.txtOperatorComment.Multiline = true;
       this.txtOperatorComment.Name = "txtOperatorComment";
-      this.txtOperatorComment.Size = new System.Drawing.Size(96, 38);
+      this.txtOperatorComment.Size = new System.Drawing.Size(142, 38);
       this.txtOperatorComment.TabIndex = 7;
       // 
-      // txtAuditComment
+      // buttonStart
       // 
-      this.txtAuditComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtAuditComment.Location = new System.Drawing.Point(225, 3);
-      this.txtAuditComment.Multiline = true;
-      this.txtAuditComment.Name = "txtAuditComment";
-      this.txtAuditComment.Size = new System.Drawing.Size(96, 40);
-      this.txtAuditComment.TabIndex = 4;
+      this.buttonStart.Location = new System.Drawing.Point(106, 7);
+      this.buttonStart.Name = "buttonStart";
+      this.buttonStart.Size = new System.Drawing.Size(67, 26);
+      this.buttonStart.TabIndex = 6;
+      this.buttonStart.Text = "开始";
+      this.buttonStart.UseVisualStyleBackColor = true;
+      this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
       // 
-      // label15
+      // btnCreateReport
       // 
-      this.label15.AutoSize = true;
-      this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label15.Location = new System.Drawing.Point(3, 0);
-      this.label15.Name = "label15";
-      this.label15.Size = new System.Drawing.Size(54, 46);
-      this.label15.TabIndex = 5;
-      this.label15.Text = "结果：";
-      this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.btnCreateReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.btnCreateReport.Location = new System.Drawing.Point(303, 5);
+      this.btnCreateReport.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+      this.btnCreateReport.Name = "btnCreateReport";
+      this.btnCreateReport.Size = new System.Drawing.Size(68, 30);
+      this.btnCreateReport.TabIndex = 5;
+      this.btnCreateReport.Text = "完成";
+      this.btnCreateReport.UseVisualStyleBackColor = true;
+      this.btnCreateReport.Click += new System.EventHandler(this.btnCreateReport_Click);
       // 
-      // label18
+      // ExecuteControlPanel
       // 
-      this.label18.AutoSize = true;
-      this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label18.Location = new System.Drawing.Point(165, 0);
-      this.label18.Name = "label18";
-      this.label18.Size = new System.Drawing.Size(54, 46);
-      this.label18.TabIndex = 6;
-      this.label18.Text = "备注:";
-      this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // comboAudit
-      // 
-      this.comboAudit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.comboAudit.FormattingEnabled = true;
-      this.comboAudit.Location = new System.Drawing.Point(63, 13);
-      this.comboAudit.Name = "comboAudit";
-      this.comboAudit.Size = new System.Drawing.Size(96, 20);
-      this.comboAudit.TabIndex = 7;
-      // 
-      // txtApproveComment
-      // 
-      this.txtApproveComment.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.txtApproveComment.Location = new System.Drawing.Point(225, 3);
-      this.txtApproveComment.Multiline = true;
-      this.txtApproveComment.Name = "txtApproveComment";
-      this.txtApproveComment.Size = new System.Drawing.Size(96, 39);
-      this.txtApproveComment.TabIndex = 4;
-      // 
-      // comboBox1
-      // 
-      this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.comboBox1.FormattingEnabled = true;
-      this.comboBox1.Location = new System.Drawing.Point(63, 12);
-      this.comboBox1.Name = "comboBox1";
-      this.comboBox1.Size = new System.Drawing.Size(96, 20);
-      this.comboBox1.TabIndex = 8;
-      // 
-      // label19
-      // 
-      this.label19.AutoSize = true;
-      this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.label19.Location = new System.Drawing.Point(3, 0);
-      this.label19.Name = "label19";
-      this.label19.Size = new System.Drawing.Size(54, 45);
-      this.label19.TabIndex = 9;
-      this.label19.Text = "结果：";
-      this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.ExecuteControlPanel.Controls.Add(this.btnCreateReport);
+      this.ExecuteControlPanel.Controls.Add(this.buttonStart);
+      this.ExecuteControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ExecuteControlPanel.Location = new System.Drawing.Point(0, 556);
+      this.ExecuteControlPanel.Margin = new System.Windows.Forms.Padding(0);
+      this.ExecuteControlPanel.Name = "ExecuteControlPanel";
+      this.ExecuteControlPanel.Size = new System.Drawing.Size(474, 40);
+      this.ExecuteControlPanel.TabIndex = 10;
       // 
       // ExecuteReportControl
       // 
@@ -881,11 +882,11 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoScroll = true;
       this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.Controls.Add(this.tableLayoutPanel1);
+      this.Controls.Add(this.rootTableLayoutPanel);
       this.Name = "ExecuteReportControl";
       this.Size = new System.Drawing.Size(474, 796);
-      this.tableLayoutPanel1.ResumeLayout(false);
-      this.tableLayoutPanel1.PerformLayout();
+      this.rootTableLayoutPanel.ResumeLayout(false);
+      this.rootTableLayoutPanel.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.tableLayoutPanel2.ResumeLayout(false);
       this.flowLayoutPanel2.ResumeLayout(false);
@@ -908,10 +909,10 @@
       this.tableLayoutPanelAudit.ResumeLayout(false);
       this.tableLayoutPanelAutidtorDate.ResumeLayout(false);
       this.tableLayoutPanelAutidtorDate.PerformLayout();
-      this.panel1.ResumeLayout(false);
       this.tableLayoutPanelMesurement.ResumeLayout(false);
       this.tableLayoutPanelTesterDate.ResumeLayout(false);
       this.tableLayoutPanelTesterDate.PerformLayout();
+      this.ExecuteControlPanel.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -919,7 +920,7 @@
     #endregion
 
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.TableLayoutPanel rootTableLayoutPanel;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     private System.Windows.Forms.Label label2;
@@ -961,7 +962,6 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn NominalColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn MeasuredColumn;
     private System.Windows.Forms.DataGridViewImageColumn StatusColumn;
-    private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Button buttonStart;
     private System.Windows.Forms.Button btnCreateReport;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMesurement;
@@ -979,7 +979,8 @@
     private System.Windows.Forms.Label label18;
     private System.Windows.Forms.ComboBox comboAudit;
     private System.Windows.Forms.TextBox txtApproveComment;
-    private System.Windows.Forms.ComboBox comboBox1;
+    private System.Windows.Forms.ComboBox comboApprove;
     private System.Windows.Forms.Label label19;
+    private System.Windows.Forms.Panel ExecuteControlPanel;
   }
 }

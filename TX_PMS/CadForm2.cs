@@ -123,9 +123,7 @@ namespace TxPms
 
     private void OnDwgFileOpened()
     {
-      //todo 不应该放在多线程中，总是造成异常，每次打开的时候，应该先解析，完成后显示
       if (database == null) return;
-      //todo 需要重新新建一个database
       ThreadPool.QueueUserWorkItem(delegate { CadSelectionManager.Instance.Initialize(database); });
     }
 
@@ -134,12 +132,12 @@ namespace TxPms
       if (database == null) return;
       using (DBDictionary layoutDict = (DBDictionary)database.LayoutDictionaryId.GetObject(OpenMode.ForRead))
       {
-        CadToolStripMenuItem.DropDownItems.Clear();
+        CadModeToolStripMenuItem.DropDownItems.Clear();
         foreach (DBDictionaryEntry dicEntry in layoutDict)
         {
           ToolStripItem item = new ToolStripButton(dicEntry.Key);
           item.Click += item_Click;
-          CadToolStripMenuItem.DropDownItems.Add(item);
+          CadModeToolStripMenuItem.DropDownItems.Add(item);
         }
       }
     }

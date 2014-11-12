@@ -1,6 +1,6 @@
 ﻿namespace ControlReport
 {
-  partial class BrowseReportForm
+  partial class BrowseReportControl
   {
     /// <summary>
     /// Required designer variable.
@@ -34,7 +34,10 @@
       this.MeasurementResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.AuditColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ApproveColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.executeReportControl1 = new ControlReport.ExecuteReportControl();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // dataGridView1
@@ -47,11 +50,11 @@
             this.AuditColumn,
             this.ApproveColumn});
       this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+      this.dataGridView1.Location = new System.Drawing.Point(3, 3);
       this.dataGridView1.Name = "dataGridView1";
       this.dataGridView1.RowTemplate.Height = 23;
       this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dataGridView1.Size = new System.Drawing.Size(750, 157);
+      this.dataGridView1.Size = new System.Drawing.Size(554, 192);
       this.dataGridView1.TabIndex = 1;
       // 
       // PartNameColumn
@@ -86,15 +89,40 @@
       this.ApproveColumn.HeaderText = "审批结果";
       this.ApproveColumn.Name = "ApproveColumn";
       // 
-      // BrowseReportForm
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.ColumnCount = 1;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.executeReportControl1, 0, 1);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(560, 662);
+      this.tableLayoutPanel1.TabIndex = 2;
+      // 
+      // executeReportControl1
+      // 
+      this.executeReportControl1.AutoScroll = true;
+      this.executeReportControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.executeReportControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.executeReportControl1.Location = new System.Drawing.Point(3, 201);
+      this.executeReportControl1.Name = "executeReportControl1";
+      this.executeReportControl1.Size = new System.Drawing.Size(554, 458);
+      this.executeReportControl1.TabIndex = 2;
+      // 
+      // BrowseReportControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.dataGridView1);
-      this.Name = "BrowseReportForm";
-      this.Size = new System.Drawing.Size(750, 175);
-      this.Text = "浏览报告";
+      this.Controls.Add(this.tableLayoutPanel1);
+      this.Name = "BrowseReportControl";
+      this.Size = new System.Drawing.Size(560, 662);
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      this.tableLayoutPanel1.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -107,6 +135,8 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn MeasurementResultColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn AuditColumn;
     private System.Windows.Forms.DataGridViewTextBoxColumn ApproveColumn;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private ExecuteReportControl executeReportControl1;
 
 
   }

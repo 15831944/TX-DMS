@@ -19,6 +19,11 @@ namespace Mediator
     Resize
   }
 
+  public enum  UIUpdate
+  {
+    OnReportLoaded
+  }
+
   public enum Cad
   {
     OnValidDimensionParsed,

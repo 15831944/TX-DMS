@@ -110,7 +110,6 @@ namespace Core.Service
     {
       var dbPartReport = new DbPartReport();
       var result = dbPartReport.GetPartReports(i_Task);
-      var dbTask = new DbTask();
       foreach (var partReport in result)
       {
         partReport.Task = i_Task;
@@ -169,5 +168,6 @@ namespace Core.Service
     }
 
     public User CurrentUser { get; set; }
+    public Task ExecutingTask { get; set; }
   }
 }

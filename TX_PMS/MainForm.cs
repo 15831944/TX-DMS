@@ -35,9 +35,9 @@ namespace TxPms
 
     void DockReportControl()
     {
-      BrowseReportForm tmp_oTasks = new BrowseReportForm();
-      tmp_oTasks.Owner = this;
-      tmp_oTasks.Closing += Tasks_Closing;
+      BrowseReportControl tmp_oTasks = new BrowseReportControl();
+//      tmp_oTasks.Owner = this;
+//      tmp_oTasks.Closing += Tasks_Closing;
       //tmp_oTasks.DockWindow(this.qDockBarBottom);
      // tmp_oTasks.SlideWindow(true,false);
      

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dwglib", "Dwglib\Dwglib.csproj", "{A61FD131-9A3A-4FDD-953B-815CA26AC763}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediator.csproj", "{EC2A9409-7EE4-4AB9-8DCF-E1A84DF0BD25}"
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TX-PMS.vsmdi = TX-PMS.vsmdi
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlReport", "ControlReport\ControlReport.csproj", "{DD5B2830-8386-4B0E-A17D-C9497BB12243}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlReportView", "ControlReport\ControlReportView.csproj", "{DD5B2830-8386-4B0E-A17D-C9497BB12243}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{BF4FB19D-52EA-4962-8EAA-C33211BBBE86}"
 EndProject
@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockMeasureToolControl", "MockMeasureToolControl\MockMeasureToolControl.csproj", "{7D85BEB0-887E-4BFE-BF21-F8205A6B8018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{7F9E39B1-228A-470B-B5EA-2022A401CD83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginView", "Login\LoginView.csproj", "{7F9E39B1-228A-470B-B5EA-2022A401CD83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbTest", "DbTest\DbTest.csproj", "{A9385437-B6F9-4719-8655-C78123720F4F}"
 EndProject

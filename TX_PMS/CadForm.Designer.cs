@@ -63,7 +63,7 @@ namespace TxPms
       this.editTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.executeTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.CadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.CadModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.mockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +73,8 @@ namespace TxPms
       this.splitter1 = new System.Windows.Forms.Splitter();
       this.DimensionReportContainer = new System.Windows.Forms.Panel();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+      this.CadWindowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip.SuspendLayout();
-      this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip
@@ -153,23 +153,25 @@ namespace TxPms
       // viewToolStripMenuItem
       // 
       this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CadToolStripMenuItem,
+            this.CadModeToolStripMenuItem,
+            this.CadWindowStripMenuItem,
             this.reportToolStripMenuItem});
       this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
       this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
       this.viewToolStripMenuItem.Text = "窗口";
       // 
-      // CadToolStripMenuItem
+      // CadModeToolStripMenuItem
       // 
-      this.CadToolStripMenuItem.Name = "CadToolStripMenuItem";
-      this.CadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-      this.CadToolStripMenuItem.Text = "图形";
+      this.CadModeToolStripMenuItem.Name = "CadModeToolStripMenuItem";
+      this.CadModeToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+      this.CadModeToolStripMenuItem.Text = "CAD模式";
       // 
       // reportToolStripMenuItem
       // 
       this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-      this.reportToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+      this.reportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.reportToolStripMenuItem.Text = "报告";
+      this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
       // 
       // mockToolStripMenuItem
       // 
@@ -187,12 +189,11 @@ namespace TxPms
       // 
       // panel1
       // 
-
       this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
       this.panel1.Enabled = false;
       this.panel1.Location = new System.Drawing.Point(0, 25);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(596, 467);
+      this.panel1.Size = new System.Drawing.Size(596, 445);
       this.panel1.TabIndex = 1;
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -215,7 +216,7 @@ namespace TxPms
       this.splitter1.BackColor = System.Drawing.SystemColors.ActiveCaption;
       this.splitter1.Location = new System.Drawing.Point(596, 25);
       this.splitter1.Name = "splitter1";
-      this.splitter1.Size = new System.Drawing.Size(3, 467);
+      this.splitter1.Size = new System.Drawing.Size(3, 445);
       this.splitter1.TabIndex = 2;
       this.splitter1.TabStop = false;
       // 
@@ -224,16 +225,25 @@ namespace TxPms
       this.DimensionReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
       this.DimensionReportContainer.Location = new System.Drawing.Point(599, 25);
       this.DimensionReportContainer.Name = "DimensionReportContainer";
-      this.DimensionReportContainer.Size = new System.Drawing.Size(253, 467);
+      this.DimensionReportContainer.Size = new System.Drawing.Size(253, 445);
       this.DimensionReportContainer.TabIndex = 3;
       // 
       // statusStrip1
       // 
-      this.statusStrip1.Location = new System.Drawing.Point(0, 445);
+      this.statusStrip1.Location = new System.Drawing.Point(0, 470);
       this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Size = new System.Drawing.Size(596, 22);
+      this.statusStrip1.Size = new System.Drawing.Size(852, 22);
       this.statusStrip1.TabIndex = 0;
       this.statusStrip1.Text = "statusStrip1";
+      // 
+      // CadWindowStripMenuItem
+      // 
+      this.CadWindowStripMenuItem.Checked = true;
+      this.CadWindowStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.CadWindowStripMenuItem.Name = "CadWindowStripMenuItem";
+      this.CadWindowStripMenuItem.Size = new System.Drawing.Size(152, 22);
+      this.CadWindowStripMenuItem.Text = "CAD窗口";
+      this.CadWindowStripMenuItem.Click += new System.EventHandler(this.CadWindowStripMenuItem_Click);
       // 
       // CadForm
       // 
@@ -275,12 +285,13 @@ namespace TxPms
     private ToolStripMenuItem editTaskToolStripMenuItem;
     private ToolStripMenuItem executeTaskToolStripMenuItem;
     private ToolStripMenuItem viewToolStripMenuItem;
-    private ToolStripMenuItem CadToolStripMenuItem;
+    private ToolStripMenuItem CadModeToolStripMenuItem;
     private ToolStripMenuItem reportToolStripMenuItem;
     private ToolStripMenuItem mockToolStripMenuItem;
     private ToolStripMenuItem measureToolToolStripMenuItem;
     private Panel DimensionReportContainer;
     private StatusStrip statusStrip1;
+    private ToolStripMenuItem CadWindowStripMenuItem;
   }
 }
 

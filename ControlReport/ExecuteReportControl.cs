@@ -34,102 +34,155 @@ namespace ControlReport
 
     void ExecuteReportControl_Load(object sender, EventArgs e)
     {
-      Mediator.Mediator.Instance.Register(UI.SelectTask, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartTask), i_O));
-      Mediator.Mediator.Instance.Register(UI.SelectPartReport, i_O => BeginInvoke(new MessageHandlerDelegate(OnPartReportSpecified), i_O));//OnPartReportSpecified
-      Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, i_O => BeginInvoke(new MessageHandlerDelegate(OnMeasurementDataArrived), i_O));//OnMeasurementDataArrived
+      Mediator.Mediator.Instance.Register(UI.SelectTask, OnPartTask);
+      Mediator.Mediator.Instance.Register(UI.SelectPartReport, OnPartReportSpecified);//OnPartReportSpecified
+      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, OnCadElementSelected);//OnCadElementSelected
+      InitializeControlState();
+    }
 
-      Mediator.Mediator.Instance.Register(Cad.OnDimensionSelectedInCad, i_O => BeginInvoke(new MessageHandlerDelegate(OnCadElementSelected), i_O));//OnCadElementSelected
+    void InitializeControlState()
+    {
+      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
+      {
+       // BindMeasurementControl();
 
+        _ExecuteReportControlState = new ExecuteState();
+        _ExecuteReportControlState.Enter(this);
+      }
+      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
+      {
+        //BindMeasurementControl();
+        //BindAuditControl();
+        _ExecuteReportControlState = new AuditState();
+        _ExecuteReportControlState.Enter(this);
+      }
+      if (PmsService.Instance.CurrentUser.Group.Name == "审批")
+      {
+       // BindMeasurementControl();
+        //BindAuditControl();
+        //BindApproveControl();
+
+        _ExecuteReportControlState = new ApproveState();
+        _ExecuteReportControlState.Enter(this);
+      }
+    }
+
+    private void Register()
+    {
+      Mediator.Mediator.Instance.Register(MeasurementTool.OnDataArrived, OnMeasurementDataArrived);//OnMeasurementDataArrived
+    }
+
+    private void Unregister()
+    {
+      Mediator.Mediator.Instance.UnRegister(OnMeasurementDataArrived);
     }
 
     private void OnPartReportSpecified(object i_Obj)
     {
-      var partReport = i_Obj as PartReport;
-      if (partReport == null)
-        return;
-      _Task = partReport.Task;
-      _PartReport = partReport;
-      _CurrentTemplate = partReport.Task.Part;
-      if (_CurrentTemplate == null)
-        return;
+      BeginInvoke(new Mediator.MessageHanlderDelegate(i_O =>
+        {
+          var partReport = i_O as PartReport;
+          if (partReport == null)
+            return;
+          _Task = partReport.Task;
+          _PartReport = partReport;
+          _CurrentTemplate = partReport.Task.Part;
+          if (_CurrentTemplate == null)
+            return;
 
+          _DataSource = new List<ExecuteDimensionEntityViewModel>();
 
-      _DataSource = new List<ExecuteDimensionEntityViewModel>();
+          PmsService.Instance.PopulateDimensionsForReport(_PartReport);
 
-      PmsService.Instance.PopulateDimensionsForReport(_PartReport);
+          foreach (var en in _PartReport.Dimensions)
+          {
+            _DataSource.Add(new ExecuteDimensionEntityViewModel(en));
+          }
 
-      foreach (var en in _PartReport.Dimensions)
-      {
-        _DataSource.Add(new ExecuteDimensionEntityViewModel(en));
-      }
+          if (_CurrentTemplate.Dimensions.Count > 0)
+          {
+            _SeletedDimension = _PartReport.Dimensions[0];
+          }
 
-      if (_CurrentTemplate.Dimensions.Count > 0)
-      {
-        _SeletedDimension = _PartReport.Dimensions[0];
-      }
-
-      dataGridView1.DataSource = _DataSource;
-      btnCreateReport.Text = @"保存报告";
-      BindingTextControls();
-      RefreshCommentControls();
-      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
-      {
-        BindMeasurementControl();
-        LblTester.Text = PmsService.Instance.CurrentUser.Name;
-        LblTestDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
-      {
-        BindMeasurementControl();
-        BindAuditControl();
-        LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
-        LblAuditDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "审批")
-      {
-        BindMeasurementControl();
-        BindAuditControl();
-        BindApproveControl();
-        LblApprover.Text = PmsService.Instance.CurrentUser.Name;
-        LblApproveDate.Text = DateTime.Now.ToLongDateString();
-      }
+          dataGridView1.DataSource = _DataSource;
+          btnCreateReport.Text = @"保存报告";
+          BindingTextControls();
+         // RefreshCommentControls();
+          if (PmsService.Instance.CurrentUser.Group.Name == "检测")
+          {
+            BindMeasurementControl();
+            LblTester.Text = PmsService.Instance.CurrentUser.Name;
+            LblTestDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new ExecuteState();
+            _ExecuteReportControlState.Enter(this);
+          }
+          if (PmsService.Instance.CurrentUser.Group.Name == "评审")
+          {
+            BindMeasurementControl();
+            BindAuditControl();
+            LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
+            LblAuditDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new AuditState();
+            _ExecuteReportControlState.Enter(this);
+          }
+          if (PmsService.Instance.CurrentUser.Group.Name == "审批")
+          {
+            BindMeasurementControl();
+            BindAuditControl();
+            BindApproveControl();
+            LblApprover.Text = PmsService.Instance.CurrentUser.Name;
+            LblApproveDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new ApproveState();
+            _ExecuteReportControlState.Enter(this);
+          }
+        }), i_Obj);
     }
 
-    public delegate void MessageHandlerDelegate(object i_Obj);
-    private void OnPartTask(object i_O)
+    private void OnPartTask(object i_Obj)
     {
-      var task = i_O as Task;
-      if (task == null)
-        return;
-      _Task = task;
-      _ExecutionManager = new ExecutionManager(_Task);
-      _CurrentTemplate = task.Part;
-      if (_CurrentTemplate == null)
-        return;
-      Mediator.Mediator.Instance.NotifyColleagues(Execution.TaskStarted, task);
+      BeginInvoke(new MessageHanlderDelegate(i_O =>
+        {
+          var task = i_O as Task;
+          if (task == null)
+            return;
+          _ExecuteReportControlState = new ExecuteState();
+          _ExecuteReportControlState.Enter(this);
+          _Task = task;
+          _ExecutionManager = new ExecutionManager(_Task);
+          _CurrentTemplate = task.Part;
+          if (_CurrentTemplate == null)
+            return;
+          Mediator.Mediator.Instance.NotifyColleagues(Execution.TaskStarted, task);
 
-      CreateReportModel();
+          CreateReportModel();
 
-      BindingTextControls();
-      RefreshCommentControls();
-      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
-      {
-        LblTester.Text = PmsService.Instance.CurrentUser.Name;
-        LblTestDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
-      {
-        BindMeasurementControl();
-        LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
-        LblAuditDate.Text = DateTime.Now.ToLongDateString();
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "审批")
-      {
-        BindMeasurementControl();
-        BindAuditControl();
-        LblApprover.Text = PmsService.Instance.CurrentUser.Name;
-        LblApproveDate.Text = DateTime.Now.ToLongDateString();
-      }
+          BindingTextControls();
+          RefreshCommentControls();
+          if (PmsService.Instance.CurrentUser.Group.Name == "检测")
+          {
+            LblTester.Text = PmsService.Instance.CurrentUser.Name;
+            LblTestDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new ExecuteState();
+            _ExecuteReportControlState.Enter(this);
+          }
+          if (PmsService.Instance.CurrentUser.Group.Name == "评审")
+          {
+            BindMeasurementControl();
+            LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
+            LblAuditDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new AuditState();
+            _ExecuteReportControlState.Enter(this);
+          }
+          if (PmsService.Instance.CurrentUser.Group.Name == "审批")
+          {
+            BindMeasurementControl();
+            BindAuditControl();
+            LblApprover.Text = PmsService.Instance.CurrentUser.Name;
+            LblApproveDate.Text = DateTime.Now.ToLongDateString();
+            _ExecuteReportControlState = new ApproveState();
+            _ExecuteReportControlState.Enter(this);
+          }
+        }), i_Obj);
     }
 
     private void CreateReportModel()
@@ -201,12 +254,15 @@ namespace ControlReport
     }
     private void OnCadElementSelected(object i_Obj)
     {
-      var idString = i_Obj as string;
-      if (idString == null)
-        return;
-      var selectedObject = CadSelectionManager.Instance.GetObjectById(idString);
-      if(selectedObject==null) return;
-      TryToHightLightRow(selectedObject);
+      BeginInvoke(new Mediator.MessageHanlderDelegate(i_O =>
+        {
+          var idString = i_O as string;
+          if (idString == null)
+            return;
+          var selectedObject = CadSelectionManager.Instance.GetObjectById(idString);
+          if (selectedObject == null) return;
+          TryToHightLightRow(selectedObject);
+        }), i_Obj);
     }
 
     private void TryToHightLightRow(DBObject i_SelectedObject)
@@ -229,10 +285,13 @@ namespace ControlReport
       if (matched)
         dataGridView1.Rows[rowNumber].Selected = true;
     }
-    private  void OnMeasurementDataArrived(object i_O)
+    private  void OnMeasurementDataArrived(object i_Obj)
     {
-      _SeletedDimension.Measured = (float)i_O;
-      dataGridView1.InvalidateRow(_SelectedRow);
+      BeginInvoke(new Mediator.MessageHanlderDelegate(i_O =>
+        {
+          _SeletedDimension.Measured = (float) i_O;
+          dataGridView1.InvalidateRow(_SelectedRow);
+        }), i_Obj);
     }
 
 
@@ -298,5 +357,67 @@ namespace ControlReport
       CreateReportModel();
       _ExecutionManager.Start(_PartReport);
     }
+
+    abstract class AbstractExecuteReportControlState
+    {
+      public abstract void Enter(ExecuteReportControl i_ExecuteReportControl);
+    }
+
+    class ExecuteState:AbstractExecuteReportControlState
+    {
+      public override void Enter(ExecuteReportControl i_ExecuteReportControl)
+      {
+        i_ExecuteReportControl.Register();
+        i_ExecuteReportControl.buttonStart.Visible = true;
+        i_ExecuteReportControl.btnCreateReport.Visible = true;
+        i_ExecuteReportControl.comboAudit.Enabled = false;
+        i_ExecuteReportControl.txtAuditComment.Enabled = false;
+        i_ExecuteReportControl.comboApprove.Enabled = false;
+        i_ExecuteReportControl.txtApproveComment.Enabled = false;
+
+        i_ExecuteReportControl.LblTester.Text = PmsService.Instance.CurrentUser.Name;
+        i_ExecuteReportControl.LblTestDate.Text = DateTime.Now.ToLongDateString();
+
+        if (!i_ExecuteReportControl.rootTableLayoutPanel.Controls.Contains(i_ExecuteReportControl.ExecuteControlPanel))
+        {
+          i_ExecuteReportControl.rootTableLayoutPanel.Controls.Add(i_ExecuteReportControl.ExecuteControlPanel,0,3);
+          i_ExecuteReportControl.rootTableLayoutPanel.RowStyles[3].Height = 40f;
+        }
+      }
+    }
+
+    class AuditState:AbstractExecuteReportControlState
+    {
+      public override void Enter(ExecuteReportControl i_ExecuteReportControl)
+      {
+        i_ExecuteReportControl.Unregister();
+        i_ExecuteReportControl.buttonStart.Visible = false;
+        i_ExecuteReportControl.btnCreateReport.Visible = false;
+
+        i_ExecuteReportControl.LblAuditor.Text = PmsService.Instance.CurrentUser.Name;
+        i_ExecuteReportControl.LblAuditDate.Text = DateTime.Now.ToLongDateString();
+        i_ExecuteReportControl.rootTableLayoutPanel.Controls.Remove(i_ExecuteReportControl.ExecuteControlPanel);
+        i_ExecuteReportControl.rootTableLayoutPanel.RowStyles[3].Height = 0f;
+      }
+    }
+
+    class ApproveState : AbstractExecuteReportControlState
+    {
+      public override void Enter(ExecuteReportControl i_ExecuteReportControl)
+      {
+        i_ExecuteReportControl.Unregister();
+        i_ExecuteReportControl.buttonStart.Visible = false;
+        i_ExecuteReportControl.btnCreateReport.Visible = false;
+        i_ExecuteReportControl.LblApprover.Text = PmsService.Instance.CurrentUser.Name;
+        i_ExecuteReportControl.LblApproveDate.Text = DateTime.Now.ToLongDateString();
+        i_ExecuteReportControl.rootTableLayoutPanel.Controls.Remove(i_ExecuteReportControl.ExecuteControlPanel);
+        i_ExecuteReportControl.rootTableLayoutPanel.RowStyles[3].Height = 0f;
+      }
+    }
+
+    private AbstractExecuteReportControlState _ExecuteReportControlState;
   }
+
+
+
 }

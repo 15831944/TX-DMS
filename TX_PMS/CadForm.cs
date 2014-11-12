@@ -59,7 +59,7 @@ namespace TxPms
       //初始化要放在Initialize之后，ExecuteReportControl和EditReportControl的消息接受要在主窗口之后，否则异步处理会抱怨说还没初始化
       _ExecuteReportControl = new ExecuteReportControl() { Dock = DockStyle.Fill };
       _EditReportControl = new EditReportControl() { Dock = DockStyle.Fill };
-
+      _BrowseReportControl = new BrowseReportControl(){Dock = DockStyle.Fill};
 
      
       //DisableAero();
@@ -531,11 +531,6 @@ namespace TxPms
       }
     }
 
-    private void zoomWindowToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      bZoomWindow = 0;
-    }
-
     private void panel1_MouseClick(object sender, MouseEventArgs e)
     {
       if (bZoomWindow > -1 && bZoomWindow < 2)
@@ -553,76 +548,6 @@ namespace TxPms
       }
     }
 
-    bool newRegApp(Database db, string regAppName)
-    {
-      using (RegAppTable pRegAppTable = (RegAppTable)db.RegAppTableId.GetObject(OpenMode.ForWrite))
-      {
-        if (!pRegAppTable.Has(regAppName))
-        {
-          using (RegAppTableRecord pRegApp = new RegAppTableRecord())
-          {
-            pRegApp.Name = regAppName;
-            pRegAppTable.Add(pRegApp);
-          }
-          return true;
-        }
-      }
-      return false;
-    }
-
-    private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      using (DBObject pVpObj = Aux.active_viewport_id(database).GetObject(OpenMode.ForWrite))
-      {
-        AbstractViewportData pAVD = new AbstractViewportData(pVpObj);
-        pAVD.SetView(helperDevice.ActiveView);
-      }
-
-      TransactionManager tm = database.TransactionManager;
-      using (Transaction ta = tm.StartTransaction())
-      {
-        using (BlockTableRecord blTableRecord = (BlockTableRecord)database.CurrentSpaceId.GetObject(OpenMode.ForRead))
-        {
-          using (Layout pLayObj = (Layout)blTableRecord.LayoutId.GetObject(OpenMode.ForWrite))
-          {
-            PlotSettings ps = (PlotSettings)pLayObj;
-            Print.PageSetup pageSetupDlg = new Print.PageSetup(ps);
-            if (pageSetupDlg.ShowDialog() == DialogResult.OK)
-            {
-              ta.Commit();
-            }
-            else
-            {
-              ta.Abort();
-            }
-          }
-        }
-      }
-    }
-
-    private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      if (database != null)
-      {
-        if (DialogResult.OK == saveAsFileDialog.ShowDialog(this))
-        {
-          database.SaveAs(saveAsFileDialog.FileName, DwgVersion.Current);
-        }
-      }
-    }
-
-    private void printToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Print.Printing pr = new Print.Printing();
-      pr.Print(database, helperDevice.ActiveView, false);
-    }
-
-    private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Print.Printing pr = new Print.Printing();
-      pr.Print(database, helperDevice.ActiveView, true);
-    }
-
     private void newPartToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
@@ -633,17 +558,18 @@ namespace TxPms
       var tasks = PmsService.Instance.GetTasks();
       if (tasks.Count == 0) return;
 
-      var executedPart = tasks[tasks.Count - 1];
-      PmsService.Instance.CurrentPart = executedPart.Part;
+      var executingTask = tasks[tasks.Count - 1];
+      PmsService.Instance.ExecutingTask = executingTask;
+      PmsService.Instance.CurrentPart = executingTask.Part;
       if (!DimensionReportContainer.Controls.Contains(_ExecuteReportControl))
       {
         DimensionReportContainer.Controls.Clear();
         DimensionReportContainer.Controls.Add(_ExecuteReportControl);
       }
 
-      OpenDwgFile(executedPart.Part);
+      OpenDwgFile(executingTask.Part);
 
-      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.SelectTask, executedPart);
+      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.SelectTask, executingTask);
 
       panel1.Focus(); //在选择几次打开之后，在选择执行，mouseWheel不起作用
 
@@ -657,10 +583,43 @@ namespace TxPms
 
     ExecuteReportControl _ExecuteReportControl;
     private EditReportControl _EditReportControl;
+    private BrowseReportControl _BrowseReportControl;
 
     private void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
     {
       OnDwgFileOpened();
+    }
+
+    private void CadWindowStripMenuItem_Click(object sender, EventArgs e)
+    {
+      panel1.Visible = !panel1.Visible;
+      CadWindowStripMenuItem.Checked = panel1.Visible;
+    }
+
+    private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (!DimensionReportContainer.Controls.Contains(_BrowseReportControl))
+      {
+        DimensionReportContainer.Controls.Clear();
+        DimensionReportContainer.Controls.Add(_BrowseReportControl);
+      }
+
+
+    }
+
+    //To move to controller
+    public void ShowReport()
+    {
+      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
+      {
+        var reprots = PmsService.Instance.GetPartReports(PmsService.Instance.ExecutingTask);
+        Mediator.Mediator.Instance.NotifyColleaguesAsync(UIUpdate.OnReportLoaded, reprots);
+      }
+      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
+      {
+        var reprots = PmsService.Instance.GetPartReports();
+        Mediator.Mediator.Instance.NotifyColleaguesAsync(UIUpdate.OnReportLoaded, reprots);
+      }
     }
   }
 }
