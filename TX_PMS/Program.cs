@@ -45,10 +45,10 @@ namespace TxPms
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      var loginForm = new LoginForm();
-      var result = loginForm.ShowDialog();
-      if(result == DialogResult.OK)
-        Application.Run(new CadForm());
+      //var loginForm = new LoginForm();
+      //var result = loginForm.ShowDialog();
+      //if(result == DialogResult.OK)
+        Application.Run(new MainForm());
     }
   }
 }

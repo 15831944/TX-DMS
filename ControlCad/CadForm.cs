@@ -127,7 +127,7 @@ namespace ControlCad
       vec = vec.TransformBy((pView.ScreenMatrix * pView.ProjectionMatrix).Inverse());
       pView.Dolly(vec);
     }
-    void Form1_MouseWheel(object sender, MouseEventArgs e)
+    public void Form1_MouseWheel(object sender, MouseEventArgs e)
     {
       if (!IsMouseEventNeeded(e.X, e.Y))
         return;

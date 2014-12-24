@@ -16,7 +16,6 @@ namespace Mediator
     SavePart,
     SelectPartReport,
     SelectTask,
-    Resize
   }
 
   public enum  UIUpdate
