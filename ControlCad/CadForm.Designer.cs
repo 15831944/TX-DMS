@@ -52,151 +52,39 @@ namespace ControlCad
     /// </summary>
     private void InitializeComponent()
     {
-      this.menuStrip = new System.Windows.Forms.MenuStrip();
-      this.partToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.newPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.editPartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.taskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.newTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.editTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.executeTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.CadModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.mockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.measureToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
       this.panel1 = new System.Windows.Forms.Panel();
-      this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-      this.saveAsFileDialog = new System.Windows.Forms.SaveFileDialog();
-      this.splitter1 = new System.Windows.Forms.Splitter();
-      this.DimensionReportContainer = new System.Windows.Forms.Panel();
-      this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-      this.CadWindowStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.menuStrip.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // menuStrip
-      // 
-      this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.partToolStripMenuItem,
-            this.taskToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.mockToolStripMenuItem});
-      this.menuStrip.Location = new System.Drawing.Point(0, 0);
-      this.menuStrip.Name = "menuStrip";
-      this.menuStrip.Size = new System.Drawing.Size(852, 25);
-      this.menuStrip.TabIndex = 0;
-      this.menuStrip.Text = "menuStrip1";
-      // 
-      // partToolStripMenuItem
-      // 
+
       // 
       // panel1
       // 
-      this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+      this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.panel1.Enabled = false;
-      this.panel1.Location = new System.Drawing.Point(0, 25);
+      this.panel1.Location = new System.Drawing.Point(0, 0);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(596, 445);
+      this.panel1.Size = new System.Drawing.Size(596, 492);
       this.panel1.TabIndex = 1;
       this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
       this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
       this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
       this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
       this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
-      // 
-      // openFileDialog
-      // 
-      this.openFileDialog.DefaultExt = "DWG";
-      this.openFileDialog.Filter = "DWG files|*.dwg|DXF files|*.dxf";
-      // 
-      // saveAsFileDialog
-      // 
-      this.saveAsFileDialog.DefaultExt = "DWG";
-      this.saveAsFileDialog.Filter = "\"DWG files|*.dwg|DXF files|*.dxf\"";
-      // 
-      // splitter1
-      // 
-      this.splitter1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-      this.splitter1.Location = new System.Drawing.Point(596, 25);
-      this.splitter1.Name = "splitter1";
-      this.splitter1.Size = new System.Drawing.Size(3, 445);
-      this.splitter1.TabIndex = 2;
-      this.splitter1.TabStop = false;
-      // 
-      // DimensionReportContainer
-      // 
-      this.DimensionReportContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.DimensionReportContainer.Location = new System.Drawing.Point(599, 25);
-      this.DimensionReportContainer.Name = "DimensionReportContainer";
-      this.DimensionReportContainer.Size = new System.Drawing.Size(253, 445);
-      this.DimensionReportContainer.TabIndex = 3;
-      // 
-      // statusStrip1
-      // 
-      this.statusStrip1.Location = new System.Drawing.Point(0, 470);
-      this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Size = new System.Drawing.Size(852, 22);
-      this.statusStrip1.TabIndex = 0;
-      this.statusStrip1.Text = "statusStrip1";
-      // 
-      // CadWindowStripMenuItem
-      // 
-      this.CadWindowStripMenuItem.Checked = true;
-      this.CadWindowStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.CadWindowStripMenuItem.Name = "CadWindowStripMenuItem";
-      this.CadWindowStripMenuItem.Size = new System.Drawing.Size(152, 22);
-      this.CadWindowStripMenuItem.Text = "CAD窗口";
-      this.CadWindowStripMenuItem.Click += new System.EventHandler(this.CadWindowStripMenuItem_Click);
+
       // 
       // CadForm
       // 
-     // this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-     // this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(852, 492);
-      this.Controls.Add(this.DimensionReportContainer);
-      this.Controls.Add(this.splitter1);
       this.Controls.Add(this.panel1);
-      this.Controls.Add(this.menuStrip);
-      this.Controls.Add(this.statusStrip1);
-      //this.MainMenuStrip = this.menuStrip;
-      this.Name = "CadForm";
-      this.Text = "外协件检验系统";
-      //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-      //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+      this.Size = new System.Drawing.Size(852, 492);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-      this.menuStrip.ResumeLayout(false);
-      this.menuStrip.PerformLayout();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
     }
 
     #endregion
-
-    private System.Windows.Forms.MenuStrip menuStrip;
-    private System.Windows.Forms.ToolStripMenuItem partToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
     private System.Windows.Forms.Panel panel1;
-    private System.Windows.Forms.OpenFileDialog openFileDialog;
-    private System.Windows.Forms.SaveFileDialog saveAsFileDialog;
-    private Splitter splitter1;
-    private ToolStripMenuItem newPartToolStripMenuItem;
-    private ToolStripMenuItem editPartToolStripMenuItem;
-    private ToolStripMenuItem taskToolStripMenuItem;
-    private ToolStripMenuItem newTaskToolStripMenuItem;
-    private ToolStripMenuItem editTaskToolStripMenuItem;
-    private ToolStripMenuItem executeTaskToolStripMenuItem;
-    private ToolStripMenuItem viewToolStripMenuItem;
-    private ToolStripMenuItem CadModeToolStripMenuItem;
-    private ToolStripMenuItem reportToolStripMenuItem;
-    private ToolStripMenuItem mockToolStripMenuItem;
-    private ToolStripMenuItem measureToolToolStripMenuItem;
-    private Panel DimensionReportContainer;
-    private StatusStrip statusStrip1;
-    private ToolStripMenuItem CadWindowStripMenuItem;
+
   }
 }
 

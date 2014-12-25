@@ -152,11 +152,6 @@ namespace ControlCad
         Invalidate();
       }
     }
-    private void part_open_handler(object sender, EventArgs e)
-    {
-//      var selectReportControl = new SelectReportControl();
-//      selectReportControl.ShowDialog(this);
-    }
 
     public void OpenDwgFile(string i_FileName)
     {
@@ -544,78 +539,6 @@ namespace ControlCad
           firstCornerPoint = toEyeToWorld(e.X, e.Y);
           bZoomWindow = 1;
         }
-      }
-    }
-
-    private void newPartToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      Mediator.Mediator.Instance.NotifyColleagues(UI.CreatePart, null);
-    }
-
-    private void executeTaskToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      var tasks = PmsService.Instance.GetTasks();
-      if (tasks.Count == 0) return;
-
-      var executingTask = tasks[tasks.Count - 1];
-      PmsService.Instance.ExecutingTask = executingTask;
-      PmsService.Instance.CurrentPart = executingTask.Part;
-//      if (!DimensionReportContainer.Controls.Contains(_ExecuteReportControl))
-//      {
-//        DimensionReportContainer.Controls.Clear();
-//        DimensionReportContainer.Controls.Add(_ExecuteReportControl);
-//      }
-
-      OpenDwgFile(executingTask.Part);
-
-      Mediator.Mediator.Instance.NotifyColleaguesAsync(UI.SelectTask, executingTask);
-
-      panel1.Focus(); //在选择几次打开之后，在选择执行，mouseWheel不起作用
-
-    }
-
-    private void newTaskToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-//      var taskForm = new TaskForm();
-//      taskForm.ShowDialog(this);
-    }
-
-
-
-    private void viewToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-    {
-      OnDwgFileOpened();
-    }
-
-    private void CadWindowStripMenuItem_Click(object sender, EventArgs e)
-    {
-      panel1.Visible = !panel1.Visible;
-      CadWindowStripMenuItem.Checked = panel1.Visible;
-    }
-
-//    private void reportToolStripMenuItem_Click(object sender, EventArgs e)
-//    {
-//      if (!DimensionReportContainer.Controls.Contains(_BrowseReportControl))
-//      {
-//        DimensionReportContainer.Controls.Clear();
-//        DimensionReportContainer.Controls.Add(_BrowseReportControl);
-//      }
-//
-//
-//    }
-
-    //To move to controller
-    public void ShowReport()
-    {
-      if (PmsService.Instance.CurrentUser.Group.Name == "检测")
-      {
-        var reprots = PmsService.Instance.GetPartReports(PmsService.Instance.ExecutingTask);
-        Mediator.Mediator.Instance.NotifyColleaguesAsync(UIUpdate.OnReportLoaded, reprots);
-      }
-      if (PmsService.Instance.CurrentUser.Group.Name == "评审")
-      {
-        var reprots = PmsService.Instance.GetPartReports();
-        Mediator.Mediator.Instance.NotifyColleaguesAsync(UIUpdate.OnReportLoaded, reprots);
       }
     }
   }
